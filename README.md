@@ -1,5 +1,5 @@
-salt-winrepo
-============
+salt-winrepo-ng
+===============
 
 Salt Windows Software Package Manager Repo.
 
