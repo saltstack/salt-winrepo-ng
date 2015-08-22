@@ -1,5 +1,5 @@
 saltstack.minion:
-  {% for version in '2015.5.3-2', '2015.8.0rc2', '2015.8.0rc3' %}
+  {% for version in '2015.5.3-2', '2015.5.5', '2015.8.0rc2', '2015.8.0rc3' %}
   {{ version }}:
     full_name: 'Salt Minion {{ version }}'
     {% if grains['cpuarch'] == 'AMD64' %}
