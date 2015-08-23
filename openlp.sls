@@ -6,7 +6,7 @@
 {% endif %}
 # Source: http://openlp.org/
 openlp:
-  2.0.5:
+  Not Found:
     full_name: 'OpenLP 2.0.5'
     installer: 'http://heanet.dl.sourceforge.net/project/openlp/openlp/2.0.5/OpenLP-2.0.5-setup.exe'
     install_flags: '/SP- /VERYSILENT /NORESTART'
