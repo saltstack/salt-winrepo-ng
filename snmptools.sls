@@ -4,13 +4,12 @@
 {% else %}
     {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {% endif %}
-# Source: http://openlp.org/
-openlp:
+snmptools:
   Not Found:
-    full_name: 'OpenLP 2.0.5'
-    installer: 'http://heanet.dl.sourceforge.net/project/openlp/openlp/2.0.5/OpenLP-2.0.5-setup.exe'
-    install_flags: '/SP- /VERYSILENT /NORESTART'
-    uninstaller: '{{ PROGRAM_FILES }}\OpenLP\unins000.exe'
+    full_name: 'SnmpTools 2'
+    installer: 'http://erwan.labalec.fr/snmptools/snmptools32.exe'
+    install_flags: '/SP- /VERYSILENT /SUPPRESSMSGBOXES /NORESTART'
+    uninstaller: '{{ PROGRAM_FILES }}\SnmpTools\unins000.exe'
     uninstall_flags: '/SP- /VERYSILENT /NORESTART'
     msiexec: False
     locale: en_US

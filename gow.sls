@@ -5,7 +5,7 @@
     {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {% endif %}
 gow:
-  0.8.0:
+  Not Found:
     full_name: 'Gow'
     installer: 'https://github.com/bmatzelle/gow/releases/download/v0.8.0/Gow-0.8.0.exe'
     install_flags: '/S'
@@ -14,5 +14,5 @@ gow:
     msiexec: False
     locale: en_US
     reboot: False
-# Gow - GNU on Windows - The lightweight alternative to Cygwin
-# https://github.com/bmatzelle/gow/wiki
+    # Gow - GNU on Windows - The lightweight alternative to Cygwin
+    # https://github.com/bmatzelle/gow/wiki
