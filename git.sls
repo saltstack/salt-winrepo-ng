@@ -1,6 +1,6 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available
 {% set PROGRAM_FILES = "%ProgramFiles%" %}
-git-for-windows:
+git:
   2.5.0:
     full_name: 'Git version 2.5.0'
     {% if grains['cpuarch'] == 'AMD64' %}
