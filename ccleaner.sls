@@ -5,9 +5,9 @@
     {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {% endif %}
 ccleaner:
-  5.07:
-    full_name: 'CCleaner 5.07'
-    installer: 'http://download.piriform.com/ccsetup507.exe'
+  5.0.9:
+    full_name: 'CCleaner 5.09'
+    installer: 'http://download.piriform.com/ccsetup509.exe'
     install_flags: '/S'
     uninstaller: '{{ PROGRAM_FILES }}\CCleaner\uninst.exe'
     uninstall_flags: '/S'
