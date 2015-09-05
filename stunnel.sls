@@ -4,12 +4,12 @@
 {% else %}
     {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {% endif %}
-ccleaner:
-  5.0.9:
-    full_name: 'CCleaner 5.09'
-    installer: 'http://download.piriform.com/ccsetup509.exe'
+stunnel_x86:
+  Not Found:
+    full_name: 'stunnel'
+    installer: 'https://www.stunnel.org/downloads/stunnel-5.22-installer.exe'
     install_flags: '/S'
-    uninstaller: '{{ PROGRAM_FILES }}\CCleaner\uninst.exe'
+    uninstaller: '{{ PROGRAM_FILES }}\stunnel\uninstall.exe'
     uninstall_flags: '/S'
     msiexec: False
     locale: en_US
