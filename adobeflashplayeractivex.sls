@@ -1,3 +1,4 @@
+{% if salt['pkg.compare_versions'](grains['osversion'], '<', '6.2') %}
 adobeflashplayeractivex:
   latest:
     full_name: 'Adobe Flash Player 18 ActiveX'
@@ -17,3 +18,4 @@ adobeflashplayeractivex:
     msiexec: True
     locale: en_US
     reboot: False
+{% endif %}
