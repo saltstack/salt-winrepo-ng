@@ -1,5 +1,5 @@
 jre8:
-  8.0.600:
+  8.0.600.27:
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name: 'Java 8 Update 60 (64-bit)'
     installer: 'salt://win/repo-ng/jre8/jre-8u60-windows-x64.exe'
