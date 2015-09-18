@@ -7,7 +7,13 @@
 # http://download.microsoft.com/download/3/F/D/3FD04B49-26F9-4D9A-8C34-4533B9D5B020/Win8.1AndW2K12R2-KB3066437-x86.msu
 wmf5pp:
   Not Found:
+    {% if salt['pkg.compare_versions'](grains['osversion'], '==', '6.2') %}
+    full_name: 'Windows Management Framework 5.0 Production Preview (KB3066438)'
+    {% elif salt['pkg.compare_versions'](grains['osversion'], '==', '6.1') %}
     full_name: 'Windows Management Framework 5.0 Production Preview (KB3066439)'
+    {% elif salt['pkg.compare_versions'](grains['osversion'], '==', '6.3') %}
+    full_name: 'Windows Management Framework 5.0 Production Preview (KB3066437)'
+    {% endif %}
     {% if grains['cpuarch'] == 'AMD64' %}
       {% if salt['pkg.compare_versions'](grains['osversion'], '==', '6.2') %}
       installer: 'http://download.microsoft.com/download/3/F/D/3FD04B49-26F9-4D9A-8C34-4533B9D5B020/W2K12-KB3066438-x64.msu'
