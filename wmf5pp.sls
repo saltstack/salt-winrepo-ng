@@ -27,6 +27,8 @@ wmf5pp:
       installer: 'http://download.microsoft.com/download/3/F/D/3FD04B49-26F9-4D9A-8C34-4533B9D5B020/Win7AndW2K8R2-KB3066439-x86.msu'
       {% elif salt['pkg.compare_versions'](grains['osversion'], '==', '6.3') %}
       installer: 'http://download.microsoft.com/download/3/F/D/3FD04B49-26F9-4D9A-8C34-4533B9D5B020/Win8.1AndW2K12R2-KB3066437-x86.msu'
+      {% else %}
+      installer: 'my-fallback-that-never-should-happen.exe'
       {% endif %}
     {% endif %}
     install_flags: '/quiet /norestart'
@@ -43,6 +45,8 @@ wmf5pp:
       uninstaller: 'http://download.microsoft.com/download/3/F/D/3FD04B49-26F9-4D9A-8C34-4533B9D5B020/Win7AndW2K8R2-KB3066439-x86.msu'
       {% elif salt['pkg.compare_versions'](grains['osversion'], '==', '6.3') %}
       uninstaller: 'http://download.microsoft.com/download/3/F/D/3FD04B49-26F9-4D9A-8C34-4533B9D5B020/Win8.1AndW2K12R2-KB3066437-x86.msu'
+      {% else %}
+      installer: 'my-fallback-that-never-should-happen.exe'
       {% endif %}
     {% endif %}
     uninstall_flags: '/quiet /norestart'
