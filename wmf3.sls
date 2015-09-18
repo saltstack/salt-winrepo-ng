@@ -24,5 +24,6 @@ wmf3:
     uninstaller: ''
     uninstall_flags: ''
     msiexec: False
+    wusa: True
     locale: en_US
     reboot: False
