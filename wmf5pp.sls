@@ -26,7 +26,7 @@ wmf5pp:
     installer: 'my-fallback-installer-that-never-should-happen.exe'
     {% endif %}
     {% endif %}
-    install_flags: '/quiet /norestart'
+    install_flags: '/quiet /warnrestart'
     {% if grains['cpuarch'] == 'AMD64' %}
     {% if salt['pkg.compare_versions'](grains['osversion'], '>=', '6.2') and salt['pkg.compare_versions'](grains['osversion'], '<', '6.3') %}
     uninstaller: 'http://download.microsoft.com/download/3/F/D/3FD04B49-26F9-4D9A-8C34-4533B9D5B020/W2K12-KB3066438-x64.msu'
@@ -44,10 +44,10 @@ wmf5pp:
     uninstaller: 'my-fallback-uninstaller-that-never-should-happen.exe'
     {% endif %}
     {% endif %}
-    uninstall_flags: '/quiet /norestart'
+    uninstall_flags: '/quiet /warnrestart'
     msiexec: False
     wusa: True
     locale: en_US
-    reboot: False
+    reboot: True
 # source: https://www.microsoft.com/en-us/download/details.aspx?id=48729
 #
