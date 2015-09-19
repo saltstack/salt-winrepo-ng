@@ -48,6 +48,6 @@ wmf5pp:
     msiexec: False
     wusa: True
     locale: en_US
-    reboot: True
+    reboot: False
 # source: https://www.microsoft.com/en-us/download/details.aspx?id=48729
 #
