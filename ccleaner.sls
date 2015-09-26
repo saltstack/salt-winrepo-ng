@@ -6,7 +6,7 @@
 {% endif %}
 ccleaner:
   5.10:
-    full_name: 'CCleaner 5.10'
+    full_name: 'CCleaner'
     installer: 'http://download.piriform.com/ccsetup510.exe'
     install_flags: '/S'
     uninstaller: '{{ PROGRAM_FILES }}\CCleaner\uninst.exe'
