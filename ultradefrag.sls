@@ -1,7 +1,7 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available
 {% set PROGRAM_FILES = "%ProgramFiles%" %}
 ultradefrag:
-  6.0.2:
+  '6.0.2':
     full_name: 'Ultra Defragmenter 6.0.2'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'http://heanet.dl.sourceforge.net/project/ultradefrag/stable-release/6.0.2/ultradefrag-6.0.2.bin.amd64.exe'

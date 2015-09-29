@@ -1,7 +1,7 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available
 {% set PROGRAM_FILES = "%ProgramFiles%" %}
 itunes:
-  12.3.0.44:
+  '12.3.0.44':
     full_name: 'iTunes'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'https://secure-appldnld.apple.com/itunes12/031-24471-20150916-D6436502-5C68-11E5-B713-CA5C6DA99CB1/iTunes6464Setup.exe'
@@ -47,7 +47,7 @@ itunes:
     msiexec: False
     locale: en_US
     reboot: False
-  12.2.2.25:
+  '12.2.2.25':
     full_name: 'iTunes'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'https://secure-appldnld.apple.com/itunes12/031-31877-20150813-B245948E-41B7-11E5-A7F4-910D11BA098F/iTunes6464Setup.exe'
@@ -87,7 +87,7 @@ itunes:
     msiexec: False
     locale: en_US
     reboot: False
-  12.2.1.16:
+  '12.2.1.16':
     full_name: 'iTunes'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'https://secure-appldnld.apple.com/itunes12/031-27848-20150713-F557964C-28C5-11E5-AE8B-15088C430F53/iTunes6464Setup.exe'

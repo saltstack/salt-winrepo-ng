@@ -1,7 +1,7 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available
 {% set PROGRAM_FILES = "%ProgramFiles%" %}
 openvpn:
-  2.3.8:
+  '2.3.8':
     full_name: 'OpenVPN 2.3.8-I601'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'http://swupdate.openvpn.org/community/releases/openvpn-install-2.3.8-I601-x86_64.exe'
@@ -14,7 +14,7 @@ openvpn:
     msiexec: False
     locale: en_US
     reboot: False
-  2.3.6:
+  '2.3.6':
     full_name: 'OpenVPN 2.3.6-I601'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'http://swupdate.openvpn.org/community/releases/openvpn-install-2.3.6-I601-x86_64.exe'

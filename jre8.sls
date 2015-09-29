@@ -1,5 +1,5 @@
 jre8:
-  8.0.600.27:
+  '8.0.600.27':
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name: 'Java 8 Update 60 (64-bit)'
     installer: 'salt://win/repo-ng/jre8/jre-8u60-windows-x64.exe'
@@ -24,7 +24,7 @@ jre8:
     msiexec: False
     locale: en_US
     reboot: False
-  8.0.510:
+  '8.0.510':
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name: 'Java 8 Update 51 (64-bit)'
     installer: 'salt://win/repo-ng/jre8/jre-8u51-windows-x64.exe'

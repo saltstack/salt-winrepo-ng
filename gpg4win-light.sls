@@ -5,7 +5,7 @@
     {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {% endif %}
 gpg4win-light:
-  2.2.4:
+  '2.2.4':
     full_name: 'Gpg4Win (2.2.4)'
     installer: 'http://files.gpg4win.org/gpg4win-light-2.2.4.exe'
     install_flags: '/S'

@@ -5,7 +5,7 @@
     {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {% endif %}
 defraggler:
-  2.18.945:
+  '2.18.945':
     full_name: 'Defraggler 2.18'
     installer: 'http://download.piriform.com/dfsetup218.exe'
     install_flags: '/S'

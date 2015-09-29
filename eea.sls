@@ -1,5 +1,5 @@
 eea:
-  6.2.2021.0:
+  '6.2.2021.0':
     full_name: 'ESET Endpoint Antivirus'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'salt://win/repo-ng/eea/v6/eea_nt64_enu.msi'
@@ -13,7 +13,7 @@ eea:
     msiexec: True
     locale: en_US
     reboot: False
-  5.0.2254.0:
+  '5.0.2254.0':
     full_name: 'ESET Endpoint Antivirus'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'salt://win/repo-ng/eea/v5/eea_nt64_enu.msi'

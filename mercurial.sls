@@ -1,5 +1,5 @@
 mercurial:
-  3.1.1:
+  '3.1.1':
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name: 'Mercurial 3.1.1 (x64)'
     installer: 'http://mercurial.selenic.com/release/windows/mercurial-3.1.1-x64.msi'

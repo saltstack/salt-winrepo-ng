@@ -5,7 +5,7 @@
     {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {% endif %}
 gnucash:
-  2.6.5:
+  '2.6.5':
     full_name: 'GnuCash 2.6.5'
     installer: 'http://kent.dl.sourceforge.net/project/gnucash/gnucash%20%28stable%29/2.6.5/gnucash-2.6.5-setup.exe'
     install_flags: '/SILENT'

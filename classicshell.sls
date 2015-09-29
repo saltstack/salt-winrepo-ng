@@ -1,5 +1,5 @@
 classicshell:
-  4.2.4:
+  '4.2.4':
     full_name: 'Classic Shell'
     installer: 'http://www.mediafire.com/download/wl5nbjaki7zbssn/ClassicShellSetup_4_2_4.exe'
     install_flags: '/passive'

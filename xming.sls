@@ -6,7 +6,7 @@
 {% endif %}
 # http://www.straightrunning.com/XmingNotes/setupcmdline.htm
 xming:
-  6.9.0.31:
+  '6.9.0.31':
     full_name:  'xming'
     installer: 'http://downloads.sourceforge.net/project/xming/Xming/6.9.0.31/Xming-6-9-0-31-setup.exe'
     install_flags: '/SP- /verysilent /suppressmsgboxes /norestart'
