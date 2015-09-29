@@ -1,7 +1,7 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available
 {% set PROGRAM_FILES = "%ProgramFiles%" %}
 jre:
-  7.0.790:
+  '7.0.790':
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name: 'Java 7 Update 79 (64-bit)'
     installer: 'salt://win/repo-ng/jre/jre-7u79-windows-x64.exe'

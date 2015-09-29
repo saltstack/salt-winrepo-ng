@@ -1,5 +1,5 @@
 autopsy:
-  3.1.3: 
+  '3.1.3': 
     full_name: 'Autopsy'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'http://heanet.dl.sourceforge.net/project/autopsy/autopsy/3.1.3/autopsy-3.1.3-64bit.msi'
@@ -13,7 +13,7 @@ autopsy:
     msiexec: True
     locale: en_US
     reboot: False
-  3.1.2: 
+  '3.1.2': 
     full_name: 'Autopsy'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'http://heanet.dl.sourceforge.net/project/autopsy/autopsy/3.1.2/autopsy-3.1.2-64bit.msi'
@@ -27,7 +27,7 @@ autopsy:
     msiexec: True
     locale: en_US
     reboot: False
-  3.1.1: 
+  '3.1.1': 
     full_name: 'Autopsy'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'http://heanet.dl.sourceforge.net/project/autopsy/autopsy/3.1.1/autopsy-3.1.1-64bit.msi'
