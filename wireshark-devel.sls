@@ -1,7 +1,7 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available
 {% set PROGRAM_FILES = "%ProgramFiles%" %}
 wireshark-devel:
-  1.99.8:
+  '1.99.8':
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name:  'Wireshark 1.99.8 (64-bit)'
     installer: 'http://wiresharkdownloads.riverbed.com/wireshark/win64/Wireshark-win64-1.99.8.exe'

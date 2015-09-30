@@ -1,7 +1,7 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available
 {% set PROGRAM_FILES = "%ProgramFiles%" %}
 vlc:
-  2.2.1:
+  '2.2.1':
     full_name: 'VLC media player'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'http://get.videolan.org/vlc/2.2.1/win64/vlc-2.2.1-win64.exe'

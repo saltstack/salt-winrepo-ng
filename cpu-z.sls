@@ -6,7 +6,7 @@
 {% endif %}
 # Source: http://www.cpuid.com/softwares/cpu-z.html
 cpu-z:
-  1.71.1:
+  '1.71.1':
     full_name: 'CPUID CPU-Z 1.17.1'
     installer: 'salt://win/repo-ng/cpu-z/cpu-z_1.71.1-setup-en.exe'
     install_flags: '/SP- /VERYSILENT /SUPPRESSMSGBOXES /NORESTART'

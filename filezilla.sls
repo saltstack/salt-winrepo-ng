@@ -1,7 +1,7 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available
 {% set PROGRAM_FILES = "%ProgramFiles%" %}
 filezilla:
-  3.14.0:
+  '3.14.0':
     full_name: 'FileZilla Client 3.14.0'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'http://netcologne.dl.sourceforge.net/project/filezilla/FileZilla_Client/3.14.0/FileZilla_3.14.0_win64-setup.exe'
@@ -14,7 +14,7 @@ filezilla:
     msiexec: False
     locale: en_US
     reboot: False
-  3.13.0:
+  '3.13.0':
     full_name: 'FileZilla Client 3.13.0'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'http://heanet.dl.sourceforge.net/project/filezilla/FileZilla_Client/3.13.0/FileZilla_3.13.0_win64-setup.exe'
@@ -27,7 +27,7 @@ filezilla:
     msiexec: False
     locale: en_US
     reboot: False
-  3.11.0.2:
+  '3.11.0.2':
     full_name: 'FileZilla Client 3.11.0.2'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'http://heanet.dl.sourceforge.net/project/filezilla/FileZilla_Client/3.11.0.2/FileZilla_3.11.0.2_win64-setup.exe'
