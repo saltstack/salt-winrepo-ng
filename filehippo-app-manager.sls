@@ -6,7 +6,7 @@
 {% endif %}
 # Source: http://filehippo.com/download_update_checker/
 filehippo-app-manager:
-  2.0:
+  '2.0':
     full_name: 'FileHippo App Manager'
     installer: 'salt://win/repo-ng/filehippo-app-manager/AppManagerSetup_2.0.exe'
     install_flags: '/S'

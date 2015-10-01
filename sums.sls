@@ -1,5 +1,5 @@
 sums:
-  6.11:
+  '6.11':
     full_name: 'GNU coreutils sums (md5 sha1 sha224 sha256 sha384 sha512) ver. 6.11'
     installer: |
                '@powershell -NoProfile -ExecutionPolicy unrestricted -Command "$shell = new-object -com shell.application
