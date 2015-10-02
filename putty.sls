@@ -5,7 +5,7 @@
     {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {% endif %}
 putty:
-  0.65:
+  '0.65':
     full_name:  'PuTTY release 0.65'
     installer: 'http://the.earth.li/~sgtatham/putty/0.65/x86/putty-0.65-installer.exe'
     install_flags: '/SP- /verysilent /norestart'
@@ -14,7 +14,7 @@ putty:
     msiexec: False
     locale: en_US
     reboot: False 
-  0.64:
+  '0.64':
     full_name:  'PuTTY release 0.64' 
     installer: 'http://the.earth.li/~sgtatham/putty/0.64/x86/putty-0.64-installer.exe'
     install_flags: '/SP- /verysilent /norestart'

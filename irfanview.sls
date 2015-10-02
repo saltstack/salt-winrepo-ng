@@ -1,7 +1,7 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available
 {% set PROGRAM_FILES = "%ProgramFiles(x86)%" %}
 irfanview:
-  4.40:
+  '4.40':
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name: 'IrfanView 64 (remove only)'
     installer: 'salt://win/repo-ng/irfanview/iview440_x64_setup.exe'
@@ -17,7 +17,7 @@ irfanview:
     msiexec: False
     locale: en_US
     reboot: False
-  4.38:
+  '4.38':
     full_name: 'IrfanView (remove only)'
     installer: 'salt://win/repo-ng/irfanview/iview438_setup.exe'
     # download manually from: http://www.irfanview.info/files/iview438_setup.exe and place on master

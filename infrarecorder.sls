@@ -1,7 +1,7 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available
 {% set PROGRAM_FILES = "%ProgramFiles%" %}
 infrarecorder:
-  0.53:
+  '0.53':
     full_name: 'InfraRecorder'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'http://cznic.dl.sourceforge.net/project/infrarecorder/InfraRecorder/0.53/ir053_x64.msi'
