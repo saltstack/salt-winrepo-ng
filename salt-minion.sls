@@ -15,6 +15,7 @@ saltstack.minion:
     uninstall_flags: '/S'
     refresh: true
     msiexec: False
+    use_scheduler: True
     locale: en_US
     reboot: False
   {% endfor %}
