@@ -6,7 +6,7 @@ firefox-esr:
     {% set PROGRAM_FILES = "%ProgramFiles%" %}
   {% endif %}
   {% for version in '38.3.0', '38.2.1' %}
-  {{ version }}:
+  '{{ version }}':
     full_name: 'Mozilla Firefox {{ version }} (x86 en-US)'
     installer: 'https://download-installer.cdn.mozilla.net/pub/firefox/releases/{{ version }}esr/win32/en-US/Firefox%20Setup%20{{ version }}esr.exe'
     install_flags: '/s'
