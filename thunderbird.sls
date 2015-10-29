@@ -6,7 +6,7 @@
 {% endif %}
 thunderbird:
   {% for version in '38.2.0', '38.1.0' %}
-  {{ version }}:
+  '{{ version }}':
     full_name: 'Mozilla Thunderbird {{ version }} (x86 en-GB)'
     installer: 'https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/{{ version }}/win32/en-GB/Thunderbird%20Setup%20{{ version }}.exe'
     install_flags: '-ms'

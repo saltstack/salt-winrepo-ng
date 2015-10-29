@@ -1,6 +1,6 @@
 saltstack.minion:
   {% for version in '2015.8.1', '2015.8.0-3', '2015.5.6', '2015.5.5', '2015.5.3-2' %}
-  {{ version }}:
+  '{{ version }}':
     full_name: 'Salt Minion {{ version }}'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'https://repo.saltstack.com/windows/Salt-Minion-{{ version }}-AMD64-Setup.exe'
