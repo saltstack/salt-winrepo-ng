@@ -6,7 +6,7 @@
 {% endif %}
 intellij-community:
   {% for version in '14.1.4' %}
-  {{ version }}:
+  '{{ version }}':
     full_name: 'IntelliJ IDEAS Community Edition {{ version }}'
     installer: 'https://download.jetbrains.com/idea/ideaIC-{{ version }}.exe'
     install_flags: '/S'
@@ -18,7 +18,7 @@ intellij-community:
   {% endfor %}
 intellij-ultimate:
   {% for version in '14.1.4' %}
-  {{ version }}
+  '{{ version }}':
     full_name: 'IntelliJ IDEAS Ultimate {{ version }}'
     installer: 'https://download.jetbrains.com/idea/ideaIU-{{ version }}.exe'
     install_flags: '/S'
