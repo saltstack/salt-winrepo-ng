@@ -14,3 +14,4 @@ ossec-agent:
     msiexec: False
     locale: en_US
     reboot: False
+# The official download page for the OSSEC agent is http://www.ossec.net/?page_id=19
