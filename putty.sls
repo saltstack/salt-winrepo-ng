@@ -5,6 +5,15 @@
     {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {% endif %}
 putty:
+  '0.66':
+    full_name:  'PuTTY release 0.66'
+    installer: 'http://the.earth.li/~sgtatham/putty/0.66/x86/putty-0.66-installer.exe'
+    install_flags: '/SP- /verysilent /norestart'
+    uninstaller: '{{ PROGRAM_FILES }}\PuTTY\unins000.exe'
+    uninstall_flags: '/SP- /silent /verysilent /suppressmsgboxes /norestart /UNINSTMODE'
+    msiexec: False
+    locale: en_US
+    reboot: False
   '0.65':
     full_name:  'PuTTY release 0.65'
     installer: 'http://the.earth.li/~sgtatham/putty/0.65/x86/putty-0.65-installer.exe'
