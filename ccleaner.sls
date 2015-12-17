@@ -4,7 +4,7 @@
 {% else %}
     {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {% endif %}
-{% for version, dl_version in (('5.12', '5.11', '511'), ('5.10', '510'), ('5.0.9', '509')) %}
+{% for version, dl_version in (('5.12', '512'), ('5.11', '511'), ('5.10', '510'), ('5.0.9', '509')) %}
 ccleaner:
   '{{ version }}':
     full_name: 'CCleaner'
