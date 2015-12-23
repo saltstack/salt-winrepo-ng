@@ -4,8 +4,8 @@
 {% else %}
     {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {% endif %}
-{% for version, dl_version in (('5.12', '512'), ('5.11', '511'), ('5.10', '510'), ('5.0.9', '509')) %}
 ccleaner:
+  {% for version, dl_version in (('5.13', '513'), ('5.12', '512'), ('5.11', '511'), ('5.10', '510'), ('5.0.9', '509')) %}
   '{{ version }}':
     full_name: 'CCleaner'
     installer: 'http://download.piriform.com/ccsetup{{ dl_version }}.exe'
@@ -15,4 +15,4 @@ ccleaner:
     msiexec: False
     locale: en_US
     reboot: False
-{% endfor %}
+  {% endfor %}
