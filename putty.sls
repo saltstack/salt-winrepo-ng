@@ -5,30 +5,14 @@
     {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {% endif %}
 putty:
-  '0.66':
-    full_name:  'PuTTY release 0.66'
-    installer: 'http://the.earth.li/~sgtatham/putty/0.66/x86/putty-0.66-installer.exe'
+  {% for version in '{{ version }}', '0.65', '0.64' %}
+  '{{ version }}':
+    full_name:  'PuTTY release {{ version }}'
+    installer: 'http://the.earth.li/~sgtatham/putty/{{ version }}/x86/putty-{{ version }}-installer.exe'
     install_flags: '/SP- /verysilent /norestart'
     uninstaller: '{{ PROGRAM_FILES }}\PuTTY\unins000.exe'
     uninstall_flags: '/SP- /silent /verysilent /suppressmsgboxes /norestart /UNINSTMODE'
     msiexec: False
     locale: en_US
     reboot: False
-  '0.65':
-    full_name:  'PuTTY release 0.65'
-    installer: 'http://the.earth.li/~sgtatham/putty/0.65/x86/putty-0.65-installer.exe'
-    install_flags: '/SP- /verysilent /norestart'
-    uninstaller: '{{ PROGRAM_FILES }}\PuTTY\unins000.exe'
-    uninstall_flags: '/SP- /silent /verysilent /suppressmsgboxes /norestart /UNINSTMODE'
-    msiexec: False
-    locale: en_US
-    reboot: False 
-  '0.64':
-    full_name:  'PuTTY release 0.64' 
-    installer: 'http://the.earth.li/~sgtatham/putty/0.64/x86/putty-0.64-installer.exe'
-    install_flags: '/SP- /verysilent /norestart'
-    uninstaller: '{{ PROGRAM_FILES }}\PuTTY\unins000.exe'
-    uninstall_flags: '/SP- /silent /verysilent /suppressmsgboxes /norestart /UNINSTMODE'
-    msiexec: False
-    locale: en_US
-    reboot: False
+  {% endfor %}
