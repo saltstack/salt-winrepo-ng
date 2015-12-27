@@ -5,7 +5,7 @@
     {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {% endif %}
 putty:
-  {% for version in '{{ version }}', '0.65', '0.64' %}
+  {% for version in '0.66', '0.65', '0.64' %}
   '{{ version }}':
     full_name:  'PuTTY release {{ version }}'
     installer: 'http://the.earth.li/~sgtatham/putty/{{ version }}/x86/putty-{{ version }}-installer.exe'
