@@ -1,4 +1,18 @@
 autopsy:
+  '4.0.0': 
+    full_name: 'Autopsy'
+    {% if grains['cpuarch'] == 'AMD64' %}
+    installer: 'http://heanet.dl.sourceforge.net/project/autopsy/autopsy/4.0.0/autopsy-4.0.0-64bit.msi'
+    uninstaller: 'http://heanet.dl.sourceforge.net/project/autopsy/autopsy/4.0.0/autopsy-4.0.0-64bit.msi'
+    {% elif grains['cpuarch'] == 'x86' %}
+    installer: 'http://heanet.dl.sourceforge.net/project/autopsy/autopsy/4.0.0/autopsy-4.0.0-32bit.msi'
+    uninstaller: 'http://heanet.dl.sourceforge.net/project/autopsy/autopsy/4.0.0/autopsy-4.0.0-32bit.msi' 
+    {% endif %}
+    install_flags: '/qn /norestart'
+    uninstall_flags: '/qn /norestart'
+    msiexec: True
+    locale: en_US
+    reboot: False
   '3.1.3': 
     full_name: 'Autopsy'
     {% if grains['cpuarch'] == 'AMD64' %}
