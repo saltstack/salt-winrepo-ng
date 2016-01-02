@@ -1,6 +1,20 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available
 {% set PROGRAM_FILES = "%ProgramFiles%" %}
 curl:
+  '7.46.0':
+    full_name: 'cURL'
+    {% if grains['cpuarch'] == 'AMD64' %}
+    installer: 'salt://win/repo-ng/curl/curl-7.46.0-win64.msi'
+    uninstaller: 'salt://win/repo-ng/curl/curl-7.46.0-win64.msi'
+    {% elif grains['cpuarch'] == 'x86' %}
+    installer: 'salt://win/repo-ng/curl/curl-7.46.0-win32.msi'
+    uninstaller: 'salt://win/repo-ng/curl/curl-7.46.0-win32.msi'
+    {% endif %}
+    install_flags: '/qn /norestart'
+    uninstall_flags: '/qn /norestart'
+    msiexec: True
+    locale: en_US
+    reboot: False
   '7.45.0':
     full_name: 'cURL'
     {% if grains['cpuarch'] == 'AMD64' %}
