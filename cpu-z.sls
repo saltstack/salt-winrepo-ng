@@ -6,8 +6,17 @@
 {% endif %}
 # Source: http://www.cpuid.com/softwares/cpu-z.html
 cpu-z:
+  '1.74.0':
+    full_name: 'CPUID CPU-Z 1.74.0'
+    installer: 'salt://win/repo-ng/cpu-z/cpu-z_1.74-setup-en.exe'
+    install_flags: '/SP- /VERYSILENT /SUPPRESSMSGBOXES /NORESTART'
+    uninstaller: '{{ PROGRAM_FILES }}\CPU-Z\unins000.exe'
+    uninstall_flags: '/SP- /VERYSILENT /SUPPRESSMSGBOXES /NORESTART'
+    msiexec: False
+    locale: en_US
+    reboot: False
   '1.71.1':
-    full_name: 'CPUID CPU-Z 1.17.1'
+    full_name: 'CPUID CPU-Z 1.71.1'
     installer: 'salt://win/repo-ng/cpu-z/cpu-z_1.71.1-setup-en.exe'
     install_flags: '/SP- /VERYSILENT /SUPPRESSMSGBOXES /NORESTART'
     uninstaller: '{{ PROGRAM_FILES }}\CPU-Z\unins000.exe'
