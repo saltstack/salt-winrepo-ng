@@ -4,6 +4,15 @@
     {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {% endif %}
 autohotkey:
+  '1.1.22.09':
+    full_name: 'AutoHotkey 1.1.22.09'
+    installer: 'http://ahkscript.org/download/1.1/AutoHotkey112209_Install.exe'
+    install_flags: '/S /U32 /D="{{ PROGRAM_FILES }}\AutoHotkey"'
+    uninstaller: '{{ PROGRAM_FILES }}\AutoHotKey\AutoHotKey.exe'
+    uninstall_flags: '"{{ PROGRAM_FILES }}\AutoHotkey\Installer.ahk" /Uninstall'
+    msiexec: False
+    locale: en_US
+    reboot: False
   '1.1.22.02':
     full_name: 'AutoHotkey 1.1.22.02'
     installer: 'http://ahkscript.org/download/1.1/AutoHotkey112202_Install.exe'
