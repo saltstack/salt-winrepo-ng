@@ -4,9 +4,9 @@ infrarecorder:
   '0.53':
     full_name: 'InfraRecorder'
     {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'http://cznic.dl.sourceforge.net/project/infrarecorder/InfraRecorder/0.53/ir053_x64.msi'
+    installer: 'http://heanet.dl.sourceforge.net/project/infrarecorder/InfraRecorder/0.53/ir053_x64.msi'
     install_flags: '/qn /norestart'
-    uninstaller: 'http://cznic.dl.sourceforge.net/project/infrarecorder/InfraRecorder/0.53/ir053_x64.msi' 
+    uninstaller: 'http://heanet.dl.sourceforge.net/project/infrarecorder/InfraRecorder/0.53/ir053_x64.msi' 
     uninstall_flags: '/qn /norestart'
     msiexec: True
     {% elif grains['cpuarch'] == 'x86' %}
