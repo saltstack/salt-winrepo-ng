@@ -6,5 +6,5 @@ sensu:
     uninstaller: 'http://repositories.sensuapp.org/msi/sensu-0.21.0-1.msi'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

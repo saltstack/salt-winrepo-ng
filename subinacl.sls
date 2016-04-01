@@ -6,5 +6,5 @@ subinacl:
     uninstaller: '{D3EE034D-5B92-4A55-AA02-2E6D0A6A96EE}'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

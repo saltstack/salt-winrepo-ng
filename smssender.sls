@@ -7,5 +7,5 @@ smssender:
     uninstaller: 'http://download.microsoft.com/download/8/f/d/8fd4e1cd-b2d7-4e23-9c5b-54b76fa222b9/smssender.msi'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

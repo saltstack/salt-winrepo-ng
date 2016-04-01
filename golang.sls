@@ -12,7 +12,7 @@ golang:
     install_flags: '/qn /norestart'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '1.5':
     {% if grains['cpuarch'] == 'AMD64' %}
@@ -27,7 +27,7 @@ golang:
     install_flags: '/qn /norestart'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '1.4.2':
     {% if grains['cpuarch'] == 'AMD64' %}
@@ -42,5 +42,5 @@ golang:
     install_flags: '/qn /norestart'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

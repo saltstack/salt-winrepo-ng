@@ -13,7 +13,7 @@ intellij-community:
     uninstaller: '{{ PROGRAM_FILES }}\JetBrains\IntelliJ IDEA Community Edition {{ version }}\bin\Uninstall.exe'
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   {% endfor %}
 intellij-ultimate:
@@ -25,6 +25,6 @@ intellij-ultimate:
     uninstaller: '{{ PROGRAM_FILES }}\JetBrains\IntelliJ IDEA {{ version }}\bin\Uninstall.exe'
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   {% endfor %}

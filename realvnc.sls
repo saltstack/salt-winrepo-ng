@@ -6,7 +6,7 @@ realvnc:
     uninstaller: '{AAE140B3-14D5-4AF9-A4AF-1628250A8EF1}'
     uninstall_flags: '/qn /norestart  & msiexec.exe /qn /x {FF0D75AD-1856-4170-95CE-556CC3B0E36C} /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '5.0.5':
     full_name:  'VNC Server 5.0.5'
@@ -15,5 +15,5 @@ realvnc:
     uninstaller: '%PROGRAMFILES%\RealVNC\VNC Server\unins000.exe'
     uninstall_flags: '/sp- /verysilent /norestart'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

@@ -13,7 +13,7 @@ tortoise-hg:
     install_flags: '/qn /norestart'    
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False  
   '3.3.0':
     {% if grains['cpuarch'] == 'AMD64' %}
@@ -28,7 +28,7 @@ tortoise-hg:
     install_flags: '/qn /norestart'    
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False    
 # Need to download from source site above, so it will append proper aws key credentials
 # place downloaded msi in master's win_repo-ng 

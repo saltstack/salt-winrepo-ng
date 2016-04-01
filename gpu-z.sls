@@ -13,7 +13,7 @@ gpu-z:
     uninstaller: '{{ PROGRAM_FILES }}\GPU-Z\uninstall.exe'
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False    
     # alternate DL URLs
     # http://uk1-dl.techpowerup.com/SysInfo/GPU-Z/GPU-Z.0.8.4.exe

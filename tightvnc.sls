@@ -11,5 +11,5 @@ tightvnc:
     install_flags: '/quiet /norestart'
     uninstall_flags: '/quiet /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

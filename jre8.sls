@@ -22,7 +22,7 @@ jre8:
     install_flags: '/s REBOOT=Suppress SPONSORS=0'
     uninstaller: 'msiexec.exe'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '8.0.710.15':
     {% if grains['cpuarch'] == 'AMD64' %}
@@ -47,7 +47,7 @@ jre8:
     install_flags: '/s REBOOT=Suppress SPONSORS=0'
     uninstaller: 'msiexec.exe'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '8.0.660.18':
     {% if grains['cpuarch'] == 'AMD64' %}
@@ -72,7 +72,7 @@ jre8:
     install_flags: '/s REBOOT=Suppress SPONSORS=0'
     uninstaller: 'msiexec.exe'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '8.0.600.27':
     {% if grains['cpuarch'] == 'AMD64' %}
@@ -97,7 +97,7 @@ jre8:
     install_flags: '/s REBOOT=Suppress SPONSORS=0'
     uninstaller: 'msiexec.exe'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '8.0.510':
     {% if grains['cpuarch'] == 'AMD64' %}
@@ -122,5 +122,5 @@ jre8:
     install_flags: '/s REBOOT=Suppress SPONSORS=0'
     uninstaller: 'msiexec.exe'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False    

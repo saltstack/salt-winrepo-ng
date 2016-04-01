@@ -10,5 +10,5 @@ classicshell:
     uninstall_flags: '/qn /x {B9EFC38D-E52A-4BBE-8421-58FCFFDE19E2} /norestart'
     {% endif %}
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

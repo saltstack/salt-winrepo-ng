@@ -12,7 +12,7 @@ stellarium:
     uninstaller: '{{ PROGRAM_FILES }}\Stellarium\unins000.exe'
     uninstall_flags: '/silent'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '0.13.2':
     full_name: 'Stellarium 0.13.2'
@@ -25,5 +25,5 @@ stellarium:
     uninstaller: '{{ PROGRAM_FILES }}\Stellarium\unins000.exe'
     uninstall_flags: '/silent'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

@@ -12,7 +12,7 @@ filezilla:
     uninstaller: '{{ PROGRAM_FILES }}\FileZilla FTP Client\uninstall.exe' 
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '3.14.1':
     full_name: 'FileZilla Client 3.14.1'
@@ -25,7 +25,7 @@ filezilla:
     uninstaller: '{{ PROGRAM_FILES }}\FileZilla FTP Client\uninstall.exe' 
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '3.14.0':
     full_name: 'FileZilla Client 3.14.0'
@@ -38,7 +38,7 @@ filezilla:
     uninstaller: '{{ PROGRAM_FILES }}\FileZilla FTP Client\uninstall.exe' 
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '3.13.0':
     full_name: 'FileZilla Client 3.13.0'
@@ -51,7 +51,7 @@ filezilla:
     uninstaller: '{{ PROGRAM_FILES }}\FileZilla FTP Client\uninstall.exe' 
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '3.11.0.2':
     full_name: 'FileZilla Client 3.11.0.2'
@@ -64,5 +64,5 @@ filezilla:
     uninstaller: '{{ PROGRAM_FILES }}\FileZilla FTP Client\uninstall.exe' 
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

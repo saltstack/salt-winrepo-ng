@@ -6,7 +6,7 @@ skype-msi:
     uninstaller: 'http://download.skype.com/msi/SkypeSetup_7.18.0.112.msi'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '7.18.111':
     full_name: 'Skype™ 7.18'
@@ -15,7 +15,7 @@ skype-msi:
     uninstaller: 'http://download.skype.com/msi/SkypeSetup_7.18.0.111.msi'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '7.18.103':
     full_name: 'Skype™ 7.18'
@@ -24,7 +24,7 @@ skype-msi:
     uninstaller: 'http://download.skype.com/msi/SkypeSetup_7.18.0.103.msi'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '7.17.106':
     full_name: 'Skype™ 7.17'
@@ -33,7 +33,7 @@ skype-msi:
     uninstaller: 'http://download.skype.com/msi/SkypeSetup_7.17.0.106.msi'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '7.8.102':
     full_name: 'Skype™ 7.8'
@@ -42,7 +42,7 @@ skype-msi:
     uninstaller: 'http://download.skype.com/msi/SkypeSetup_7.8.0.102.msi'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '7.7.102':
     full_name: 'Skype™ 7.7'
@@ -51,7 +51,7 @@ skype-msi:
     uninstaller: 'http://download.skype.com/msi/SkypeSetup_7.7.0.102.msi'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '7.1.0.105':
     full_name: 'Skype™ 7.1'
@@ -60,7 +60,7 @@ skype-msi:
     uninstaller: 'http://download.skype.com/msi/SkypeSetup_7.1.0.105.msi'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
 # you can always get latest msi from:
 # http://www.skype.com/go/getskype-msi (but version number keeps increasing)

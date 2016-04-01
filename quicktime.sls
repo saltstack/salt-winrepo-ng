@@ -19,7 +19,7 @@ quicktime:
     install_flags: '/quiet /qn /norestart'
     uninstaller: 'msiexec.exe'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
     # the above uninstalls:
     # Apple Software Update v. 2.1.4.131 {FFD1F7F1-1AC9-4BC4-A908-0686D635ABAF}

@@ -6,7 +6,7 @@ adv-ip-scanner:
     uninstaller: 'msiexec.exe'
     uninstall_flags: '/qn /noreboot /x {C3CF783A-5457-4989-966F-7BE08812FB71}'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
 # it can be manually downloaded from:
 # http://www.advanced-ip-scanner.com

@@ -16,5 +16,5 @@ infrarecorder:
     uninstall_flags: '/S'
     msiexec: False
     {% endif %}
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

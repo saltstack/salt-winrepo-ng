@@ -7,6 +7,6 @@ check-mk-agent-msi:
     uninstaller: 'salt://win/repo-ng/check_mk/check_mk_agent-{{ version }}.msi'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   {% endfor %}

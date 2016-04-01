@@ -11,7 +11,7 @@ autopsy:
     install_flags: '/qn /norestart'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '3.1.3': 
     full_name: 'Autopsy'
@@ -25,7 +25,7 @@ autopsy:
     install_flags: '/qn /norestart'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '3.1.2': 
     full_name: 'Autopsy'
@@ -39,7 +39,7 @@ autopsy:
     install_flags: '/qn /norestart'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '3.1.1': 
     full_name: 'Autopsy'
@@ -53,5 +53,5 @@ autopsy:
     install_flags: '/qn /norestart'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

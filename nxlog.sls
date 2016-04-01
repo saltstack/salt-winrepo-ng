@@ -6,7 +6,7 @@ nxlog:
     uninstaller: 'http://nxlog.org/system/files/products/files/1/nxlog-ce-2.9.1504.msi'
     uninstall_flags: '/quiet /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '2.8.1248':
     full_name:  'NXLOG-CE'
@@ -15,7 +15,7 @@ nxlog:
     uninstaller: 'http://heanet.dl.sourceforge.net/project/nxlog-ce/nxlog-ce-2.8.1248.msi'
     uninstall_flags: '/quiet /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '2.5.1089':
     full_name:  'NXLOG-CE'
@@ -24,5 +24,5 @@ nxlog:
     uninstaller: 'http://downloads.sourceforge.net/project/nxlog-ce/nxlog-ce-2.5.1089.msi'
     uninstall_flags: '/quiet /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False    

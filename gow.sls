@@ -12,7 +12,7 @@ gow:
     uninstaller: '{{ PROGRAM_FILES }}\Gow\uninstall.exe'
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
     # Gow - GNU on Windows - The lightweight alternative to Cygwin
     # https://github.com/bmatzelle/gow/wiki

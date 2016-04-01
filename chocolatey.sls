@@ -18,7 +18,7 @@ chocolatey:
                      reg DEL HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\Chocolatey /f &
                      exit 0'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '0.9.8':
     full_name: 'Chocolatey v0.9.8'
@@ -39,7 +39,7 @@ chocolatey:
                      reg DEL HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\Chocolatey /f &
                      exit 0'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
 #
 # this software also has it's own salt execution module, which you might prefer to use, see

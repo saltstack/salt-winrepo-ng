@@ -6,5 +6,5 @@ goodsync:
     uninstaller: 'https://www.goodsync.com/download/GoodSync-Setup.msi'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

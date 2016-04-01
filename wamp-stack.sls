@@ -6,7 +6,7 @@ wamp-stack:
     uninstaller: 'c:\Bitnami\wampstack-5.5.30-0\uninstall.exe'
     uninstall_flags: '--mode unattended'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '5.4.36.0':
     full_name: 'Bitnami WAMP Stack 5.4.36'
@@ -15,5 +15,5 @@ wamp-stack:
     uninstaller: 'c:\Bitnami\wampstack-5.4.36-0\uninstall.exe'
     uninstall_flags: '--mode unattended'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

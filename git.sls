@@ -12,7 +12,7 @@ git:
     uninstaller: '{{ PROGRAM_FILES }}\Git\unins000.exe'
     uninstall_flags: '/VERYSILENT /NORESTART & {{ PROGRAM_FILES }}\Git\unins001.exe /VERYSILENT /NORESTART & exit 0'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '2.7.1':
     full_name: 'Git version 2.7.1'
@@ -25,7 +25,7 @@ git:
     uninstaller: '{{ PROGRAM_FILES }}\Git\unins000.exe'
     uninstall_flags: '/VERYSILENT /NORESTART & {{ PROGRAM_FILES }}\Git\unins001.exe /VERYSILENT /NORESTART & exit 0'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '2.7.0':
     full_name: 'Git version 2.7.0'
@@ -38,7 +38,7 @@ git:
     uninstaller: '{{ PROGRAM_FILES }}\Git\unins000.exe'
     uninstall_flags: '/VERYSILENT /NORESTART & {{ PROGRAM_FILES }}\Git\unins001.exe /VERYSILENT /NORESTART & exit 0'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '2.6.4':
     full_name: 'Git version 2.6.4'
@@ -51,7 +51,7 @@ git:
     uninstaller: '{{ PROGRAM_FILES }}\Git\unins000.exe'
     uninstall_flags: '/VERYSILENT /NORESTART & {{ PROGRAM_FILES }}\Git\unins001.exe /VERYSILENT /NORESTART & exit 0'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '2.6.2':
     full_name: 'Git version 2.6.2'
@@ -64,7 +64,7 @@ git:
     uninstaller: '{{ PROGRAM_FILES }}\Git\unins000.exe'
     uninstall_flags: '/VERYSILENT /NORESTART & {{ PROGRAM_FILES }}\Git\unins001.exe /VERYSILENT /NORESTART & exit 0'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '2.5.3':
     full_name: 'Git version 2.5.3'
@@ -77,7 +77,7 @@ git:
     uninstaller: '{{ PROGRAM_FILES }}\Git\unins000.exe'
     uninstall_flags: '/VERYSILENT /NORESTART & {{ PROGRAM_FILES }}\Git\unins001.exe /VERYSILENT /NORESTART & exit 0'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '2.5.2.2':
     full_name: 'Git version 2.5.2.2'
@@ -90,7 +90,7 @@ git:
     uninstaller: '{{ PROGRAM_FILES }}\Git\unins000.exe'
     uninstall_flags: '/VERYSILENT /NORESTART & {{ PROGRAM_FILES }}\Git\unins001.exe /VERYSILENT /NORESTART & exit 0'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '2.5.0':
     full_name: 'Git version 2.5.0'
@@ -103,7 +103,7 @@ git:
     uninstaller: '{{ PROGRAM_FILES }}\Git\unins000.exe'
     uninstall_flags: '/VERYSILENT /NORESTART & {{ PROGRAM_FILES }}\Git\unins001.exe /VERYSILENT /NORESTART & exit 0'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
 msysgit:
   '1.9.5-preview20150319':
@@ -113,7 +113,7 @@ msysgit:
     uninstaller: '{{ PROGRAM_FILES }}\Git\unins000.exe'
     uninstall_flags: '/VERYSILENT /NORESTART '
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '1.9.5-preview20141217':
     full_name: 'Git version 1.9.5-preview20141217'
@@ -122,7 +122,7 @@ msysgit:
     uninstaller: '{{ PROGRAM_FILES }}\Git\unins000.exe'
     uninstall_flags: '/VERYSILENT /NORESTART'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '1.9.4-preview20140815':
     full_name: 'Git version 1.9.4-preview20140815'  
@@ -131,5 +131,5 @@ msysgit:
     uninstaller: '{{ PROGRAM_FILES }}\Git\unins000.exe'
     uninstall_flags: '/VERYSILENT /NOREBOOT'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

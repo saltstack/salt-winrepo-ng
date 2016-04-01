@@ -13,5 +13,5 @@ xming:
     uninstaller: '{{ PROGRAM_FILES }}\Xming\unins000.exe'
     uninstall_flags: '/SP- /verysilent /norestart'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

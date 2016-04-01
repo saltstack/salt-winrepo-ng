@@ -12,7 +12,7 @@ fiddler:
     uninstaller: '{{ PROGRAM_FILES }}\Fiddler\uninst.exe'
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '2.6.2.2':
     full_name:  'Fiddler'
@@ -21,5 +21,5 @@ fiddler:
     uninstaller: '{{ PROGRAM_FILES }}\Fiddler\uninst.exe'
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

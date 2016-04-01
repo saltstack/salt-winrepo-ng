@@ -11,5 +11,5 @@
     uninstall_flags: '/uninstall /x86 /q /norestart'
     {% endif %}
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

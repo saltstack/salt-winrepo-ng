@@ -13,6 +13,6 @@ ccleaner:
     uninstaller: '{{ PROGRAM_FILES }}\CCleaner\uninst.exe'
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   {% endfor %}

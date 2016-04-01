@@ -13,7 +13,7 @@ openlp:
     uninstaller: '{{ PROGRAM_FILES }}\OpenLP\unins000.exe'
     uninstall_flags: '/SP- /VERYSILENT /NORESTART'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   Not Found:
     full_name: 'OpenLP 2.0.5'
@@ -22,5 +22,5 @@ openlp:
     uninstaller: '{{ PROGRAM_FILES }}\OpenLP\unins000.exe'
     uninstall_flags: '/SP- /VERYSILENT /NORESTART'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

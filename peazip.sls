@@ -11,5 +11,5 @@ peazip:
     uninstaller: '%ProgramFiles%\PeaZip\unins000.exe'
     uninstall_flags: '/VERYSILENT /SUPPRESSMSGBOXES /NORESTART /SP-'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

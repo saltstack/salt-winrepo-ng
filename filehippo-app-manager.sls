@@ -13,6 +13,6 @@ filehippo-app-manager:
     uninstaller: '{{ PROGRAM_FILES }}\FileHippo.com\Uninstall.exe'
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
 # download manually and place on master salt://win/repo-ng/filehippo-app-manager

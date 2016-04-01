@@ -12,5 +12,5 @@ skitch:
     uninstaller: '{{ PROGRAM_FILES }}\Evernote\Skitch\uninstall.exe'
     uninstall_flags: '--mode unattended'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

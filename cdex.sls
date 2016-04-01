@@ -12,7 +12,7 @@ cdex:
     uninstaller: '{{ PROGRAM_FILES }}\CDex\uninstall.exe'
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '1.75':
     full_name: 'CDex - Open Source Digital Audio CD Extractor'
@@ -21,7 +21,7 @@ cdex:
     uninstaller: '{{ PROGRAM_FILES }}\CDex\uninstall.exe'
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '1.72':
     full_name: 'CDex - Open Source Digital Audio CD Extractor'
@@ -30,5 +30,5 @@ cdex:
     uninstaller: '{{ PROGRAM_FILES }}\CDex\uninstall.exe'
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

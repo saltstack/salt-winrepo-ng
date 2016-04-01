@@ -6,5 +6,5 @@ passware-kit-agent:
     uninstaller: 'http://www.lostpassword.com/downloads/passware-kit-agent-64bit.msi'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

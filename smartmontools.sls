@@ -12,5 +12,5 @@ smartmontools:
     uninstaller: '{{ PROGRAM_FILES }}\smartmontools\uninst-smartmontools.exe'
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

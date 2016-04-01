@@ -15,7 +15,7 @@ ms-mbsa:
     install_flags: '/q'
     uninstall_flags: '/q'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
 
 {% endwith %}

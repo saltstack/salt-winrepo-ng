@@ -17,7 +17,7 @@ jre:
     uninstaller: 'msiexec.exe'
     install_flags: '/s REBOOT=Suppress SPONSORS=0'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
     # due to winrepo installer limitations you need to manually download the exe from
     # http://javadl.sun.com/webapps/download/AutoDL?BundleId=106369

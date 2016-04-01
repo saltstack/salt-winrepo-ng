@@ -12,7 +12,7 @@ bulk_extractor:
     uninstaller: '{{ PROGRAM_FILES }}\Bulk Extractor 1.5.5\uninstall.exe'
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '1.4.1':
     full_name: 'bulk_extractor'
@@ -21,5 +21,5 @@ bulk_extractor:
     uninstaller: '{{ PROGRAM_FILES }}\Bulk Extractor 1.4.1\uninstall.exe'
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

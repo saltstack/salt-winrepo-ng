@@ -39,7 +39,7 @@ itunes:
     install_flags: '/quiet /qn ALLUSERS=1 /norestart'
     uninstaller: 'msiexec.exe'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '12.3.0.44':
     full_name: 'iTunes'
@@ -54,7 +54,7 @@ itunes:
                      msiexec.exe /qn /norestart /x {88509E20-3936-4D88-A1C0-B274C7BB5151} &                 
                      exit 0'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
     # the above uninstalls:
     # Bonjour64 v. 3.1.0.1  {56DDDFB8-7F79-4480-89D5-25E1F52AB28F}
@@ -73,7 +73,7 @@ itunes:
                      msiexec.exe /qn /norestart /x {9E9CFD9F-64D6-498F-8584-E5CD08BA60BE} &                 
                      exit 0'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
     # the above uninstalls:
     # Bonjour v. 3.1.0.1  {D168AAD0-6686-47C1-B599-CDD4888B9D1A}
@@ -85,7 +85,7 @@ itunes:
     install_flags: '/quiet /qn ALLUSERS=1 /norestart'
     uninstaller: 'msiexec.exe'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '12.2.2.25':
     full_name: 'iTunes'
@@ -125,7 +125,7 @@ itunes:
     install_flags: '/quiet /qn ALLUSERS=1 /norestart'
     uninstaller: 'msiexec.exe'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '12.2.1.16':
     full_name: 'iTunes'
@@ -165,5 +165,5 @@ itunes:
     install_flags: '/quiet /qn ALLUSERS=1 /norestart'
     uninstaller: 'msiexec.exe'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

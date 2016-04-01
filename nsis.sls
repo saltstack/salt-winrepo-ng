@@ -10,7 +10,7 @@ nsis:
     {% endif %}
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '3.0b1':
     full_name: 'Nullsoft Install System'
@@ -23,7 +23,7 @@ nsis:
     {% endif %}
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '2.46':
     full_name: 'Nullsoft Install System'
@@ -36,5 +36,5 @@ nsis:
     {% endif %}
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

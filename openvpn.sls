@@ -12,7 +12,7 @@ openvpn:
     uninstaller: '%ProgramFiles%\OpenVPN\Uninstall.exe'
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '2.3.6':
     full_name: 'OpenVPN 2.3.6-I601'
@@ -25,7 +25,7 @@ openvpn:
     uninstaller: '%ProgramFiles%\OpenVPN\Uninstall.exe'
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
 #
 # https://chocolatey.org/packages/openvpn

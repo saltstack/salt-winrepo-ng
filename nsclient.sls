@@ -12,7 +12,7 @@ nsclient:
     install_flags: '/quiet'
     uninstall_flags: '/quiet'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '0.4.3.88':
     {% if grains['cpuarch'] == 'AMD64' %}
@@ -27,7 +27,7 @@ nsclient:
     install_flags: '/quiet'
     uninstall_flags: '/quiet'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '0.3.9.328':
     {% if grains['cpuarch'] == 'AMD64' %}
@@ -42,5 +42,5 @@ nsclient:
     install_flags: '/quiet'
     uninstall_flags: '/quiet'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

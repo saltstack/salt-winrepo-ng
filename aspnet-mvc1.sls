@@ -6,5 +6,5 @@ aspnet-mvc1:
     uninstaller: '{A4394612-D02F-11DC-9BFF-D18556D89593}'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

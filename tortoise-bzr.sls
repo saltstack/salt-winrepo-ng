@@ -13,5 +13,5 @@ tortoise-bzr:
     uninstaller: '{{ PROGRAM_FILES }}\Bazaar\uninst000.exe'
     uninstall_flags: '/SP- /VERYSILENT /SUPPRESSMSGBOXES /NORESTART'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

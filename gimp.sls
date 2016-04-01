@@ -9,6 +9,6 @@ gimp:
     uninstaller: '%ProgramFiles%\Gimp 2\uninst\unins000.exe'
     uninstall_flags: '/SP- /SILENT /NORESTART'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     restart: False
   {% endfor %}

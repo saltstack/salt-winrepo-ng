@@ -6,7 +6,7 @@ icloud:
     uninstaller: 'msiexec.exe'
     uninstall_flags: '/qn /x {4B48E22A-2FB0-4EFA-B99E-954B1E50CD69} /norestart' 
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '4.1.1.53':
     full_name: iCloud
@@ -15,5 +15,5 @@ icloud:
     uninstaller: 'msiexec.exe'
     uninstall_flags: '/qn /x {709A2D23-C25E-47B5-9268-CB6FEE648504} /norestart' 
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

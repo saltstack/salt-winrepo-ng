@@ -11,7 +11,7 @@ eea:
     install_flags: '/qn ALLUSERS=1 /norestart'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '5.0.2254.0':
     full_name: 'ESET Endpoint Antivirus'
@@ -25,5 +25,5 @@ eea:
     install_flags: '/qn ALLUSERS=1 /norestart'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

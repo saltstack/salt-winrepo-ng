@@ -13,7 +13,7 @@ curl:
     install_flags: '/qn /norestart'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '7.45.0':
     full_name: 'cURL'
@@ -27,7 +27,7 @@ curl:
     install_flags: '/qn /norestart'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '7.44.0':
     full_name: 'cURL'
@@ -41,7 +41,7 @@ curl:
     install_flags: '/qn /norestart'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '7.43.0':
     full_name: 'cURL'
@@ -55,7 +55,7 @@ curl:
     install_flags: '/qn /norestart'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '7.40.0':
     full_name: 'cURL'
@@ -68,7 +68,7 @@ curl:
     {% endif %}
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
 #
 # You need to download the win64 msi from website (Captcha protected) and place in your winrepo-ng on master

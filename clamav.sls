@@ -10,7 +10,7 @@ clamav:
     installer: 'salt://win/repo-ng/clamav/clamav-0.99.1-win32.msi'
     {% endif %}
     install_flags: '/qr'
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
     msiexec: True
     uninstaller: 'msiexec.exe'
@@ -26,7 +26,7 @@ clamav:
     installer: 'salt://win/repo-ng/clamav/clamav-0.98.7-win32.msi'
     {% endif %}
     install_flags: '/qr'
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
     msiexec: True
     uninstaller: 'msiexec.exe'

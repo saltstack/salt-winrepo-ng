@@ -7,6 +7,6 @@ rubyinstaller_x64:
     uninstaller: 'C:\Ruby{{ dsk_version }}-x64\unins000.exe'
     uninstall_flags: '/verysilent'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   {% endfor %}

@@ -7,5 +7,5 @@ bitnami-nginxstack:
     uninstaller: 'C:\Bitnami\nginxstack-1.8.0-0\uninstall.exe'
     uninstall_flags: '--mode unattended'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

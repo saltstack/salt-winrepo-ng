@@ -12,7 +12,7 @@ clink:
     uninstaller: '{{ PROGRAM_FILES }}\clink\0.4.6\clink_uninstall_0.4.6.exe'
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '0.4.4':
     full_name: 'Clink v0.4.4'
@@ -21,6 +21,6 @@ clink:
     uninstaller: '{{ PROGRAM_FILES }}\clink\0.4.4\clink_uninstall_0.4.4.exe'
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False    
 # https://mridgers.github.io/clink/

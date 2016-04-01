@@ -10,7 +10,7 @@ check-mk-agent:
     install_flags: '/S'
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   Not Found:
     full_name: 'Check_MK Agent 1.2.8b3'
@@ -23,7 +23,7 @@ check-mk-agent:
     install_flags: '/S'
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   Not Found:
     full_name: 'Check_MK Agent 1.2.8b2'
@@ -36,7 +36,7 @@ check-mk-agent:
     install_flags: '/S'
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   Not Found:
     full_name: 'Check_MK Agent 1.2.8b1'
@@ -49,7 +49,7 @@ check-mk-agent:
     install_flags: '/S'
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   Not Found:
     full_name: 'Check_MK Agent 1.2.7i3p5'
@@ -62,7 +62,7 @@ check-mk-agent:
     install_flags: '/S'
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   Not Found:
     full_name: 'Check_MK Agent 1.2.7i3p4'
@@ -75,7 +75,7 @@ check-mk-agent:
     install_flags: '/S'
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   Not Found:
     full_name: 'Check_MK Agent 1.2.7i3p3'
@@ -88,7 +88,7 @@ check-mk-agent:
     install_flags: '/S'
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   Not Found:
     full_name: 'Check_MK Agent 1.2.7i3p2'
@@ -101,7 +101,7 @@ check-mk-agent:
     install_flags: '/S'
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   Not Found:
     full_name: 'Check_MK Agent 1.2.7i3p1'
@@ -114,7 +114,7 @@ check-mk-agent:
     install_flags: '/S'
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   Not Found:
     full_name: 'Check_MK Agent 1.2.6p16'
@@ -127,7 +127,7 @@ check-mk-agent:
     install_flags: '/S'
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   Not Found:
     full_name: 'Check_MK Agent 1.2.6p15'
@@ -140,5 +140,5 @@ check-mk-agent:
     install_flags: '/S'
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

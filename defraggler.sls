@@ -12,7 +12,7 @@ defraggler:
     uninstaller: '{{ PROGRAM_FILES }}\Defraggler\uninst.exe'
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '2.18.945':
     full_name: 'Defraggler 2.18'
@@ -21,5 +21,5 @@ defraggler:
     uninstaller: '{{ PROGRAM_FILES }}\Defraggler\uninst.exe'
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

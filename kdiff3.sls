@@ -10,5 +10,5 @@ kdiff3:
     uninstaller: '%PROGRAMFILES%\KDiff3\Uninstall.exe'
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

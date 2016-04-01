@@ -13,7 +13,7 @@ cpu-z:
     uninstaller: '{{ PROGRAM_FILES }}\CPU-Z\unins000.exe'
     uninstall_flags: '/SP- /VERYSILENT /SUPPRESSMSGBOXES /NORESTART'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '1.71.1':
     full_name: 'CPUID CPU-Z 1.71.1'
@@ -22,7 +22,7 @@ cpu-z:
     uninstaller: '{{ PROGRAM_FILES }}\CPU-Z\unins000.exe'
     uninstall_flags: '/SP- /VERYSILENT /SUPPRESSMSGBOXES /NORESTART'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
 # need to manually download from:
 # http://www.cpuid.com/softwares/cpu-z.html (ftp DL is cookie protected)

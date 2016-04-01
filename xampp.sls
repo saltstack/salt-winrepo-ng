@@ -6,7 +6,7 @@ xampp:
     uninstaller: 'c:\xampp\uninstall.exe'
     uninstall_flags: '--mode unattended'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '5.6.15.1':
     full_name: 'XAMPP 5.6.15'
@@ -15,7 +15,7 @@ xampp:
     uninstaller: 'c:\xampp\uninstall.exe'
     uninstall_flags: '--mode unattended'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '5.6.3.0':
     full_name: 'XAMPP 5.6.3'
@@ -24,5 +24,5 @@ xampp:
     uninstaller: 'c:\xampp\uninstall.exe'
     uninstall_flags: '--mode unattended'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False   

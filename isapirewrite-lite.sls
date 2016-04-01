@@ -11,5 +11,5 @@ isapirewrite-lite:
     install_flags: 'ALLUSERS=1 /quiet /norestart'
     uninstall_flags: '/quiet /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

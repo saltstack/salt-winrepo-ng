@@ -12,7 +12,7 @@ gpg4win-light:
     uninstaller: '{{ PROGRAM_FILES }}\GNU\GnuPG\gpg4win-uninstall.exe'
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '2.2.4':
     full_name: 'Gpg4Win (2.2.4)'
@@ -21,7 +21,7 @@ gpg4win-light:
     uninstaller: '{{ PROGRAM_FILES }}\GNU\GnuPG\gpg4win-uninstall.exe'
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
 #
 # Note: this 2.2.3 light installer has a bug and it needs to be fixed upstream 

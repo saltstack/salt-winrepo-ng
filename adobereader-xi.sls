@@ -6,7 +6,7 @@ adobereader-xi:
     uninstaller: 'msiexec.exe'
     uninstall_flags: '/qn /x {AC76BA86-7AD7-1033-7B44-AB0000000001} /norestart'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '11.0.6':
     full_name: 'Adobe Reader XI (11.0.06)'
@@ -15,5 +15,5 @@ adobereader-xi:
     uninstaller: 'msiexec.exe'
     uninstall_flags: '/qn /x {AC76BA86-7AD7-1033-7B44-AB0000000001} /norestart'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

@@ -12,7 +12,7 @@ cdroller:
     uninstaller: '{{ PROGRAM_FILES }}\CDRoller\unins000.exe'
     uninstall_flags: '/VERYSILENT'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '9.70':
     full_name: 'CDRoller'
@@ -21,5 +21,5 @@ cdroller:
     uninstaller: '{{ PROGRAM_FILES }}\CDRoller 9.70\unins000.exe'
     uninstall_flags: '/verysilent'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

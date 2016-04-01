@@ -11,5 +11,5 @@ messageanalyzer:
     uninstaller: '{1CC02C23-8FCD-487E-860C-311EC0A0C933}'
     uninstall_flags: '/quiet /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

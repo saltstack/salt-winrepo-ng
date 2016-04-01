@@ -12,7 +12,7 @@ gvim:
     uninstaller: '{{ PROGRAM_FILES }}\Vim\vim74\uninstall-gui.exe'
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '7.3':
     full_name:  'Vim 7.3 (self-installing)'
@@ -21,5 +21,5 @@ gvim:
     uninstaller: '{{ PROGRAM_FILES }}\Vim\vim73\uninstall-gui.exe'
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

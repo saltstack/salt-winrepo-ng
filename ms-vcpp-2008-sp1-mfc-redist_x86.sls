@@ -6,5 +6,5 @@ ms-vcpp-2008-sp1-mfc-redist_x86:
     uninstaller: 'msiexec.exe'
     uninstall_flags: '/qn /x {9BE518E6-ECC6-35A9-88E4-87755C07200F} /norestart'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

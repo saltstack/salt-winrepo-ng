@@ -8,7 +8,7 @@ ice:
     install_flags: '/qn /norestart'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '3.6.0':
     full_name: 'Ice 3.6.0'
@@ -17,7 +17,7 @@ ice:
     install_flags: '/qn /norestart'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '3.4.0':
     full_name: 'Ice 3.4.0'
@@ -26,5 +26,5 @@ ice:
     install_flags: '/qn /norestart'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

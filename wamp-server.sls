@@ -10,5 +10,5 @@ wamp-server:
     uninstaller: 'c:\wamp\uninstall_services.bat'
     uninstall_flags: '& c:\wamp\unins000.exe /S /VERYSILENT'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

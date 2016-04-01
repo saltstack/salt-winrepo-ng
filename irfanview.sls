@@ -15,7 +15,7 @@ irfanview:
     uninstaller: '{{ PROGRAM_FILES }}\irfanview\iv_uninstall.exe'
     uninstall_flags: '/silent'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '4.38':
     full_name: 'IrfanView (remove only)'
@@ -25,7 +25,7 @@ irfanview:
     uninstaller: '{{ PROGRAM_FILES }}\irfanview\iv_uninstall.exe'
     uninstall_flags: '/silent'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False    
 # install_flags
 # folder:     destination folder; if not indicated: old IrfanView folder is used, if not found, the "Program Files" folder is used

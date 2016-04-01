@@ -6,5 +6,5 @@ sourcetree:
     uninstaller: 'msiexec.exe'
     uninstall_flags: '/qn /x {9FFB4428-D676-449F-B173-52C0E9FF1179} /norestart'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

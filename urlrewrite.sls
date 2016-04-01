@@ -13,7 +13,7 @@ urlrewrite:
     install_flags: '/qn /norestart'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '7.1.0490.43':
     full_name: 'Microsoft URL Rewrite Module 1.1 for IIS 7'
@@ -27,5 +27,5 @@ urlrewrite:
     install_flags: '/quiet /norestart'
     uninstall_flags: '/quiet /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

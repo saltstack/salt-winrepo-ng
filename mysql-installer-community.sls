@@ -6,7 +6,7 @@ mysql-installer-community:
     uninstaller: 'http://cdn.mysql.com/Downloads/MySQLInstaller/mysql-installer-community-5.6.23.0.msi'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False    
 #
 # Read for MySQL Server 5.6.23.0 Community installation instructions:

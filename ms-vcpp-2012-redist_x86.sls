@@ -6,5 +6,5 @@ ms-vcpp-2012-redist_x86:
     uninstaller: '"%ProgramData%\Package Cache\{33d1fd90-4274-48a1-9bc1-97e33d9c2d6f}\vcredist_x86.exe"'
     uninstall_flags: '/uninstall /quiet /norestart'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

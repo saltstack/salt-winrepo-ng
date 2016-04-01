@@ -11,7 +11,7 @@ libreoffice:
     install_flags: '/qn /norestart'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '5.0.4.2':
     full_name: 'LibreOffice 5.0.4.2'
@@ -25,7 +25,7 @@ libreoffice:
     install_flags: '/qn /norestart'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '5.0.0':
     full_name: 'LibreOffice 5.0.0'
@@ -39,7 +39,7 @@ libreoffice:
     install_flags: '/qn /norestart'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '4.4.5':
     full_name: 'LibreOffice 4.4.5'
@@ -48,5 +48,5 @@ libreoffice:
     install_flags: '/qn /norestart'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

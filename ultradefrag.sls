@@ -12,7 +12,7 @@ ultradefrag:
     uninstaller: '{{ PROGRAM_FILES }}\UltraDefrag\uninstall.exe'
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '6.0.2':
     full_name: 'Ultra Defragmenter 6.0.2'
@@ -25,5 +25,5 @@ ultradefrag:
     uninstaller: '{{ PROGRAM_FILES }}\UltraDefrag\uninstall.exe'
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

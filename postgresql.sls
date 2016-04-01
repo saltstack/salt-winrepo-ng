@@ -9,7 +9,7 @@ postgresql:
     install_flags: ' --unattendedmodeui minimal --mode unattended --superpassword postgres'
     uninstaller: '%ProgramFiles%\PostgreSQL\9.5\uninstall-postgresql.exe'
     uninstall_flags: ' --mode unattended'
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     msiexec: False
     reboot: False
   '9.4':
@@ -22,7 +22,7 @@ postgresql:
     install_flags: ' --unattendedmodeui minimal --mode unattended --superpassword postgres'
     uninstaller: '%ProgramFiles%\PostgreSQL\9.4\uninstall-postgresql.exe'
     uninstall_flags: ' --mode unattended'
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     msiexec: False
     reboot: False
   '9.3':
@@ -35,6 +35,6 @@ postgresql:
     install_flags: ' --unattendedmodeui minimal --mode unattended --superpassword postgres'
     uninstaller: '%ProgramFiles%\PostgreSQL\9.3\uninstall-postgresql.exe'
     uninstall_flags: ' --mode unattended'
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     msiexec: False
     reboot: False

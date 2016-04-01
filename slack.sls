@@ -6,5 +6,5 @@ slack:
     uninstaller: '%LocalAppData%/slack/Update.exe'
     uninstall_flags: '--uninstall -s' 
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

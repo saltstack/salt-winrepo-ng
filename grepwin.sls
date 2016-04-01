@@ -12,7 +12,7 @@ grepwin:
     install_flags: '/qn ALLUSERS=1 /norestart'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '1.6.646':
     {% if grains['cpuarch'] == 'AMD64' %}
@@ -27,5 +27,5 @@ grepwin:
     install_flags: '/qn ALLUSERS=1 /norestart'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

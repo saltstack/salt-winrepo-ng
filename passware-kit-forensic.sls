@@ -6,5 +6,5 @@ passware-kit-forensic:
     uninstaller: 'salt://win/repo-ng/passware-kit-forensic-13.1.7657/passware-kit-forensic-64bit.msi'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

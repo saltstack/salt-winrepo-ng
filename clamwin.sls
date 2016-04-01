@@ -12,7 +12,7 @@ clamwin:
     uninstaller: '{{ PROGRAM_FILES }}\ClamWin\unins000.exe'
     uninstall_flags: '/verysilent /norestart'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '0.98.6': 
     full_name: 'ClamWin'
@@ -21,7 +21,7 @@ clamwin:
     uninstaller: '{{ PROGRAM_FILES }}\ClamWin\unins000.exe'
     uninstall_flags: '/verysilent /norestart'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '0.98.5': 
     full_name: 'ClamWin'
@@ -30,5 +30,5 @@ clamwin:
     uninstaller: '{{ PROGRAM_FILES }}\ClamWin\unins000.exe'
     uninstall_flags: '/verysilent /norestart'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

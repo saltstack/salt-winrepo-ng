@@ -6,5 +6,5 @@ virtualbox:
     uninstaller: 'msiexec.exe'
     uninstaller_flags: '/qn /x {E8BB81BC-E67C-4750-84EE-128DA5A7ADA5} /norestart'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

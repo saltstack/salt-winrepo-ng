@@ -15,7 +15,7 @@ conemu-alpha:
     {% endif %}
     uninstaller: 'msiexec.exe'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '11.150.7160':
     {% if grains['cpuarch'] == 'AMD64' %}
@@ -31,5 +31,5 @@ conemu-alpha:
     {% endif %}
     uninstaller: 'msiexec.exe'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False    

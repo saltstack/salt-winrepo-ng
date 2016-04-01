@@ -15,5 +15,5 @@
     uninstall_flags: '/S'
     msiexec: False
     reboot: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
   {% endfor %}

@@ -6,5 +6,5 @@ cyberduck-cli:
     uninstaller: '%ALLUSERSPROFILE%\Package Cache\{546f46a5-c136-46d7-9698-8bd02eea4402}\duck-4.8.0.18560.exe'
     uninstall_flags: '/uninstall /quiet /norestart'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

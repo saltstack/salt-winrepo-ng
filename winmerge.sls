@@ -11,5 +11,5 @@ winmerge:
     uninstaller: '{{ PROGRAM_FILES }}\WinMerge\unins000.exe'
     uninstall_flags: '/SP- /verysilent /norestart'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

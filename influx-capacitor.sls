@@ -6,5 +6,5 @@ influx-capacitor:
     uninstaller: 'http://influx-capacitor.com/Resources/Production/Influx-Capacitor.1.0.15.msi'
     uninstall_flags: '/q'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

@@ -13,7 +13,7 @@ handbrake:
     uninstaller: '{{ PROGRAM_FILES }}\Handbrake\uninst.exe'
     uninstall_flags: '/S' 
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '0.10.2':
     full_name: 'Handbrake 0.10.2'
@@ -26,7 +26,7 @@ handbrake:
     uninstaller: '{{ PROGRAM_FILES }}\Handbrake\uninst.exe'
     uninstall_flags: '/S' 
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '0.10.0':
     full_name: 'Handbrake 0.10.0'
@@ -39,7 +39,7 @@ handbrake:
     uninstaller: '{{ PROGRAM_FILES }}\Handbrake\uninst.exe'
     uninstall_flags: '/S' 
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
 # alternative download URL 64-bit
 # https://handbrake.fr/rotation.php?file=HandBrake-0.10.0-x86_64-Win_GUI.exe

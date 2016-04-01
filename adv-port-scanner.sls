@@ -6,7 +6,7 @@ adv-port-scanner:
     uninstaller: 'msiexec.exe'
     uninstall_flags: '/qn /noreboot /x {10F177CF-543F-4BC2-A297-DBF73709D3C5}'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
 # it can be manually downloaded from:
 # http://www.advanced-port-scanner.com

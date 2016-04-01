@@ -6,5 +6,5 @@ rakudo-star_x86:
     uninstaller: 'http://rakudo.org/downloads/star/rakudo-star-2016.01-x86 (no JIT).msi'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

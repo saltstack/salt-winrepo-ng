@@ -16,6 +16,6 @@ saltstack.minion:
     refresh: true
     msiexec: False
     use_scheduler: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   {% endfor %}

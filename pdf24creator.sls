@@ -7,7 +7,7 @@ pdf24creator:
     uninstaller: 'http://en.pdf24.org/products/pdf-creator/download/pdf24-creator-{{ version }}.msi'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   {% endfor %}
 # Source: http://en.pdf24.org/

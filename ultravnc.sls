@@ -11,5 +11,5 @@ ultravnc:
     uninstaller: '{{ PROGRAM_FILES }}\uvnc bvba\UltraVnc\unins000.exe'
     uninstall_flags: '/VERYSILENT /NORESTART'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False    

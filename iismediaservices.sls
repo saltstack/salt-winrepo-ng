@@ -11,7 +11,7 @@ iismediaservices:
     install_flags: '/quiet /norestart'
     uninstall_flags: '/quiet /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '4.0.0938.54':
     full_name: 'IIS Media Services 4.0'
@@ -25,7 +25,7 @@ iismediaservices:
     install_flags: '/quiet /norestart'
     uninstall_flags: '/quiet /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '2.0.1':
     full_name: 'IIS Media Services 2.0'
@@ -39,5 +39,5 @@ iismediaservices:
     install_flags: '/quiet /norestart'
     uninstall_flags: '/quiet /norestart'
     msiexec: True
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

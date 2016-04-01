@@ -6,7 +6,7 @@ adobereader-dc:
     uninstaller: 'msiexec.exe'
     uninstall_flags: '/qn /x {AC76BA86-7AD7-1033-7B44-AC0F074E4100} /norestart'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '2015.009.20069':
     full_name: 'Adobe Acrobat Reader DC'
@@ -15,7 +15,7 @@ adobereader-dc:
     uninstaller: 'msiexec.exe'
     uninstall_flags: '/qn /x {AC76BA86-7AD7-1033-7B44-AC0F074E4100} /norestart'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '2015.008.20082':
     full_name: 'Adobe Acrobat Reader DC'
@@ -24,5 +24,5 @@ adobereader-dc:
     uninstaller: 'msiexec.exe'
     uninstall_flags: '/qn /x {AC76BA86-7AD7-1033-7B44-AC0F074E4100} /norestart'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

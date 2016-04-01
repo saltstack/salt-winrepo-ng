@@ -6,5 +6,5 @@ silverlight:
     uninstaller: 'msiexec.exe'
     uninstall_flags: '/qn /X{89F4137D-6C26-4A84-BDB8-2E5A4BB71E00} /norestart'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

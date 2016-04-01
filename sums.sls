@@ -23,5 +23,5 @@ sums:
                       del /q /f %SystemRoot%\sha512sum.exe & 
                       exit 0'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

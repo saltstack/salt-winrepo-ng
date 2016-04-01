@@ -6,5 +6,5 @@ vsee:
     uninstaller: '%AppData%\VSeeInstall\vseeUninstall.exe'
     uninstall_flags: '-no_confirm'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

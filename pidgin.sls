@@ -13,6 +13,6 @@ pidgin:
     uninstaller: '{{ PROGRAM_FILES }}\Pidgin\pidgin-uninst.exe' 
     uninstall_flags: '/S'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   {% endfor %}

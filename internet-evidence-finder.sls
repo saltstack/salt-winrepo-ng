@@ -6,5 +6,5 @@ internet-evidence-finder:
     uninstaller: 'salt://win/repo-ng/ief/IEFv623.0001setup.exe'
     uninstall_flags: '/verysilent /norestart'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

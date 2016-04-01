@@ -6,7 +6,7 @@ keepass:
     uninstaller: 'http://vorboss.dl.sourceforge.net/project/keepass/KeePass%201.x/1.31/KeePass-1.31.msi'
     uninstall_flags: '/qn /norestart'
     msiexec: True    
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '1.30.0':
     full_name: 'KeePass 1.30'
@@ -15,7 +15,7 @@ keepass:
     uninstaller: 'http://vorboss.dl.sourceforge.net/project/keepass/KeePass%201.x/1.30/KeePass-1.30.msi'
     uninstall_flags: '/qn /norestart'
     msiexec: True    
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
   '1.29.0':
     full_name: 'KeePass 1.29'
@@ -24,5 +24,5 @@ keepass:
     uninstaller: 'http://vorboss.dl.sourceforge.net/project/keepass/KeePass%201.x/1.29/KeePass-1.29.msi'
     uninstall_flags: '/qn /norestart'
     msiexec: True    
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False

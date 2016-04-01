@@ -13,5 +13,5 @@ software-informer:
     uninstaller: '{{ PROGRAM_FILES }}\Software Informer\unins000.exe'
     uninstall_flags: '/SP- /VERYSILENT /NORESTART /SUPPRESSMSGBOXES'
     msiexec: False
-    locale: en_US
+    locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
