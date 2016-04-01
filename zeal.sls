@@ -6,9 +6,9 @@ zeal:
     {% set PROGRAM_FILES = "%ProgramFiles%" %}
     {% set arch = "win32" %}
   {% endif %}
-  {% for version in '0.2.1' %}
+  {% set version = '0.2.1' %}
   '{{ version }}':
-    full_name: 'Zeal {{ version }} x86 {{grains['locale_info']['defaultlanguage']}})'
+    full_name: 'Zeal'
     installer: 'https://bintray.com/artifact/download/zealdocs/windows/zeal-{{version}}-windows-x86.msi'
     install_flags: '/quiet'
     uninstaller: 'https://bintray.com/artifact/download/zealdocs/windows/zeal-{{version}}-windows-x86.msi'
@@ -16,5 +16,4 @@ zeal:
     msiexec: True
     locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
-  {% endfor %}
 
