@@ -12,7 +12,7 @@ zeal:
     installer: 'https://bintray.com/artifact/download/zealdocs/windows/zeal-{{version}}-windows-x86.msi'
     install_flags: '/quiet'
     uninstaller: 'https://bintray.com/artifact/download/zealdocs/windows/zeal-{{version}}-windows-x86.msi'
-    uninstall_flags: '/uninstall /quiet'
+    uninstall_flags: '/quiet'
     msiexec: True
     locale: {{grains['locale_info']['defaultlanguage']}}
     reboot: False
