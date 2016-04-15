@@ -3,7 +3,7 @@ eea:
     full_name: 'ESET Endpoint Antivirus'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'http://download.eset.com/download/win/eea/eea_nt64_enu.msi'
-    uninstaller: 'http://download.eset.com/download/win/eea/eea_nt64_enu.msi
+    uninstaller: 'http://download.eset.com/download/win/eea/eea_nt64_enu.msi'
     {% elif grains['cpuarch'] == 'x86' %}
     installer: 'http://download.eset.com/download/win/eea/eea_nt32_enu.msi'
     uninstaller: 'http://download.eset.com/download/win/eea/eea_nt32_enu.msi'
