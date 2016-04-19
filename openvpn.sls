@@ -1,7 +1,7 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available
 {% set PROGRAM_FILES = "%ProgramFiles%" %}
 openvpn:
- '2.3.10':
+  '2.3.10':
     full_name: 'OpenVPN 2.3.10-I603'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'https://swupdate.openvpn.org/community/releases/openvpn-install-2.3.10-I603-x86_64.exe'
