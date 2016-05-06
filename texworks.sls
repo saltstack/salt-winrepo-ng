@@ -9,7 +9,7 @@ texworks:
     full_name: 'TeXworks 0.6.1'
     installer: 'https://github.com/TeXworks/texworks/releases/download/release-0.6.1/TeXworks-win-setup-0.6.1-201605010903-git_3614278.exe'
     install_flags: '/VERYSILENT /SUPPRESSMSGBOXES /NORESTART /SP-'
-    uninstaller: '{{ PROGRAM_FILES }}\CDRoller\unins000.exe'
+    uninstaller: '{{ PROGRAM_FILES }}\TeXworks\unins000.exe'
     uninstall_flags: '/VERYSILENT /SUPPRESSMSGBOXES /NORESTART /SP-'
     msiexec: False
     locale: en_US
