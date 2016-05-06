@@ -15,3 +15,4 @@ bulk_extractor:
     msiexec: False
     locale: en_US
     reboot: False
+  {% endfor %}
