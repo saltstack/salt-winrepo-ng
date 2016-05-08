@@ -1,6 +1,6 @@
 postgresql:
   '9.5':
-    full_name: 'PostgreSQL 9.5'
+    full_name: 'PostgreSQL 9.5 '
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'http://get.enterprisedb.com/postgresql/postgresql-9.5.0-1-windows-x64.exe'
     {% else %}
@@ -13,7 +13,7 @@ postgresql:
     msiexec: False
     reboot: False
   '9.4':
-    full_name: 'PostgreSQL 9.4'
+    full_name: 'PostgreSQL 9.4 '
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'http://get.enterprisedb.com/postgresql/postgresql-9.4.5-3-windows-x64.exe'
     {% else %}
@@ -26,7 +26,7 @@ postgresql:
     msiexec: False
     reboot: False
   '9.3':
-    full_name: 'PostgreSQL 9.3'
+    full_name: 'PostgreSQL 9.3 '
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'http://get.enterprisedb.com/postgresql/postgresql-9.3.10-3-windows-x64.exe'
     {% else %}
