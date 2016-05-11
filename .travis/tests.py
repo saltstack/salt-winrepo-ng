@@ -8,7 +8,7 @@ from urlparse import urlparse
 import pycurl as curl
 
 def process_each(softwares):
-    #print(softwares)
+    #pprint(softwares)
     for _,software in softwares.items():
         for _,version in software.items():
             # Testing each non-salt URL for availability
@@ -23,13 +23,13 @@ def process_each(softwares):
 
 for cpuarch in ['AMD64', 'x86']:
     for file in glob.glob('*.sls'):
+        print("---( "+ file + " )---")
         with open(file, 'r') as stream:
             template = stream.read()
-            data=None
             try:
                 t = Template(template)
                 yml = t.render(grains={'cpuarch':cpuarch})
-                data = yaml.load(yml)
             except:
                 continue
-                process_each(data)
+            data = yaml.load(yml)
+            process_each(data)
