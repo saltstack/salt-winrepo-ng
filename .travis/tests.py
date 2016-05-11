@@ -25,11 +25,11 @@ for cpuarch in ['AMD64', 'x86']:
     for file in glob.glob('*.sls'):
         with open(file, 'r') as stream:
             template = stream.read()
+            data=None
             try:
                 t = Template(template)
                 yml = t.render(grains={'cpuarch':cpuarch})
+                data = yaml.load(yml)
             except:
                 continue
-            #pprint(yml)
-            data = yaml.load(yml)
-            process_each(data)
+                process_each(data)
