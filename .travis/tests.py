@@ -23,7 +23,7 @@ def process_each(softwares):
                 buf = cStringIO.StringIO()
                 try:
                     C.perform()
-                    assert C.getinfo(curl.HTTP_CODE) == 200 , "[ERROR]\tURL did not return code 200. File Missing? "
+                    assert C.getinfo(curl.HTTP_CODE) != 404, "[ERROR]\tURL returned code 404. File Missing? "
                 except curl.error as e:
                     errno, errstr = e
                     print(errno, errstr)
