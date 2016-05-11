@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import yaml, glob, os
+import yaml, glob, os, cStringIO
 from pprint import pprint
 from jinja2 import Template
 from urlparse import urlparse
@@ -13,12 +13,23 @@ def process_each(softwares):
         for _,version in software.items():
             # Testing each non-salt URL for availability
             scheme=urlparse(version['installer']).scheme
-            if scheme != 'salt':
+            if scheme in ['http', 'https']:
                 print(version['installer'])
                 C = curl.Curl()
                 C.setopt(curl.URL, version['installer'])
                 C.setopt(curl.NOBODY, True)
-                C.perform()
+                C.setopt(curl.CONNECTTIMEOUT, 2)
+                C.setopt(curl.TIMEOUT, 5)
+                buf = cStringIO.StringIO()
+                try:
+                    C.perform()
+                    assert(C.getinfo(curl.HTTP_CODE) == 200 , "[ERROR]\tURL did not return code 200. File Missing? " )
+                except curl.error as e:
+                    errno, errstr = e
+                    print(errno, errstr)
+                    if errno == 28:
+                        print('[ERROR]\tConnection timeout or no server | errno: ' + str(errno) + ' | ' + errstr)
+                        pass
                 C.close()
 
 for cpuarch in ['AMD64', 'x86']:
