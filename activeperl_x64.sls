@@ -1,5 +1,5 @@
 activeperl_x64:
-  {% for version, build in (('5.22.0', '2200'), ('5.20.2', '2002'), ('5.18.4', '1805')) %}
+  {% for version, build in (('5.22.1', '2201'), ('5.20.3', '2003')) %}
   '{{ version }}':
     full_name: 'ActivePerl {{ version }} Build {{ build }} (64-bit)'
     installer: 'http://downloads.activestate.com/ActivePerl/releases/{{ version }}.{{ build}}/ActivePerl-{{ version }}.{{ build}}-MSWin32-x64-299195.msi'
