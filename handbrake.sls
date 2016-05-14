@@ -5,7 +5,7 @@ handbrake:
   '0.10.5':
     full_name: 'Handbrake 0.10.5'
     {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'http://download.handbrake.fr/handbrake/releases/0.10.5/HandBrake-0.10.2-x86_64-Win_GUI-1.exe'
+    installer: 'http://download.handbrake.fr/handbrake/releases/0.10.5/HandBrake-0.10.5-x86_64-Win_GUI-1.exe'
     {% elif grains['cpuarch'] == 'x86' %}
     installer: 'https://handbrake.fr/mirror/HandBrake-0.10.5-i686-Win_GUI-1.exe'
     {% endif %}
