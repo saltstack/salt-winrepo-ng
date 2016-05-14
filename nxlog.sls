@@ -17,12 +17,3 @@ nxlog:
     msiexec: True
     locale: en_US
     reboot: False
-  '2.5.1089':
-    full_name:  'NXLOG-CE'
-    installer: 'http://downloads.sourceforge.net/project/nxlog-ce/nxlog-ce-2.5.1089.msi'
-    install_flags: '/quiet /norestart'
-    uninstaller: 'http://downloads.sourceforge.net/project/nxlog-ce/nxlog-ce-2.5.1089.msi'
-    uninstall_flags: '/quiet /norestart'
-    msiexec: True
-    locale: en_US
-    reboot: False    
