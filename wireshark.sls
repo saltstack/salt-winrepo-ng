@@ -1,7 +1,7 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available
 {% set PROGRAM_FILES = "%ProgramFiles%" %}
 wireshark:
-  {% for version in '2.0.2', '2.0.1', '2.0.0', '1.12.8' %}
+  {% for version in '2.0.3', '2.0.2', '2.0.1', '2.0.0' %}
   '{{ version }}':
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name: 'Wireshark {{ version }} (64-bit)'
