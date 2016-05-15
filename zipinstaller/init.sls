@@ -8,7 +8,11 @@ zipinstaller:
  '1.21':
    full_name: 'zipinstaller'
    installer: 'salt://win/repo-ng/zipinstaller/zipinst.exe'
-   install_flags: '/i zipinst.zip'
+   {% if grains['cpuarch'] == 'AMD64' %}
+   install_flags: '/i zipinst_x64.zip'
+   {% elif grains['cpuarch'] == 'x86' %}
+   install_flags: '/i zipinst_x86.zip'
+   {% endif %}
    uninstaller: 'zipinst.exe'
    uninstall_flags: '/uninst "{{ PROGRAM_FILES }}\zipinstaller\uninst1~.nsu"'
    msiexec: False
