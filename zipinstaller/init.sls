@@ -14,7 +14,7 @@ zipinstaller:
    install_flags: '/i zipinst_x86.zip'
    {% endif %}
    uninstaller: 'zipinst.exe'
-   uninstall_flags: '/uninst "{{ PROGRAM_FILES }}\zipinstaller\uninst1~.nsu"'
+   uninstall_flags: '/uninst "c:\utl\uninst1~.nsu"'
    msiexec: False
    locale: en_US
    reboot: False
