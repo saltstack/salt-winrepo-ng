@@ -1,0 +1,19 @@
+[install]
+ZipFile=zipinst.zip
+AddUninstall=1
+AddUninstallShortcut=1
+DesktopShortcut=0
+InstallTo=1
+StartMenuShortcut=1
+ProgramFilesFolder=
+NoUserInteraction=1
+InstallFolder=%zi.ProgramFiles%\%zi.ProductName%
+StartMenuFolder=%zi.CompanyName%\%zi.ProductName%
+ProductName=ZipInstaller
+ProductVersion=1.21
+CompanyName=NirSoft
+Description=Zip Installer (packaged for salt-winrepo-ng installer)
+UninstallRegKey=ZipInstaller
+NoExtraUninstallInfo=0
+NoSuccessMessage=1
+UninstallInDestFolder=0
