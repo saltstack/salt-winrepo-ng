@@ -5,7 +5,7 @@
    {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {% endif %}
 zipinstaller:
- 1.21:
+ '1.21':
    full_name: 'zipinstaller'
    installer: 'salt://win/repo-ng/zipinstaller/zipinst.exe'
    install_flags: '/i zipinst.zip'
