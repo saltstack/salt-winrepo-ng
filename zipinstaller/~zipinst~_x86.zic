@@ -1,13 +1,14 @@
 [install]
-ZipFile=zipinst.zip
+ZipFile=zipinst_x86.zip
 AddUninstall=1
 AddUninstallShortcut=1
 DesktopShortcut=0
 InstallTo=1
 StartMenuShortcut=1
-ProgramFilesFolder=
+ProgramFilesFolder=c:\utl
 NoUserInteraction=1
-InstallFolder=%zi.ProgramFiles%\%zi.ProductName%
+#InstallFolder=%zi.ProgramFiles%\%zi.ProductName%
+InstallFolder=%zi.ProgramFiles%
 StartMenuFolder=%zi.CompanyName%\%zi.ProductName%
 ProductName=ZipInstaller
 ProductVersion=1.21
