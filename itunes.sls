@@ -11,7 +11,7 @@ itunes:
                      msiexec.exe /qn /norestart /x {2E4AF2A6-50EA-4260-9BA4-5E582D11879A} &
                      msiexec.exe /qn /norestart /x {FE5C2FAA-118D-4509-B51D-3F71CC9E1B3E} &
                      msiexec.exe /qn /norestart /x {2937FD88-C9D6-4B82-B539-37CD0A572F42} &
-                     msiexec.exe /qn /norestart /x {A31C5565-90D9-4615-AE13-94D86C3836C7} &                 
+                     msiexec.exe /qn /norestart /x {A31C5565-90D9-4615-AE13-94D86C3836C7} &
                      exit 0'
     # the above uninstalls:
     # Bonjour64 v. 3.1.0.1  {56DDDFB8-7F79-4480-89D5-25E1F52AB28F}
@@ -27,7 +27,7 @@ itunes:
                      msiexec.exe /qn /norestart /x {56EC47AA-5813-4FF6-8E75-544026FBEA83} &
                      msiexec.exe /qn /norestart /x {15A0A9A6-6CF0-4EEE-8E12-096B33F92CA7} &
                      msiexec.exe /qn /norestart /x {FE5C2FAA-118D-4509-B51D-3F71CC9E1B3E} &
-                     msiexec.exe /qn /norestart /x {3079C5C8-325A-4354-A733-456BACA1E5FB} &                 
+                     msiexec.exe /qn /norestart /x {3079C5C8-325A-4354-A733-456BACA1E5FB} &
                      exit 0'
     # the above uninstalls:
     # Bonjour v. 3.1.0.1  {D168AAD0-6686-47C1-B599-CDD4888B9D1A}
@@ -51,7 +51,7 @@ itunes:
                      msiexec.exe /qn /norestart /x {3540181E-340A-4E7A-B409-31663472B2F7} &
                      msiexec.exe /qn /norestart /x {7FA9ECCF-A2DE-4DA1-BFF3-81260DBDA68F} &
                      msiexec.exe /qn /norestart /x {691F30EB-9009-475A-B8A9-E1BF39598FD5} &
-                     msiexec.exe /qn /norestart /x {FBEB98F8-64E4-4FA3-A15E-4A9F42FF962E} &                 
+                     msiexec.exe /qn /norestart /x {FBEB98F8-64E4-4FA3-A15E-4A9F42FF962E} &
                      exit 0'
     # the above uninstalls:
     # Bonjour64 v. 3.1.0.1  {56DDDFB8-7F79-4480-89D5-25E1F52AB28F}
@@ -67,7 +67,7 @@ itunes:
                      msiexec.exe /qn /norestart /x {FFD1F7F1-1AC9-4BC4-A908-0686D635ABAF} &
                      msiexec.exe /qn /norestart /x {9A629DCB-415D-4A50-85B9-5C2E4F8F74A8} &
                      msiexec.exe /qn /norestart /x {7FA9ECCF-A2DE-4DA1-BFF3-81260DBDA68F} &
-                     msiexec.exe /qn /norestart /x {2C741651-87E0-4479-9703-6DD0D7988B84} &                 
+                     msiexec.exe /qn /norestart /x {2C741651-87E0-4479-9703-6DD0D7988B84} &
                      exit 0'
     # the above uninstalls:
     # Bonjour v. 3.1.0.1  {D168AAD0-6686-47C1-B599-CDD4888B9D1A}
@@ -91,7 +91,7 @@ itunes:
                      msiexec.exe /qn /norestart /x {FD244E19-6EFE-4A2D-948A-0D45D4C168BE} &
                      msiexec.exe /qn /norestart /x {3540ADD5-822B-47FB-B1C2-CD7B2C8E9FEC} &
                      msiexec.exe /qn /norestart /x {C9C0FE2C-602E-49D7-8C42-5B9E8FF04798} &
-                     msiexec.exe /qn /norestart /x {88509E20-3936-4D88-A1C0-B274C7BB5151} &                 
+                     msiexec.exe /qn /norestart /x {88509E20-3936-4D88-A1C0-B274C7BB5151} &
                      exit 0'
     msiexec: False
     locale: en_US
@@ -110,7 +110,7 @@ itunes:
                      msiexec.exe /qn /norestart /x {FFD1F7F1-1AC9-4BC4-A908-0686D635ABAF} &
                      msiexec.exe /qn /norestart /x {A75CA58D-DB9C-4D14-9428-E0C7B0F623DC} &
                      msiexec.exe /qn /norestart /x {3540ADD5-822B-47FB-B1C2-CD7B2C8E9FEC} &
-                     msiexec.exe /qn /norestart /x {9E9CFD9F-64D6-498F-8584-E5CD08BA60BE} &                 
+                     msiexec.exe /qn /norestart /x {9E9CFD9F-64D6-498F-8584-E5CD08BA60BE} &
                      exit 0'
     msiexec: False
     locale: en_US
@@ -137,7 +137,7 @@ itunes:
                      msiexec.exe /qn /norestart /x {5D61F006-168C-4B8B-B7FD-F113C10AE0E4} &
                      msiexec.exe /qn /norestart /x {7FE25256-B7C1-480D-B736-10A67A833AEA} &
                      msiexec.exe /qn /norestart /x {B255D495-4734-4E9B-B4F5-96702FD4A7B9} &
-                     msiexec.exe /qn /norestart /x {BFEAB774-C7DC-4032-B05A-DA5F7CB7B365} &                 
+                     msiexec.exe /qn /norestart /x {BFEAB774-C7DC-4032-B05A-DA5F7CB7B365} &
                      exit 0'
                      # the above uninstalls:
                      # Bonjour64 v. 3.0.0.10  {6E3610B2-430D-4EB0-81E3-2B57E8B9DE8D}
@@ -153,7 +153,7 @@ itunes:
                      msiexec.exe /qn /norestart /x {789A5B64-9DD9-4BA5-915A-F0FC0A1B7BFE} &
                      msiexec.exe /qn /norestart /x {538227C6-C74B-4A74-99E1-2C0B4F9DA5E1} &
                      msiexec.exe /qn /norestart /x {7FE25256-B7C1-480D-B736-10A67A833AEA} &
-                     msiexec.exe /qn /norestart /x {025E78AC-BD91-4E9E-B165-3C09D4084BA4} &                    
+                     msiexec.exe /qn /norestart /x {025E78AC-BD91-4E9E-B165-3C09D4084BA4} &
                      exit 0'
                      # the above uninstalls:
                      # Bonjour v. 3.0.0.10  {79155F2B-9895-49D7-8612-D92580E0DE5B}
@@ -177,7 +177,7 @@ itunes:
                      msiexec.exe /qn /norestart /x {5D61F006-168C-4B8B-B7FD-F113C10AE0E4} &
                      msiexec.exe /qn /norestart /x {7FE25256-B7C1-480D-B736-10A67A833AEA} &
                      msiexec.exe /qn /norestart /x {B255D495-4734-4E9B-B4F5-96702FD4A7B9} &
-                     msiexec.exe /qn /norestart /x {6CF1A7E2-8001-4870-9F18-3C6CDD6FE9E3} &                 
+                     msiexec.exe /qn /norestart /x {6CF1A7E2-8001-4870-9F18-3C6CDD6FE9E3} &
                      exit 0'
                      # the above uninstalls:
                      # Bonjour64 v. 3.0.0.10  {6E3610B2-430D-4EB0-81E3-2B57E8B9DE8D}
@@ -193,7 +193,7 @@ itunes:
                      msiexec.exe /qn /norestart /x {789A5B64-9DD9-4BA5-915A-F0FC0A1B7BFE} &
                      msiexec.exe /qn /norestart /x {538227C6-C74B-4A74-99E1-2C0B4F9DA5E1} &
                      msiexec.exe /qn /norestart /x {7FE25256-B7C1-480D-B736-10A67A833AEA} &
-                     msiexec.exe /qn /norestart /x {9DBBE7B8-EE7A-4FD9-9C7F-35E69A4C19D8} &                     
+                     msiexec.exe /qn /norestart /x {9DBBE7B8-EE7A-4FD9-9C7F-35E69A4C19D8} &
                      exit 0'
                      # the above uninstalls:
                      # Bonjour v. 3.0.0.10  {79155F2B-9895-49D7-8612-D92580E0DE5B}
