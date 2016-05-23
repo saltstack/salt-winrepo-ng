@@ -13,6 +13,8 @@ eea:
     msiexec: True
     locale: en_US
     reboot: False
+    cache_dir: True
+    use_scheduler: True
   '5.0.2260.1':
     full_name: 'ESET Endpoint Antivirus'
     {% if grains['cpuarch'] == 'AMD64' %}
@@ -27,6 +29,8 @@ eea:
     msiexec: True
     locale: en_US
     reboot: False
+    cache_dir: True
+    use_scheduler: True
 #
 # download from your closest eset server using your credentials and place into relevant version dir in salt://win/repo/eea/
 # for Uk use http://www.eset.co.uk/Download/Software/Product/EAVB
