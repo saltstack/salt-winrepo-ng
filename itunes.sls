@@ -93,9 +93,6 @@ itunes:
                      msiexec.exe /qn /norestart /x {C9C0FE2C-602E-49D7-8C42-5B9E8FF04798} &
                      msiexec.exe /qn /norestart /x {88509E20-3936-4D88-A1C0-B274C7BB5151} &
                      exit 0'
-    msiexec: False
-    locale: en_US
-    reboot: False
     # the above uninstalls:
     # Bonjour64 v. 3.1.0.1  {56DDDFB8-7F79-4480-89D5-25E1F52AB28F}
     # Apple Software Update v. 2.1.4.131 {FFD1F7F1-1AC9-4BC4-A908-0686D635ABAF}
@@ -112,9 +109,6 @@ itunes:
                      msiexec.exe /qn /norestart /x {3540ADD5-822B-47FB-B1C2-CD7B2C8E9FEC} &
                      msiexec.exe /qn /norestart /x {9E9CFD9F-64D6-498F-8584-E5CD08BA60BE} &
                      exit 0'
-    msiexec: False
-    locale: en_US
-    reboot: False
     # the above uninstalls:
     # Bonjour v. 3.1.0.1  {D168AAD0-6686-47C1-B599-CDD4888B9D1A}
     # Apple Software Update v. 2.1.4.131 {FFD1F7F1-1AC9-4BC4-A908-0686D635ABAF}
