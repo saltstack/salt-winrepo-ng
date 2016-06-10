@@ -22,12 +22,3 @@ audacity:
     msiexec: False
     locale: en_US
     reboot: False
-  '2.0.3': 
-    full_name: 'Audacity 2.0.3'
-    installer: 'http://audacity.googlecode.com/files/audacity-win-2.0.3.exe'
-    install_flags: '/SP- /verysilent /norestart'
-    uninstaller: '{{ PROGRAM_FILES }}\Audacity\unins000.exe'
-    uninstall_flags: '/SP- /verysilent /norestart'
-    msiexec: False
-    locale: en_US
-    reboot: False
