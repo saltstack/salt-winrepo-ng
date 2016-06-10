@@ -10,7 +10,17 @@ import pycurl as curl
 def process_each(softwares):
     #pprint(softwares)
     for _,software in softwares.items():
+        try:
+            if software['skip_urltest']:
+                continue
+        except KeyError:
+            pass
         for _,version in software.items():
+            try:
+                if version['skip_urltest']:
+                    continue
+            except KeyError:
+                pass
             # Testing each non-salt URL for availability
             scheme=urlparse(version['installer']).scheme
             if scheme in ['http', 'https']:
