@@ -33,7 +33,8 @@ def process_each(softwares):
                 buf = cStringIO.StringIO()
                 try:
                     C.perform()
-                    assert C.getinfo(curl.HTTP_CODE) != 404, "[ERROR]\tURL returned code 404. File Missing? "
+                    #assert C.getinfo(curl.HTTP_CODE) != 404, "[ERROR]\tURL returned code 404. File Missing? "
+                    print ( "Link alive? ", C.getinfo(curl.HTTP_CODE) != 404 )
                 except curl.error as e:
                     errno, errstr = e
                     print(errno, errstr)
@@ -43,6 +44,7 @@ def process_each(softwares):
                 C.close()
 
 for cpuarch in ['AMD64', 'x86']:
+    print("--------(arch: %s)--------" % cpuarch)
     for file in glob.glob('*.sls'):
         print("---( "+ file + " )---")
         with open(file, 'r') as stream:
