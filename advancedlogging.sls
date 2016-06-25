@@ -7,7 +7,7 @@ advancedlogging:
     {% elif grains['cpuarch'] == 'x86' %}
     installer: 'http://download.microsoft.com/download/D/8/B/D8B7664B-3F60-4A26-8307-B35FB926EF49/AdvancedLogging32.msi'
     uninstaller: 'http://download.microsoft.com/download/D/8/B/D8B7664B-3F60-4A26-8307-B35FB926EF49/AdvancedLogging32.msi'
-    {% endif %}    
+    {% endif %}
     install_flags: '/qn /norestart'
     uninstall_flags: '/qn /norestart'
     msiexec: True

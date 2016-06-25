@@ -1,4 +1,4 @@
-sourcetree: 
+sourcetree:
   '1.6.21':
     full_name: 'SourceTree'
     installer: 'https://downloads.atlassian.com/software/sourcetree/windows/SourceTreeSetup_1.6.21.exe'

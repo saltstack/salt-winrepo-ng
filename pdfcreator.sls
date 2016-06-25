@@ -12,7 +12,7 @@ pdfcreator:
     uninstaller: '{{ PROGRAM_FILES }}\PDFCreator\unins000.exe'
     uninstall_flags: '/verysilent'
     msiexec: False
-    locale: en_US    
+    locale: en_US
     reboot: False
   '1.7.2':
     full_name: 'PDFCreator'
@@ -21,5 +21,5 @@ pdfcreator:
     uninstaller: '{{ PROGRAM_FILES }}\PDFCreator\unins000.exe'
     uninstall_flags: '/verysilent'
     msiexec: False
-    locale: en_US    
+    locale: en_US
     reboot: False

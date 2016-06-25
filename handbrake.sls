@@ -11,7 +11,7 @@ handbrake:
     {% endif %}
     install_flags: '/S'
     uninstaller: '{{ PROGRAM_FILES }}\Handbrake\uninst.exe'
-    uninstall_flags: '/S' 
+    uninstall_flags: '/S'
     msiexec: False
     locale: en_US
     reboot: False

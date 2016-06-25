@@ -10,11 +10,11 @@ tortoise-hg:
     installer: 'salt://win/repo-ng/tortoise-hg/tortoisehg-3.6.2-x86.msi'
     uninstaller: 'salt://win/repo-ng/tortoise-hg/tortoisehg-3.6.2-x86.msi'
     {% endif %}
-    install_flags: '/qn /norestart'    
+    install_flags: '/qn /norestart'
     uninstall_flags: '/qn /norestart'
     msiexec: True
     locale: en_US
-    reboot: False  
+    reboot: False
   '3.3.0':
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name: 'TortoiseHg 3.3.0 (x64)'
@@ -25,10 +25,10 @@ tortoise-hg:
     installer: 'salt://win/repo-ng/tortoise-hg/tortoisehg-3.3.0-x86.msi'
     uninstaller: 'salt://win/repo-ng/tortoise-hg/tortoisehg-3.3.0-x86.msi'
     {% endif %}
-    install_flags: '/qn /norestart'    
+    install_flags: '/qn /norestart'
     uninstall_flags: '/qn /norestart'
     msiexec: True
     locale: en_US
-    reboot: False    
+    reboot: False
 # Need to download from source site above, so it will append proper aws key credentials
-# place downloaded msi in master's win_repo-ng 
+# place downloaded msi in master's win_repo-ng

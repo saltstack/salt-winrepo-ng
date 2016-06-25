@@ -8,13 +8,13 @@ quicktime:
                      msiexec.exe /qn /x {7FA9ECCF-A2DE-4DA1-BFF3-81260DBDA68F} /norestart &
                      msiexec.exe /qn /x {691F30EB-9009-475A-B8A9-E1BF39598FD5} /norestart &
                      msiexec.exe /qn /x {FF59BD75-466A-4D5A-AD23-AAD87C5FD44C} /norestart &
-                     exit 0'      
+                     exit 0'
     {% else %}
     uninstall_flags: |
                      '/qn /x {FFD1F7F1-1AC9-4BC4-A908-0686D635ABAF} /norestart &
                      msiexec.exe /qn /x {7FA9ECCF-A2DE-4DA1-BFF3-81260DBDA68F} /norestart &
                      msiexec.exe /qn /x {FF59BD75-466A-4D5A-AD23-AAD87C5FD44C} /norestart &
-                     exit 0'      
+                     exit 0'
     {% endif %}
     install_flags: '/quiet /qn /norestart'
     uninstaller: 'msiexec.exe'
