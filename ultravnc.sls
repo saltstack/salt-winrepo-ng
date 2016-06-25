@@ -12,4 +12,4 @@ ultravnc:
     uninstall_flags: '/VERYSILENT /NORESTART'
     msiexec: False
     locale: en_US
-    reboot: False    
+    reboot: False

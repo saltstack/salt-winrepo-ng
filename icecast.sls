@@ -5,7 +5,7 @@
     {% set PROGRAM_FILES = "%PROGRAMFILES%" %}
 {% endif %}
 icecast:
-  '2.4.2': 
+  '2.4.2':
     full_name: 'Icecast'
     installer: 'http://downloads.xiph.org/releases/icecast/icecast_win32_2.4.2.exe'
     install_flags: '/S'

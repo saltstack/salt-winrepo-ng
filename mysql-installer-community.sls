@@ -7,7 +7,7 @@ mysql-installer-community:
     uninstall_flags: '/qn /norestart'
     msiexec: True
     locale: en_US
-    reboot: False    
+    reboot: False
 #
 # Read for MySQL Server 5.6.23.0 Community installation instructions:
 # https://dev.mysql.com/doc/refman/5.6/en/mysql-installer-gui.html

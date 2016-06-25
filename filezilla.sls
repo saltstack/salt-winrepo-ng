@@ -9,7 +9,7 @@ filezilla:
     installer: 'http://vorboss.dl.sourceforge.net/project/filezilla/FileZilla_Client/3.16.0/FileZilla_3.16.0_win32-setup.exe'
     {% endif %}
     install_flags: '/S'
-    uninstaller: '{{ PROGRAM_FILES }}\FileZilla FTP Client\uninstall.exe' 
+    uninstaller: '{{ PROGRAM_FILES }}\FileZilla FTP Client\uninstall.exe'
     uninstall_flags: '/S'
     msiexec: False
     locale: en_US
@@ -22,7 +22,7 @@ filezilla:
     installer: 'http://vorboss.dl.sourceforge.net/project/filezilla/FileZilla_Client/3.14.1/FileZilla_3.14.1_win32-setup.exe'
     {% endif %}
     install_flags: '/S'
-    uninstaller: '{{ PROGRAM_FILES }}\FileZilla FTP Client\uninstall.exe' 
+    uninstaller: '{{ PROGRAM_FILES }}\FileZilla FTP Client\uninstall.exe'
     uninstall_flags: '/S'
     msiexec: False
     locale: en_US
@@ -35,7 +35,7 @@ filezilla:
     installer: 'http://vorboss.dl.sourceforge.net/project/filezilla/FileZilla_Client/3.14.0/FileZilla_3.14.0_win32-setup.exe'
     {% endif %}
     install_flags: '/S'
-    uninstaller: '{{ PROGRAM_FILES }}\FileZilla FTP Client\uninstall.exe' 
+    uninstaller: '{{ PROGRAM_FILES }}\FileZilla FTP Client\uninstall.exe'
     uninstall_flags: '/S'
     msiexec: False
     locale: en_US
@@ -48,7 +48,7 @@ filezilla:
     installer: 'http://heanet.dl.sourceforge.net/project/filezilla/FileZilla_Client/3.13.0/FileZilla_3.13.0_win32-setup.exe'
     {% endif %}
     install_flags: '/S'
-    uninstaller: '{{ PROGRAM_FILES }}\FileZilla FTP Client\uninstall.exe' 
+    uninstaller: '{{ PROGRAM_FILES }}\FileZilla FTP Client\uninstall.exe'
     uninstall_flags: '/S'
     msiexec: False
     locale: en_US
@@ -61,7 +61,7 @@ filezilla:
     installer: 'http://heanet.dl.sourceforge.net/project/filezilla/FileZilla_Client/3.11.0.2/FileZilla_3.11.0.2_win32-setup.exe'
     {% endif %}
     install_flags: '/S'
-    uninstaller: '{{ PROGRAM_FILES }}\FileZilla FTP Client\uninstall.exe' 
+    uninstaller: '{{ PROGRAM_FILES }}\FileZilla FTP Client\uninstall.exe'
     uninstall_flags: '/S'
     msiexec: False
     locale: en_US
