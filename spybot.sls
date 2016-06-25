@@ -14,7 +14,7 @@ spybot:
     uninstall_flags: '/VERYSILENT /SuppressMsgGBoxes /NoRestart /SP-'
     msiexec: False
     locale: en_US
-    reboot: False    
+    reboot: False
 # alternative download URLs
 # http://www.spybotupdates.biz/files/spybot-2.4.exe
 # http://spybot-mirror.com/files/spybot-2.4.exe

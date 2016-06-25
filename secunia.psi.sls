@@ -10,7 +10,7 @@ secunia.psi:
     installer: 'http://secunia.com/PSISetup.exe'
     install_flags: '/S'
     uninstaller: '{{ PROGRAM_FILES }}\Secunia\PSI\uninstall.exe'
-    uninstall_flags: '/S'    
+    uninstall_flags: '/S'
     msiexec: False
     locale: en_US
     reboot: False
