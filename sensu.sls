@@ -1,5 +1,5 @@
 sensu:
-  '0.21.0.1':
+  '0.25.3.1':
     full_name: 'Sensu'
     installer: 'https://sensu.global.ssl.fastly.net/msi/sensu-0.25.3-1.msi'
     install_flags: '/qn /norestart'
