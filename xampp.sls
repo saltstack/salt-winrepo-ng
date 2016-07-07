@@ -25,4 +25,4 @@ xampp:
     uninstall_flags: '--mode unattended'
     msiexec: False
     locale: en_US
-    reboot: False   
+    reboot: False

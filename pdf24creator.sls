@@ -1,5 +1,5 @@
 pdf24creator:
-  {% for version in '7.6.4', '7.6.3', '7.6.2', '7.6.1', '7.5.0', '7.4.1', '7.4.0', '7.3.1', '7.3.0', '7.2.0', '7.1.0', '7.0.7', '7.0.6', '6.9.2',  %}
+  {% for version in '7.8.1' %}
   '{{ version }}':
     full_name: 'PDF24 Creator'
     installer: 'http://en.pdf24.org/products/pdf-creator/download/pdf24-creator-{{ version }}.msi'

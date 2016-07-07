@@ -5,13 +5,13 @@ blender:
     full_name: 'Blender'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'http://ftp.nluug.nl/pub/graphics/blender/release/Blender2.76/blender-2.76b-windows64.msi'
-    uninstaller: 'http://ftp.nluug.nl/pub/graphics/blender/release/Blender2.76/blender-2.76b-windows64.msi'    
+    uninstaller: 'http://ftp.nluug.nl/pub/graphics/blender/release/Blender2.76/blender-2.76b-windows64.msi'
     {% elif grains['cpuarch'] == 'x86' %}
     installer: 'http://ftp.nluug.nl/pub/graphics/blender/release/Blender2.76/blender-2.76b-windows32.msi'
-    uninstaller: 'http://ftp.nluug.nl/pub/graphics/blender/release/Blender2.76/blender-2.76b-windows32.msi'   
+    uninstaller: 'http://ftp.nluug.nl/pub/graphics/blender/release/Blender2.76/blender-2.76b-windows32.msi'
     {% endif %}
     install_flags: '/qn /norestart'
-    uninstall_flags: '/qn /norestart' 
+    uninstall_flags: '/qn /norestart'
     msiexec: True
     locale: en_US
     reboot: False
@@ -19,13 +19,13 @@ blender:
     full_name: 'Blender'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'http://ftp.nluug.nl/pub/graphics/blender/release/Blender2.75/blender-2.75-windows64.msi'
-    uninstaller: 'http://ftp.nluug.nl/pub/graphics/blender/release/Blender2.75/blender-2.75-windows64.msi'    
+    uninstaller: 'http://ftp.nluug.nl/pub/graphics/blender/release/Blender2.75/blender-2.75-windows64.msi'
     {% elif grains['cpuarch'] == 'x86' %}
     installer: 'http://ftp.nluug.nl/pub/graphics/blender/release/Blender2.75/blender-2.75-windows32.msi'
-    uninstaller: 'http://ftp.nluug.nl/pub/graphics/blender/release/Blender2.75/blender-2.75-windows32.msi'   
+    uninstaller: 'http://ftp.nluug.nl/pub/graphics/blender/release/Blender2.75/blender-2.75-windows32.msi'
     {% endif %}
     install_flags: '/qn /norestart'
-    uninstall_flags: '/qn /norestart' 
+    uninstall_flags: '/qn /norestart'
     msiexec: True
     locale: en_US
     reboot: False

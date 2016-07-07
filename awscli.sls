@@ -9,10 +9,10 @@ awscli:
     {% elif grains['cpuarch'] == 'x86' %}
     full_name: 'AWS Command Line Interface'
     installer: https://s3.amazonaws.com/aws-cli/AWSCLI32.msi
-    uninstaller: https://s3.amazonaws.com/aws-cli/AWSCLI32.msi    
+    uninstaller: https://s3.amazonaws.com/aws-cli/AWSCLI32.msi
     {% endif %}
     install_flags: '/qn /norestart'
     uninstall_flags: '/qn /norestart'
     msiexec: True
     locale: en_US
-    reboot: False 
+    reboot: False

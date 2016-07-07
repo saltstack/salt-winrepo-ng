@@ -1,5 +1,5 @@
 # Source: https://code.google.com/p/tortoisegit/
-tortoise-git: 
+tortoise-git:
   '1.8.13.0':
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name: 'TortoiseGit 1.8.13.0 (64 bit)'
