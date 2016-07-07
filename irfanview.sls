@@ -26,7 +26,7 @@ irfanview:
     uninstall_flags: '/silent'
     msiexec: False
     locale: en_US
-    reboot: False    
+    reboot: False
 # install_flags
 # folder:     destination folder; if not indicated: old IrfanView folder is used, if not found, the "Program Files" folder is used
 # silent:   silent install - no prompts

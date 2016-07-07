@@ -190,7 +190,7 @@ msysgit:
     locale: en_US
     reboot: False
   '1.9.4-preview20140815':
-    full_name: 'Git version 1.9.4-preview20140815'  
+    full_name: 'Git version 1.9.4-preview20140815'
     installer: 'https://github.com/msysgit/msysgit/releases/download/Git-1.9.4-preview20140815/Git-1.9.4-preview20140815.exe'
     install_flags: '/VERYSILENT /NOREBOOT'
     uninstaller: '{{ PROGRAM_FILES }}\Git\unins000.exe'

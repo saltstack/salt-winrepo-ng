@@ -9,7 +9,7 @@
     {% elif grains['cpuarch'] == 'x86' %}
     full_name: '7-Zip 16.02'
     installer: 'http://d.7-zip.org/a/7z1602.msi'
-    uninstaller: 'http://d.7-zip.org/a/7z1602.msi'    
+    uninstaller: 'http://d.7-zip.org/a/7z1602.msi'
     {% endif %}
     install_flags: '/qn /norestart'
     uninstall_flags: '/qn /norestart'
@@ -24,7 +24,7 @@
     {% elif grains['cpuarch'] == 'x86' %}
     full_name: '7-Zip 16.00'
     installer: 'http://d.7-zip.org/a/7z1600.msi'
-    uninstaller: 'http://d.7-zip.org/a/7z1600.msi'    
+    uninstaller: 'http://d.7-zip.org/a/7z1600.msi'
     {% endif %}
     install_flags: '/qn /norestart'
     uninstall_flags: '/qn /norestart'
@@ -39,7 +39,7 @@
     {% elif grains['cpuarch'] == 'x86' %}
     full_name: '7-Zip 9.20'
     installer: 'http://heanet.dl.sourceforge.net/project/sevenzip/7-Zip/9.20/7z920.msi'
-    uninstaller: 'http://heanet.dl.sourceforge.net/project/sevenzip/7-Zip/9.20/7z920.msi'    
+    uninstaller: 'http://heanet.dl.sourceforge.net/project/sevenzip/7-Zip/9.20/7z920.msi'
     {% endif %}
     install_flags: '/qn /norestart'
     uninstall_flags: '/qn /norestart'
