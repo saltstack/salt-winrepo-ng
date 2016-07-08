@@ -2,3 +2,4 @@ pyaml
 jinja2
 pycurl
 gitpython
+salt
