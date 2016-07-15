@@ -1,5 +1,4 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available
-{% set PROGRAM_FILES = "%ProgramFiles%" %}
 ms-mbsa:
   '2.3.2211':
     {% if grains['cpuarch'] == 'AMD64' %}
