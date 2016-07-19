@@ -1,4 +1,4 @@
-check_mk-agent-msi:
+z_check_mk-agent-msi:
   {% for version in '1.2.6.185' %}
   '{{ version }}':
     full_name: 'Check_MK Agent'
