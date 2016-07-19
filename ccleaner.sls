@@ -1,6 +1,6 @@
 {% set PROGRAM_FILES = "%ProgramFiles%" %}
 ccleaner:
-  {% for version, dl_version in (('5.19', '519'), ('5.18', '518'), ('5.17', '517')) %}
+  {% for version, dl_version in (('5.20', '520'), ('5.19', '519'), ('5.18', '518'), ('5.17', '517')) %}
   '{{ version }}':
     full_name: 'CCleaner'
     installer: 'http://download.piriform.com/ccsetup{{ dl_version }}.exe'
