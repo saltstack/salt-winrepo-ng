@@ -1,6 +1,24 @@
 {% if salt['pkg.compare_versions'](grains['osversion'], '<', '6.2') %}
 adobeflashplayeractivex:
-  latest:
+  'latest':
+    full_name: 'Adobe Flash Player 22 ActiveX'
+    installer: 'http://fpdownload.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_22_active_x.msi'
+    install_flags: '/quiet /norestart REMOVE_PREVIOUS=YES'
+    uninstaller: 'http://fpdownload.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_22_active_x.msi'
+    uninstall_flags: '/qn /norestart'
+    msiexec: True
+    locale: en_US
+    reboot: False
+  '22.0.0.209':
+    full_name: 'Adobe Flash Player 22 ActiveX'
+    installer: 'http://fpdownload.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_22_active_x.msi'
+    install_flags: '/quiet /norestart REMOVE_PREVIOUS=YES'
+    uninstaller: 'http://fpdownload.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_22_active_x.msi'
+    uninstall_flags: '/qn /norestart'
+    msiexec: True
+    locale: en_US
+    reboot: False
+  '21.0.0.242':
     full_name: 'Adobe Flash Player 21 ActiveX'
     installer: 'http://fpdownload.macromedia.com/get/flashplayer/current/licensing/win/install_flash_player_21_active_x.msi'
     install_flags: '/quiet /norestart REMOVE_PREVIOUS=YES'
