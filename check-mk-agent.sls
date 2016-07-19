@@ -1,5 +1,5 @@
 check-mk-agent:
-  Not Found:
+  'Not Found':
     full_name: 'Check_MK Agent 1.2.8b4'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'salt://win/repo-ng/check_mk/install_agent-64-1.2.8b4.exe'
@@ -12,7 +12,7 @@ check-mk-agent:
     msiexec: False
     locale: en_US
     reboot: False
-  Not Found:
+  'Not Found':
     full_name: 'Check_MK Agent 1.2.8b3'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'salt://win/repo-ng/check_mk/install_agent-64-1.2.8b3.exe'
@@ -25,7 +25,7 @@ check-mk-agent:
     msiexec: False
     locale: en_US
     reboot: False
-  Not Found:
+  'Not Found':
     full_name: 'Check_MK Agent 1.2.8b2'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'salt://win/repo-ng/check_mk/install_agent-64-1.2.8b2.exe'
@@ -38,7 +38,7 @@ check-mk-agent:
     msiexec: False
     locale: en_US
     reboot: False
-  Not Found:
+  'Not Found':
     full_name: 'Check_MK Agent 1.2.8b1'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'salt://win/repo-ng/check_mk/install_agent-64-1.2.8b1.exe'
@@ -51,7 +51,7 @@ check-mk-agent:
     msiexec: False
     locale: en_US
     reboot: False
-  Not Found:
+  'Not Found':
     full_name: 'Check_MK Agent 1.2.7i3p5'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'salt://win/repo-ng/check_mk/install_agent-64-1.2.7i3p5.exe'
@@ -64,7 +64,7 @@ check-mk-agent:
     msiexec: False
     locale: en_US
     reboot: False
-  Not Found:
+  'Not Found':
     full_name: 'Check_MK Agent 1.2.7i3p4'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'salt://win/repo-ng/check_mk/install_agent-64-1.2.7i3p4.exe'
@@ -77,7 +77,7 @@ check-mk-agent:
     msiexec: False
     locale: en_US
     reboot: False
-  Not Found:
+  'Not Found':
     full_name: 'Check_MK Agent 1.2.7i3p3'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'salt://win/repo-ng/check_mk/install_agent-64-1.2.7i3p3.exe'
@@ -90,7 +90,7 @@ check-mk-agent:
     msiexec: False
     locale: en_US
     reboot: False
-  Not Found:
+  'Not Found':
     full_name: 'Check_MK Agent 1.2.7i3p2'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'salt://win/repo-ng/check_mk/install_agent-64-1.2.7i3p2.exe'
@@ -103,7 +103,7 @@ check-mk-agent:
     msiexec: False
     locale: en_US
     reboot: False
-  Not Found:
+  'Not Found':
     full_name: 'Check_MK Agent 1.2.7i3p1'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'salt://win/repo-ng/check_mk/install_agent-64-1.2.7u3p1.exe'
@@ -116,7 +116,7 @@ check-mk-agent:
     msiexec: False
     locale: en_US
     reboot: False
-  Not Found:
+  'Not Found':
     full_name: 'Check_MK Agent 1.2.6p16'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'salt://win/repo-ng/check_mk/install_agent-64-1.2.6p16.exe'
@@ -129,7 +129,7 @@ check-mk-agent:
     msiexec: False
     locale: en_US
     reboot: False
-  Not Found:
+  'Not Found':
     full_name: 'Check_MK Agent 1.2.6p15'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'salt://win/repo-ng/check_mk/install_agent-64-1.2.6p15.exe'
