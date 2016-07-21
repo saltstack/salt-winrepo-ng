@@ -4,7 +4,7 @@ itunes:
   '12.4.2.4':
     full_name: 'iTunes'
     {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'https://secure-appldnld.apple.com/itunes12/031-51753-20160321-347A2E56-EE10-11E5-814B-AA15BE379832/iTunes6464Setup.exe'
+    installer: 'https://secure-appldnld.apple.com/itunes12/031-64243-20160718-320EDAEA-49E1-11E6-8F30-A1D2CF9F5A9B/iTunes6464Setup.exe'
     uninstall_flags: |
                      '/qn /norestart /x {56DDDFB8-7F79-4480-89D5-25E1F52AB28F} &
                      msiexec.exe /qn /norestart /x {56EC47AA-5813-4FF6-8E75-544026FBEA83} &
@@ -21,7 +21,7 @@ itunes:
     # Apple Application Support (64-bit) v. 4.3.2 {A6B0442B-E159-444B-B49D-6B9AC531EAE3}
     # iTunes v. 12.4.2.4 {E109B4A3-9883-4E6E-9A19-4D7E1A88AFE8}
     {% elif grains['cpuarch'] == 'x86' %}
-    installer: 'https://secure-appldnld.apple.com/itunes12/031-51750-20160321-347A2ABE-EE10-11E5-82F2-A815BE379832/iTunesSetup.exe'
+    installer: 'https://secure-appldnld.apple.com/itunes12/031-64240-20160718-320EDB30-49E1-11E6-8F30-9FD2CF9F5A9B/iTunesSetup.exe'
     uninstall_flags: |
                      '/qn /norestart /x {D168AAD0-6686-47C1-B599-CDD4888B9D1A} &
                      msiexec.exe /qn /norestart /x {56EC47AA-5813-4FF6-8E75-544026FBEA83} &
