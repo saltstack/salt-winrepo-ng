@@ -1,6 +1,6 @@
-.NET:
+dotnet:
   '4.6.01055':
-    full_name: 'Microsoft .NET Framework 4.6'
+    full_name: 'Microsoft .NET Framework 4.6.1'
     installer: 'https://download.microsoft.com/download/3/5/9/35980F81-60F4-4DE3-88FC-8F962B97253B/NDP461-KB3102438-Web.exe'
     install_flags: '/q /norestart'
     {% if grains['cpuarch'] == 'AMD64' %}
