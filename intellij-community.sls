@@ -16,15 +16,3 @@ intellij-community:
     locale: en_US
     reboot: False
   {% endfor %}
-intellij-ultimate:
-  {% for version in '14.1.4' %}
-  '{{ version }}':
-    full_name: 'IntelliJ IDEAS Ultimate {{ version }}'
-    installer: 'https://download.jetbrains.com/idea/ideaIU-{{ version }}.exe'
-    install_flags: '/S'
-    uninstaller: '{{ PROGRAM_FILES }}\JetBrains\IntelliJ IDEA {{ version }}\bin\Uninstall.exe'
-    uninstall_flags: '/S'
-    msiexec: False
-    locale: en_US
-    reboot: False
-  {% endfor %}
