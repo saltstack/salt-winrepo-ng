@@ -1,6 +1,19 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available
 {% set PROGRAM_FILES = "%ProgramFiles%" %}
 git:
+  '2.10.0':
+    full_name: 'Git version 2.10.0'
+    {% if grains['cpuarch'] == 'AMD64' %}
+    installer: 'https://github.com/git-for-windows/git/releases/download/v2.10.0.windows.1/Git-2.10.0-64-bit.exe'
+    {% elif grains['cpuarch'] == 'x86' %}
+    installer: 'https://github.com/git-for-windows/git/releases/download/v2.10.0.windows.1/Git-2.10.0-32-bit.exe'
+    {% endif %}
+    install_flags: '/VERYSILENT /NORESTART /SP- /NOCANCEL'
+    uninstaller: '{{ PROGRAM_FILES }}\Git\unins000.exe'
+    uninstall_flags: '/VERYSILENT /NORESTART & {{ PROGRAM_FILES }}\Git\unins001.exe /VERYSILENT /NORESTART & exit 0'
+    msiexec: False
+    locale: en_US
+    reboot: False
   '2.9.0':
     full_name: 'Git version 2.9.0'
     {% if grains['cpuarch'] == 'AMD64' %}
