@@ -4,7 +4,7 @@
     {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {% endif %}
 winscp:
-  {% for version, file_version in [('5.9', '5.9')] %}
+  {% for version, file_version in [('5.9.1', '5.9.1'), ('5.9', '5.9')] %}
   '{{ version }}':
     full_name: 'WinSCP {{ version }}'
     installer: 'https://sourceforge.net/project/winscp/files/WinSCP/{{ version }}/winscp-{{ file_version }}-setup.exe'
