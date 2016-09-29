@@ -15,17 +15,3 @@ urlrewrite:
     msiexec: True
     locale: en_US
     reboot: False
-  '7.1.0490.43':
-    full_name: 'Microsoft URL Rewrite Module 1.1 for IIS 7'
-    {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'http://download.microsoft.com/download/0/3/E/03EBE3E1-494A-4DC7-B04B-F2B0A35FA988/rewrite_1.1_amd64_en-US.msi'
-    uninstaller: 'http://download.microsoft.com/download/0/3/E/03EBE3E1-494A-4DC7-B04B-F2B0A35FA988/rewrite_1.1_amd64_en-US.msi'
-    {% elif grains['cpuarch'] == 'x86' %}
-    installer: 'http://download.microsoft.com/download/0/4/D/04DF5782-1A23-41FF-82CE-B59426A06472/rewrite_1.1_x86_en-US.msi'
-    uninstaller: 'http://download.microsoft.com/download/0/4/D/04DF5782-1A23-41FF-82CE-B59426A06472/rewrite_1.1_x86_en-US.msi'
-    {% endif %}
-    install_flags: '/quiet /norestart'
-    uninstall_flags: '/quiet /norestart'
-    msiexec: True
-    locale: en_US
-    reboot: False
