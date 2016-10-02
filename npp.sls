@@ -5,7 +5,7 @@
     {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {% endif %}
 npp:
-  {% for maj_version, version, sversion in [('7.x', '7.0', '7'),('6.x', '6.9.2', '6.9.2'), ('6.x', '6.9.1', '6.9.1'),('6.x', '6.9', '6.9'),('6.x', '6.8.8', '6.8.8'),('6.x', '6.8', '6.8'),('6.x', '6.7.9.2', '6.7.9.2'),('6.x', '6.4.2', '6.4.2')] %}
+  {% for maj_version, version, sversion in [('7.x', '7.0', '7')] %}
   '{{ version }}':
     full_name: Notepad++
     installer: 'https://notepad-plus-plus.org/repository/{{ maj_version }}/{{ version }}/npp.{{ sversion }}.Installer.exe'
