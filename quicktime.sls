@@ -1,7 +1,8 @@
 quicktime:
   '7.79.80.95':
     full_name: 'QuickTime 7'
-    installer: 'https://secure-appldnld.apple.com/quicktime/031-27600-20150820-F20FB1EF-6710-46BD-99B3-7DCF1253B310/QuickTimeInstaller.exe'
+    #installer: 'https://secure-appldnld.apple.com/quicktime/031-27600-20150820-F20FB1EF-6710-46BD-99B3-7DCF1253B310/QuickTimeInstaller.exe'
+    installer: 'salt://win/repo-ng/quicktime/QuickTimeInstaller.exe'
     {% if grains['cpuarch'] == 'AMD64' %}
     uninstall_flags: |
                      '/qn /x {FFD1F7F1-1AC9-4BC4-A908-0686D635ABAF} /norestart &
