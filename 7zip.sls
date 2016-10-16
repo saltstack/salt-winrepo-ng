@@ -1,7 +1,7 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available
 {% set PROGRAM_FILES = "%ProgramFiles%" %}
 7zip:
-  '16.04.00.0':
+  '16.04':
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name: '7-Zip 16.04 (x64 edition)'
     installer: 'http://d.7-zip.org/a/7z1604-x64.msi'
@@ -16,7 +16,7 @@
     msiexec: True
     locale: en_US
     reboot: False
-  '16.03.00.0':
+  '16.03':
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name: '7-Zip 16.03 (x64 edition)'
     installer: 'http://d.7-zip.org/a/7z1603-x64.msi'
@@ -31,7 +31,7 @@
     msiexec: True
     locale: en_US
     reboot: False
-  '16.02.00.0':
+  '16.02':
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name: '7-Zip 16.02 (x64 edition)'
     installer: 'http://d.7-zip.org/a/7z1602-x64.msi'
@@ -46,7 +46,7 @@
     msiexec: True
     locale: en_US
     reboot: False
-  '16.00.00.0':
+  '16.00':
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name: '7-Zip 16.00 (x64 edition)'
     installer: 'http://d.7-zip.org/a/7z1600-x64.msi'
@@ -61,7 +61,7 @@
     msiexec: True
     locale: en_US
     reboot: False
-  '9.20.00.0':
+  '9.20':
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name: '7-Zip 9.20 (x64 edition)'
     installer: 'http://heanet.dl.sourceforge.net/project/sevenzip/7-Zip/9.20/7z920-x64.msi'
