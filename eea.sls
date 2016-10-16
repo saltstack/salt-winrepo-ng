@@ -13,7 +13,7 @@ eea:
     msiexec: True
     locale: en_US
     reboot: False
-    #cache_dir: True
+    cache_dir: True
     use_scheduler: True
 #  '6.3.2016.0':
 #    full_name: 'ESET Endpoint Antivirus'
