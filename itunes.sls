@@ -1,5 +1,4 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available
-{% set PROGRAM_FILES = "%ProgramFiles%" %}
 itunes:
   '12.5.1.21':
     full_name: 'iTunes'
@@ -21,7 +20,7 @@ itunes:
     # Apple Application Support (64-bit) v. 5.0.1 {5905C8CF-1C88-4478-A48E-4E458AD1BC7E}
     # iTunes v. 12.5.1.21 {9946A4F7-E0FD-4A33-82D1-06CBFFBBB9F9}
     {% elif grains['cpuarch'] == 'x86' %}
-    installer: 'https://secure-appldnld.apple.com/itunes12/031-64240-20160718-320EDB30-49E1-11E6-8F30-9FD2CF9F5A9B/iTunesSetup.exe'
+    installer: 'https://secure-appldnld.apple.com/itunes12/031-77741-20160913-C951D5F4-792C-11E6-85DE-C41234D2D062/iTunesSetup.exe'
     uninstall_flags: |
                      '/qn /norestart /x {D168AAD0-6686-47C1-B599-CDD4888B9D1A} &
                      msiexec.exe /qn /norestart /x {56EC47AA-5813-4FF6-8E75-544026FBEA83} &
