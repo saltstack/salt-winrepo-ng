@@ -5,10 +5,10 @@
     {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {% endif %}
 npp:
-  {% for maj_version, version, sversion in [('7.x', '7.0', '7')] %}
-  '{{ version }}':
-    full_name: Notepad++
-    installer: 'https://notepad-plus-plus.org/repository/{{ maj_version }}/{{ version }}/npp.{{ sversion }}.Installer.exe'
+  {% for maj_version, f_version, s_version in [('7.x', '7.0', '7')] %}
+  '{{ f_version }}':
+    full_name: 'Notepad++'
+    installer: 'https://notepad-plus-plus.org/repository/{{ maj_version }}/{{ f_version }}/npp.{{ s_version }}.Installer.exe'
     install_flags: '/S'
     uninstaller: '{{ PROGRAM_FILES }}\Notepad++\uninstall.exe'
     uninstall_flags: '/S'
