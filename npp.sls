@@ -6,7 +6,7 @@
 {% endif %}
 npp:
   {% for maj_version, f_version, s_version in [('7.x', '7.0', '7')] %}
-  '{{ f_version }}':
+  '{{ s_version }}':
     full_name: 'Notepad++'
     installer: 'https://notepad-plus-plus.org/repository/{{ maj_version }}/{{ f_version }}/npp.{{ s_version }}.Installer.exe'
     install_flags: '/S'
