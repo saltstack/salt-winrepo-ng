@@ -14,3 +14,5 @@ parallels-client-15:
     msiexec: True
     locale: en_US
     reboot: False
+# The latest RAS clients can be downloaded for FREE from:
+# http://www.parallels.com/uk/products/ras/download/links/
