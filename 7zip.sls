@@ -1,7 +1,7 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available
 {% set PROGRAM_FILES = "%ProgramFiles%" %}
 7zip:
-  '16.04':
+  '16.04.00.0':
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name: '7-Zip 16.04 (x64 edition)'
     installer: 'http://d.7-zip.org/a/7z1604-x64.msi'
