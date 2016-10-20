@@ -1,4 +1,5 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available
+{% set PROGRAM_FILES = "%ProgramFiles%" %}
 irfanview:
   '4.42':
     {% if grains['cpuarch'] == 'AMD64' %}
