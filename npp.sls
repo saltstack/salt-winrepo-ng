@@ -5,7 +5,7 @@
     {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {% endif %}
 npp:
-  {% for maj_version, f_version, s_version in [('7.x', '7.1', '7.1')] %}
+  {% for maj_version, f_version, s_version in [('7.x', '7.2.2', '7.2.2')] %}
   '{{ s_version }}':
     full_name: 'Notepad++ (32-bit x86)'
     installer: 'https://notepad-plus-plus.org/repository/{{ maj_version }}/{{ f_version }}/npp.{{ s_version }}.Installer.exe'
@@ -17,4 +17,4 @@ npp:
     reboot: False
   {% endfor %}
 # the 64-bit installer is available from:
-# https://notepad-plus-plus.org/repository/7.x/7.1/npp.7.1.Installer.x64.exe
+# https://notepad-plus-plus.org/repository/7.x/7.2.2/npp.7.2.2.Installer.x64.exe
