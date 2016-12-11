@@ -10,23 +10,23 @@ maas360bootanalyzer:
     installer: 'salt://win/repo-ng/maas360bootanalyzer/bootanalyzerinstaller.exe'
     {% if grains['cpuarch'] == 'AMD64' %}
     install_flags: |
-                   '/S' &
+                   '/S &
                    reg ADD HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\MaaS360BootAnalyzer /f &
                    reg ADD HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\MaaS360BootAnalyzer /f /v DisplayName /d "MaaS360 Boot Analyzer v 1.0.0" &
                    reg ADD HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\MaaS360BootAnalyzer /f /v DisplayVersion /d 1.0.0 &
                    reg ADD HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\MaaS360BootAnalyzer /f /v UninstallString /d "C:\Program Files (x86)\BootAnalyzer\Uninstall.exe" &
                    reg ADD HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\MaaS360BootAnalyzer /f /v Publisher /d "installed by salt winrepo-ng" &
-                   reg ADD HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\MaaS360BootAnalyzer /f /v URLUpdateInfo /d "https://chocolatey.org" &
+                   reg ADD HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\MaaS360BootAnalyzer /f /v URLUpdateInfo /d "http://www.maas360.com" &
                    exit 0'
     {% elif grains['cpuarch'] == 'x86' %}
     install_flags: |
-                   '/S' &
+                   '/S &
                    reg ADD HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\MaaS360BootAnalyzer /f &
                    reg ADD HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\MaaS360BootAnalyzer /f /v DisplayName /d "MaaS360 Boot Analyzer v 1.0.0" &
                    reg ADD HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\MaaS360BootAnalyzer /f /v DisplayVersion /d 1.0.0 &
                    reg ADD HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\MaaS360BootAnalyzer /f /v UninstallString /d "C:\Program Files\BootAnalyzer\Uninstall.exe" &
                    reg ADD HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\MaaS360BootAnalyzer /f /v Publisher /d "installed by salt winrepo-ng" &
-                   reg ADD HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\MaaS360BootAnalyzer /f /v URLUpdateInfo /d "https://chocolatey.org" &
+                   reg ADD HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\MaaS360BootAnalyzer /f /v URLUpdateInfo /d "http://www.maas360.com" &
                    exit 0'
     {% endif %}
     uninstaller: '{{ PROGRAM_FILES }}\MaaS360\BootAnalyzer\Uninstall.exe'
@@ -34,3 +34,4 @@ maas360bootanalyzer:
     msiexec: False
     locale: en_US
     reboot: False
+# download installer for MaaS360 Boot analyzer from internet and put in salt master win repo-ng directory
