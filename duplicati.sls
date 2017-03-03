@@ -1,5 +1,4 @@
 duplicati:
-  skip_urltest: True
   '1.3.4':
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name: 'Duplicati (x64)'

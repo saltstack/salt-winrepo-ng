@@ -5,7 +5,7 @@
     {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {% endif %}
 intellij-ultimate:
-  {% for version in '14.1.4' %}
+  {% for version in ['14.1.4'] %}
   '{{ version }}':
     full_name: 'IntelliJ IDEAS Ultimate {{ version }}'
     installer: 'https://download.jetbrains.com/idea/ideaIU-{{ version }}.exe'

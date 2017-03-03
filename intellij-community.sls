@@ -5,7 +5,7 @@
     {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {% endif %}
 intellij-community:
-  {% for version in '14.1.4' %}
+  {% for version in ['14.1.4'] %}
   '{{ version }}':
     full_name: 'IntelliJ IDEAS Community Edition {{ version }}'
     installer: 'https://download.jetbrains.com/idea/ideaIC-{{ version }}.exe'
