@@ -4,7 +4,7 @@ virtualbox:
     installer: 'http://download.virtualbox.org/virtualbox/5.1.4/VirtualBox-5.1.4-110228-Win.exe'
     install_flags: '--silent'
     uninstaller: 'msiexec.exe'
-    uninstall_flags: '/qn /x {4EF3FBF6-697D-440A-AADA-7F5D39B73E62} /norestart'
+    uninstall_flags: '/qn /x {6AE61854-0F78-49E3-ABBC-586FB43CE709} /norestart'
     msiexec: False
     locale: en_US
     reboot: False
