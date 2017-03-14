@@ -5,7 +5,7 @@
     {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {% endif %}
 npp:
-  {% for maj_version, f_version, s_version in [('7.x', '7.3.1', '7.3.1')] %}
+  {% for maj_version, f_version, s_version in [('7.x', '7.3.3', '7.3.3')] %}
   '{{ s_version }}':
     full_name: 'Notepad++ (32-bit x86)'
     installer: 'https://notepad-plus-plus.org/repository/{{ maj_version }}/{{ f_version }}/npp.{{ s_version }}.Installer.exe'
