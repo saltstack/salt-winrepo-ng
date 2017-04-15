@@ -1,3 +1,4 @@
+{% set PROGRAM_FILES = "%ProgramFiles%" %}
 bulkrenameutility:
   {% for version in ['3.0.0.1' ] %}
   '{{ version }}':
@@ -13,4 +14,5 @@ bulkrenameutility:
     msiexec: False
     locale: en_US
     reboot: False
-  {% endfor %
+  {% endfor %}
+  
