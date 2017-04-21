@@ -1,6 +1,6 @@
 # just 32-bit x86 installer available
 putty:
-{% for version in '0.68' %}
+{% for version in ['0.68'] %}
   '{{ version }}':
     full_name:  'PuTTY release {{ version }}'
     {% if grains['cpuarch'] == 'AMD64' %}
@@ -16,7 +16,7 @@ putty:
     locale: en_US
     reboot: False
   {% endfor %}
-{% for version in '0.67', '0.66', '0.65', '0.64' %}
+{% for version in ['0.67', '0.66', '0.65', '0.64'] %}
   {% if grains['cpuarch'] == 'AMD64' %}
     {% set PROGRAM_FILES = "%ProgramFiles(x86)%" %}
   {% else %}
