@@ -1,4 +1,22 @@
 virtualbox:
+  '5.1.16':
+    full_name: 'Oracle VM VirtualBox 5.1.16'
+    installer: 'http://download.virtualbox.org/virtualbox/5.1.16/VirtualBox-5.1.16-113841-Win.exe'
+    install_flags: '--silent'
+    uninstaller: 'msiexec.exe'
+    uninstall_flags: '/qn /x {8834A1E1-4C15-431B-9268-3463F726AB13} /norestart'
+    msiexec: False
+    locale: en_US
+    reboot: False
+  '5.1.14':
+    full_name: 'Oracle VM VirtualBox 5.1.14'
+    installer: 'http://download.virtualbox.org/virtualbox/5.1.14/VirtualBox-5.1.14-112924-Win.exe'
+    install_flags: '--silent'
+    uninstaller: 'msiexec.exe'
+    uninstall_flags: '/qn /x {6AE61854-0F78-49E3-ABCC-586FB43CE709} /norestart'
+    msiexec: False
+    locale: en_US
+    reboot: False
   '5.1.4':
     full_name: 'Oracle VM VirtualBox 5.1.4'
     installer: 'http://download.virtualbox.org/virtualbox/5.1.4/VirtualBox-5.1.4-110228-Win.exe'
