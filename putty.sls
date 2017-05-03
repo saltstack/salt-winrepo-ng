@@ -5,17 +5,17 @@ putty:
     full_name:  'PuTTY release {{ version }}'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'https://the.earth.li/~sgtatham/putty/{{ version }}/w64/putty-64bit-{{ version }}-installer.msi'
-	uninstaller: 'https://the.earth.li/~sgtatham/putty/{{ version }}/w64/putty-64bit-{{ version }}-installer.msi'
+    uninstaller: 'https://the.earth.li/~sgtatham/putty/{{ version }}/w64/putty-64bit-{{ version }}-installer.msi'
     {% elif grains['cpuarch'] == 'x86' %}
     installer: 'https://the.earth.li/~sgtatham/putty/{{ version }}/w32/putty-{{ version }}-installer.msi'
-	uninstaller: 'https://the.earth.li/~sgtatham/putty/{{ version }}/w32/putty-{{ version }}-installer.msi'
+    uninstaller: 'https://the.earth.li/~sgtatham/putty/{{ version }}/w32/putty-{{ version }}-installer.msi'
     {% endif %}
     install_flags: ' /qn '
     uninstall_flags: ' /qn '
     msiexec: True
     locale: en_US
     reboot: False
-  {% endfor %}
+{% endfor %}
 {% for version in ['0.67', '0.66', '0.65', '0.64'] %}
   {% if grains['cpuarch'] == 'AMD64' %}
     {% set PROGRAM_FILES = "%ProgramFiles(x86)%" %}
@@ -31,4 +31,4 @@ putty:
     msiexec: False
     locale: en_US
     reboot: False
-  {% endfor %}
+{% endfor %}
