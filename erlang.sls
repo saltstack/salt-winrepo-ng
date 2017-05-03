@@ -5,7 +5,7 @@
 {% endif %}
 erlang:
   '19.3':
-    full_name: 'Erlang'
+    full_name: 'Erlang OTP (8.3)'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'http://erlang.org/download/otp_win64_19.3.exe'
     {% elif grains['cpuarch'] == 'x86' %}
