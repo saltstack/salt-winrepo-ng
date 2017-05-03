@@ -1,6 +1,6 @@
 # just 32-bit x86 installer available
 putty:
-{% for version in ['0.68'] %}
+{% for version in ['0.68', '0.69'] %}
   '{{ version }}':
     full_name:  'PuTTY release {{ version }}'
     {% if grains['cpuarch'] == 'AMD64' %}
