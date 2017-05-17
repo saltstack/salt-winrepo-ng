@@ -64,12 +64,12 @@
   '9.20.00.0':
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name: '7-Zip 9.20 (x64 edition)'
-    installer: 'http://heanet.dl.sourceforge.net/project/sevenzip/7-Zip/9.20/7z920-x64.msi'
-    uninstaller: 'http://heanet.dl.sourceforge.net/project/sevenzip/7-Zip/9.20/7z920-x64.msi'
+    installer: 'http://ayera.dl.sourceforge.net/project/sevenzip/7-Zip/9.20/7z920-x64.msi'
+    uninstaller: 'http://ayera.dl.sourceforge.net/project/sevenzip/7-Zip/9.20/7z920-x64.msi'
     {% elif grains['cpuarch'] == 'x86' %}
     full_name: '7-Zip 9.20'
-    installer: 'http://heanet.dl.sourceforge.net/project/sevenzip/7-Zip/9.20/7z920.msi'
-    uninstaller: 'http://heanet.dl.sourceforge.net/project/sevenzip/7-Zip/9.20/7z920.msi'
+    installer: 'http://ayera.dl.sourceforge.net/project/sevenzip/7-Zip/9.20/7z920.msi'
+    uninstaller: 'http://ayera.dl.sourceforge.net/project/sevenzip/7-Zip/9.20/7z920.msi'
     {% endif %}
     install_flags: '/qn /norestart'
     uninstall_flags: '/qn /norestart'
