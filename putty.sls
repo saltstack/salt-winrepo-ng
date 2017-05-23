@@ -1,15 +1,15 @@
-# just 32-bit x86 installer available
 putty:
-{% for version in ['0.68', '0.69'] %}
-  '{{ version }}':
-    full_name:  'PuTTY release {{ version }}'
+{% for version in ['0.69', '0.68'] %}
+  '{{ version }}.0.0':
     {% if grains['cpuarch'] == 'AMD64' %}
+    {% set ver_arch = " (64-bit)" %}
     installer: 'https://the.earth.li/~sgtatham/putty/{{ version }}/w64/putty-64bit-{{ version }}-installer.msi'
     uninstaller: 'https://the.earth.li/~sgtatham/putty/{{ version }}/w64/putty-64bit-{{ version }}-installer.msi'
     {% elif grains['cpuarch'] == 'x86' %}
     installer: 'https://the.earth.li/~sgtatham/putty/{{ version }}/w32/putty-{{ version }}-installer.msi'
     uninstaller: 'https://the.earth.li/~sgtatham/putty/{{ version }}/w32/putty-{{ version }}-installer.msi'
     {% endif %}
+    full_name:  'PuTTY release {{ version }}{{ ver_arch | default('') }}'
     install_flags: ' /qn '
     uninstall_flags: ' /qn '
     msiexec: True
