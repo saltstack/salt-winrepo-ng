@@ -6,7 +6,7 @@
 windirstat:
   Not Found:
     full_name: 'WinDirStat 1.1.2'
-    installer: 'https://www.fosshub.com/WinDirStat.html/windirstat1_1_2_setup.exe'
+    installer: 'http://download01.windirstat.info/windirstat1_1_2_setup.exe'
     install_flags: '/S'
     uninstaller: '{{ PROGRAM_FILES }}\WinDirStat\uninstall.exe'
     uninstall_flags: '/S'
