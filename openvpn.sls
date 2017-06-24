@@ -1,12 +1,18 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available
 {% set PROGRAM_FILES = "%ProgramFiles%" %}
-openvpn:  
-  '2.3.12':
-    full_name: 'OpenVPN 2.3.12-I601'
+openvpn: 
+  {% for version in ['2.3.12'] %}
+  {% if version in ['2.3.10'] %}
+    {% set win_ver = "I603" %}
+  {% else %}
+    {% set win_ver = "I601" %}
+  {% endif %}
+  '{{ version }}':
+    full_name: 'OpenVPN {{ version }}-{{ win_ver }} ' # Note: the OpenVPN installer adds a space at the end of its install string
     {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'https://swupdate.openvpn.org/community/releases/openvpn-install-2.3.12-I601-x86_64.exe'
+    installer: 'https://swupdate.openvpn.org/community/releases/openvpn-install-{{ version }}-{{ win_ver }}-x86_64.exe'
     {% elif grains['cpuarch'] == 'x86' %}
-    installer: 'https://swupdate.openvpn.org/community/releases/openvpn-install-2.3.12-I601-i686.exe'
+    installer: 'https://swupdate.openvpn.org/community/releases/openvpn-install-{{ version }}-{{ win_ver }}-i686.exe'
     {% endif %}
     install_flags: '/S /SELECT_OPENSSL_UTILITIES=1 /SELECT_EASYRSA=1 /SELECTSHORTCUTS=1 /SELECTOPENVPN=1 /SELECTASSOCIATIONS=1 /SELECTOPENVPNGUI=1 /SELECTPATH=1'
     uninstaller: '%ProgramFiles%\OpenVPN\Uninstall.exe'
@@ -14,6 +20,7 @@ openvpn:
     msiexec: False
     locale: en_US
     reboot: False
+  {% endfor %}
   '2.3.11':
     full_name: 'OpenVPN 2.3.11-I601'
     {% if grains['cpuarch'] == 'AMD64' %}
