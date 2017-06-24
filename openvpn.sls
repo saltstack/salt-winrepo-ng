@@ -1,7 +1,7 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available
 {% set PROGRAM_FILES = "%ProgramFiles%" %}
 openvpn: 
-  {% for version in ['2.3.12-I601', '2.3.11-I601', '2.3.10-I603', '2.3.8-I601', '2.3.6-I601'] %}
+  {% for version in ['2.3.17-I601', '2.3.12-I601', '2.3.11-I601', '2.3.10-I603', '2.3.8-I601', '2.3.6-I601'] %}
   '{{ version }}':
     full_name: 'OpenVPN {{ version }} ' # Note: the OpenVPN installer adds a space at the end of its install string
     {% if grains['cpuarch'] == 'AMD64' %}
