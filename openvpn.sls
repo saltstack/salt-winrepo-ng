@@ -1,21 +1,17 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available
-{% set PROGRAM_FILES = "%ProgramFiles%" %}
+{% set arch = {'AMD64': '-x86_64', 'x86': '-i686'}[grains['cpuarch']] %}
 openvpn: 
-  {% for version in ['2.3.17-I601', '2.3.12-I601', '2.3.11-I601', '2.3.10-I603', '2.3.8-I601', '2.3.6-I601'] %}
+{% for version in ['2.3.17-I601', '2.3.12-I601', '2.3.11-I601', '2.3.10-I603', '2.3.8-I601', '2.3.6-I601'] %}
   '{{ version }}':
     full_name: 'OpenVPN {{ version }} ' # Note: the OpenVPN installer adds a space at the end of its install string
-    {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'https://swupdate.openvpn.org/community/releases/openvpn-install-{{ version }}-x86_64.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
-    installer: 'https://swupdate.openvpn.org/community/releases/openvpn-install-{{ version }}-i686.exe'
-    {% endif %}
+    installer: 'https://swupdate.openvpn.org/community/releases/openvpn-install-{{ version }}{{ arch }}.exe'
     install_flags: '/S /SELECT_OPENSSL_UTILITIES=1 /SELECT_EASYRSA=1 /SELECTSHORTCUTS=1 /SELECTOPENVPN=1 /SELECTASSOCIATIONS=1 /SELECTOPENVPNGUI=1 /SELECTPATH=1'
     uninstaller: '%ProgramFiles%\OpenVPN\Uninstall.exe'
     uninstall_flags: '/S'
     msiexec: False
     locale: en_US
     reboot: False
-  {% endfor %}
+{% endfor %}
 #
 # https://chocolatey.org/packages/openvpn
 # Install with the following options:
