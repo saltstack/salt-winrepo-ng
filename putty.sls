@@ -1,5 +1,5 @@
 putty:
-{% for version in ['0.69', '0.68'] %}
+{% for version in ['0.70', '0.69', '0.68'] %}
   '{{ version }}.0.0':
     {% if grains['cpuarch'] == 'AMD64' %}
     {% set ver_arch = " (64-bit)" %}
