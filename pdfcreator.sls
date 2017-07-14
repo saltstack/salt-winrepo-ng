@@ -5,9 +5,9 @@
     {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {% endif %}
 pdfcreator:
-  '2.4.0':
+  '2.5.0':
     full_name: 'PDFCreator'
-    installer: 'http://white.download.pdfforge.org/pdfcreator/2.4.0/PDFCreator-2_4_0-Setup.exe'
+    installer: 'http://white.download.pdfforge.org/pdfcreator/2.5.0/PDFCreator-2_5_0-Setup.exe'
     install_flags: '/VERYSILENT /NORESTART /DontUseYahooSearch /SP-'
     uninstaller: '{{ PROGRAM_FILES }}\PDFCreator\unins000.exe'
     uninstall_flags: '/verysilent'
