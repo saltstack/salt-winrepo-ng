@@ -18,13 +18,13 @@ salt-minion-py3:
     {% endif %}
   {% endfor %}
   {% raw %}
-  #install_flags: '/S /master={{ salt['pillar.get']('salt:master', 'salt.domain.tld') }} /minion-id={{ salt['pillar.get']('salt:minion:ids:' ~ grains['host'] }}'
+    #install_flags: '/S /master={{ salt['pillar.get']('salt:master', 'salt.domain.tld') }} /minion-id={{ salt['pillar.get']('salt:minion:ids:' ~ grains['host'] }}'
   {% endraw %}
-  install_flags: '/S'
-  uninstaller: 'C:\salt\uninst.exe'
-  uninstall_flags: '/S'
-  refresh: true
-  msiexec: False
-  use_scheduler: True
-  reboot: False
+    install_flags: '/S'
+    uninstaller: 'C:\salt\uninst.exe'
+    uninstall_flags: '/S'
+    refresh: true
+    msiexec: False
+    use_scheduler: True
+    reboot: False
 
