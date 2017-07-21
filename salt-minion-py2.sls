@@ -22,6 +22,16 @@ salt-minion:
     {% elif grains['cpuarch'] == 'x86' %}
     installer: 'https://repo.saltstack.com/windows/Salt-Minion-{{ version }}-Py2-x86-Setup.exe'
     {% endif %}
+    {% raw %}
+    #install_flags: '/S /master={{ salt['pillar.get']('salt:master', 'salt.domain.tld') }} /minion-id={{ salt['pillar.get']('salt:minion:ids:' ~ grains['host'] }}'
+    {% endraw %}
+    install_flags: '/S'
+    uninstaller: 'C:\salt\uninst.exe'
+    uninstall_flags: '/S'
+    refresh: true
+    msiexec: False
+    use_scheduler: True
+    reboot: False
   {% endfor %}
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Add versions from older branches here:
@@ -34,10 +44,9 @@ salt-minion:
     {% elif grains['cpuarch'] == 'x86' %}
     installer: 'https://repo.saltstack.com/windows/Salt-Minion-{{ version }}-x86-Setup.exe'
     {% endif %}
-  {% endfor %}
-  {% raw %}
+    {% raw %}
     #install_flags: '/S /master={{ salt['pillar.get']('salt:master', 'salt.domain.tld') }} /minion-id={{ salt['pillar.get']('salt:minion:ids:' ~ grains['host'] }}'
-  {% endraw %}
+    {% endraw %}
     install_flags: '/S'
     uninstaller: 'C:\salt\uninst.exe'
     uninstall_flags: '/S'
@@ -45,4 +54,5 @@ salt-minion:
     msiexec: False
     use_scheduler: True
     reboot: False
+  {% endfor %}
 
