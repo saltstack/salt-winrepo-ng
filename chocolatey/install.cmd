@@ -18,9 +18,11 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Chocolatey" /v
 :: Copy uninstall to Chocolatey install dir
 If Exist C:\ProgramData\Chocolatey (
     type %DIR%uninstall.cmd > C:\ProgramData\Chocolatey\uninstall.cmd
+    type %DIR%uninstall.ps1 > C:\ProgramData\Chocolatey\uninstall.ps1
     reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Chocolatey" /v UninstallString /d "C:\ProgramData\Chocolatey\uninstall.cmd" /f
 )
 If Exist C:\Chocolatey (
     type %DIR%uninstall.cmd > C:\Chocolatey\uninstall.cmd
+    type %DIR%uninstall.ps1 > C:\Chocolatey\uninstall.ps1
     reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Chocolatey" /v UninstallString /d "C:\Chocolatey\uninstall.cmd" /f
 )
