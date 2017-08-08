@@ -2,10 +2,10 @@
 reg DELETE "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /f /v ChocolateyInstall
 reg DELETE "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /f /v ChocolateyBinRoot
 reg DELETE "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /f /v ChocolateyToolsLocation
-reg DELETE "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /f /v ChocolateyLastPathUpdate
+reg DELETE "HKCU\Environment" /f /v ChocolateyLastPathUpdate
 
 :: Remove from Path
-setx Path "%PATH:C:\ProgramData\chocolatey\bin;=%"
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /f /v Path /d "%PATH:C:\ProgramData\chocolatey\bin;=%"
 
 :: Remove Registry Entry for Add/Remove Programs
 reg DELETE "HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\Chocolatey" /f
