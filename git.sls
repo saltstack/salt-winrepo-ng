@@ -1,12 +1,20 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available
 {% set PROGRAM_FILES = "%ProgramFiles%" %}
 git:
-  '2.12.2':
-    full_name: 'Git version 2.12.2'
+  {% for version in ['2.13.3', '2.13.1.2', '2.12.2', '2.12.1', '2.11.0.3', '2.11.0', '2.10.2', '2.10.1', '2.10.0', '2.9.0', '2.8.4', '2.8.3', '2.8.2', '2.8.1', '2.7.2', '2.7.1', '2.7.0', '2.6.4', '2.6.2', '2.5.3', '2.5.2.2', '2.5.0'] %}
+    {% if version.count('.') == 3  %}
+      {% set short_version = version[:-2] %}
+      {% set win_ver = version[-1:] %}
+    {% else %}
+      {% set short_version = version %}
+      {% set win_ver = "1" %}
+    {% endif %}
+  '{{ version }}':
+    full_name: 'Git version {{ version }}'
     {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'https://github.com/git-for-windows/git/releases/download/v2.12.2.windows.1/Git-2.12.2-64-bit.exe'
+    installer: 'https://github.com/git-for-windows/git/releases/download/v{{ short_version }}.windows.{{ win_ver }}/Git-{{ version }}-64-bit.exe'
     {% elif grains['cpuarch'] == 'x86' %}
-    installer: 'https://github.com/git-for-windows/git/releases/download/v2.12.2.windows.1/Git-2.12.2-32-bit.exe'
+    installer: 'https://github.com/git-for-windows/git/releases/download/v{{ short_version }}.windows.{{ win_ver }}/Git-{{ version }}-32-bit.exe'
     {% endif %}
     install_flags: '/VERYSILENT /NORESTART /SP- /NOCANCEL'
     uninstaller: '{{ PROGRAM_FILES }}\Git\unins000.exe'
@@ -14,253 +22,7 @@ git:
     msiexec: False
     locale: en_US
     reboot: False
-  '2.12.1':
-    full_name: 'Git version 2.12.1'
-    {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'https://github.com/git-for-windows/git/releases/download/v2.12.1.windows.1/Git-2.12.1-64-bit.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
-    installer: 'https://github.com/git-for-windows/git/releases/download/v2.12.1.windows.1/Git-2.12.1-32-bit.exe'
-    {% endif %}
-    install_flags: '/VERYSILENT /NORESTART /SP- /NOCANCEL'
-    uninstaller: '{{ PROGRAM_FILES }}\Git\unins000.exe'
-    uninstall_flags: '/VERYSILENT /NORESTART & {{ PROGRAM_FILES }}\Git\unins001.exe /VERYSILENT /NORESTART & exit 0'
-    msiexec: False
-    locale: en_US
-    reboot: False
-  '2.11.0.3':
-    full_name: 'Git version 2.11.0.3'
-    {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'https://github.com/git-for-windows/git/releases/download/v2.11.0.windows.3/Git-2.11.0.3-64-bit.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
-    installer: 'https://github.com/git-for-windows/git/releases/download/v2.11.0.windows.3/Git-2.11.0.3-32-bit.exe'
-    {% endif %}
-    install_flags: '/VERYSILENT /NORESTART /SP- /NOCANCEL'
-    uninstaller: '{{ PROGRAM_FILES }}\Git\unins000.exe'
-    uninstall_flags: '/VERYSILENT /NORESTART & {{ PROGRAM_FILES }}\Git\unins001.exe /VERYSILENT /NORESTART & exit 0'
-    msiexec: False
-    locale: en_US
-    reboot: False
-  '2.11.0':
-    full_name: 'Git version 2.11.0'
-    {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'https://github.com/git-for-windows/git/releases/download/v2.11.0.windows.1/Git-2.11.0-64-bit.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
-    installer: 'https://github.com/git-for-windows/git/releases/download/v2.11.0.windows.1/Git-2.11.0-32-bit.exe'
-    {% endif %}
-    install_flags: '/VERYSILENT /NORESTART /SP- /NOCANCEL'
-    uninstaller: '{{ PROGRAM_FILES }}\Git\unins000.exe'
-    uninstall_flags: '/VERYSILENT /NORESTART & {{ PROGRAM_FILES }}\Git\unins001.exe /VERYSILENT /NORESTART & exit 0'
-    msiexec: False
-    locale: en_US
-    reboot: False
-  '2.10.2':
-    full_name: 'Git version 2.10.2'
-    {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'https://github.com/git-for-windows/git/releases/download/v2.10.2.windows.1/Git-2.10.2-64-bit.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
-    installer: 'https://github.com/git-for-windows/git/releases/download/v2.10.2.windows.1/Git-2.10.2-32-bit.exe'
-    {% endif %}
-    install_flags: '/VERYSILENT /NORESTART /SP- /NOCANCEL'
-    uninstaller: '{{ PROGRAM_FILES }}\Git\unins000.exe'
-    uninstall_flags: '/VERYSILENT /NORESTART & {{ PROGRAM_FILES }}\Git\unins001.exe /VERYSILENT /NORESTART & exit 0'
-    msiexec: False
-    locale: en_US
-    reboot: False
-  '2.10.1':
-    full_name: 'Git version 2.10.1'
-    {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'https://github.com/git-for-windows/git/releases/download/v2.10.1.windows.1/Git-2.10.1-64-bit.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
-    installer: 'https://github.com/git-for-windows/git/releases/download/v2.10.1.windows.1/Git-2.10.1-32-bit.exe'
-    {% endif %}
-    install_flags: '/VERYSILENT /NORESTART /SP- /NOCANCEL'
-    uninstaller: '{{ PROGRAM_FILES }}\Git\unins000.exe'
-    uninstall_flags: '/VERYSILENT /NORESTART & {{ PROGRAM_FILES }}\Git\unins001.exe /VERYSILENT /NORESTART & exit 0'
-    msiexec: False
-    locale: en_US
-    reboot: False
-  '2.10.0':
-    full_name: 'Git version 2.10.0'
-    {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'https://github.com/git-for-windows/git/releases/download/v2.10.0.windows.1/Git-2.10.0-64-bit.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
-    installer: 'https://github.com/git-for-windows/git/releases/download/v2.10.0.windows.1/Git-2.10.0-32-bit.exe'
-    {% endif %}
-    install_flags: '/VERYSILENT /NORESTART /SP- /NOCANCEL'
-    uninstaller: '{{ PROGRAM_FILES }}\Git\unins000.exe'
-    uninstall_flags: '/VERYSILENT /NORESTART & {{ PROGRAM_FILES }}\Git\unins001.exe /VERYSILENT /NORESTART & exit 0'
-    msiexec: False
-    locale: en_US
-    reboot: False
-  '2.9.0':
-    full_name: 'Git version 2.9.0'
-    {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'https://github.com/git-for-windows/git/releases/download/v2.9.0.windows.1/Git-2.9.0-64-bit.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
-    installer: 'https://github.com/git-for-windows/git/releases/download/v2.9.0.windows.1/Git-2.9.0-32-bit.exe'
-    {% endif %}
-    install_flags: '/VERYSILENT /NORESTART /SP- /NOCANCEL'
-    uninstaller: '{{ PROGRAM_FILES }}\Git\unins000.exe'
-    uninstall_flags: '/VERYSILENT /NORESTART & {{ PROGRAM_FILES }}\Git\unins001.exe /VERYSILENT /NORESTART & exit 0'
-    msiexec: False
-    locale: en_US
-    reboot: False
-  '2.8.4':
-    full_name: 'Git version 2.8.4'
-    {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'https://github.com/git-for-windows/git/releases/download/v2.8.4.windows.1/Git-2.8.4-64-bit.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
-    installer: 'https://github.com/git-for-windows/git/releases/download/v2.8.4.windows.1/Git-2.8.4-32-bit.exe'
-    {% endif %}
-    install_flags: '/VERYSILENT /NORESTART /SP- /NOCANCEL'
-    uninstaller: '{{ PROGRAM_FILES }}\Git\unins000.exe'
-    uninstall_flags: '/VERYSILENT /NORESTART & {{ PROGRAM_FILES }}\Git\unins001.exe /VERYSILENT /NORESTART & exit 0'
-    msiexec: False
-    locale: en_US
-    reboot: False
-  '2.8.3':
-    full_name: 'Git version 2.8.3'
-    {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'https://github.com/git-for-windows/git/releases/download/v2.8.3.windows.1/Git-2.8.3-64-bit.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
-    installer: 'https://github.com/git-for-windows/git/releases/download/v2.8.3.windows.1/Git-2.8.3-32-bit.exe'
-    {% endif %}
-    install_flags: '/VERYSILENT /NORESTART /SP- /NOCANCEL'
-    uninstaller: '{{ PROGRAM_FILES }}\Git\unins000.exe'
-    uninstall_flags: '/VERYSILENT /NORESTART & {{ PROGRAM_FILES }}\Git\unins001.exe /VERYSILENT /NORESTART & exit 0'
-    msiexec: False
-    locale: en_US
-    reboot: False
-  '2.8.2':
-    full_name: 'Git version 2.8.2'
-    {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'https://github.com/git-for-windows/git/releases/download/v2.8.2.windows.1/Git-2.8.2-64-bit.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
-    installer: 'https://github.com/git-for-windows/git/releases/download/v2.8.2.windows.1/Git-2.8.2-32-bit.exe'
-    {% endif %}
-    install_flags: '/VERYSILENT /NORESTART /SP- /NOCANCEL'
-    uninstaller: '{{ PROGRAM_FILES }}\Git\unins000.exe'
-    uninstall_flags: '/VERYSILENT /NORESTART & {{ PROGRAM_FILES }}\Git\unins001.exe /VERYSILENT /NORESTART & exit 0'
-    msiexec: False
-    locale: en_US
-    reboot: False
-  '2.8.1':
-    full_name: 'Git version 2.8.1'
-    {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'https://github.com/git-for-windows/git/releases/download/v2.8.1.windows.1/Git-2.8.1-64-bit.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
-    installer: 'https://github.com/git-for-windows/git/releases/download/v2.8.1.windows.1/Git-2.8.1-32-bit.exe'
-    {% endif %}
-    install_flags: '/VERYSILENT /NORESTART /SP- /NOCANCEL'
-    uninstaller: '{{ PROGRAM_FILES }}\Git\unins000.exe'
-    uninstall_flags: '/VERYSILENT /NORESTART & {{ PROGRAM_FILES }}\Git\unins001.exe /VERYSILENT /NORESTART & exit 0'
-    msiexec: False
-    locale: en_US
-    reboot: False
-  '2.7.2':
-    full_name: 'Git version 2.7.2'
-    {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'https://github.com/git-for-windows/git/releases/download/v2.7.2.windows.1/Git-2.7.2-64-bit.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
-    installer: 'https://github.com/git-for-windows/git/releases/download/v2.7.2.windows.1/Git-2.7.2-32-bit.exe'
-    {% endif %}
-    install_flags: '/VERYSILENT /NORESTART /SP- /NOCANCEL'
-    uninstaller: '{{ PROGRAM_FILES }}\Git\unins000.exe'
-    uninstall_flags: '/VERYSILENT /NORESTART & {{ PROGRAM_FILES }}\Git\unins001.exe /VERYSILENT /NORESTART & exit 0'
-    msiexec: False
-    locale: en_US
-    reboot: False
-  '2.7.1':
-    full_name: 'Git version 2.7.1'
-    {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'https://github.com/git-for-windows/git/releases/download/v2.7.1.windows.1/Git-2.7.1-64-bit.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
-    installer: 'https://github.com/git-for-windows/git/releases/download/v2.7.1.windows.1/Git-2.7.1-32-bit.exe'
-    {% endif %}
-    install_flags: '/VERYSILENT /NORESTART /SP- /NOCANCEL'
-    uninstaller: '{{ PROGRAM_FILES }}\Git\unins000.exe'
-    uninstall_flags: '/VERYSILENT /NORESTART & {{ PROGRAM_FILES }}\Git\unins001.exe /VERYSILENT /NORESTART & exit 0'
-    msiexec: False
-    locale: en_US
-    reboot: False
-  '2.7.0':
-    full_name: 'Git version 2.7.0'
-    {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'https://github.com/git-for-windows/git/releases/download/v2.7.0.windows.1/Git-2.7.0-64-bit.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
-    installer: 'https://github.com/git-for-windows/git/releases/download/v2.7.0.windows.1/Git-2.7.0-32-bit.exe'
-    {% endif %}
-    install_flags: '/VERYSILENT /NORESTART /SP- /NOCANCEL'
-    uninstaller: '{{ PROGRAM_FILES }}\Git\unins000.exe'
-    uninstall_flags: '/VERYSILENT /NORESTART & {{ PROGRAM_FILES }}\Git\unins001.exe /VERYSILENT /NORESTART & exit 0'
-    msiexec: False
-    locale: en_US
-    reboot: False
-  '2.6.4':
-    full_name: 'Git version 2.6.4'
-    {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'https://github.com/git-for-windows/git/releases/download/v2.6.4.windows.1/Git-2.6.4-64-bit.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
-    installer: 'https://github.com/git-for-windows/git/releases/download/v2.6.4.windows.1/Git-2.6.4-32-bit.exe'
-    {% endif %}
-    install_flags: '/VERYSILENT /NORESTART /SP- /NOCANCEL'
-    uninstaller: '{{ PROGRAM_FILES }}\Git\unins000.exe'
-    uninstall_flags: '/VERYSILENT /NORESTART & {{ PROGRAM_FILES }}\Git\unins001.exe /VERYSILENT /NORESTART & exit 0'
-    msiexec: False
-    locale: en_US
-    reboot: False
-  '2.6.2':
-    full_name: 'Git version 2.6.2'
-    {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'https://github.com/git-for-windows/git/releases/download/v2.6.2.windows.1/Git-2.6.2-64-bit.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
-    installer: 'https://github.com/git-for-windows/git/releases/download/v2.6.2.windows.1/Git-2.6.2-32-bit.exe'
-    {% endif %}
-    install_flags: '/VERYSILENT /NORESTART /SP- /NOCANCEL'
-    uninstaller: '{{ PROGRAM_FILES }}\Git\unins000.exe'
-    uninstall_flags: '/VERYSILENT /NORESTART & {{ PROGRAM_FILES }}\Git\unins001.exe /VERYSILENT /NORESTART & exit 0'
-    msiexec: False
-    locale: en_US
-    reboot: False
-  '2.5.3':
-    full_name: 'Git version 2.5.3'
-    {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'https://github.com/git-for-windows/git/releases/download/v2.5.3.windows.1/Git-2.5.3-64-bit.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
-    installer: 'https://github.com/git-for-windows/git/releases/download/v2.5.3.windows.1/Git-2.5.3-32-bit.exe'
-    {% endif %}
-    install_flags: '/VERYSILENT /NORESTART /SP- /NOCANCEL'
-    uninstaller: '{{ PROGRAM_FILES }}\Git\unins000.exe'
-    uninstall_flags: '/VERYSILENT /NORESTART & {{ PROGRAM_FILES }}\Git\unins001.exe /VERYSILENT /NORESTART & exit 0'
-    msiexec: False
-    locale: en_US
-    reboot: False
-  '2.5.2.2':
-    full_name: 'Git version 2.5.2.2'
-    {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'https://github.com/git-for-windows/git/releases/download/v2.5.2.windows.2/Git-2.5.2.2-64-bit.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
-    installer: 'https://github.com/git-for-windows/git/releases/download/v2.5.2.windows.2/Git-2.5.2.2-32-bit.exe'
-    {% endif %}
-    install_flags: '/VERYSILENT /NORESTART /SP- /NOCANCEL'
-    uninstaller: '{{ PROGRAM_FILES }}\Git\unins000.exe'
-    uninstall_flags: '/VERYSILENT /NORESTART & {{ PROGRAM_FILES }}\Git\unins001.exe /VERYSILENT /NORESTART & exit 0'
-    msiexec: False
-    locale: en_US
-    reboot: False
-  '2.5.0':
-    full_name: 'Git version 2.5.0'
-    {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'https://github.com/git-for-windows/git/releases/download/v2.5.0.windows.1/Git-2.5.0-64-bit.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
-    installer: 'https://github.com/git-for-windows/git/releases/download/v2.5.0.windows.1/Git-2.5.0-32-bit.exe'
-    {% endif %}
-    install_flags: '/VERYSILENT /NORESTART /SP- /NOCANCEL'
-    uninstaller: '{{ PROGRAM_FILES }}\Git\unins000.exe'
-    uninstall_flags: '/VERYSILENT /NORESTART & {{ PROGRAM_FILES }}\Git\unins001.exe /VERYSILENT /NORESTART & exit 0'
-    msiexec: False
-    locale: en_US
-    reboot: False
+  {% endfor %}
 msysgit:
   '1.9.5-preview20150319':
     full_name: 'Git version 1.9.5-preview20150319'

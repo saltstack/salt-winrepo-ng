@@ -1,71 +1,20 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available
-{% set PROGRAM_FILES = "%ProgramFiles%" %}
-openvpn:  
-  '2.3.12':
-    full_name: 'OpenVPN 2.3.12-I601'
-    {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'https://swupdate.openvpn.org/community/releases/openvpn-install-2.3.12-I601-x86_64.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
-    installer: 'https://swupdate.openvpn.org/community/releases/openvpn-install-2.3.12-I601-i686.exe'
-    {% endif %}
+{% set arch = {'AMD64': '-x86_64', 'x86': '-i686'}[grains['cpuarch']] %}
+openvpn: 
+{% for version in ['2.4.3-I602', '2.4.3-I601', '2.3.17-I601', '2.3.12-I601', '2.3.11-I601', '2.3.10-I603', '2.3.8-I601', '2.3.6-I601'] %}
+  {% if version[2] > '3' %}
+    {% set arch = "" %} # Combined installer since v2.4+
+  {% endif %}
+  '{{ version }}':
+    full_name: 'OpenVPN {{ version }} ' # Note: the OpenVPN installer adds a space at the end of its install string
+    installer: 'https://swupdate.openvpn.org/community/releases/openvpn-install-{{ version }}{{ arch }}.exe'
     install_flags: '/S /SELECT_OPENSSL_UTILITIES=1 /SELECT_EASYRSA=1 /SELECTSHORTCUTS=1 /SELECTOPENVPN=1 /SELECTASSOCIATIONS=1 /SELECTOPENVPNGUI=1 /SELECTPATH=1'
     uninstaller: '%ProgramFiles%\OpenVPN\Uninstall.exe'
     uninstall_flags: '/S'
     msiexec: False
     locale: en_US
     reboot: False
-  '2.3.11':
-    full_name: 'OpenVPN 2.3.11-I601'
-    {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'https://swupdate.openvpn.org/community/releases/openvpn-install-2.3.11-I601-x86_64.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
-    installer: 'https://swupdate.openvpn.org/community/releases/openvpn-install-2.3.11-I601-i686.exe'
-    {% endif %}
-    install_flags: '/S /SELECT_OPENSSL_UTILITIES=1 /SELECT_EASYRSA=1 /SELECTSHORTCUTS=1 /SELECTOPENVPN=1 /SELECTASSOCIATIONS=1 /SELECTOPENVPNGUI=1 /SELECTPATH=1'
-    uninstaller: '%ProgramFiles%\OpenVPN\Uninstall.exe'
-    uninstall_flags: '/S'
-    msiexec: False
-    locale: en_US
-    reboot: False
-  '2.3.10':
-    full_name: 'OpenVPN 2.3.10-I603'
-    {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'https://swupdate.openvpn.org/community/releases/openvpn-install-2.3.10-I603-x86_64.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
-    installer: 'https://swupdate.openvpn.org/community/releases/openvpn-install-2.3.10-I603-i686.exe'
-    {% endif %}
-    install_flags: '/S /SELECT_OPENSSL_UTILITIES=1 /SELECT_EASYRSA=1 /SELECTSHORTCUTS=1 /SELECTOPENVPN=1 /SELECTASSOCIATIONS=1 /SELECTOPENVPNGUI=1 /SELECTPATH=1'
-    uninstaller: '%ProgramFiles%\OpenVPN\Uninstall.exe'
-    uninstall_flags: '/S'
-    msiexec: False
-    locale: en_US
-    reboot: False
-  '2.3.8':
-    full_name: 'OpenVPN 2.3.8-I601'
-    {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'http://swupdate.openvpn.org/community/releases/openvpn-install-2.3.8-I601-x86_64.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
-    installer: 'http://swupdate.openvpn.org/community/releases/openvpn-install-2.3.8-I601-i686.exe'
-    {% endif %}
-    install_flags: '/S /SELECT_OPENSSL_UTILITIES=1 /SELECT_EASYRSA=1 /SELECTSHORTCUTS=1 /SELECTOPENVPN=1 /SELECTASSOCIATIONS=1 /SELECTOPENVPNGUI=1 /SELECTPATH=1'
-    uninstaller: '%ProgramFiles%\OpenVPN\Uninstall.exe'
-    uninstall_flags: '/S'
-    msiexec: False
-    locale: en_US
-    reboot: False
-  '2.3.6':
-    full_name: 'OpenVPN 2.3.6-I601'
-    {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'http://swupdate.openvpn.org/community/releases/openvpn-install-2.3.6-I601-x86_64.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
-    installer: 'http://swupdate.openvpn.org/community/releases/openvpn-install-2.3.6-I601-i686.exe'
-    {% endif %}
-    install_flags: '/S /SELECT_OPENSSL_UTILITIES=1 /SELECT_EASYRSA=1 /SELECTSHORTCUTS=1 /SELECTOPENVPN=1 /SELECTASSOCIATIONS=1 /SELECTOPENVPNGUI=1 /SELECTPATH=1'
-    uninstaller: '%ProgramFiles%\OpenVPN\Uninstall.exe'
-    uninstall_flags: '/S'
-    msiexec: False
-    locale: en_US
-    reboot: False
+{% endfor %}
 #
 # https://chocolatey.org/packages/openvpn
 # Install with the following options:

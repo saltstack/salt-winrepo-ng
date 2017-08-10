@@ -1,4 +1,35 @@
 jre8:
+  '8.0.1440.1':
+    {% if grains['cpuarch'] == 'AMD64' %}
+    full_name: 'Java 8 Update 144 (64-bit)'
+    installer: 'salt://win/repo-ng/jre8/jre-8u144-windows-x64.exe'
+    uninstall_flags: '/qn /x {26A24AE4-039D-4CA4-87B4-2F64180144F0} /norestart'
+    # due to winrepo installer limitations you need to manually download the exe from
+    # http://javadl.oracle.com/webapps/download/AutoDL?BundleId=225355_090f390dda5b47b9b721c7dfaa008135
+    # and put it on the winrepo on master to install it the 'salt://win/repo-ng/jre8/... way
+    # to find manual download links for any version use:
+    # http://www.java.com/en/download/manual.jsp
+    # Do NOT use the 'archive' versions download page, use the 'manual' one above. The 'archive' one will give 
+    # you more versions and also different builds. IF you do use these, make sure you adapt your sls file accordingly.  
+    # http://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase8-2177648.html
+    {% elif grains['cpuarch'] == 'x86' %}
+    full_name: 'Java 8 Update 144'
+    installer: 'salt://win/repo-ng/jre8_x86/jre-8u144-windows-i586.exe'
+    uninstall_flags: '/qn /x {26A24AE4-039D-4CA4-87B4-2F32180144F0} /norestart'
+    # due to winrepo installer limitations you need to manually download the exe from
+    # http://javadl.oracle.com/webapps/download/AutoDL?BundleId=225353_090f390dda5b47b9b721c7dfaa008135
+    # and put it on the winrepo on master to install it the 'salt://win/repo-ng/jre8_x86/... way
+    # to find manual download links for any version use:
+    # http://www.java.com/en/download/manual.jsp
+    # Do NOT use the 'archive' versions download page, use the 'manual' one above. The 'archive' one will give 
+    # you more versions and also different builds. IF you do use these, make sure you adapt your sls file accordingly.  
+    # http://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase8-2177648.html
+    {% endif %}
+    install_flags: '/s REBOOT=Suppress SPONSORS=0'
+    uninstaller: 'msiexec.exe'
+    msiexec: False
+    locale: en_US
+    reboot: False
   '8.0.1310.11':
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name: 'Java 8 Update 131 (64-bit)'
