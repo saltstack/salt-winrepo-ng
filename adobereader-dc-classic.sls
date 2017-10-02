@@ -2,7 +2,7 @@
 # http://www.adobe.com/devnet-docs/acrobatetk/tools/AdminGuide/whatsnewdc.html
 
 adobereader-dc-classic:
-  {% for version in ['15.010.20060'] %}
+  {% for version in ['15.009.20044'] %}
   {% set versionNoDots = version | replace(".","") %}
   '{{ version }}':
     full_name: 'Adobe Acrobat Reader DC'
