@@ -1,79 +1,26 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available
-{% set PROGRAM_FILES = "%ProgramFiles%" %}
+{% set versions = {'16':['04', '03', '02', '00'], '9':['20']} %}
+
 7zip:
-  '16.04.00.0':
+{% for major, subversions in versions.items() %}
+{% for minor in subversions %}
+  '{{major}}.{{minor}}.00.0':
     {% if grains['cpuarch'] == 'AMD64' %}
-    full_name: '7-Zip 16.04 (x64 edition)'
-    installer: 'http://d.7-zip.org/a/7z1604-x64.msi'
-    uninstaller: 'http://d.7-zip.org/a/7z1604-x64.msi'
+    full_name: '7-Zip {{major}}.{{minor}} (x64 edition)'
+    installer: 'https://d.7-zip.org/a/7z{{major}}{{minor}}-x64.msi'
+    uninstaller: 'https://d.7-zip.org/a/7z{{major}}{{minor}}-x64.msi'
+    arch: x64
     {% elif grains['cpuarch'] == 'x86' %}
-    full_name: '7-Zip 16.04'
-    installer: 'http://d.7-zip.org/a/7z1604.msi'
-    uninstaller: 'http://d.7-zip.org/a/7z1604.msi'
+    full_name: '7-Zip {{major}}.{{minor}}'
+    installer: 'https://d.7-zip.org/a/7z{{major}}{{minor}}.msi'
+    uninstaller: 'https://d.7-zip.org/a/7z{{major}}{{minor}}.msi'
+    arch: x86
     {% endif %}
     install_flags: '/qn /norestart'
     uninstall_flags: '/qn /norestart'
     msiexec: True
     locale: en_US
     reboot: False
-  '16.03.00.0':
-    {% if grains['cpuarch'] == 'AMD64' %}
-    full_name: '7-Zip 16.03 (x64 edition)'
-    installer: 'http://d.7-zip.org/a/7z1603-x64.msi'
-    uninstaller: 'http://d.7-zip.org/a/7z1603-x64.msi'
-    {% elif grains['cpuarch'] == 'x86' %}
-    full_name: '7-Zip 16.03'
-    installer: 'http://d.7-zip.org/a/7z1603.msi'
-    uninstaller: 'http://d.7-zip.org/a/7z1603.msi'
-    {% endif %}
-    install_flags: '/qn /norestart'
-    uninstall_flags: '/qn /norestart'
-    msiexec: True
-    locale: en_US
-    reboot: False
-  '16.02.00.0':
-    {% if grains['cpuarch'] == 'AMD64' %}
-    full_name: '7-Zip 16.02 (x64 edition)'
-    installer: 'http://d.7-zip.org/a/7z1602-x64.msi'
-    uninstaller: 'http://d.7-zip.org/a/7z1602-x64.msi'
-    {% elif grains['cpuarch'] == 'x86' %}
-    full_name: '7-Zip 16.02'
-    installer: 'http://d.7-zip.org/a/7z1602.msi'
-    uninstaller: 'http://d.7-zip.org/a/7z1602.msi'
-    {% endif %}
-    install_flags: '/qn /norestart'
-    uninstall_flags: '/qn /norestart'
-    msiexec: True
-    locale: en_US
-    reboot: False
-  '16.00.00.0':
-    {% if grains['cpuarch'] == 'AMD64' %}
-    full_name: '7-Zip 16.00 (x64 edition)'
-    installer: 'http://d.7-zip.org/a/7z1600-x64.msi'
-    uninstaller: 'http://d.7-zip.org/a/7z1600-x64.msi'
-    {% elif grains['cpuarch'] == 'x86' %}
-    full_name: '7-Zip 16.00'
-    installer: 'http://d.7-zip.org/a/7z1600.msi'
-    uninstaller: 'http://d.7-zip.org/a/7z1600.msi'
-    {% endif %}
-    install_flags: '/qn /norestart'
-    uninstall_flags: '/qn /norestart'
-    msiexec: True
-    locale: en_US
-    reboot: False
-  '9.20.00.0':
-    {% if grains['cpuarch'] == 'AMD64' %}
-    full_name: '7-Zip 9.20 (x64 edition)'
-    installer: 'http://d.7-zip.org/a/7z920-x64.msi'
-    uninstaller: 'http://d.7-zip.org/a/7z920-x64.msi'
-    {% elif grains['cpuarch'] == 'x86' %}
-    full_name: '7-Zip 9.20'
-    installer: 'http://d.7-zip.org/a/7z920.msi'
-    uninstaller: 'http://d.7-zip.org/a/7z920.msi'
-    {% endif %}
-    install_flags: '/qn /norestart'
-    uninstall_flags: '/qn /norestart'
-    msiexec: True
-    locale: en_US
-    reboot: False
+{% endfor %}
+{% endfor %}
 
