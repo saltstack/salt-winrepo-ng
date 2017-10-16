@@ -1,9 +1,9 @@
 nxlog:
   '2.9.1716':
     full_name:  'NXLog-CE'
-    installer: 'http://nxlog.org/system/files/products/files/1/nxlog-ce-2.9.1716.msi'
+    installer: 'https://nxlog.co/system/files/products/files/348/nxlog-ce-2.9.1716.msi'
     install_flags: '/quiet /norestart'
-    uninstaller: 'http://nxlog.org/system/files/products/files/1/nxlog-ce-2.9.1716.msi'
+    uninstaller: 'https://nxlog.co/system/files/products/files/348/nxlog-ce-2.9.1716.msi'
     uninstall_flags: '/quiet /norestart'
     msiexec: True
     locale: en_US
