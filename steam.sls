@@ -1,6 +1,6 @@
 steam:
   latest:
-    full_name: ''
+    full_name: 'Steam'
     installer: 'https://steamcdn-a.akamaihd.net/client/installer/SteamSetup.exe'
     install_flags: '/S'
     uninstaller:
