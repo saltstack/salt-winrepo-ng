@@ -1,8 +1,9 @@
 activeperl_x64:
-  {% for version, build, guid in (('5.22.2', '2202', '{E8A8E18A-C3AD-4436-834F-EC150C3A3851}'), ('5.24.0', '2400', '{C89FA3E7-29C4-4A60-AFB9-40E04715AE78}')) %}
+  {% for version, build, guid in (('5.24.3', '2404', '{9CED735F-477B-47A1-879E-741436701014}'),
+                                  ('5.26.1', '2601', '{70850766-5026-4056-8E69-3F5AF1EA63DB}')) %}
   '{{ version }}':
     full_name: 'ActivePerl {{ version }} Build {{ build }} (64-bit)'
-    installer: 'http://downloads.activestate.com/ActivePerl/releases/{{ version }}.{{ build}}/ActivePerl-{{ version }}.{{ build}}-MSWin32-x64-300558.exe'
+    installer: 'http://downloads.activestate.com/ActivePerl/releases/{{ version }}.{{ build}}/ActivePerl-{{ version }}.{{ build}}-MSWin32-x64-404865.exe'
     uninstaller: 'msiexec.exe'
     install_flags: '/exenoui /qn /norestart'
     uninstall_flags: '/x {{ guid }} /qn /norestart'
