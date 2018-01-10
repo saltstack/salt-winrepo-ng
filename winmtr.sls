@@ -10,7 +10,7 @@ winmtr:
     installer: 'salt://win/repo-ng/winmtr/winmtr-{{ sversion }}.exe'
     uninstaller: 'c:\utl\uninstall-winmtr.exe'
     {% endif %}
-    install_flags: "/D='c:\utl\' /SILENT /NORESTART"
+    install_flags: '/D="c:\utl" /SILENT /NORESTART'
     uninstall_flags: 'c:\utl\SSEun.dat /SILENT /NORESTART'
     msiexec: False
     locale: en_US
