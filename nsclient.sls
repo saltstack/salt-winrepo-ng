@@ -1,4 +1,19 @@
 nsclient:
+  '0.5.2.29':
+    {% if grains['cpuarch'] == 'AMD64' %}
+    full_name:  'NSClient++ (x64)'
+    installer: 'https://github.com/mickem/nscp/releases/download/0.5.2.29/NSCP-0.5.2.29-x64.msi'
+    uninstaller: 'https://github.com/mickem/nscp/releases/download/0.5.2.29/NSCP-0.5.2.29-x64.msi'
+    {% elif grains['cpuarch'] == 'x86' %}
+    full_name:  'NSClient++ (x86)'
+    installer: 'https://github.com/mickem/nscp/releases/download/0.5.2.29/NSCP-0.5.2.29-Win32.msi'
+    uninstaller: 'https://github.com/mickem/nscp/releases/download/0.5.2.29/NSCP-0.5.2.29-Win32.msi'
+    {% endif %}
+    install_flags: '/quiet'
+    uninstall_flags: '/quiet'
+    msiexec: True
+    locale: en_US
+    reboot: False
   '0.5.0.62':
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name:  'NSClient++ (x64)'
