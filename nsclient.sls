@@ -1,5 +1,5 @@
 nsclient:
-  '0.5.2.29':
+  '0.5.2029':
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name:  'NSClient++ (x64)'
     installer: 'https://github.com/mickem/nscp/releases/download/0.5.2.29/NSCP-0.5.2.29-x64.msi'
@@ -14,7 +14,7 @@ nsclient:
     msiexec: True
     locale: en_US
     reboot: False
-  '0.5.0.62':
+  '0.5.0062':
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name:  'NSClient++ (x64)'
     installer: 'https://github.com/mickem/nscp/releases/download/0.5.0.62/NSCP-0.5.0.62-x64.msi'
