@@ -1,3 +1,14 @@
+# NOTE: If the lazarus installation directory exists the installation will
+#       pop up a dialog box. This will cause the minion to hang because it
+#       is waiting for the user to click continue on a dialog box that will
+#       never be seen. So, before running this, make sure the lazarus
+#       installation directory is not present.
+#       If doing an upgrade that means you'll have to do something like the
+#       following:
+#       pkg.remove lazarus
+#       file.remove c:\lazarus
+#       pkg.install lazarus
+
 {% set versions = [('1.8.0', '3.0.4'),
                    ('1.6.4', '3.0.2')] %}
 lazarus:
