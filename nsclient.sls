@@ -1,93 +1,28 @@
 nsclient:
-  '0.5.2.29':
+  {% for version, file_version in [
+    ('0.5.2029', '0.5.2.29'),
+    ('0.5.1046', '0.5.1.46'),
+    ('0.5.1044', '0.5.1.44'),
+    ('0.5.0062', '0.5.0.62'),
+    ('0.4.4023', '0.4.4.23'),
+    ('0.4.4019', '0.4.4.19'),
+    ('0.4.30143', '0.4.3.143'),
+    ('0.4.3088', '0.4.3.88')
+   ] %}
+
+  '{{ version }}':
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name:  'NSClient++ (x64)'
-    installer: 'https://github.com/mickem/nscp/releases/download/0.5.2.29/NSCP-0.5.2.29-x64.msi'
-    uninstaller: 'https://github.com/mickem/nscp/releases/download/0.5.2.29/NSCP-0.5.2.29-x64.msi'
+    installer: 'https://github.com/mickem/nscp/releases/download/{{ file_version }}/NSCP-{{ file_version }}-x64.msi'
+    uninstaller: 'https://github.com/mickem/nscp/releases/download/{{ file_version }}/NSCP-{{ file_version }}-x64.msi'
     {% elif grains['cpuarch'] == 'x86' %}
     full_name:  'NSClient++ (x86)'
-    installer: 'https://github.com/mickem/nscp/releases/download/0.5.2.29/NSCP-0.5.2.29-Win32.msi'
-    uninstaller: 'https://github.com/mickem/nscp/releases/download/0.5.2.29/NSCP-0.5.2.29-Win32.msi'
+    installer: 'https://github.com/mickem/nscp/releases/download/{{ file_version }}/NSCP-{{ file_version }}-Win32.msi'
+    uninstaller: 'https://github.com/mickem/nscp/releases/download/{{ file_version }}/NSCP-{{ file_version }}-Win32.msi'
     {% endif %}
     install_flags: '/quiet'
     uninstall_flags: '/quiet'
     msiexec: True
     locale: en_US
     reboot: False
-  '0.5.0.62':
-    {% if grains['cpuarch'] == 'AMD64' %}
-    full_name:  'NSClient++ (x64)'
-    installer: 'https://github.com/mickem/nscp/releases/download/0.5.0.62/NSCP-0.5.0.62-x64.msi'
-    uninstaller: 'https://github.com/mickem/nscp/releases/download/0.5.0.62/NSCP-0.5.0.62-x64.msi'
-    {% elif grains['cpuarch'] == 'x86' %}
-    full_name:  'NSClient++ (x86)'
-    installer: 'https://github.com/mickem/nscp/releases/download/0.5.0.62/NSCP-0.5.0.62-Win32.msi'
-    uninstaller: 'https://github.com/mickem/nscp/releases/download/0.5.0.62/NSCP-0.5.0.62-Win32.msi'
-    {% endif %}
-    install_flags: '/quiet'
-    uninstall_flags: '/quiet'
-    msiexec: True
-    locale: en_US
-    reboot: False
-  '0.4.4.23':
-    {% if grains['cpuarch'] == 'AMD64' %}
-    full_name:  'NSClient++ (x64)'
-    installer: 'https://github.com/mickem/nscp/releases/download/0.4.4.23/NSCP-0.4.4.23-x64.msi'
-    uninstaller: 'https://github.com/mickem/nscp/releases/download/0.4.4.23/NSCP-0.4.4.23-x64.msi'
-    {% elif grains['cpuarch'] == 'x86' %}
-    full_name:  'NSClient++ (x86)'
-    installer: 'https://github.com/mickem/nscp/releases/download/0.4.4.23/NSCP-0.4.4.23-Win32.msi'
-    uninstaller: 'https://github.com/mickem/nscp/releases/download/0.4.4.23/NSCP-0.4.4.23-Win32.msi'
-    {% endif %}
-    install_flags: '/quiet'
-    uninstall_flags: '/quiet'
-    msiexec: True
-    locale: en_US
-    reboot: False
-  '0.4.4.19':
-    {% if grains['cpuarch'] == 'AMD64' %}
-    full_name:  'NSClient++ (x64)'
-    installer: 'https://github.com/mickem/nscp/releases/download/0.4.4.19/NSCP-0.4.4.19-x64.msi'
-    uninstaller: 'https://github.com/mickem/nscp/releases/download/0.4.4.19/NSCP-0.4.4.19-x64.msi'
-    {% elif grains['cpuarch'] == 'x86' %}
-    full_name:  'NSClient++ (x86)'
-    installer: 'https://github.com/mickem/nscp/releases/download/0.4.4.19/NSCP-0.4.4.19-Win32.msi'
-    uninstaller: 'https://github.com/mickem/nscp/releases/download/0.4.4.19/NSCP-0.4.4.19-Win32.msi'
-    {% endif %}
-    install_flags: '/quiet'
-    uninstall_flags: '/quiet'
-    msiexec: True
-    locale: en_US
-    reboot: False
-  '0.4.3.143':
-    # This client can be currently be downloaded from https://github.com/mickem/nscp/releases/download/0.4.3.143/NSCP-0.4.3.143-x64.msi
-    {% if grains['cpuarch'] == 'AMD64' %}
-    full_name:  'NSClient++ (x64)'
-    installer: 'salt://win/repo-ng/nsclientpp/NSCP-0.4.3.143-x64.msi'
-    uninstaller: 'salt://win/repo-ng/nsclientpp/NSCP-0.4.3.143-x64.msi'
-    {% elif grains['cpuarch'] == 'x86' %}
-    # This client can be currently be downloaded from https://github.com/mickem/nscp/releases/download/0.4.3.143/NSCP-0.4.3.143-win32.msi
-    full_name:  'NSClient++ (x86)'
-    installer: 'salt://win/repo-ng/nsclientpp/NSCP-0.4.3.143-win32.msi'
-    uninstaller: 'salt://win/repo-ng/nsclientpp/NSCP-0.4.3.143-win32.msi'
-    {% endif %}
-    install_flags: '/quiet'
-    uninstall_flags: '/quiet'
-    msiexec: True
-    locale: en_US
-    reboot: False
-  '0.4.3.88':
-    {% if grains['cpuarch'] == 'AMD64' %}
-    full_name:  'NSClient++ (x64)'
-    installer: 'https://github.com/mickem/nscp/releases/download/0.4.3.88/NSCP-0.4.3.88-x64.msi'
-    uninstaller: 'https://github.com/mickem/nscp/releases/download/0.4.3.88/NSCP-0.4.3.88-x64.msi'
-    {% elif grains['cpuarch'] == 'x86' %}
-    full_name:  'NSClient++ (x86)'
-    installer: 'https://github.com/mickem/nscp/releases/download/0.4.3.88/NSCP-0.4.3.88-Win32.msi'
-    uninstaller: 'https://github.com/mickem/nscp/releases/download/0.4.3.88/NSCP-0.4.3.88-Win32.msi'
-    {% endif %}
-    install_flags: '/quiet'
-    uninstall_flags: '/quiet'
-    msiexec: True
-    locale: en_US
-    reboot: False
+  {% endfor %}
