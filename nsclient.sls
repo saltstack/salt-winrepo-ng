@@ -25,3 +25,4 @@ nsclient:
     msiexec: True
     locale: en_US
     reboot: False
+  {% endfor %}
