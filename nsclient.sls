@@ -15,7 +15,7 @@ nsclient:
     full_name:  'NSClient++ (x64)'
     installer: 'https://github.com/mickem/nscp/releases/download/{{ file_version }}/NSCP-{{ file_version }}-x64.msi'
     uninstaller: 'https://github.com/mickem/nscp/releases/download/{{ file_version }}/NSCP-{{ file_version }}-x64.msi'
-    {% elif %}
+    {% else %}
     full_name:  'NSClient++ (x86)'
     installer: 'https://github.com/mickem/nscp/releases/download/{{ file_version }}/NSCP-{{ file_version }}-Win32.msi'
     uninstaller: 'https://github.com/mickem/nscp/releases/download/{{ file_version }}/NSCP-{{ file_version }}-Win32.msi'
