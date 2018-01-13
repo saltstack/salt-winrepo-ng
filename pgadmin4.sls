@@ -3,7 +3,11 @@ pgadmin4:
                            '2.0',
                            '1.6'] %}
   '{{ package_version }}':
+  {% if grains['cpuarch'] == 'AMD64' %}
     {% set PROGRAM_FILES = "%ProgramFiles(x86)%" %}
+  {% else %}
+    {% set PROGRAM_FILES = "%ProgramFiles%" %}
+  {% endif %}
     full_name: 'pgAdmin 4 version {{ package_version }}'
     installer: 'https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v{{ package_version }}/windows/pgadmin4-{{ package_version }}-x86.exe'
     install_flags: '/SP- /verysilent /norestart'
