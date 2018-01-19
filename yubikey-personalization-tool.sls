@@ -1,5 +1,5 @@
 yubikey-personalization-tool:
-  3.1.24:
+  '3.1.24':
     full_name: 'YubiKey Personalization Tool'
     installer: 'https://developers.yubico.com/yubikey-personalization-gui/Releases/yubikey-personalization-gui-3.1.24.exe'
     install_flags: '/S'
