@@ -1,10 +1,12 @@
 atom-msi:
-  '1.2.4':
+  {% for version in ['1.23.3', '1.8.0', '1.7.3'] %}
+  '{{ version }}':
     full_name: 'Atom Machine-Wide Installer'
-    installer: 'https://github.com/atom/atom/releases/download/v1.8.0/AtomSetup.msi'
+    installer: 'https://github.com/atom/atom/releases/download/v{{ version }}/AtomSetup.msi'
     install_flags: '/qn /norestart'
-    uninstaller: 'https://github.com/atom/atom/releases/download/v1.8.0/AtomSetup.msi'
+    uninstaller: 'https://github.com/atom/atom/releases/download/v{{ version }}/AtomSetup.msi'
     uninstall_flags: '/qn /norestart'
     msiexec: True
     locale: en_US
     reboot: False
+  {% endfor %}
