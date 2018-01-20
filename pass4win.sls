@@ -10,7 +10,7 @@ pass4win:
     # both 32-bit (x86) AND a 64-bit (AMD64) installer available
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'https://github.com/mbos/Pass4Win/releases/download/version-1.2.1/Pass4Win-Setup-v1.2.1.9-x64.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     installer: 'https://github.com/mbos/Pass4Win/releases/download/version-1.2.1/Pass4Win-Setup-v1.2.1.9-x86.exe'
     {% endif %}
     uninstaller: '"{ PROGRAM_FILES }\Pass4Win\uninstall.exe"'

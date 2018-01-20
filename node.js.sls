@@ -5,7 +5,7 @@ node.js:
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-x64.msi'
     uninstaller: 'https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-x64.msi'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     installer: 'https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-x86.msi'
     uninstaller: 'https://nodejs.org/dist/v{{ version }}/node-v{{ version }}-x86.msi'
     {% endif %}

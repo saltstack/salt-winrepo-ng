@@ -4,7 +4,7 @@ mysql-essential:
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'http://cdn.mysql.com/Downloads/MySQL-5.1/mysql-essential-5.1.73-winx64.msi'
     uninstaller: 'http://cdn.mysql.com/Downloads/MySQL-5.1/mysql-essential-5.1.73-winx64.msi'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     installer: 'http://cdn.mysql.com/Downloads/MySQL-5.1/mysql-essential-5.1.73-win32.msi'
     uninstaller: 'http://cdn.mysql.com/Downloads/MySQL-5.1/mysql-essential-5.1.73-win32.msi'
     {% endif %}

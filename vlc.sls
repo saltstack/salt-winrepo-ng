@@ -7,7 +7,7 @@ vlc:
     full_name: 'VLC media player'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'http://get.videolan.org/vlc/{{ version }}/win64/vlc-{{ version }}-win64.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     installer: 'http://get.videolan.org/vlc/{{ version }}/win32/vlc-{{ version }}-win32.exe'
     {% endif %}
     install_flags: '/S'

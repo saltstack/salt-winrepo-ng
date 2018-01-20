@@ -5,7 +5,7 @@ soapui:
     {% set PROGRAM_FILES = "%ProgramFiles%" %} 
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'https://s3.amazonaws.com/downloads.eviware/soapuios/{{ version }}/SoapUI-x64-{{ version }}.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     installer: 'https://s3.amazonaws.com/downloads.eviware/soapuios/{{ version }}/SoapUI-x32-{{ version }}.exe'
     {% endif %}
     install_flags: '-q'

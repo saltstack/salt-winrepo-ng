@@ -13,7 +13,7 @@ git:
     full_name: 'Git version {{ version }}'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'https://github.com/git-for-windows/git/releases/download/v{{ short_version }}.windows.{{ win_ver }}/Git-{{ version }}-64-bit.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     installer: 'https://github.com/git-for-windows/git/releases/download/v{{ short_version }}.windows.{{ win_ver }}/Git-{{ version }}-32-bit.exe'
     {% endif %}
     install_flags: '/VERYSILENT /NORESTART /SP- /NOCANCEL'

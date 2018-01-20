@@ -6,7 +6,7 @@ curl:
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'salt://win/repo-ng/curl/curl-7.46.0-win64.msi'
     uninstaller: 'salt://win/repo-ng/curl/curl-7.46.0-win64.msi'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     installer: 'salt://win/repo-ng/curl/curl-7.46.0-win32.msi'
     uninstaller: 'salt://win/repo-ng/curl/curl-7.46.0-win32.msi'
     {% endif %}
@@ -20,7 +20,7 @@ curl:
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'salt://win/repo-ng/curl/curl-7.45.0-win64.msi'
     uninstaller: 'salt://win/repo-ng/curl/curl-7.45.0-win64.msi'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     installer: 'salt://win/repo-ng/curl/curl-7.45.0-win32.msi'
     uninstaller: 'salt://win/repo-ng/curl/curl-7.45.0-win32.msi'
     {% endif %}
@@ -34,7 +34,7 @@ curl:
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'salt://win/repo-ng/curl/curl-7.44.0-win64.msi'
     uninstaller: 'salt://win/repo-ng/curl/curl-7.44.0-win64.msi'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     installer: 'salt://win/repo-ng/curl/curl-7.44.0-win32.msi'
     uninstaller: 'salt://win/repo-ng/curl/curl-7.44.0-win32.msi'
     {% endif %}
@@ -48,7 +48,7 @@ curl:
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'salt://win/repo-ng/curl/curl-7.43.0-win64.msi'
     uninstaller: 'salt://win/repo-ng/curl/curl-7.43.0-win64.msi'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     installer: 'salt://win/repo-ng/curl/curl-7.43.0-win32.msi'
     uninstaller: 'salt://win/repo-ng/curl/curl-7.43.0-win32.msi'
     {% endif %}
@@ -62,7 +62,7 @@ curl:
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'salt://win/repo-ng/curl/curl-7.40.0-win64.msi'
     uninstaller: 'salt://win/repo-ng/curl/curl-7.40.0-win64.msi'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     installer: 'salt://win/repo-ng/curl/curl-7.40.0-win32.msi'
     uninstaller: 'salt://win/repo-ng/curl/curl-7.40.0-win32.msi'
     {% endif %}

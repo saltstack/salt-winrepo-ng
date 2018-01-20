@@ -3,7 +3,7 @@ peazip:
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name: 'PeaZip 6.0.0 (WIN64)'
     installer: 'http://sourceforge.net/projects/peazip/files/6.0.0/peazip-6.0.0.WIN64.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     full_name: 'PeaZip 6.0.0'
     installer: 'http://sourceforge.net/projects/peazip/files/6.0.0/peazip-6.0.0.WINDOWS.exe'
     {% endif %}

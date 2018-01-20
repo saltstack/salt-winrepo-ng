@@ -15,7 +15,7 @@ salt-minion-py3:
     full_name: 'Salt Minion {{ version }} (Python 3)'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'https://repo.saltstack.com/windows/Salt-Minion-{{ version }}-Py3-AMD64-Setup.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     installer: 'https://repo.saltstack.com/windows/Salt-Minion-{{ version }}-Py3-x86-Setup.exe'
     {% endif %}
     {% raw %}
