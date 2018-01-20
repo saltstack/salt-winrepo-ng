@@ -1,5 +1,5 @@
 autoit:
-  {% for version, sv in (('3.3.14.2', '3')) %}
+  {% for version, sv in [('3.3.14.2', '3')] %}
   {{ version }}:
     full_name: 'AutoIt v{{ version }}'
     installer: 'https://www.autoitscript.com/files/autoit{{ sv }}/autoit-v{{ sv }}-setup.exe'
