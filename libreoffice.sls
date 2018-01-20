@@ -5,7 +5,7 @@ libreoffice:
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'https://downloadarchive.documentfoundation.org/libreoffice/old/{{ version }}/win/x86_64/LibreOffice_{{ version }}_Win_x64.msi'
     uninstaller: 'https://downloadarchive.documentfoundation.org/libreoffice/old/{{ version }}/win/x86_64/LibreOffice_{{ version }}_Win_x64.msi'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     installer: 'https://downloadarchive.documentfoundation.org/libreoffice/old/{{ version }}/win/x86/LibreOffice_{{ version }}_Win_x86.msi'
     uninstaller: 'https://downloadarchive.documentfoundation.org/libreoffice/old/{{ version }}/win/x86/LibreOffice_{{ version }}_Win_x86.msi'
     {% endif %}

@@ -5,7 +5,7 @@ nsis:
     install_flags: '/S'
     {% if grains['cpuarch'] == 'AMD64' %}
     uninstaller: '%PROGRAMFILES(x86)%\NSIS\uninst-nsis.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     uninstaller: '%PROGRAMFILES%\NSIS\uninst-nsis.exe'
     {% endif %}
     uninstall_flags: '/S'
@@ -18,7 +18,7 @@ nsis:
     install_flags: '/S'
     {% if grains['cpuarch'] == 'AMD64' %}
     uninstaller: '%PROGRAMFILES(x86)%\NSIS\uninst-nsis.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     uninstaller: '%PROGRAMFILES%\NSIS\uninst-nsis.exe'
     {% endif %}
     uninstall_flags: '/S'
@@ -31,7 +31,7 @@ nsis:
     install_flags: '/S'
     {% if grains['cpuarch'] == 'AMD64' %}
     uninstaller: '%PROGRAMFILES(x86)%\NSIS\uninst-nsis.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     uninstaller: '%PROGRAMFILES%\NSIS\uninst-nsis.exe'
     {% endif %}
     uninstall_flags: '/S'

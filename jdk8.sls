@@ -12,7 +12,7 @@ jdk8:
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name: 'Java SE Development Kit 8 Update 144 (64-bit)'
     installer: salt://win/repo-ng/jre8/jdk-8u144-windows-x64.exe
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     full_name: 'Java SE Development Kit 8 Update 144'
     installer: salt://win/repo-ng/jre8_x86/jdk-8u144-windows-i586.exe
     {% endif %}
