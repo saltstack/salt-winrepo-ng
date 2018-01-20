@@ -9,7 +9,7 @@ infrarecorder:
     uninstaller: 'http://heanet.dl.sourceforge.net/project/infrarecorder/InfraRecorder/0.53/ir053_x64.msi'
     uninstall_flags: '/qn /norestart'
     msiexec: True
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     installer: 'http://heanet.dl.sourceforge.net/project/infrarecorder/InfraRecorder/0.53/ir053.exe'
     install_flags: '/S'
     uninstaller: '{{ PROGRAM_FILES }}\InfraRecorder\uninstall.exe'

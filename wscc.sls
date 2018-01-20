@@ -6,7 +6,7 @@ wscc:
     install_flags: '/SP- /SILENT /VERYSILENT /SUPPRESSMSGBOXES /NORESTART'
     {% if grains['cpuarch'] == 'AMD64' %}
     uninstaller: '%PROGRAMFILES(x86)%\WSCC\unins000.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     uninstaller: '%PROGRAMFILES%\WSCC\unins000.exe'
     {% endif %}
     uninstall_flags: '/SILENT /VERYSILENT /SUPPRESSMSGBOXES /NORESTART'

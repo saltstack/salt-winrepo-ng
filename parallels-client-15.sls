@@ -4,7 +4,7 @@ parallels-client-15:
     full_name: 'Parallels Client-64 bit'  
     installer: 'http://download.parallels.com/ras/v15/15.0.5.3869/RASClient-x64-15.0.3869.msi'
     uninstaller: 'http://download.parallels.com/ras/v15/15.0.5.3869/RASClient-x64-15.0.3869.msi'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     full_name: 'Parallels Client'  
     installer: 'http://download.parallels.com/ras/v15/15.0.5.3869/RASClient-15.0.3869.msi'
     uninstaller: 'http://download.parallels.com/ras/v15/15.0.5.3869/RASClient-15.0.3869.msi'

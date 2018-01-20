@@ -8,7 +8,7 @@ erlang:
     full_name: 'Erlang OTP (8.3)'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'http://erlang.org/download/otp_win64_19.3.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     installer: 'http://erlang.org/download/otp_win32_19.3.exe'
     {% endif %}
     uninstaller: '{{ PROGRAM_FILES }}\erl8.3\Uninstall.exe'

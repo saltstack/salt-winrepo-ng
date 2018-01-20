@@ -4,7 +4,7 @@ slack-msi:
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'https://slack-ssb-updates.global.ssl.fastly.net/releases_x64/SlackSetup.msi'
     uninstaller: 'https://slack-ssb-updates.global.ssl.fastly.net/releases_x64/SlackSetup.msi'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     installer: 'https://slack-ssb-updates.global.ssl.fastly.net/releases/SlackSetup.msi'
     uninstaller: 'https://slack-ssb-updates.global.ssl.fastly.net/releases/SlackSetup.msi'
     {% endif %}

@@ -10,7 +10,7 @@
     installer: 'http://d.7-zip.org/a/7z{{major}}{{minor}}-x64.msi'
     uninstaller: 'http://d.7-zip.org/a/7z{{major}}{{minor}}-x64.msi'
     arch: x64
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     full_name: '7-Zip {{major}}.{{minor}}'
     installer: 'http://d.7-zip.org/a/7z{{major}}{{minor}}.msi'
     uninstaller: 'http://d.7-zip.org/a/7z{{major}}{{minor}}.msi'

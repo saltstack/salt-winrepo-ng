@@ -4,7 +4,7 @@ grepwin:
     full_name: 'grepWin x64'
     installer: 'http://netassist.dl.sourceforge.net/project/grepwin/1.6.15/grepWin-1.6.15-x64.msi'
     uninstaller: 'http://netassist.dl.sourceforge.net/project/grepwin/1.6.15/grepWin-1.6.15-x64.msi'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     full_name: 'grepWin'
     installer: 'http://netassist.dl.sourceforge.net/project/grepwin/1.6.15/grepWin-1.6.15.msi'
     uninstaller: 'http://netassist.dl.sourceforge.net/project/grepwin/1.6.15/grepWin-1.6.15.msi'
@@ -19,7 +19,7 @@ grepwin:
     full_name: 'grepWin x64'
     installer: 'http://netassist.dl.sourceforge.net/project/grepwin/1.6.14/grepWin-1.6.14-x64.msi'
     uninstaller: 'http://netassist.dl.sourceforge.net/project/grepwin/1.6.14/grepWin-1.6.14-x64.msi'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     full_name: 'grepWin'
     installer: 'http://netassist.dl.sourceforge.net/project/grepwin/1.6.14/grepWin-1.6.14.msi'
     uninstaller: 'http://netassist.dl.sourceforge.net/project/grepwin/1.6.14/grepWin-1.6.14.msi'
@@ -34,7 +34,7 @@ grepwin:
     full_name: 'grepWin x64'
     installer: 'http://netassist.dl.sourceforge.net/project/grepwin/1.6.13/grepWin-1.6.13-x64.msi'
     uninstaller: 'http://netassist.dl.sourceforge.net/project/grepwin/1.6.13/grepWin-1.6.13-x64.msi'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     full_name: 'grepWin'
     installer: 'http://netassist.dl.sourceforge.net/project/grepwin/1.6.13/grepWin-1.6.13.msi'
     uninstaller: 'http://netassist.dl.sourceforge.net/project/grepwin/1.6.13/grepWin-1.6.13.msi'
@@ -49,7 +49,7 @@ grepwin:
     full_name: 'grepWin x64'
     installer: 'http://netassist.dl.sourceforge.net/project/grepwin/1.6.12/grepWin-1.6.12-x64.msi'
     uninstaller: 'http://netassist.dl.sourceforge.net/project/grepwin/1.6.12/grepWin-1.6.12-x64.msi'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     full_name: 'grepWin'
     installer: 'http://netassist.dl.sourceforge.net/project/grepwin/1.6.12/grepWin-1.6.12.msi'
     uninstaller: 'http://netassist.dl.sourceforge.net/project/grepwin/1.6.12/grepWin-1.6.12.msi'

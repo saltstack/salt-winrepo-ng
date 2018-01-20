@@ -3,7 +3,7 @@ miktex-basic:
     full_name: 'MiKTeX 2.9'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'http://mirrors.ctan.org/systems/win32/miktex/setup/basic-miktex-2.9.6069-x64.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     installer: 'http://mirrors.ctan.org/systems/win32/miktex/setup/basic-miktex-2.9.6069.exe'
     {% endif %}
     install_flags: '--auto-install=yes --paper-size=A4 --shared --unattended --package-set=basic --program-folder="%ProgramFiles%\MiKTeX 2.9\"'
