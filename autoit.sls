@@ -1,7 +1,7 @@
 {% set versions, releases  = (('3.3.14.2', '3')) %}
 autoit:
   {% for version, release in [(versions, releases)] %}
-  {{ version }}:
+  '{{ version }}':
     full_name: 'AutoIt v{{ version }}'
     installer: 'https://www.autoitscript.com/files/autoit{{ release }}/autoit-v{{ release }}-setup.exe'
     install_flags: '/S'

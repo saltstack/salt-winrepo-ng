@@ -13,7 +13,7 @@
                    ('1.6.4', '3.0.2')] %}
 lazarus:
   {% for version, fpc_version in versions %}
-  {{ version }}:
+  '{{ version }}':
     full_name: Lazarus {{ version }}
     {% if salt.grains.get('cpuarch') == 'AMD64' %}
     installer: https://downloads.sourceforge.net/project/lazarus/Lazarus%20Windows%2064%20bits/Lazarus%20{{ version }}/lazarus-{{ version }}-fpc-{{ fpc_version }}-win64.exe
