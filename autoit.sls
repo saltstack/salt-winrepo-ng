@@ -1,4 +1,4 @@
-{% set versions, sv = [('3.3.14.2', '3')] %}
+{% set versions, sv = (('3.3.14.2', '3')) %}
 autoit:
   {% for version in versions %}
   {{ version }}:
