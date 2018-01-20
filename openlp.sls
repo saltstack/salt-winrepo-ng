@@ -8,7 +8,7 @@
 {% set versions = ['2.4.6', '2.2.1'] %}
 openlp:
   {% for version in versions %}
-  {{ version }}:
+  '{{ version }}':
     full_name: 'OpenLP {{ version }}'
     installer: 'https://get.openlp.org/{{ version }}/OpenLP-{{ version }}-setup.exe'
     install_flags: '/SP- /VERYSILENT /NORESTART'
