@@ -4,7 +4,7 @@ isapirewrite-lite:
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'http://www.helicontech.com/download/isapi_rewrite/ISAPI_Rewrite3_0112_Lite_x64.msi'
     uninstaller: 'http://www.helicontech.com/download/isapi_rewrite/ISAPI_Rewrite3_0112_Lite_x64.msi'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     installer: 'http://www.helicontech.com/download/isapi_rewrite/ISAPI_Rewrite3_0112_Lite.msi'
     uninstaller: 'http://www.helicontech.com/download/isapi_rewrite/ISAPI_Rewrite3_0112_Lite.msi'
     {% endif %}

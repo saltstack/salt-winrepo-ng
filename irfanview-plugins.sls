@@ -4,7 +4,7 @@ irfanview-plugins:
     full_name: 'Irfanview Plugins 4.40'
     installer: 'salt://win/repo-ng/irfanview/irfanview_plugins_x64_442_setup.exe'
     # download manually from: http://www.irfanview.info/files/irfanview_plugins_x64_442_setup.exe and place on master
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     full_name: 'Irfanview Plugins 4.40'
     installer: 'salt://win/repo-ng/irfanview/irfanview_plugins_442_setup.exe'
     # download manually from: http://www.irfanview.info/files/irfanview_plugins_442_setup.exe and place on master

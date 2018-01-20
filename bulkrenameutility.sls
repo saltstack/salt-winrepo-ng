@@ -4,7 +4,7 @@ bulkrenameutility:
   '{{ version }}':
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name: 'Bulk Rename Utility {{ version }} (64-bit)'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     full_name: 'Bulk Rename Utility {{ version }} (32-bit)'
     {% endif %}
     installer: 'http://www.s3.tgrmn.com/bru/BRU_setup_{{ version }}.exe'

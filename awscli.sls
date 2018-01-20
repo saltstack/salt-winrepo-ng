@@ -6,7 +6,7 @@ awscli:
     full_name: 'AWS Command Line Interface'
     installer: https://s3.amazonaws.com/aws-cli/AWSCLI64.msi
     uninstaller: https://s3.amazonaws.com/aws-cli/AWSCLI64.msi
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     full_name: 'AWS Command Line Interface'
     installer: https://s3.amazonaws.com/aws-cli/AWSCLI32.msi
     uninstaller: https://s3.amazonaws.com/aws-cli/AWSCLI32.msi

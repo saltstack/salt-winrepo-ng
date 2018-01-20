@@ -4,7 +4,7 @@ usbdlm:
     full_name: 'USB Drive Letter Manager (x64)'
     installer: http://www.uwe-sieber.de/files/usbdlm_x64.msi
     uninstaller: http://www.uwe-sieber.de/files/usbdlm_x64.msi
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     full_name: 'USB Drive Letter Manager (Win32)'
     installer: http://www.uwe-sieber.de/files/usbdlm.msi
     uninstaller: http://www.uwe-sieber.de/files/usbdlm.msi

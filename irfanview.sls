@@ -6,7 +6,7 @@ irfanview:
     full_name: 'IrfanView 64 (remove only)'
     installer: 'salt://win/repo-ng/irfanview/iview442_x64_setup.exe'
     # download manually from: http://www.irfanview.info/files/iview442_x64_setup.exe and place on master
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     full_name: 'IrfanView (remove only)'
     installer: 'salt://win/repo-ng/irfanview/iview442_setup.exe'
     # download manually from: http://www.irfanview.info/files/iview442_setup.exe and place on master

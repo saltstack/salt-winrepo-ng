@@ -19,7 +19,7 @@ itunes:
     # Apple Application Support (32-bit)  v. 6.2.1 {BC7C46A4-D7A7-48EC-A98C-32A7762B5EFA}
     # Apple Application Support (64-bit) v. 6.2.1 {F0C4B709-8BF4-4A72-B527-12E7BF5482F8}
     # iTunes v. 12.7.2.60 {D7D4465C-B3B6-4BC1-B336-2803FB57BFAF}
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     installer: 'https://secure-appldnld.apple.com/itunes12/091-56357-20171213-EDF21CDC-E039-11E7-9C46-D31A1E4B8CED/iTunesSetup.exe'
     uninstall_flags: |
                      '/qn /norestart /x {D168AAD0-6686-47C1-B599-CDD4888B9D1A} &

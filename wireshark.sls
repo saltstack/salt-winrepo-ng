@@ -6,7 +6,7 @@ wireshark:
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name: 'Wireshark {{ version }} (64-bit)'
     installer: 'https://1.na.dl.wireshark.org/win64/Wireshark-win64-{{ version }}.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     full_name: 'Wireshark {{ version }}'
     installer: 'https://2.na.dl.wireshark.org/win32/Wireshark-win32-{{ version }}.exe'
     {% endif %}
