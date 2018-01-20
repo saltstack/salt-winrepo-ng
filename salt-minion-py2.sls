@@ -21,7 +21,7 @@ salt-minion:
     full_name: 'Salt Minion {{ version }}'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'https://repo.saltstack.com/windows/Salt-Minion-{{ version }}-Py2-AMD64-Setup.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     installer: 'https://repo.saltstack.com/windows/Salt-Minion-{{ version }}-Py2-x86-Setup.exe'
     {% endif %}
     {% raw %}
@@ -78,7 +78,7 @@ salt-minion:
     full_name: 'Salt Minion {{ version }}'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'https://repo.saltstack.com/windows/Salt-Minion-{{ version }}-AMD64-Setup.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     installer: 'https://repo.saltstack.com/windows/Salt-Minion-{{ version }}-x86-Setup.exe'
     {% endif %}
     {% raw %}

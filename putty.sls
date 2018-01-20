@@ -5,7 +5,7 @@ putty:
     {% set ver_arch = " (64-bit)" %}
     installer: 'https://the.earth.li/~sgtatham/putty/{{ version }}/w64/putty-64bit-{{ version }}-installer.msi'
     uninstaller: 'https://the.earth.li/~sgtatham/putty/{{ version }}/w64/putty-64bit-{{ version }}-installer.msi'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     installer: 'https://the.earth.li/~sgtatham/putty/{{ version }}/w32/putty-{{ version }}-installer.msi'
     uninstaller: 'https://the.earth.li/~sgtatham/putty/{{ version }}/w32/putty-{{ version }}-installer.msi'
     {% endif %}

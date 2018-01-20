@@ -12,7 +12,7 @@ jre8:
     # Do NOT use the 'archive' versions download page, use the 'manual' one above. The 'archive' one will give 
     # you more versions and also different builds. IF you do use these, make sure you adapt your sls file accordingly.  
     # http://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase8-2177648.html
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     full_name: 'Java 8 Update 161'
     installer: 'salt://win/repo-ng/jre8_x86/jre-8u161-windows-i586.exe'
     uninstall_flags: '/qn /x {26A24AE4-039D-4CA4-87B4-2F32180161F0} /norestart'
@@ -43,7 +43,7 @@ jre8:
     # Do NOT use the 'archive' versions download page, use the 'manual' one above. The 'archive' one will give 
     # you more versions and also different builds. IF you do use these, make sure you adapt your sls file accordingly.  
     # http://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase8-2177648.html
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     full_name: 'Java 8 Update 151'
     installer: 'salt://win/repo-ng/jre8_x86/jre-8u151-windows-i586.exe'
     uninstall_flags: '/qn /x {26A24AE4-039D-4CA4-87B4-2F32180151F0} /norestart'
@@ -74,7 +74,7 @@ jre8:
     # Do NOT use the 'archive' versions download page, use the 'manual' one above. The 'archive' one will give 
     # you more versions and also different builds. IF you do use these, make sure you adapt your sls file accordingly.  
     # http://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase8-2177648.html
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     full_name: 'Java 8 Update 144'
     installer: 'salt://win/repo-ng/jre8_x86/jre-8u144-windows-i586.exe'
     uninstall_flags: '/qn /x {26A24AE4-039D-4CA4-87B4-2F32180144F0} /norestart'
@@ -105,7 +105,7 @@ jre8:
     # Do NOT use the 'archive' versions download page, use the 'manual' one above. The 'archive' one will give 
     # you more versions and also different builds. IF you do use these, make sure you adapt your sls file accordingly.  
     # http://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase8-2177648.html
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     full_name: 'Java 8 Update 131'
     installer: 'salt://win/repo-ng/jre8_x86/jre-8u131-windows-i586.exe'
     uninstall_flags: '/qn /x {26A24AE4-039D-4CA4-87B4-2F64180131F0} /norestart'
@@ -136,7 +136,7 @@ jre8:
     # Do NOT use the 'archive' versions download page, use the 'manual' one above. The 'archive' one will give 
     # you more versions and also different builds. IF you do use these, make sure you adapt your sls file accordingly.  
     # http://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase8-2177648.html
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     full_name: 'Java 8 Update 121'
     installer: 'salt://win/repo-ng/jre8_x86/jre-8u121-windows-i586.exe'
     uninstall_flags: '/qn /x {26A24AE4-039D-4CA4-87B4-2F32180121F0} /norestart'
@@ -167,7 +167,7 @@ jre8:
     # Do NOT use the 'archive' versions download page, use the 'manual' one above. The 'archive' one will give 
     # you more versions and also different builds. IF you do use these, make sure you adapt your sls file accordingly.  
     # http://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase8-2177648.html
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     full_name: 'Java 8 Update 101'
     installer: 'salt://win/repo-ng/jre8_x86/jre-8u101-windows-i586.exe'
     uninstall_flags: '/qn /x {26A24AE4-039D-4CA4-87B4-2F32180101F0} /norestart'
@@ -195,7 +195,7 @@ jre8:
     # and put it on the winrepo on master to install it the 'salt://win/repo-ng/jre8/... way
     # to find manual download links for any version use:
     # http://www.java.com/en/download/manual.jsp
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     full_name: 'Java 8 Update 91'
     installer: 'salt://win/repo-ng/jre8_x86/jre-8u91-windows-i586.exe'
     uninstall_flags: '/qn /x {26A24AE4-039D-4CA4-87B4-2F83218091F0} /norestart'
@@ -220,7 +220,7 @@ jre8:
     # and put it on the winrepo on master to install it the 'salt://win/repo-ng/jre8/... way
     # to find manual download links for any version use:
     # http://www.java.com/en/download/manual.jsp
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     full_name: 'Java 8 Update 77'
     installer: 'salt://win/repo-ng/jre8_x86/jre-8u77-windows-i586.exe'
     uninstall_flags: '/qn /x {26A24AE4-039D-4CA4-87B4-2F83218077F0} /norestart'
@@ -245,7 +245,7 @@ jre8:
     # and put it on the winrepo on master to install it the 'salt://win/repo-ng/jre8/... way
     # to find manual download links for any version use:
     # http://www.java.com/en/download/manual.jsp
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     full_name: 'Java 8 Update 73'
     installer: 'salt://win/repo-ng/jre8_x86/jre-8u73-windows-i586.exe'
     uninstall_flags: '/qn /x {26A24AE4-039D-4CA4-87B4-2F83218073F0} /norestart'
@@ -270,7 +270,7 @@ jre8:
     # and put it on the winrepo on master to install it the 'salt://win/repo-ng/jre8/... way
     # to find manual download links for any version use:
     # http://www.java.com/en/download/manual.jsp
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     full_name: 'Java 8 Update 71'
     installer: 'salt://win/repo-ng/jre8_x86/jre-8u71-windows-i586.exe'
     uninstall_flags: '/qn /x {26A24AE4-039D-4CA4-87B4-2F83218071F0} /norestart'
@@ -295,7 +295,7 @@ jre8:
     # and put it on the winrepo on master to install it the 'salt://win/repo-ng/jre8/... way
     # to find manual download links for any version use:
     # http://www.java.com/en/download/manual.jsp
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     full_name: 'Java 8 Update 66'
     installer: 'salt://win/repo-ng/jre8_x86/jre-8u66-windows-i586.exe'
     uninstall_flags: '/qn /x {26A24AE4-039D-4CA4-87B4-2F83218066F0} /norestart'
@@ -320,7 +320,7 @@ jre8:
     # and put it on the winrepo on master to install it the 'salt://win/repo-ng/jre8/... way
     # to find manual download links for any version use:
     # http://www.java.com/en/download/manual.jsp
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     full_name: 'Java 8 Update 60'
     installer: 'salt://win/repo-ng/jre8_x86/jre-8u60-windows-i586.exe'
     uninstall_flags: '/qn /x {26A24AE4-039D-4CA4-87B4-2F83218060F0} /norestart'
@@ -345,7 +345,7 @@ jre8:
     # and put it on the winrepo on master to install it the 'salt://win/repo-ng/jre8/... way
     # to find manual download links for any version use:
     # http://www.java.com/en/download/manual.jsp
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     full_name: 'Java 8 Update 51'
     installer: 'salt://win/repo-ng/jre8_x86/jre-8u51-windows-i586.exe'
     uninstall_flags: '/qn /x {26A24AE4-039D-4CA4-87B4-2F83218051F0} /norestart'

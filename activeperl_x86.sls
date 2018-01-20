@@ -5,7 +5,7 @@ activeperl_x86:
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'http://downloads.activestate.com/ActivePerl/releases/{{ version }}.{{ build }}/ActivePerl-{{ version }}.{{ build }}-MSWin32-x86-64int-{{ release_x64 }}.exe'
     uninstall_flags: '/x {{ guid_x64 }} /qn /norestart'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     installer: 'http://downloads.activestate.com/ActivePerl/releases/{{ version }}.{{ build }}/ActivePerl-{{ version }}.{{ build }}-MSWin32-x86-64int-{{ release_x86 }}.exe'
     uninstall_flags: '/x {{ guid_x86 }} /qn /norestart'
     {% endif %}

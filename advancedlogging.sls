@@ -4,7 +4,7 @@ advancedlogging:
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'http://download.microsoft.com/download/9/6/5/96594C39-9918-466C-AFE0-920737351987/AdvancedLogging64.msi'
     uninstaller: 'http://download.microsoft.com/download/9/6/5/96594C39-9918-466C-AFE0-920737351987/AdvancedLogging64.msi'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     installer: 'http://download.microsoft.com/download/D/8/B/D8B7664B-3F60-4A26-8307-B35FB926EF49/AdvancedLogging32.msi'
     uninstaller: 'http://download.microsoft.com/download/D/8/B/D8B7664B-3F60-4A26-8307-B35FB926EF49/AdvancedLogging32.msi'
     {% endif %}
