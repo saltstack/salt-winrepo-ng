@@ -1,8 +1,8 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available
 {% if grains['cpuarch'] == 'AMD64' %}
-    {% set PROGRAM_FILES = "%ProgramFiles%" %}
-{% else %}
     {% set PROGRAM_FILES = "%ProgramFiles(x86)%" %}
+{% else %}
+    {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {% endif %}
 pass4win:
   '1.2.1.9':
