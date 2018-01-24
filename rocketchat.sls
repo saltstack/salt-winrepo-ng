@@ -1,7 +1,7 @@
+{% set versions = ['2.10.1', '2.9.0'] %}
 {% set PROGRAM_FILES = "%ProgramFiles%" %}
-{% for version in ['2.10.1',
-                   '2.9.0'] %}
 rocketchat:
+{% for version in versions %}
   '{{ version }}':
     full_name: 'Rocket.Chat+ {{ version }}'
     installer: 'https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/{{ version }}/rocketchat-setup-{{ version }}.exe'
