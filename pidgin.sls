@@ -1,3 +1,4 @@
+{% set versions = ['2.10.11', '2.10.10', '2.10.6'] %}
 # just 32-bit x86 installer available
 {% if grains['cpuarch'] == 'AMD64' %}
     {% set PROGRAM_FILES = "%ProgramFiles(x86)%" %}
@@ -5,7 +6,7 @@
     {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {% endif %}
 pidgin:
-  {% for version in '2.10.11', '2.10.10', '2.10.6' %}
+  {% for version in versions %}
   '{{ version }}':
     full_name: 'Pidgin'
     installer: 'http://heanet.dl.sourceforge.net/project/pidgin/Pidgin/{{ version }}/pidgin-{{ version }}-offline.exe'

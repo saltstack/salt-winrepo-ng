@@ -5,7 +5,7 @@
     {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {% endif %}
 gow:
-  Not Found:
+  'Not Found':
     full_name: 'Gow'
     installer: 'https://github.com/bmatzelle/gow/releases/download/v0.8.0/Gow-0.8.0.exe'
     install_flags: '/S'

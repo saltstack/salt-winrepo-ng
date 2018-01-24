@@ -1,10 +1,10 @@
 # just 32-bit x86 installer available
-spybot-anti-beacon:
 {% if grains['cpuarch'] == 'AMD64' %}
   {% set PROGRAM_FILES = "%ProgramFiles(x86)%" %}
 {% else %}
   {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {% endif %}
+spybot-anti-beacon:
   '1.6':
     full_name: 'Spybot Anti-Beacon'
     installer: 'https://download.spybot.info/AntiBeacon/SpybotAntiBeacon-1.6-setup.exe'
