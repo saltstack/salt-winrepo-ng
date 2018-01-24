@@ -1,5 +1,5 @@
 check-mk-agent:
-  Not Found:
+  'Not Found':
     full_name: 'Check_MK Agent 1.2.8b4'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'salt://win/repo-ng/check_mk/install_agent-64-1.2.8b4.exe'

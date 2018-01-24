@@ -1,8 +1,8 @@
+{% set PROGRAM_FILES = "%ProgramFiles%" %} 
 soapui:
 {% for version in ['5.4.0'] %}
   '{{ version }}':
     full_name: 'SoapUI {{ version }} {{ version }}'
-    {% set PROGRAM_FILES = "%ProgramFiles%" %} 
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'https://s3.amazonaws.com/downloads.eviware/soapuios/{{ version }}/SoapUI-x64-{{ version }}.exe'
     {% else %}
