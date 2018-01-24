@@ -12,7 +12,7 @@ pgadmin4:
     install_flags: '/SP- /verysilent /norestart'
   {% if package_version == "1.6" %}
     uninstaller: '{{ PROGRAM_FILES }}\pgAdmin 4\v1\unins000.exe'
-  {% elif package_version == "2.0" or package_version == "2.1" %}
+  {% elif version == "2.0" or version == "2.1" %}
     uninstaller: '{{ PROGRAM_FILES }}\pgAdmin 4\v2\unins000.exe'
   {% endif %}
     uninstall_flags: '/verysilent /norestart'
