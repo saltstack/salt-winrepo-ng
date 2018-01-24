@@ -1,4 +1,3 @@
-
 {% if grains['cpuarch'] == 'AMD64' %}
     {% set PROGRAM_FILES = "%ProgramFiles(x86)%" %}
 {% else %}

@@ -1,6 +1,6 @@
+{% set PROGRAM_FILES = "%PROGRAMFILES%" %}
 hwinfo:
   '5.70':
-    {% set PROGRAM_FILES = "%PROGRAMFILES%" %}
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name: 'HWiNFO64 Version 5.70'
     installer: 'https://www.fosshub.com/HWiNFO.html/hw64_570.exe'
