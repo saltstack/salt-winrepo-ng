@@ -10,7 +10,7 @@ pgadmin4:
     full_name: 'pgAdmin 4 version {{ version }}'
     installer: 'https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v{{ version }}/windows/pgadmin4-{{ version }}-x86.exe'
     install_flags: '/SP- /verysilent /norestart'
-  {% if package_version == "1.6" %}
+  {% if version == "1.6" %}
     uninstaller: '{{ PROGRAM_FILES }}\pgAdmin 4\v1\unins000.exe'
   {% elif version == "2.0" or version == "2.1" %}
     uninstaller: '{{ PROGRAM_FILES }}\pgAdmin 4\v2\unins000.exe'
