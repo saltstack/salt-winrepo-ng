@@ -1,7 +1,6 @@
-{% set versions = {'3.3.14.2':['3']} %}
+{% set versions, releases  = (('3.3.14.2', '3')) %}
 autoit:
-{% for version, releases in versions.items() %}
-{% for release in releases %}  
+  {% for version, release in [(versions, releases)] %}
   '{{ version }}':
     full_name: 'AutoIt v{{ version }}'
     installer: 'https://www.autoitscript.com/files/autoit{{ release }}/autoit-v{{ release }}-setup.exe'
@@ -15,5 +14,4 @@ autoit:
     msiexec: False
     locale: en_US
     reboot: False
-{% endfor %}
-{% endfor %}
+  {% endfor %}
