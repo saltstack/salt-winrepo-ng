@@ -1,4 +1,22 @@
 keepass:
+  '1.35.0':
+    full_name: 'KeePass 1.35'
+    installer: 'http://vorboss.dl.sourceforge.net/project/keepass/KeePass%201.x/1.35/KeePass-1.35.msi'
+    install_flags: '/qn /norestart'
+    uninstaller: 'http://vorboss.dl.sourceforge.net/project/keepass/KeePass%201.x/1.35/KeePass-1.35.msi'
+    uninstall_flags: '/qn /norestart'
+    msiexec: True
+    locale: en_US
+    reboot: False
+  '1.34.0':
+    full_name: 'KeePass 1.34'
+    installer: 'http://vorboss.dl.sourceforge.net/project/keepass/KeePass%201.x/1.34/KeePass-1.34.msi'
+    install_flags: '/qn /norestart'
+    uninstaller: 'http://vorboss.dl.sourceforge.net/project/keepass/KeePass%201.x/1.34/KeePass-1.34.msi'
+    uninstall_flags: '/qn /norestart'
+    msiexec: True
+    locale: en_US
+    reboot: False
   '1.33.0':
     full_name: 'KeePass 1.33'
     installer: 'http://vorboss.dl.sourceforge.net/project/keepass/KeePass%201.x/1.33/KeePass-1.33.msi'
