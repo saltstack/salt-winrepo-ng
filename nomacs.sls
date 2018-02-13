@@ -1,5 +1,5 @@
-{% for version in ['3.8.0'] %}
 nomacs:
+{% for version in ['3.8.0'] %}
   '{{ version }}':
     full_name: 'nomacs - Image Lounge'
     installer: 'salt://win/repo-ng/nomacs/nomacs-setup-x64.msi
