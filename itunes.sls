@@ -3,7 +3,7 @@ itunes:
   '12.7.3.46':
     full_name: 'iTunes'
     {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'https://secure-appldnld.apple.com/itunes12/091-45357-20180123-72201840-FFEA-11E7-92F9-85B67CCC33A9/iTunes64Setup.exe
+    installer: 'https://secure-appldnld.apple.com/itunes12/091-45357-20180123-72201840-FFEA-11E7-92F9-85B67CCC33A9/iTunes64Setup.exe'
     uninstall_flags: |
                      '/qn /norestart /x {56DDDFB8-7F79-4480-89D5-25E1F52AB28F} &
                      msiexec.exe /qn /norestart /x {19589375-5C58-4AFA-842F-8B34744CCEAD} &
