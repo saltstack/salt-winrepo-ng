@@ -1,4 +1,4 @@
-evernote: 6.9.7.6770
+evernote:
   '6.9.7.6770':
     full_name: 'Evernote v. 6.9.7'
     installer: 'https://cdn1.evernote.com/win6/public/Evernote_6.9.7.6770.exe'
