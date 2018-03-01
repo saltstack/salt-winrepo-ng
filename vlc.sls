@@ -1,7 +1,8 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available
 {% set PROGRAM_FILES = "%ProgramFiles%" %}
 vlc:
-{% for version in ['3.0.0',
+{% for version in ['3.0.1',
+                   '3.0.0',
                    '2.2.8',
                    '2.2.6'] %}
   '{{ version }}':
