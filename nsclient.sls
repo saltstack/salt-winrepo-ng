@@ -1,15 +1,22 @@
 nsclient:
-  {% for version, file_version in [
-    ('0.5.2029', '0.5.2.29'),
-    ('0.5.1046', '0.5.1.46'),
-    ('0.5.1044', '0.5.1.44'),
-    ('0.5.0062', '0.5.0.62'),
-    ('0.4.4023', '0.4.4.23'),
-    ('0.4.4019', '0.4.4.19'),
-    ('0.4.30143', '0.4.3.143'),
-    ('0.4.3088', '0.4.3.88')
+  {% for split_version in [
+    ['0.5.2', '39'],
+    ['0.5.2', '29'],
+    ['0.5.1', '46'],
+    ['0.5.1', '44'],
+    ['0.5.0', '62'],
+    ['0.4.4', '23'],
+    ['0.4.4', '19'],
+    ['0.4.3', '143'],
+    ['0.4.3', '88']
    ] %}
 
+  {% if split_version[0][2] > '4' %} # versions prior to 0.5.xxxx had 3 dots
+    {% set version = "0".join(split_version) %}
+  {% else %}
+    {% set version = ".".join(split_version) %}
+  {% endif %}
+  {% set file_version = ".".join(split_version) %}
   '{{ version }}':
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name:  'NSClient++ (x64)'
