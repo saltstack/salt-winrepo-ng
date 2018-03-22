@@ -1,4 +1,3 @@
-
 ms-vcpp-2005-atl-redist_x64:
   '8.0.50727.42':
     full_name: 'Microsoft Visual C++ 2005 Redistributable (x64)'

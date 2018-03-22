@@ -5,7 +5,7 @@ ultradefrag:
     full_name: 'Ultra Defragmenter'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'http://netcologne.dl.sourceforge.net/project/ultradefrag/stable-release/7.0.2/ultradefrag-7.0.2.bin.amd64.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     installer: 'http://netcologne.dl.sourceforge.net/project/ultradefrag/stable-release/7.0.2/ultradefrag-7.0.2.bin.i386.exe'
     {% endif %}
     install_flags: '/S /FULL=1'
@@ -18,7 +18,7 @@ ultradefrag:
     full_name: 'Ultra Defragmenter'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'http://netcologne.dl.sourceforge.net/project/ultradefrag/stable-release/7.0.1/ultradefrag-7.0.1.bin.amd64.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     installer: 'http://netcologne.dl.sourceforge.net/project/ultradefrag/stable-release/7.0.1/ultradefrag-7.0.1.bin.i386.exe'
     {% endif %}
     install_flags: '/S /FULL=1'
@@ -31,7 +31,7 @@ ultradefrag:
     full_name: 'Ultra Defragmenter 6.0.2'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'http://heanet.dl.sourceforge.net/project/ultradefrag/stable-release/6.0.2/ultradefrag-6.0.2.bin.amd64.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     installer: 'http://heanet.dl.sourceforge.net/project/ultradefrag/stable-release/6.0.2/ultradefrag-6.0.2.bin.i386.exe'
     {% endif %}
     install_flags: '/S /FULL=1'

@@ -4,7 +4,7 @@ inkscape:
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'https://inkscape.global.ssl.fastly.net/media/resources/file/inkscape-0.91-x64.msi'
     uninstaller: 'https://inkscape.global.ssl.fastly.net/media/resources/file/inkscape-0.91-x64.msi'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     installer: 'https://inkscape.global.ssl.fastly.net/media/resources/file/inkscape-0.91.msi'
     uninstaller: 'https://inkscape.global.ssl.fastly.net/media/resources/file/inkscape-0.91.msi'
     {% endif %}

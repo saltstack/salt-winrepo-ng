@@ -1,7 +1,7 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available
 {% set arch = {'AMD64': '-x86_64', 'x86': '-i686'}[grains['cpuarch']] %}
 openvpn: 
-{% for version in ['2.4.3-I602', '2.4.3-I601', '2.3.17-I601', '2.3.12-I601', '2.3.11-I601', '2.3.10-I603', '2.3.8-I601', '2.3.6-I601'] %}
+{% for version in ['2.4.5-I601', '2.4.4-I601', '2.4.3-I602', '2.4.3-I601', '2.3.17-I601', '2.3.12-I601', '2.3.11-I601', '2.3.10-I603', '2.3.8-I601', '2.3.6-I601'] %}
   {% if version[2] > '3' %}
     {% set arch = "" %} # Combined installer since v2.4+
   {% endif %}

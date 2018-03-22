@@ -18,7 +18,7 @@ maas360bootanalyzer:
                    reg ADD HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\MaaS360BootAnalyzer /f /v Publisher /d "installed by salt winrepo-ng" &
                    reg ADD HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\MaaS360BootAnalyzer /f /v URLUpdateInfo /d "http://www.maas360.com" &
                    exit 0'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     install_flags: |
                    '/S &
                    reg ADD HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\MaaS360BootAnalyzer /f &

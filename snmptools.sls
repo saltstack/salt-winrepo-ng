@@ -5,7 +5,7 @@
     {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {% endif %}
 snmptools:
-  Not Found:
+  'Not Found':
     full_name: 'SnmpTools 2'
     installer: 'http://erwan.labalec.fr/snmptools/snmptools32.exe'
     install_flags: '/SP- /VERYSILENT /SUPPRESSMSGBOXES /NORESTART'

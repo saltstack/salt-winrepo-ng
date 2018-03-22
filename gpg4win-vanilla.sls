@@ -5,6 +5,24 @@
     {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {% endif %}
 gpg4win-vanilla:
+  '3.0.3':
+    full_name: 'Gpg4Win (3.0.3)'
+    installer: 'http://files.gpg4win.org/gpg4win-vanilla-3.0.3.exe'
+    install_flags: '/S'
+    uninstaller: '{{ PROGRAM_FILES }}\GNU\GnuPG\gpg4win-uninstall.exe'
+    uninstall_flags: '/S'
+    msiexec: False
+    locale: en_US
+    reboot: False
+  '3.0.0':
+    full_name: 'Gpg4Win (3.0.0)'
+    installer: 'http://files.gpg4win.org/gpg4win-vanilla-3.0.0.exe'
+    install_flags: '/S'
+    uninstaller: '{{ PROGRAM_FILES }}\GNU\GnuPG\gpg4win-uninstall.exe'
+    uninstall_flags: '/S'
+    msiexec: False
+    locale: en_US
+    reboot: False
   '2.3.4':
     full_name: 'Gpg4Win (2.3.4)'
     installer: 'http://files.gpg4win.org/gpg4win-vanilla-2.3.4.exe'

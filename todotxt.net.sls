@@ -3,7 +3,7 @@ todotxt.net:
     # both 32-bit (x86) AND a 64-bit (AMD64) installer available
     {% if grains['cpuarch'] == 'AMD64' %}
       {% set PROGRAM_FILES = "%ProgramFiles(x86)%" %}
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
       {% set PROGRAM_FILES = "%ProgramFiles%" %}
     {% endif %}
     full_name: 'todotxt.net v3.2.0.0'

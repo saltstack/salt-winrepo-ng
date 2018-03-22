@@ -1,4 +1,22 @@
 skype-msi:
+  '7.40.151':
+    full_name: 'Skype™ 7.40'
+    installer: 'http://download.skype.com/msi/SkypeSetup_7.40.0.151.msi'
+    install_flags: '/qn /norestart STARTSKYPE=FALSE TRANSFORMS=:RemoveDesktopShortcut.mst TRANSFORMS=:RemoveStartup.mst'
+    uninstaller: 'http://download.skype.com/msi/SkypeSetup_7.40.0.151.msi'
+    uninstall_flags: '/qn /norestart'
+    msiexec: True
+    locale: en_US
+    reboot: False
+  '7.40.103':
+    full_name: 'Skype™ 7.40'
+    installer: 'http://download.skype.com/msi/SkypeSetup_7.40.0.103.msi'
+    install_flags: '/qn /norestart STARTSKYPE=FALSE TRANSFORMS=:RemoveDesktopShortcut.mst TRANSFORMS=:RemoveStartup.mst'
+    uninstaller: 'http://download.skype.com/msi/SkypeSetup_7.40.0.103.msi'
+    uninstall_flags: '/qn /norestart'
+    msiexec: True
+    locale: en_US
+    reboot: False
   '7.38.101':
     full_name: 'Skype™ 7.38'
     installer: 'http://download.skype.com/msi/SkypeSetup_7.38.0.101.msi'

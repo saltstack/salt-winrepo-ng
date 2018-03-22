@@ -14,16 +14,20 @@
 # added below.
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 salt-minion:
-  {% for version in ['2017.7.0'] %}
+  {% for version in ['2017.7.4',
+                     '2017.7.3',
+                     '2017.7.2',
+                     '2017.7.1',
+                     '2017.7.0'] %}
   '{{ version }}':
     full_name: 'Salt Minion {{ version }}'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'https://repo.saltstack.com/windows/Salt-Minion-{{ version }}-Py2-AMD64-Setup.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     installer: 'https://repo.saltstack.com/windows/Salt-Minion-{{ version }}-Py2-x86-Setup.exe'
     {% endif %}
     {% raw %}
-    #install_flags: '/S /master={{ salt['pillar.get']('salt:master', 'salt.domain.tld') }} /minion-id={{ salt['pillar.get']('salt:minion:ids:' ~ grains['host'] }}'
+    # install_flags: "/S /master={{ salt['pillar.get']('salt:master', 'salt.domain.tld') }} /minion-id={{ salt['pillar.get']('salt:minion:ids:' ~ grains['host'] }}"
     {% endraw %}
     install_flags: '/S'
     uninstaller: 'C:\salt\uninst.exe'
@@ -36,12 +40,48 @@ salt-minion:
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Add versions from older branches here:
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  {% for version in ['2016.11.6', '2016.11.5', '2016.11.4', '2016.11.3', '2016.11.2', '2016.11.1', '2016.11.0', '2016.3.4', '2016.3.3', '2016.3.2', '2016.3.1', '2016.3.0', '2015.8.12', '2015.8.11', '2015.8.10', '2015.8.9', '2015.8.8', '2015.8.7', '2015.8.5', '2015.8.4', '2015.8.3', '2015.8.1', '2015.8.0-3', '2015.5.11', '2015.5.10', '2015.5.9', '2015.5.8', '2015.5.6', '2015.5.5', '2015.5.3-2'] %}
+  {% for version in ['2016.11.9',
+                     '2016.11.8',
+                     '2016.11.7',
+                     '2016.11.6',
+                     '2016.11.5',
+                     '2016.11.4',
+                     '2016.11.3',
+                     '2016.11.2',
+                     '2016.11.1',
+                     '2016.11.0',
+                     '2016.3.8',
+                     '2016.3.7',
+                     '2016.3.6',
+                     '2016.3.5',
+                     '2016.3.4',
+                     '2016.3.3',
+                     '2016.3.2',
+                     '2016.3.1',
+                     '2016.3.0',
+                     '2015.8.12',
+                     '2015.8.11',
+                     '2015.8.10',
+                     '2015.8.9',
+                     '2015.8.8',
+                     '2015.8.7',
+                     '2015.8.5',
+                     '2015.8.4',
+                     '2015.8.3',
+                     '2015.8.1',
+                     '2015.8.0-3',
+                     '2015.5.11',
+                     '2015.5.10',
+                     '2015.5.9',
+                     '2015.5.8',
+                     '2015.5.6',
+                     '2015.5.5',
+                     '2015.5.3-2'] %}
   '{{ version }}':
     full_name: 'Salt Minion {{ version }}'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'https://repo.saltstack.com/windows/Salt-Minion-{{ version }}-AMD64-Setup.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     installer: 'https://repo.saltstack.com/windows/Salt-Minion-{{ version }}-x86-Setup.exe'
     {% endif %}
     {% raw %}
