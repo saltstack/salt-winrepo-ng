@@ -1,5 +1,5 @@
 libreoffice:
-  {% for version in ['5.2.4.2', '5.2.7.2', '5.3.5.2', '5.3.6.1'] %}
+  {% for version in ['5.2.4.2', '5.2.7.2', '5.3.5.2', '5.3.6.1', '5.4.6.2'] %}
   '{{ version }}':
     full_name: 'LibreOffice {{ version }}'
     {% if grains['cpuarch'] == 'AMD64' %}
