@@ -1,5 +1,5 @@
 chocolatey:
-  {% for version in ['0.10.10'] %}
+  {% for version in ['0.10.11'] %}
   '{{ version }}':
     full_name: 'Chocolatey {{ version }}'
     installer: 'salt://win/repo-ng/salt-winrepo-ng/chocolatey/install.cmd'
