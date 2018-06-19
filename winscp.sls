@@ -4,7 +4,7 @@
     {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {% endif %}
 winscp:
-  {% for version, file_version in [('5.13', '5.13'), ('5.11.3', '5.11.3'), ('5.11.2', '5.11.2'), ('5.11.1', '5.11.1'), ('5.9.6', '5.9.6'), ('5.9.2', '5.9.2'), ('5.9.1', '5.9.1'), ('5.9', '5.9')] %}
+  {% for version, file_version in [('5.13.3', '5.13.3'), ('5.13.2', '5.13.2'), ('5.13.1', '5.13.1'), ('5.13', '5.13'), ('5.11.3', '5.11.3'), ('5.11.2', '5.11.2'), ('5.11.1', '5.11.1'), ('5.9.6', '5.9.6'), ('5.9.2', '5.9.2'), ('5.9.1', '5.9.1'), ('5.9', '5.9')] %}
   '{{ version }}':
     full_name: 'WinSCP {{ version }}'
     installer: 'http://freefr.dl.sourceforge.net/project/winscp/WinSCP/{{ version }}/WinSCP-{{ file_version }}-Setup.exe'
