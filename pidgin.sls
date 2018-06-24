@@ -1,4 +1,4 @@
-{% set versions = ['2.10.11', '2.10.10', '2.10.6'] %}
+{% set versions = ['2.12.0'] %}
 # just 32-bit x86 installer available
 {% if grains['cpuarch'] == 'AMD64' %}
     {% set PROGRAM_FILES = "%ProgramFiles(x86)%" %}
