@@ -13,6 +13,8 @@
     {% set osrelease = "2012" %}
 {% elif grains['osrelease'] == '2016Server' %}
     {% set osrelease = "2016" %}
+{% else %}
+    {% set osrelease = "2012r2" %}
 {% endif %}
 sensu:
   {% for version in ['1.4.2',
