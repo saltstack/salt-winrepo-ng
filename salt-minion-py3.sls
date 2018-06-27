@@ -8,7 +8,8 @@
 # will have to upgrade Salt through another means.
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 salt-minion-py3:
-  {% for version in ['2018.3.1',
+  {% for version in ['2018.3.2',
+                     '2018.3.1',
                      '2018.3.0',
                      '2017.7.6',
                      '2017.7.5',
