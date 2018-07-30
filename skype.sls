@@ -1,4 +1,9 @@
-{% set PROGRAM_FILES = "%PROGRAMFILES%" %}
+# just 32-bit x86 installer available
+{% if grains['cpuarch'] == 'AMD64' %}
+    {% set PROGRAM_FILES = "%PROGRAMFILES(x86)%" %}
+{% else %}
+    {% set PROGRAM_FILES = "%PROGRAMFILES%" %}
+{% endif %}
 {% for version, file_version in [('8.25', '8.25.0.5')] %}
 skype:
   '{{ version }}':
