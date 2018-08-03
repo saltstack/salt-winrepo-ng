@@ -14,4 +14,4 @@ set DIR=%~dp0%
 %systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "& '%DIR%%instNAME%' %instFLAG%"
 
 :: Make Registry Entries - add important version entry that original installer does NOT provide
-reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\%regNAME%" /v DisplayVersion /d %progVER% /f
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\%regNAME%" /v DisplayVersion /d %progVER% /f /reg:32
