@@ -1,4 +1,13 @@
 python3_x64:
+  '3.7.0150.0':
+    full_name: 'Python 3.7.0 (64-bit)'
+    installer: 'https://www.python.org/ftp/python/3.7.0/python-3.7.0-amd64.exe'
+    install_flags: '/quiet InstallAllUsers=1'
+    uninstaller: 'https://www.python.org/ftp/python/3.7.0/python-3.7.0-amd64.exe'
+    uninstall_flags: '/uninstall'
+    msiexec: False
+    locale: en_US
+    reboot: False
   '3.5.2150.0':
     full_name: 'Python 3.5.2 (64-bit)'
     installer: 'https://www.python.org/ftp/python/3.5.2/python-3.5.2-amd64.exe'
