@@ -1,5 +1,5 @@
 python3_x64:
-  '3.7.0150.0':
+  '3.7.150.0':
     full_name: 'Python 3.7.0 (64-bit)'
     installer: 'https://www.python.org/ftp/python/3.7.0/python-3.7.0-amd64.exe'
     install_flags: '/quiet InstallAllUsers=1'
