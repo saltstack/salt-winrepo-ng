@@ -1,4 +1,4 @@
-{% set versions = ['2.12.0', '2.10.4', '2.10.3', '2.10.2', '2.10.1', '2.9.0'] %}
+{% set versions = ['2.12.0', '2.10.5', '2.10.4', '2.10.3', '2.10.2', '2.10.1', '2.9.0'] %}
 {% set PROGRAM_FILES = "%ProgramFiles%" %}
 rocketchat:
 {% for version in versions %}
