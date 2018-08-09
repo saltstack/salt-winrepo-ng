@@ -1,7 +1,14 @@
+# Define versions
+{% set versions = {'3': ['03', '02.1', '02', '01', '0'],
+                   '3%20Pre-release': ['0b2', '0b1'],
+                   '2': ['51', '50', '49', '48', '47', '46']} %}
+
 nsis:
-  '3.0b2':
+  {% for major, subversions in versions.items() %}
+  {% for minor in subversions %}
+  '{{major|first}}.{{minor}}':
     full_name: 'Nullsoft Install System'
-    installer: 'http://netcologne.dl.sourceforge.net/project/nsis/NSIS%203%20Pre-release/3.0b2/nsis-3.0b2-setup.exe'
+    installer: 'http://iweb.dl.sourceforge.net/project/nsis/NSIS%20{{major}}/{{major|first}}.{{minor}}/nsis-{{major|first}}.{{minor}}-setup.exe'
     install_flags: '/S'
     {% if grains['cpuarch'] == 'AMD64' %}
     uninstaller: '%PROGRAMFILES(x86)%\NSIS\uninst-nsis.exe'
@@ -12,29 +19,5 @@ nsis:
     msiexec: False
     locale: en_US
     reboot: False
-  '3.0b1':
-    full_name: 'Nullsoft Install System'
-    installer: 'http://vorboss.dl.sourceforge.net/project/nsis/NSIS%203%20Pre-release/3.0b1/nsis-3.0b1-setup.exe'
-    install_flags: '/S'
-    {% if grains['cpuarch'] == 'AMD64' %}
-    uninstaller: '%PROGRAMFILES(x86)%\NSIS\uninst-nsis.exe'
-    {% else %}
-    uninstaller: '%PROGRAMFILES%\NSIS\uninst-nsis.exe'
-    {% endif %}
-    uninstall_flags: '/S'
-    msiexec: False
-    locale: en_US
-    reboot: False
-  '2.46':
-    full_name: 'Nullsoft Install System'
-    installer: 'http://netix.dl.sourceforge.net/project/nsis/NSIS%202/2.46/nsis-2.46-setup.exe'
-    install_flags: '/S'
-    {% if grains['cpuarch'] == 'AMD64' %}
-    uninstaller: '%PROGRAMFILES(x86)%\NSIS\uninst-nsis.exe'
-    {% else %}
-    uninstaller: '%PROGRAMFILES%\NSIS\uninst-nsis.exe'
-    {% endif %}
-    uninstall_flags: '/S'
-    msiexec: False
-    locale: en_US
-    reboot: False
+  {% endfor %}
+  {% endfor %}
