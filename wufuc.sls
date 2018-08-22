@@ -1,3 +1,6 @@
+# Allows install of Windows Updates on "Unsupported Hardware" on Win 7/8.1
+# https://github.com/zeffy/wufuc
+
 {% set versions = [ '1.0.1.201' ] %}
 {% if grains['cpuarch'] == 'AMD64' %}
   {% set cpuarch = 'x64' %}
