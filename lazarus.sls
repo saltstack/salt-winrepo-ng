@@ -16,9 +16,9 @@ lazarus:
   '{{ version }}':
     full_name: Lazarus {{ version }}
     {% if salt.grains.get('cpuarch') == 'AMD64' %}
-    installer: https://iweb.dl.sourceforge.net/project/lazarus/Lazarus%20Windows%2064%20bits/Lazarus%20{{ version }}/lazarus-{{ version }}-fpc-{{ fpc_version }}-win64.exe
+    installer: https://downloads.sourceforge.net/project/lazarus/Lazarus%20Windows%2064%20bits/Lazarus%20{{ version }}/lazarus-{{ version }}-fpc-{{ fpc_version }}-win64.exe
     {% else %}
-    installer: https://iweb.dl.sourceforge.net/project/lazarus/Lazarus%20Windows%2032%20bits/Lazarus%20{{ version }}/lazarus-{{ version }}-fpc-{{ fpc_version }}-win32.exe
+    installer: https://downloads.sourceforge.net/project/lazarus/Lazarus%20Windows%2032%20bits/Lazarus%20{{ version }}/lazarus-{{ version }}-fpc-{{ fpc_version }}-win32.exe
     {% endif %}
     install_flags: /SP- /VERYSILENT /NORESTART /SUPPRESSMSGBOXES
     uninstaller: C:\\lazarus\\unins000.exe
