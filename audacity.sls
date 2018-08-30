@@ -8,7 +8,7 @@ audacity:
   {% for version in versions %}
   '{{ version }}':
     full_name: 'Audacity {{ version }}'
-    installer: 'http://heanet.dl.sourceforge.net/project/audacity/audacity/{{ version }}/audacity-win-{{ version }}.exe'
+    installer: 'http://iweb.dl.sourceforge.net/project/audacity/audacity/{{ version }}/audacity-win-{{ version }}.exe'
     install_flags: '/SP- /verysilent /norestart'
     uninstaller: '{{ PROGRAM_FILES }}\Audacity\unins000.exe'
     uninstall_flags: '/SP- /verysilent /norestart'

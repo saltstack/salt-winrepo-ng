@@ -9,9 +9,9 @@ vcxsrv:
   '{{ version }}':
     full_name: 'VcXsrv'
     {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'https://netcologne.dl.sourceforge.net/project/vcxsrv/vcxsrv/1.20.0.0/vcxsrv-64.1.20.0.0.installer.exe'
+    installer: 'https://iweb.dl.sourceforge.net/project/vcxsrv/vcxsrv/1.20.0.0/vcxsrv-64.1.20.0.0.installer.exe'
     {% else %}
-    installer: 'https://datapacket.dl.sourceforge.net/project/vcxsrv/vcxsrv/1.20.0.0/vcxsrv.1.20.0.0.installer.exe'
+    installer: 'https://iweb.dl.sourceforge.net/project/vcxsrv/vcxsrv/1.20.0.0/vcxsrv.1.20.0.0.installer.exe'
     {% endif %} 
     install_flags: '/SP- /verysilent /norestart'
     uninstaller: '{{ PROGRAM_FILES }}\VcXsrv\uninstall.exe'

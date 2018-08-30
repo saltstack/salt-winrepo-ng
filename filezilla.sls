@@ -5,9 +5,9 @@ filezilla:
   '{{ version }}':
     full_name: 'FileZilla Client {{ version }}'
     {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'http://netcologne.dl.sourceforge.net/project/filezilla/FileZilla_Client/{{ version }}/FileZilla_{{ version }}_win64-setup.exe'
+    installer: 'http://iweb.dl.sourceforge.net/project/filezilla/FileZilla_Client/{{ version }}/FileZilla_{{ version }}_win64-setup.exe'
     {% else %}
-    installer: 'http://vorboss.dl.sourceforge.net/project/filezilla/FileZilla_Client/{{ version }}/FileZilla_{{ version }}_win32-setup.exe'
+    installer: 'http://iweb.dl.sourceforge.net/project/filezilla/FileZilla_Client/{{ version }}/FileZilla_{{ version }}_win32-setup.exe'
     {% endif %}
     install_flags: '/S'
     uninstaller: '{{ PROGRAM_FILES }}\FileZilla FTP Client\uninstall.exe'

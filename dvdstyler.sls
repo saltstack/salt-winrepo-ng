@@ -4,9 +4,9 @@ dvdstyler:
   'Not Found':
     full_name: 'DVDStyler v2.9.6'
     {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'http://vorboss.dl.sourceforge.net/project/dvdstyler/dvdstyler/2.9.6/DVDStyler-2.9.6-win64.exe'
+    installer: 'http://iweb.dl.sourceforge.net/project/dvdstyler/dvdstyler/2.9.6/DVDStyler-2.9.6-win64.exe'
     {% else %}
-    installer: 'http://netcologne.dl.sourceforge.net/project/dvdstyler/dvdstyler/2.9.6/DVDStyler-2.9.6-win32.exe'
+    installer: 'http://iweb.dl.sourceforge.net/project/dvdstyler/dvdstyler/2.9.6/DVDStyler-2.9.6-win32.exe'
     {% endif %}
     install_flags: '/VERYSILENT /SUPPRESSMSGBOXES /NORESTART /SP-'
     uninstaller: '{{ PROGRAM_FILES }}\DVDStyler\unins000.exe'
