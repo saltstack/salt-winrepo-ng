@@ -9,7 +9,7 @@ pidgin:
   {% for version in versions %}
   '{{ version }}':
     full_name: 'Pidgin'
-    installer: 'http://heanet.dl.sourceforge.net/project/pidgin/Pidgin/{{ version }}/pidgin-{{ version }}-offline.exe'
+    installer: 'http://downloads.sourceforge.net/project/pidgin/Pidgin/{{ version }}/pidgin-{{ version }}-offline.exe'
     install_flags: '/S'
     uninstaller: '{{ PROGRAM_FILES }}\Pidgin\pidgin-uninst.exe'
     uninstall_flags: '/S'
