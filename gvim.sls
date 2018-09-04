@@ -7,7 +7,7 @@
 gvim:
   'Not Found':
     full_name:  'Vim 8.0.3'
-    installer: 'http://downloads.sourceforge.net/project/cream/Vim/8.0.3/gvim-8-0-3.exe'
+    installer: 'https://downloads.sourceforge.net/project/cream/Vim/8.0.3/gvim-8-0-3.exe'
     install_flags: '/S'
     uninstaller: '{{ PROGRAM_FILES }}\Vim\vim80\uninstall.exe'
     uninstall_flags: '/S'
