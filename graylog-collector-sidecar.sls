@@ -6,8 +6,8 @@ graylog-collector-sidecar:
     full_name: 'Graylog Collector Sidecar'
     installer: 'https://github.com/Graylog2/collector-sidecar/releases/download/{{ version }}/collector_sidecar_installer_{{ version }}-1.exe'
     install_flags: '/S'
-    uninstaller: '%ProgramFiles%\graylog\collector-sidecar\graylog-collector-sidecar.exe'
-    uninstall_flags: '-service uninstall'
+    uninstaller: '%ProgramFiles%\graylog\collector-sidecar\uninstall.exe'
+    uninstall_flags: '/S'
     msiexec: False
     locale: en_US
     reboot: False
