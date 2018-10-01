@@ -8,7 +8,7 @@
 xming:
   '6.9.0.31':
     full_name:  'Xming 6.9.0.31'
-    installer: 'http://downloads.sourceforge.net/project/xming/Xming/6.9.0.31/Xming-6-9-0-31-setup.exe'
+    installer: 'https://downloads.sourceforge.net/project/xming/Xming/6.9.0.31/Xming-6-9-0-31-setup.exe'
     install_flags: '/SP- /verysilent /suppressmsgboxes /norestart'
     uninstaller: '{{ PROGRAM_FILES }}\Xming\unins000.exe'
     uninstall_flags: '/SP- /verysilent /norestart'
