@@ -4,9 +4,9 @@ stellarium:
   '0.16.1':
     full_name: 'Stellarium 0.16.1'
     {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'http://heanet.dl.sourceforge.net/project/stellarium/Stellarium-win64/0.16.1/stellarium-0.16.1-win64.exe'
+    installer: 'https://downloads.sourceforge.net/project/stellarium/Stellarium-win64/0.16.1/stellarium-0.16.1-win64.exe'
     {% else %}
-    installer: 'http://heanet.dl.sourceforge.net/project/stellarium/Stellarium-win32/0.16.1/stellarium-0.16.1-win32.exe'
+    installer: 'https://downloads.sourceforge.net/project/stellarium/Stellarium-win32/0.16.1/stellarium-0.16.1-win32.exe'
     {% endif %}
     install_flags: '/silent'
     uninstaller: '{{ PROGRAM_FILES }}\Stellarium\unins000.exe'
