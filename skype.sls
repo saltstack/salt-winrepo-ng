@@ -4,7 +4,7 @@
 {% else %}
     {% set PROGRAM_FILES = "%PROGRAMFILES%" %}
 {% endif %}
-{% for version, file_version in [('8.31', '8.31.0.92'), ('8.25', '8.25.0.5')] %}
+{% for version, file_version in [('8.31', '8.31.0.92')] %}
 skype:
   '{{ version }}':
     full_name: 'Skype version {{ version }}'
