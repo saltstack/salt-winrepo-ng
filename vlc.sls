@@ -11,9 +11,9 @@ vlc:
   '{{ version }}':
     full_name: 'VLC media player'
     {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'http://get.videolan.org/vlc/{{ version }}/win64/vlc-{{ version }}-win64.exe'
+    installer: 'https://get.videolan.org/vlc/{{ version }}/win64/vlc-{{ version }}-win64.exe'
     {% else %}
-    installer: 'http://get.videolan.org/vlc/{{ version }}/win32/vlc-{{ version }}-win32.exe'
+    installer: 'https://get.videolan.org/vlc/{{ version }}/win32/vlc-{{ version }}-win32.exe'
     {% endif %}
     install_flags: '/S'
     uninstaller: '{{ PROGRAM_FILES }}\VideoLAN\VLC\uninstall.exe'

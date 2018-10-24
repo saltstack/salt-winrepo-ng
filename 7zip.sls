@@ -7,13 +7,13 @@
   '{{major}}.{{minor}}.00.0':
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name: '7-Zip {{major}}.{{minor}} (x64 edition)'
-    installer: 'http://d.7-zip.org/a/7z{{major}}{{minor}}-x64.msi'
-    uninstaller: 'http://d.7-zip.org/a/7z{{major}}{{minor}}-x64.msi'
+    installer: 'https://d.7-zip.org/a/7z{{major}}{{minor}}-x64.msi'
+    uninstaller: 'https://d.7-zip.org/a/7z{{major}}{{minor}}-x64.msi'
     arch: x64
     {% else %}
     full_name: '7-Zip {{major}}.{{minor}}'
-    installer: 'http://d.7-zip.org/a/7z{{major}}{{minor}}.msi'
-    uninstaller: 'http://d.7-zip.org/a/7z{{major}}{{minor}}.msi'
+    installer: 'https://d.7-zip.org/a/7z{{major}}{{minor}}.msi'
+    uninstaller: 'https://d.7-zip.org/a/7z{{major}}{{minor}}.msi'
     arch: x86
     {% endif %}
     install_flags: '/qn /norestart'
