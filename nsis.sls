@@ -8,7 +8,7 @@ nsis:
   {% for minor in subversions %}
   '{{major|first}}.{{minor}}':
     full_name: 'Nullsoft Install System'
-    installer: 'http://iweb.dl.sourceforge.net/project/nsis/NSIS%20{{major}}/{{major|first}}.{{minor}}/nsis-{{major|first}}.{{minor}}-setup.exe'
+    installer: 'https://iweb.dl.sourceforge.net/project/nsis/NSIS%20{{major}}/{{major|first}}.{{minor}}/nsis-{{major|first}}.{{minor}}-setup.exe'
     install_flags: '/S'
     {% if grains['cpuarch'] == 'AMD64' %}
     uninstaller: '%PROGRAMFILES(x86)%\NSIS\uninst-nsis.exe'
