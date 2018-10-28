@@ -55,9 +55,9 @@ python3_x64:
     reboot: False
   '3.3.3150':
     full_name: 'Python 3.3.3 Core Interpreter (64-bit)'
-    installer: 'http://www.python.org/ftp/python/3.3.3/python-3.3.3.amd64.msi'
+    installer: 'https://www.python.org/ftp/python/3.3.3/python-3.3.3.amd64.msi'
     install_flags: '/qn ALLUSERS=1 /norestart'
-    uninstaller: 'http://www.python.org/ftp/python/3.3.3/python-3.3.3.amd64.msi'
+    uninstaller: 'https://www.python.org/ftp/python/3.3.3/python-3.3.3.amd64.msi'
     uninstall_flags: '/qn /norestart'
     msiexec: True
     locale: en_US
