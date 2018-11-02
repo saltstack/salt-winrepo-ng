@@ -5,9 +5,9 @@ python2_x86:
 
   '{{ full_version }}':
     full_name: 'Python {{ version }}'
-    installer: 'http://www.python.org/ftp/python/{{ version }}/python-{{ version }}.msi'
+    installer: 'https://www.python.org/ftp/python/{{ version }}/python-{{ version }}.msi'
     install_flags: '/qn /norestart ALLUSERS=1'
-    uninstaller: 'http://www.python.org/ftp/python/{{ version }}/python-{{ version }}.msi'
+    uninstaller: 'https://www.python.org/ftp/python/{{ version }}/python-{{ version }}.msi'
     uninstall_flags: '/qn /norestart'
     msiexec: True
     locale: en_US
