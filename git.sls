@@ -51,7 +51,10 @@ git:
   {% else %}
     installer: https://github.com/git-for-windows/git/releases/download/v{{ short_version }}.windows.{{ win_ver }}/Git-{{ version }}-32-bit.exe
   {% endif %}
-    install_flags: /VERYSILENT /NORESTART /SP- /NOCANCEL
+    # It is impossible to downgrade git silently. It will always pop a message
+    # that will cause salt to hang. `/SUPPRESSMSGBOXES` will suppress that
+    # warning allowing salt to continue, but the package will not downgrade
+    install_flags: /VERYSILENT /NORESTART /SP- /NOCANCEL /SUPPRESSMSGBOXES
     uninstaller: forfiles
     uninstall_flags: '/p "{{ PROGRAM_FILES }}\Git" /m unins*.exe /c "cmd /c @path /VERYSILENT /NORESTART"'
     msiexec: False
