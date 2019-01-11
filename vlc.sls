@@ -1,12 +1,19 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available
 {% set PROGRAM_FILES = "%ProgramFiles%" %}
 vlc:
-  '2.2.6':
+{% for version in ['3.0.4',
+                   '3.0.3',
+                   '3.0.2',
+                   '3.0.1',
+                   '3.0.0',
+                   '2.2.8',
+                   '2.2.6'] %}
+  '{{ version }}':
     full_name: 'VLC media player'
     {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'http://get.videolan.org/vlc/2.2.6/win64/vlc-2.2.6-win64.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
-    installer: 'http://get.videolan.org/vlc/2.2.6/win32/vlc-2.2.6-win32.exe'
+    installer: 'https://get.videolan.org/vlc/{{ version }}/win64/vlc-{{ version }}-win64.exe'
+    {% else %}
+    installer: 'https://get.videolan.org/vlc/{{ version }}/win32/vlc-{{ version }}-win32.exe'
     {% endif %}
     install_flags: '/S'
     uninstaller: '{{ PROGRAM_FILES }}\VideoLAN\VLC\uninstall.exe'
@@ -14,3 +21,4 @@ vlc:
     msiexec: False
     locale: en_US
     reboot: False
+{% endfor %}

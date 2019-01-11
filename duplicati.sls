@@ -4,7 +4,7 @@ duplicati:
     full_name: 'Duplicati (x64)'
     installer: 'https://duplicati.googlecode.com/files/Duplicati%201.3.4.x64.msi'
     uninstaller: 'https://duplicati.googlecode.com/files/Duplicati%201.3.4.x64.msi'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     full_name: 'Duplicati'
     installer: 'https://duplicati.googlecode.com/files/Duplicati%201.3.4.msi'
     uninstaller: 'https://duplicati.googlecode.com/files/Duplicati%201.3.4.msi'

@@ -5,7 +5,7 @@ tortoise-hg:
     full_name: 'TortoiseHg 3.6.2 (x64)'
     installer: 'salt://win/repo-ng/tortoise-hg/tortoisehg-3.6.2-x64.msi'
     uninstaller: 'salt://win/repo-ng/tortoise-hg/tortoisehg-3.6.2-x64.msi'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     full_name: 'TortoiseHg 3.6.2 (x86)'
     installer: 'salt://win/repo-ng/tortoise-hg/tortoisehg-3.6.2-x86.msi'
     uninstaller: 'salt://win/repo-ng/tortoise-hg/tortoisehg-3.6.2-x86.msi'
@@ -20,7 +20,7 @@ tortoise-hg:
     full_name: 'TortoiseHg 3.3.0 (x64)'
     installer: 'salt://win/repo-ng/tortoise-hg/tortoisehg-3.3.0-x64.msi'
     uninstaller: 'salt://win/repo-ng/tortoise-hg/tortoisehg-3.3.0-x64.msi'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     full_name: 'TortoiseHg 3.3.0 (x86)'
     installer: 'salt://win/repo-ng/tortoise-hg/tortoisehg-3.3.0-x86.msi'
     uninstaller: 'salt://win/repo-ng/tortoise-hg/tortoisehg-3.3.0-x86.msi'

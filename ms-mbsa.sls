@@ -4,7 +4,7 @@ ms-mbsa:
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'https://download.microsoft.com/download/8/E/1/8E16A4C7-DD28-4368-A83A-282C82FC212A/MBSASetup-x64-EN.msi'
     uninstaller: 'https://download.microsoft.com/download/8/E/1/8E16A4C7-DD28-4368-A83A-282C82FC212A/MBSASetup-x64-EN.msi'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     installer: 'https://download.microsoft.com/download/8/E/1/8E16A4C7-DD28-4368-A83A-282C82FC212A/MBSASetup-x86-EN.msi'
     uninstaller: 'https://download.microsoft.com/download/8/E/1/8E16A4C7-DD28-4368-A83A-282C82FC212A/MBSASetup-x86-EN.msi'
     {% endif %}

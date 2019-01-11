@@ -1,39 +1,39 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available
 itunes:
-  '12.6.2.20':
+  '12.8.0.150':
     full_name: 'iTunes'
     {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'https://secure-appldnld.apple.com/itunes12/091-22850-20170719-8AC53D14-6BB9-11E7-A878-C6374A4DD6D5/iTunes64Setup.exe'
+    installer: 'https://secure-appldnld.apple.com/itunes12/091-81692-20180709-A4DF288B-8929-401F-AD73-4189359D8A6B/iTunes64Setup.exe'
     uninstall_flags: |
                      '/qn /norestart /x {56DDDFB8-7F79-4480-89D5-25E1F52AB28F} &
-                     msiexec.exe /qn /norestart /x {52D87F32-70E4-4348-8148-C0B9F35B1314} &
-                     msiexec.exe /qn /norestart /x {0A596141-97D5-45FA-9281-98DFAF48D579} &
-                     msiexec.exe /qn /norestart /x {D2FE6376-E549-4F63-A2C5-CA24DA035DE4} &
-                     msiexec.exe /qn /norestart /x {BB109E24-EE90-485B-A28B-ADDEFB40540B} &
-                     msiexec.exe /qn /norestart /x {02F95875-9527-49CC-B32F-970ADAEBD1EF} &
+                     msiexec.exe /qn /norestart /x {A30EA700-5515-48F0-88B0-9E99DC356B88} &
+                     msiexec.exe /qn /norestart /x {C29B636B-9015-4ED1-A12F-6375A337F23B} &
+                     msiexec.exe /qn /norestart /x {C56BA005-F02C-461B-ACA5-A0CE3E32578F} &
+                     msiexec.exe /qn /norestart /x {D745E014-74DD-43A3-98DF-E7D38164B681} &
+                     msiexec.exe /qn /norestart /x {36F365B3-05C2-455D-9D96-B73829DE046D} &
                      exit 0'
     # the above uninstalls:
     # Bonjour64 v. 3.1.0.1  {56DDDFB8-7F79-4480-89D5-25E1F52AB28F}
-    # Apple Software Update v. 2.3.0.177 {52D87F32-70E4-4348-8148-C0B9F35B1314}
-    # Apple Mobile Device Support (64-bit) v. 10.3.2.3 {0A596141-97D5-45FA-9281-98DFAF48D579}
-    # Apple Application Support (32-bit)  v. 5.6 {D2FE6376-E549-4F63-A2C5-CA24DA035DE4}
-    # Apple Application Support (64-bit) v. 5.6 {BB109E24-EE90-485B-A28B-ADDEFB40540B}
-    # iTunes v. 12.6.2.20 {02F95875-9527-49CC-B32F-970ADAEBD1EF}
-    {% elif grains['cpuarch'] == 'x86' %}
-    installer: 'https://secure-appldnld.apple.com/itunes12/091-22849-20170719-8AC5248C-6BB9-11E7-A52A-C7374A4DD6D5/iTunesSetup.exe'
+    # Apple Software Update v. 2.6.0.1 {A30EA700-5515-48F0-88B0-9E99DC356B88}
+    # Apple Mobile Device Support (64-bit) v. 11.4.1.46 {C29B636B-9015-4ED1-A12F-6375A337F23B}
+    # Apple Application Support (32-bit)  v. 6.6 {C56BA005-F02C-461B-ACA5-A0CE3E32578F}
+    # Apple Application Support (64-bit) v. 6.6 {D745E014-74DD-43A3-98DF-E7D38164B681}
+    # iTunes v. 12.8.0.150 {36F365B3-05C2-455D-9D96-B73829DE046D}
+    {% else %}
+    installer: 'https://secure-appldnld.apple.com/itunes12/091-81691-20180709-C98EBAE5-D5C5-41EC-9847-A5F71D9C4437/iTunesSetup.exe'
     uninstall_flags: |
                      '/qn /norestart /x {D168AAD0-6686-47C1-B599-CDD4888B9D1A} &
-                     msiexec.exe /qn /norestart /x {52D87F32-70E4-4348-8148-C0B9F35B1314} &
-                     msiexec.exe /qn /norestart /x {2A2C8640-5402-428A-909A-0236CB2B77C7} &
-                     msiexec.exe /qn /norestart /x {D2FE6376-E549-4F63-A2C5-CA24DA035DE4} &
-                     msiexec.exe /qn /norestart /x {BE5DD9B6-9DF7-4163-A39E-E2141C7A7488} &
+                     msiexec.exe /qn /norestart /x {A30EA700-5515-48F0-88B0-9E99DC356B88} &
+                     msiexec.exe /qn /norestart /x {B19FCC39-7914-4BBC-80EE-1D606BD8C686} &
+                     msiexec.exe /qn /norestart /x {E5347310-C82F-4833-AA36-8D11E5A8A86A} &
+                     msiexec.exe /qn /norestart /x {ADB8797A-FAD0-4F2A-A23C-6DA6C5886407} &
                      exit 0'
     # the above uninstalls:
     # Bonjour v. 3.1.0.1  {D168AAD0-6686-47C1-B599-CDD4888B9D1A}
-    # Apple Software Update v. 2.3.0.177 {52D87F32-70E4-4348-8148-C0B9F35B1314}
-    # Apple Mobile Device Support v. 10.3.2.3 {2A2C8640-5402-428A-909A-0236CB2B77C7}
-    # Apple Application Support (32-bit)  v. 5.6 {D2FE6376-E549-4F63-A2C5-CA24DA035DE4}
-    # iTunes v. 12.6.2.20 {BE5DD9B6-9DF7-4163-A39E-E2141C7A7488}
+    # Apple Software Update v. 2.6.0.1 {A30EA700-5515-48F0-88B0-9E99DC356B88}
+    # Apple Mobile Device Support v. 11.4.1.46 {B19FCC39-7914-4BBC-80EE-1D606BD8C686}
+    # Apple Application Support (32-bit)  v. 6.6 {E5347310-C82F-4833-AA36-8D11E5A8A86A}
+    # iTunes v. 12.8.0.150 {ADB8797A-FAD0-4F2A-A23C-6DA6C5886407}
     {% endif %}
     install_flags: '/quiet /qn ALLUSERS=1 /norestart'
     uninstaller: 'msiexec.exe'

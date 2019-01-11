@@ -1,15 +1,15 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available
 {% set PROGRAM_FILES = "%ProgramFiles%" %}
 irfanview:
-  '4.42':
+  '4.51':
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name: 'IrfanView 64 (remove only)'
-    installer: 'salt://win/repo-ng/irfanview/iview442_x64_setup.exe'
-    # download manually from: http://www.irfanview.info/files/iview442_x64_setup.exe and place on master
-    {% elif grains['cpuarch'] == 'x86' %}
+    installer: 'salt://win/repo-ng/irfanview/iview451_x64_setup.exe'
+    # download manually from: http://www.irfanview.info/files/iview451_x64_setup.exe and place on master
+    {% else %}
     full_name: 'IrfanView (remove only)'
-    installer: 'salt://win/repo-ng/irfanview/iview442_setup.exe'
-    # download manually from: http://www.irfanview.info/files/iview442_setup.exe and place on master
+    installer: 'salt://win/repo-ng/irfanview/iview451_setup.exe'
+    # download manually from: http://www.irfanview.info/files/iview451_setup.exe and place on master
     {% endif %}
     install_flags: '/silent /desktop=0 /thumbs=0 /group=1 /allusers=0 /assoc=0'
     uninstaller: '{{ PROGRAM_FILES }}\irfanview\iv_uninstall.exe'

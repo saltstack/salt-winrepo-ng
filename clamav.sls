@@ -4,7 +4,7 @@ clamav:
     full_name: 'ClamAV-x64'
     # Official download link - https://www.clamav.net/downloads/production/clamav-0.99.1-x64.msi
     installer: 'salt://win/repo-ng/clamav/clamav-0.99.1-x64.msi'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     full_name: 'ClamAV'
     # Official download link - https://www.clamav.net/downloads/production/clamav-0.99.1-win32.msi
     installer: 'salt://win/repo-ng/clamav/clamav-0.99.1-win32.msi'
@@ -20,7 +20,7 @@ clamav:
     full_name: 'ClamAV-x64'
     # Official download link - https://www.clamav.net/downloads/production/clamav-0.98.7-x64.msi
     installer: 'salt://win/repo-ng/clamav/clamav-0.98.7-x64.msi'
-    {% elif grains['cpuarch'] == 'x86' %}
+    {% else %}
     full_name: 'ClamAV'
     # Official download link - https://www.clamav.net/downloads/production/clamav-0.98.7-win32.msi
     installer: 'salt://win/repo-ng/clamav/clamav-0.98.7-win32.msi'

@@ -1,19 +1,13 @@
+{% set versions = ['1.28.0', '1.27.2', '1.27.1', '1.23.3', '1.8.0', '1.7.3'] %}
 atom:
-  '1.8.0':
+  {% for version in versions %}
+  '{{ version }}':
     full_name: 'Atom'
-    installer: 'https://github.com/atom/atom/releases/download/v1.8.0/AtomSetup.exe'
+    installer: 'https://github.com/atom/atom/releases/download/v{{ version }}/AtomSetup.exe'
     install_flags: '--machine'
     uninstaller: '%AppData%\Local\atom\Update.exe'
     uninstall_flags: '--uninstall'
     msiexec: False
     locale: en_US
     reboot: False
-  '1.7.3':
-    full_name: 'Atom'
-    installer: 'https://github.com/atom/atom/releases/download/v1.7.3/AtomSetup.exe'
-    install_flags: '--machine'
-    uninstaller: '%AppData%\Local\atom\Update.exe'
-    uninstall_flags: '--uninstall'
-    msiexec: False
-    locale: en_US
-    reboot: False
+  {% endfor %}
