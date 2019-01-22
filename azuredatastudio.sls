@@ -1,5 +1,5 @@
 # due to winrepo installer limitations you need to manually download the exe from
-# https://go.microsoft.com/fwlink/?linkid=2049972
+# https://go.microsoft.com/fwlink/?linkid=2049975
 # and put it on the winrepo on master to install it the 'salt://win/repo-ng/azuredatastudio/...
 
 {% set version = '1.3.9' %}
