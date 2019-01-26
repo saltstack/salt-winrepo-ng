@@ -1,13 +1,18 @@
-# both 32-bit (x86) AND a 64-bit (AMD64) installer available
+# FileZilla has changed their download URLs
+# due to winrepo installer limitations you need to manually download the 86x + x64 installer from
+# https://filezilla-project.org/download.php?show_all=1
+# and put it on the winrepo on master to install it the 'salt://win/repo-ng/filezilla/...
+
+{% set version = '3.40.0' %}
 {% set PROGRAM_FILES = "%ProgramFiles%" %}
+
 filezilla:
-  {% for version in ['3.40.0','3.39.0','3.38.1'] %}
   '{{ version }}':
     full_name: 'FileZilla Client {{ version }}'
     {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'https://downloads.sourceforge.net/project/filezilla/FileZilla_Client/{{ version }}/FileZilla_{{ version }}_win64-setup.exe'
+    installer: 'salt://win/repo-ng/filezilla/FileZilla_{{ version }}_win64-setup.exe'
     {% else %}
-    installer: 'https://downloads.sourceforge.net/project/filezilla/FileZilla_Client/{{ version }}/FileZilla_{{ version }}_win32-setup.exe'
+    installer: 'salt://win/repo-ng/filezilla/FileZilla_{{ version }}_win32-setup.exe'
     {% endif %}
     install_flags: '/S'
     uninstaller: '{{ PROGRAM_FILES }}\FileZilla FTP Client\uninstall.exe'
@@ -15,4 +20,3 @@ filezilla:
     msiexec: False
     locale: en_US
     reboot: False
-  {% endfor %}
