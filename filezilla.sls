@@ -1,7 +1,7 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available
 {% set PROGRAM_FILES = "%ProgramFiles%" %}
 filezilla:
-  {% for version in ['3.34.0','3.31.0','3.29.0','3.24.0','3.23.0.2','3.22.2.2','3.22.1','3.22.0','3.21.0','3.16.0'] %}
+  {% for version in ['3.40.0','3.39.0','3.38.1'] %}
   '{{ version }}':
     full_name: 'FileZilla Client {{ version }}'
     {% if grains['cpuarch'] == 'AMD64' %}
