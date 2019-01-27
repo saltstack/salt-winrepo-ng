@@ -1,5 +1,3 @@
-{% set version = '2.16.0' %}
-
 {% if grains['cpuarch'] == 'AMD64' %}
     {% set PROGRAM_FILES = "%ProgramFiles(x86)%" %}
 {% else %}
@@ -7,6 +5,7 @@
 {% endif %}
 
 winmerge:
+  {% for version in ['2.16.0','2.14.0'] %}
   '{{version}}':
     full_name: 'WinMerge {{version}}'
     installer: 'https://downloads.sourceforge.net/project/winmerge/stable/{{version}}/WinMerge-{{version}}-Setup.exe'
@@ -16,3 +15,4 @@ winmerge:
     msiexec: False
     locale: en_US
     reboot: False
+  {% endfor %}
