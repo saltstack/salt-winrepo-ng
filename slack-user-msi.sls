@@ -4,7 +4,7 @@
 #https://get.slack.help/hc/en-us/articles/212475728-Deploy-Slack-via-Microsoft-Installer
 
 slack-user-msi:
-  '3.3.7.0':
+  latest:
     full_name: 'Slack Machine-Wide Installer'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'https://slack-ssb-updates.global.ssl.fastly.net/releases_x64/SlackSetup.msi'
