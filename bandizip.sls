@@ -1,7 +1,9 @@
+{% set source_path = 'http://ca-dl.bandisoft.com/bandizip' %}
+
 bandizip:
-  '5.12':
+  '6.20':
     full_name: 'Bandizip'
-    installer: 'http://ca-dl.bandisoft.com/bandizip/BANDIZIP-SETUP.EXE'
+    installer: '{{ source_path }}/BANDIZIP-SETUP.EXE'
     install_flags: '/S'
     uninstaller: '%ProgramFiles%\Bandizip\Uninstall.exe'
     uninstall_flags: '/S'
