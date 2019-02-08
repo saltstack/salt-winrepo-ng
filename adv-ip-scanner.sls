@@ -1,13 +1,20 @@
+{% set versions = {'2.5':['3784']} %}
+
 adv-ip-scanner:
-  '2.4.2601':
-    full_name: 'Advanced IP Scanner 2.4'
-    installer: 'salt://win/repo-ng/adv-ip-scanner/ipscan24.exe'
+{% for major, subversions in versions.items() %}
+{% for minor in subversions %}
+  '{{ major }}.{{ minor }}':
+    full_name: 'Advanced IP Scanner {{ major }}'
+    installer: 'salt://win/repo-ng/adv-ip-scanner/Advanced_IP_Scanner_{{ major }}.{{ minor }}.exe'
     install_flags: '/VERYSILENT /SUPPRESSMSGBOXES /NORESTART /SP- & taskkill /F /T /IM advanced_ip_scanner.exe & exit 0'
     uninstaller: 'msiexec.exe'
-    uninstall_flags: '/qn /noreboot /x {C3CF783A-5457-4989-966F-7BE08812FB71}'
+    uninstall_flags: '/qn /noreboot /x {FC77CBC1-A83E-4FB4-905C-7467DE6871C4}'
     msiexec: False
     locale: en_US
     reboot: False
+{% endfor %}
+{% endfor %}
+
 # it can be manually downloaded from:
 # http://www.advanced-ip-scanner.com
 # a product of: www.radmin.com
