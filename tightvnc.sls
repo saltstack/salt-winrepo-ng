@@ -1,6 +1,7 @@
 tightvnc:
   {% for version in ['2.8.11', '2.8.8', '2.8.5', '2.8.2', '2.7.10'] %}
-  '{{ version }}':
+  {% set full_version = version ~ '.0' %}
+  '{{ full_version }}':
     full_name: 'TightVNC'
     {% if version.startswith('2.8') %}
     {% set versionsuffix = version ~ "-gpl" %}
