@@ -1,7 +1,7 @@
 {% set source_path = 'https://developers.yubico.com/yubikey-manager-qt/Releases' %}
 
 yubikey-manager:
-  {% for version in ['1.1.0', '1.0.1' '1.0.0' '0.5.2' '0.5.1' '0.5.0'] %}
+  {% for version in ['1.1.0', '1.0.1', '1.0.0', '0.5.2', '0.5.1', '0.5.0'] %}
   '{{ version }}':
     full_name: 'YubiKey Manager'
     {% if grains['cpuarch'] == 'AMD64' %}
