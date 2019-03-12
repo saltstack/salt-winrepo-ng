@@ -7,7 +7,7 @@
 todour:
   '2.03':
     full_name: 'Todour version 2.03'
-    installer: 'http://nerdur.com/Todour-2.03.exe'
+    installer: 'https://nerdur.com/Todour-2.03.exe'
     install_flags: '/VERYSILENT /SUPPRESSMSGBOXES /NORESTART /SP-'
     uninstaller: '{{ PROGRAM_FILES }}\Todour\unins000.exe'
     uninstall_flags: '/VERYSILENT /NORESTART'

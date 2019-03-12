@@ -5,78 +5,18 @@
     {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {% endif %}
 gpg4win-light:
-  '3.0.3':
-    full_name: 'Gpg4Win (3.0.3)'
-    installer: 'http://files.gpg4win.org/gpg4win-light-3.0.3.exe'
+  {% for version in ['2.3.4', '2.3.3', '2.3.2', '2.3.1', '2.3.0', '2.2.4'] %}
+  '{{ version }}':
+    full_name: 'Gpg4Win ({{ version }})'
+    installer: 'https://files.gpg4win.org/gpg4win-light-{{ version }}.exe'
     install_flags: '/S'
     uninstaller: '{{ PROGRAM_FILES }}\GNU\GnuPG\gpg4win-uninstall.exe'
     uninstall_flags: '/S'
     msiexec: False
     locale: en_US
     reboot: False
-  '3.0.0':
-    full_name: 'Gpg4Win (3.0.0)'
-    installer: 'http://files.gpg4win.org/gpg4win-light-3.0.0.exe'
-    install_flags: '/S'
-    uninstaller: '{{ PROGRAM_FILES }}\GNU\GnuPG\gpg4win-uninstall.exe'
-    uninstall_flags: '/S'
-    msiexec: False
-    locale: en_US
-    reboot: False
-  '2.3.4':
-    full_name: 'Gpg4Win (2.3.4)'
-    installer: 'http://files.gpg4win.org/gpg4win-light-2.3.4.exe'
-    install_flags: '/S'
-    uninstaller: '{{ PROGRAM_FILES }}\GNU\GnuPG\gpg4win-uninstall.exe'
-    uninstall_flags: '/S'
-    msiexec: False
-    locale: en_US
-    reboot: False
-  '2.3.3':
-    full_name: 'Gpg4Win (2.3.3)'
-    installer: 'http://files.gpg4win.org/gpg4win-light-2.3.3.exe'
-    install_flags: '/S'
-    uninstaller: '{{ PROGRAM_FILES }}\GNU\GnuPG\gpg4win-uninstall.exe'
-    uninstall_flags: '/S'
-    msiexec: False
-    locale: en_US
-    reboot: False
-  '2.3.2':
-    full_name: 'Gpg4Win (2.3.2)'
-    installer: 'http://files.gpg4win.org/gpg4win-light-2.3.2.exe'
-    install_flags: '/S'
-    uninstaller: '{{ PROGRAM_FILES }}\GNU\GnuPG\gpg4win-uninstall.exe'
-    uninstall_flags: '/S'
-    msiexec: False
-    locale: en_US
-    reboot: False
-  '2.3.1':
-    full_name: 'Gpg4Win (2.3.1)'
-    installer: 'http://files.gpg4win.org/gpg4win-light-2.3.1.exe'
-    install_flags: '/S'
-    uninstaller: '{{ PROGRAM_FILES }}\GNU\GnuPG\gpg4win-uninstall.exe'
-    uninstall_flags: '/S'
-    msiexec: False
-    locale: en_US
-    reboot: False
-  '2.3.0':
-    full_name: 'Gpg4Win (2.3.0)'
-    installer: 'http://files.gpg4win.org/gpg4win-light-2.3.0.exe'
-    install_flags: '/S'
-    uninstaller: '{{ PROGRAM_FILES }}\GNU\GnuPG\gpg4win-uninstall.exe'
-    uninstall_flags: '/S'
-    msiexec: False
-    locale: en_US
-    reboot: False
-  '2.2.4':
-    full_name: 'Gpg4Win (2.2.4)'
-    installer: 'http://files.gpg4win.org/gpg4win-light-2.2.4.exe'
-    install_flags: '/S'
-    uninstaller: '{{ PROGRAM_FILES }}\GNU\GnuPG\gpg4win-uninstall.exe'
-    uninstall_flags: '/S'
-    msiexec: False
-    locale: en_US
-    reboot: False
+  {% endfor %}
+
 #
 # Note: this 2.2.3 light installer has a bug and it needs to be fixed upstream
 # Here are work around instructions under Issue #113 in the meantime
