@@ -10,8 +10,8 @@ putty:
     uninstaller: 'https://the.earth.li/~sgtatham/putty/{{ version }}/w32/putty-{{ version }}-installer.msi'
     {% endif %}
     full_name:  'PuTTY release {{ version }}{{ ver_arch | default('') }}'
-    install_flags: ' /qn '
-    uninstall_flags: ' /qn '
+    install_flags: '/qn'
+    uninstall_flags: '/qn'
     msiexec: True
     locale: en_US
     reboot: False
