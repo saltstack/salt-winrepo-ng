@@ -8,7 +8,7 @@
 qemu:
   '2018.05.19':
     full_name: 'QEMU'
-    installer: 'http://qemu.weilnetz.de/w{{ BITS }}/qemu-w{{ BITS }}-setup-20180519.exe'
+    installer: 'https://qemu.weilnetz.de/w{{ BITS }}/2018/qemu-w{{ BITS }}-setup-20180519.exe'
     uninstaller: '%PROGRAMFILES%\qemu\qemu-uninstall.exe'
     install_flags: '/S'
     uninstall_flags: '/S'
