@@ -1,11 +1,11 @@
 vagrant:
-  {#{% for version in '1.8.6', '1.8.5',  '1.8.4', '1.8.1', '1.8.0', '1.7.4', '1.7.3', '1.7.2', '1.7.1', '1.6.5','1.6.4','1.6.3', '1.6.2', '1.6.1', '1.6.0', '1.5.4', '1.5.3', '1.5.2', '1.5.1', '1.5.0', '1.4.3', '1.4.2', '1.4.1', '1.4.0' %}#}
-  {% for version in ['2.0.1'] %}
+  {% set arch = {'AMD64': 'x86_64', 'x86': 'i686'}[grains['cpuarch']] %}
+  {% for version in ['2.0.1','2.0.2','2.0.3','2.0.4','2.1.0','2.1.1','2.1.2','2.1.3','2.1.4','2.1.5','2.2.0','2.2.1','2.2.2','2.2.3','2.2.4'] %}
   '{{ version }}':
     full_name: 'Vagrant'
-    installer: 'https://releases.hashicorp.com/vagrant/{{ version }}/vagrant_{{ version }}.msi'
+    installer: 'https://releases.hashicorp.com/vagrant/{{ version }}/vagrant_{{ version }}_{{ arch }}.msi'
     install_flags: '/qn /norestart'
-    uninstaller: 'https://releases.hashicorp.com/vagrant/{{ version }}/vagrant_{{ version }}.msi'
+    uninstaller: 'https://releases.hashicorp.com/vagrant/{{ version }}/vagrant_{{ version }}_{{ arch }}.msi'
     uninstall_flags: '/qn /norestart'
     msiexec: True
     locale: en_US
