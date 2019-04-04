@@ -8,10 +8,10 @@
     {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {% endif %}
 
-teamviewer:
+teamviewer_host:
   latest:
-    full_name: 'TeamViewer 14'
-    installer: '{{ SOURCE_PATH }}/TeamViewer_Setup.exe'
+    full_name: 'TeamViewer 14 Host'
+    installer: '{{ SOURCE_PATH }}/TeamViewer_Host_Setup.exe'
     install_flags: '/S'
     uninstaller: '{{ PROGRAM_FILES }}\TeamViewer\uninstall.exe'
     uninstall_flags: '/S'

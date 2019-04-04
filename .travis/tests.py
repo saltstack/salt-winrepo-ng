@@ -145,7 +145,7 @@ for cpuarch in ['AMD64', 'x86']:
                     template = stream.read()
                 t = Template(template)
                 yml = t.render(grains={'cpuarch':cpuarch})
-                data = yaml.load(yml)
+                data = yaml.load(yml, Loader=yaml.FullLoader)
                 process_each(data)
             except Exception as e:
                 e = sys.exc_info()[0]

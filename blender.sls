@@ -4,11 +4,11 @@ blender:
   '2.78':
     full_name: 'Blender'
     {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'http://ftp.nluug.nl/pub/graphics/blender/release/Blender2.78/blender-2.78-windows64.msi'
-    uninstaller: 'http://ftp.nluug.nl/pub/graphics/blender/release/Blender2.78/blender-2.78-windows64.msi'
+    installer: 'https://ftp.nluug.nl/pub/graphics/blender/release/Blender2.78/blender-2.78-windows64.msi'
+    uninstaller: 'https://ftp.nluug.nl/pub/graphics/blender/release/Blender2.78/blender-2.78-windows64.msi'
     {% else %}
-    installer: 'http://ftp.nluug.nl/pub/graphics/blender/release/Blender2.78/blender-2.78-windows32.msi'
-    uninstaller: 'http://ftp.nluug.nl/pub/graphics/blender/release/Blender2.78/blender-2.78-windows32.msi'
+    installer: 'https://ftp.nluug.nl/pub/graphics/blender/release/Blender2.78/blender-2.78-windows32.msi'
+    uninstaller: 'https://ftp.nluug.nl/pub/graphics/blender/release/Blender2.78/blender-2.78-windows32.msi'
     {% endif %}
     install_flags: '/qn /norestart'
     uninstall_flags: '/qn /norestart'
