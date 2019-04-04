@@ -7,7 +7,7 @@ gimp:
                                                    ('v2.8', '2.8.14', '-1')] %}
   '{{ version }}':
     full_name: 'GIMP {{ version }}'
-    installer: 'http://download.gimp.org/mirror/pub/gimp/{{ major_version }}/windows/gimp-{{ version }}-setup{{ minor_version }}.exe'
+    installer: 'https://download.gimp.org/mirror/pub/gimp/{{ major_version }}/windows/gimp-{{ version }}-setup{{ minor_version }}.exe'
     install_flags: '/SP- /SILENT /NORESTART'
     uninstaller: '%ProgramFiles%\Gimp 2\uninst\unins000.exe'
     uninstall_flags: '/SP- /SILENT /NORESTART'

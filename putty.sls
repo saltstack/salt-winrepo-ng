@@ -1,5 +1,5 @@
 putty:
-{% for version in ['0.70', '0.69', '0.68'] %}
+{% for version in ['0.71', '0.70', '0.69', '0.68'] %}
   '{{ version }}.0.0':
     {% if grains['cpuarch'] == 'AMD64' %}
     {% set ver_arch = " (64-bit)" %}
@@ -10,8 +10,8 @@ putty:
     uninstaller: 'https://the.earth.li/~sgtatham/putty/{{ version }}/w32/putty-{{ version }}-installer.msi'
     {% endif %}
     full_name:  'PuTTY release {{ version }}{{ ver_arch | default('') }}'
-    install_flags: ' /qn '
-    uninstall_flags: ' /qn '
+    install_flags: '/qn'
+    uninstall_flags: '/qn'
     msiexec: True
     locale: en_US
     reboot: False
