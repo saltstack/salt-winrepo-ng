@@ -1,5 +1,5 @@
 node.js-lts:
-  {% for version in ['6.9.1','6.11.3'] %}
+  {% for version in ['10.15.3', '8.16.0', '6.17.1'] %}
   '{{ version }}':
     full_name: 'Node.js'
     {% if grains['cpuarch'] == 'AMD64' %}
