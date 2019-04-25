@@ -1,5 +1,5 @@
 strawberryperl_x64:
-  {% for version, dl_version in (('5.22.1', '5.22.0.1'), ('5.20.3002', '5.20.3.2')) %}
+  {% for version, dl_version in (('5.26.1001', '5.26.1.1'), ('5.24.3001', '5.24.3.1')) %}
   '{{ version }}':
     full_name: 'Strawberry Perl (64-bit)'
     installer: 'http://strawberryperl.com/download/{{ dl_version }}/strawberry-perl-{{ dl_version }}-64bit.msi'

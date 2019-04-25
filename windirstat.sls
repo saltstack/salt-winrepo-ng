@@ -4,7 +4,7 @@
     {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {% endif %}
 windirstat:
-  Not Found:
+  'Not Found':
     full_name: 'WinDirStat 1.1.2'
     installer: 'http://download01.windirstat.info/windirstat1_1_2_setup.exe'
     install_flags: '/S'

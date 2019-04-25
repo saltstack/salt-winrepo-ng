@@ -1,13 +1,13 @@
-# both 32-bit (x86) AND a 64-bit (AMD64) installer available
 {% set PROGRAM_FILES = "%ProgramFiles%" %}
+
 filezilla:
-  {% for version in ['3.29.0','3.24.0','3.23.0.2','3.22.2.2','3.22.1','3.22.0','3.21.0','3.16.0','3.14.1','3.14.0','3.13.0','3.11.0.2'] %}
+  {% for version in ['3.40.0','3.39.0','3.38.1'] %}
   '{{ version }}':
     full_name: 'FileZilla Client {{ version }}'
     {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'http://netcologne.dl.sourceforge.net/project/filezilla/FileZilla_Client/{{ version }}/FileZilla_{{ version }}_win64-setup.exe'
-    {% elif grains['cpuarch'] == 'x86' %}
-    installer: 'http://vorboss.dl.sourceforge.net/project/filezilla/FileZilla_Client/{{ version }}/FileZilla_{{ version }}_win32-setup.exe'
+    installer: 'https://download.filezilla-project.org/client/FileZilla_{{ version }}_win64-setup.exe'
+    {% else %}
+    installer: 'https://download.filezilla-project.org/client/FileZilla_{{ version }}_win32-setup.exe'
     {% endif %}
     install_flags: '/S'
     uninstaller: '{{ PROGRAM_FILES }}\FileZilla FTP Client\uninstall.exe'

@@ -1,13 +1,13 @@
 wamp-server-3:
-  '3.0.4':
+  '3.1.3':
     {% if grains['cpuarch'] == 'AMD64' %}
-    full_name: 'Wampserver64 3.0.4'
-    installer: 'http://tenet.dl.sourceforge.net/project/wampserver/WampServer%203/WampServer%203.0.0/wampserver3_x64_apache2.4.18_mysql5.7.11_php5.6.19-7.0.4.exe'
+    full_name: 'Wampserver64 3.1.3'
+    installer: 'https://downloads.sourceforge.net/project/wampserver/WampServer%203/WampServer%203.0.0/wampserver3.1.3_x64.exe'
     uninstaller: 'c:\wamp64\uninstall_services.bat'
     uninstall_flags: '& c:\wamp64\unins000.exe /VERYSILENT /SUPPRESSMSGBOXES /NORESTART /SP-'
-    {% elif grains['cpuarch'] == 'x86' %}
-    full_name: 'Wampserver 3.0.4'
-    installer: 'http://tenet.dl.sourceforge.net/project/wampserver/WampServer%203/WampServer%203.0.0/wampserver3.0.4_x86_apache2.4.18_mysql5.7.11_php5.6.19-7.0.4.exe'
+    {% else %}
+    full_name: 'Wampserver 3.1.3'
+    installer: 'https://downloads.sourceforge.net/project/wampserver/WampServer%203/WampServer%203.0.0/wampserver3.1.3_x86.exe'
     uninstaller: 'c:\wamp\uninstall_services.bat'
     uninstall_flags: '& c:\wamp\unins000.exe /VERYSILENT /SUPPRESSMSGBOXES /NORESTART /SP-'
     {% endif %}
