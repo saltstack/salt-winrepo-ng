@@ -1,5 +1,5 @@
 node.js:
-  {% for version in ['7.0.0'] %}
+  {% for version in ['12.0.0', '11.14.0'] %}
   '{{ version }}':
     full_name: 'Node.js'
     {% if grains['cpuarch'] == 'AMD64' %}
