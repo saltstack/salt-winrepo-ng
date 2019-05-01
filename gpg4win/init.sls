@@ -11,7 +11,7 @@ gpg4win:
     full_name: 'Gpg4win ({{ VERSION }})'
     installer: 'http://files.gpg4win.org/gpg4win-{{ VERSION }}.exe'
     install_flags: '/S /C=C:\salt\var\cache\salt\minion\files\base\win\repo-ng\salt-winrepo-ng\gpg4win\silent.ini'
-    uninstaller: '{{ PROGRAM_FILES }}\GnuPG\gnupg-uninstall.exe'
+    uninstaller: '{{ PROGRAM_FILES }}\gpg4win\gpg4win-uninstall.exe'
     uninstall_flags: '/S'
     cache_file: salt://win/repo-ng/gpg4win/silent.ini
     msiexec: False
