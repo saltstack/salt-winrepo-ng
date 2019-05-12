@@ -1,5 +1,5 @@
 pdf24creator:
-  {% for version in ['8.5.0'] %}
+  {% for version in ['8.8.2'] %}
   '{{ version }}':
     full_name: 'PDF24 Creator'
     installer: 'https://en.pdf24.org/products/pdf-creator/download/pdf24-creator-{{ version }}.msi'
