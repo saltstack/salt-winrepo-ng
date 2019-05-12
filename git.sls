@@ -1,6 +1,7 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available
 {% set PROGRAM_FILES = "%ProgramFiles%" %}
-{% set versions = ['2.20.1',
+{% set versions = ['2.21.0',
+                   '2.20.1',
                    '2.20.0',
                    '2.19.2',
                    '2.19.1',
