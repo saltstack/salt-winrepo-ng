@@ -3,7 +3,7 @@ ccleaner:
   {% for version, dl_version in [('5.57', '557')] %}
   '{{ version }}':
     full_name: 'CCleaner'
-    installer: 'http://download.piriform.com/ccsetup{{ dl_version }}.exe'
+    installer: 'https://download.piriform.com/ccsetup{{ dl_version }}.exe'
     install_flags: '/S'
     uninstaller: '{{ PROGRAM_FILES }}\CCleaner\uninst.exe'
     uninstall_flags: '/S'
