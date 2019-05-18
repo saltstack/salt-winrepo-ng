@@ -22,3 +22,4 @@ vagrant:
     locale: en_US
     reboot: False
   {% endfor %}
+
