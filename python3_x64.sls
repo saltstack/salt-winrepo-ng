@@ -4,7 +4,16 @@ python3_x64:
     installer: 'https://www.python.org/ftp/python/3.7.0/python-3.7.0-amd64.exe'
     install_flags: '/quiet InstallAllUsers=1'
     uninstaller: 'https://www.python.org/ftp/python/3.7.0/python-3.7.0-amd64.exe'
-    uninstall_flags: '/uninstall'
+    uninstall_flags: '/quiet /uninstall'
+    msiexec: False
+    locale: en_US
+    reboot: False
+  '3.6.6150.0':
+    full_name: 'Python 3.6.6 Core Interpreter (64-bit)'
+    installer: 'https://www.python.org/ftp/python/3.6.6/python-3.6.6-amd64.exe'
+    install_flags: '/quiet InstallAllUsers=1'
+    uninstaller: 'https://www.python.org/ftp/python/3.6.6/python-3.6.6-amd64.exe'
+    uninstall_flags: '/quiet /uninstall'
     msiexec: False
     locale: en_US
     reboot: False
