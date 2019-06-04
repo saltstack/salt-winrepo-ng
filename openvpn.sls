@@ -1,10 +1,9 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available
 {% set arch = {'AMD64': '-x86_64', 'x86': '-i686'}[grains['cpuarch']] %}
-openvpn: 
-{% for version in ['2.4.6-I602', '2.4.5-I601', '2.4.4-I601', '2.4.3-I602', '2.4.3-I601', '2.3.17-I601', '2.3.12-I601', '2.3.11-I601', '2.3.10-I603', '2.3.8-I601', '2.3.6-I601'] %}
-  {% if version[2] > '3' %}
-    {% set arch = "" %} # Combined installer since v2.4+
-  {% endif %}
+{% set installer_ver = {'Windows-2016Server': '-I603'}[grains['osfinger']] %}
+{% set os_suffix = {'Windows-2016Server': '', 'Windows-10': '-Win10'}[grains['osfinger']] %}
+
+{% macro print_openvpn(version, arch='') %}
   '{{ version }}':
     full_name: 'OpenVPN {{ version }} ' # Note: the OpenVPN installer adds a space at the end of its install string
     installer: 'https://swupdate.openvpn.org/community/releases/openvpn-install-{{ version }}{{ arch }}.exe'
@@ -14,6 +13,17 @@ openvpn:
     msiexec: False
     locale: en_US
     reboot: False
+{% endmacro %}
+
+openvpn:
+{% set version = '2.4.7' ~ installer_ver|default('-I607') ~ os_suffix|default('-Win7') %}
+# Combined installer since v2.4+ so no arch needed
+{{ print_openvpn(version) }}
+{% for version in ['2.4.6-I602', '2.4.5-I601', '2.4.4-I601', '2.4.3-I602', '2.4.3-I601'] %}
+{{ print_openvpn(version) }}
+{% endfor %}
+{% for version in ['2.3.17-I601', '2.3.12-I601', '2.3.11-I601', '2.3.10-I603', '2.3.8-I601', '2.3.6-I601'] %}
+{{ print_openvpn(version, arch) }}
 {% endfor %}
 #
 # https://chocolatey.org/packages/openvpn
