@@ -1,55 +1,32 @@
+{% set EXE_VERSIONS = [('3.7.0', '3.7.150.0'),
+                       ('3.6.6', '3.6.6150.0'),
+                       ('3.5.4', '3.5.4150.0'),
+                       ('3.5.2', '3.5.2150.0'),
+                       ('3.5.1', '3.5.1150.0')] %}
+{% set MSI_VERSIONS = [('3.4.3', '3.4.3150'),
+                       ('3.4.2', '3.4.2150'),
+                       ('3.4.1', '3.4.1150'),
+                       ('3.3.3', '3.3.3150')] %}
 python3_x86:
-  '3.5.2150':
-    full_name: 'Python 3.5.2 (32-bit)'
-    installer: 'https://www.python.org/ftp/python/3.5.2/python-3.5.2.exe'
+  {% for VER, RAW_VER in EXE_VERSIONS %}
+  '{{ RAW_VER }}':
+    full_name: 'Python {{ VER }} (32-bit)'
+    installer: 'https://www.python.org/ftp/python/{{ VER }}/python-{{ VER }}.exe'
     install_flags: '/quiet InstallAllUsers=1'
-    uninstaller: 'https://www.python.org/ftp/python/3.5.2/python-3.5.2.exe'
-    uninstall_flags: '/uninstall'
+    uninstaller: 'https://www.python.org/ftp/python/{{ VER }}/python-{{ VER }}.exe'
+    uninstall_flags: '/quiet /uninstall'
     msiexec: False
     locale: en_US
     reboot: False
-  '3.5.1150':
-    full_name: 'Python 3.5.1 (32-bit)'
-    installer: 'https://www.python.org/ftp/python/3.5.1/python-3.5.1.exe'
-    install_flags: '/quiet InstallAllUsers=1'
-    uninstaller: 'https://www.python.org/ftp/python/3.5.1/python-3.5.1.exe'
-    uninstall_flags: '/uninstall'
-    msiexec: False
-    locale: en_US
-    reboot: False
-  '3.4.3150':
-    full_name: 'Python 3.4.3 (32-bit)'
-    installer: 'https://www.python.org/ftp/python/3.4.3/python-3.4.3.msi'
+  {% endfor %}
+  {% for VER, RAW_VER in MSI_VERSIONS %}
+  '{{ RAW_VER }}':
+    full_name: 'Python {{ VER }} (32-bit)'
+    installer: 'https://www.python.org/ftp/python/{{ VER }}/python-{{ VER }}.msi'
     install_flags: '/qn ALLUSERS=1 /norestart'
-    uninstaller: 'https://www.python.org/ftp/python/3.4.3/python-3.4.3.msi'
+    uninstaller: 'https://www.python.org/ftp/python/{{ VER }}/python-{{ VER }}.msi'
     uninstall_flags: '/qn /norestart'
     msiexec: True
     locale: en_US
     reboot: False
-  '3.4.2150':
-    full_name: 'Python 3.4.2 (32-bit)'
-    installer: 'https://www.python.org/ftp/python/3.4.2/python-3.4.2.msi'
-    install_flags: '/qn ALLUSERS=1 /norestart'
-    uninstaller: 'https://www.python.org/ftp/python/3.4.2/python-3.4.2.msi'
-    uninstall_flags: '/qn /norestart'
-    msiexec: True
-    locale: en_US
-    reboot: False
-  '3.4.1150':
-    full_name: 'Python 3.4.1 (32-bit)'
-    installer: 'https://www.python.org/ftp/python/3.4.1/python-3.4.1.msi'
-    install_flags: '/qn ALLUSERS=1 /norestart'
-    uninstaller: 'https://www.python.org/ftp/python/3.4.1/python-3.4.1.msi'
-    uninstall_flags: '/qn /norestart'
-    msiexec: True
-    locale: en_US
-    reboot: False
-  '3.3.3150':
-    full_name: 'Python 3.3.3 (32-bit)'
-    installer: 'https://www.python.org/ftp/python/3.3.3/python-3.3.3.msi'
-    install_flags: '/qn ALLUSERS=1 /norestart'
-    uninstaller: 'https://www.python.org/ftp/python/3.3.3/python-3.3.3.msi'
-    uninstall_flags: '/qn /norestart'
-    msiexec: True
-    locale: en_US
-    reboot: False
+  {% endfor %}
