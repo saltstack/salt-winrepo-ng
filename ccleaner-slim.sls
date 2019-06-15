@@ -1,6 +1,6 @@
 {% set PROGRAM_FILES = "%ProgramFiles%" %}
 ccleaner-slim:
-  {% for version, dl_version in [('5.57', '557')] %}
+  {% for version, dl_version in [('5.57', '557'),('5.58', '558')] %}
   '{{ version }}':
     full_name: 'CCleaner'
     installer: 'https://download.ccleaner.com/slim/ccsetup{{ dl_version }}_slim.exe'
