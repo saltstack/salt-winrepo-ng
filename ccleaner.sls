@@ -1,6 +1,6 @@
 {% set PROGRAM_FILES = "%ProgramFiles%" %}
 ccleaner:
-  {% for version, dl_version in [('5.57', '557')] %}
+  {% for version in ['5.57', '5.44'] %}
   '{{ version }}':
     full_name: 'CCleaner'
     installer: 'https://download.ccleaner.com/ccsetup{{ dl_version }}.exe'
