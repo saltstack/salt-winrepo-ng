@@ -6,7 +6,8 @@
 azuredatastudio:
   '{{version}}':
     full_name: 'Azure Data Studio'
-    installer: 'salt://win/repo-ng/azuredatastudio/azuredatastudio-windows-setup-{{version}}.exe'
+#    installer: 'salt://win/repo-ng/azuredatastudio/azuredatastudio-windows-setup-{{version}}.exe'
+    installer: 'https://azuredatastudiobuilds.blob.core.windows.net/releases/{{version}}/azuredatastudio-windows-setup-{{version}}.exe'
     uninstaller: 'C:\Program Files\Azure Data Studio\unins000.exe'
     install_flags: '/SP- /VERYSILENT /NORESTART /MERGETASKS=!RUNCODE'
     uninstall_flags: '/VERYSILENT /NORESTART'
