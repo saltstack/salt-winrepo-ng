@@ -5,6 +5,8 @@ zabbix-agent:
     installer: 'https://www.zabbix.com/downloads/4.2.3/zabbix_agent-4.2.3-win-amd64-openssl.msi'
     {% endif %}
     install_flags: '/quiet SERVER=localhost'
+    uninstaller: 'msiexec.exe'
+    uninstall_flags: '/x https://www.zabbix.com/downloads/4.2.3/zabbix_agent-4.2.3-win-amd64-openssl.msi /quiet'
     locale: en_US
     reboot: False
   '4.0.9.2400':
@@ -13,6 +15,8 @@ zabbix-agent:
     installer: 'https://www.zabbix.com/downloads/4.0.9/zabbix_agent-4.0.9-win-amd64-openssl.msi'
     {% endif %}
     install_flags: '/quiet SERVER=localhost'
+    uninstaller: 'msiexec.exe'
+    uninstall_flags: '/x https://www.zabbix.com/downloads/4.0.9/zabbix_agent-4.0.9-win-amd64-openssl.msi /quiet'
     locale: en_US
     reboot: False
   '3.0.28.2400':
@@ -21,5 +25,7 @@ zabbix-agent:
     installer: 'https://www.zabbix.com/downloads/3.0.28/zabbix_agent-3.0.28-win-amd64-openssl.msi'
     {% endif %}
     install_flags: '/quiet SERVER=localhost'
+    uninstaller: 'msiexec.exe'
+    uninstall_flags: '/x https://www.zabbix.com/downloads/3.0.28/zabbix_agent-3.0.28-win-amd64-openssl.msi /quiet'
     locale: en_US
     reboot: False
