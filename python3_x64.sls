@@ -1,4 +1,5 @@
-{% set EXE_VERSIONS = [('3.7.3', '3.7.3150.0'),
+{% set EXE_VERSIONS = [('3.7.4', '3.7.4150.0'),
+                       ('3.7.3', '3.7.3150.0'),	
                        ('3.7.0', '3.7.150.0'),
                        ('3.6.6', '3.6.6150.0'),
                        ('3.5.4', '3.5.4150.0'),
@@ -13,7 +14,7 @@ python3_x64:
   '{{ RAW_VER }}':
     full_name: 'Python {{ VER }} Core Interpreter (64-bit)'
     installer: 'https://www.python.org/ftp/python/{{ VER }}/python-{{ VER }}-amd64.exe'
-    install_flags: '/quiet InstallAllUsers=1'
+    install_flags: '/quiet InstallAllUsers=1 PrependPath=1 Include_test=0'
     uninstaller: 'https://www.python.org/ftp/python/{{ VER }}/python-{{ VER }}-amd64.exe'
     uninstall_flags: '/quiet /uninstall'
     msiexec: False
