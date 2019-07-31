@@ -1,31 +1,22 @@
+# both 32-bit (x86) AND a 64-bit (AMD64) installer available
+{% set versions = {'4.2':['3'], '4.0':[9], '3.0':[28]} %}
+{% set source_path = 'https://www.zabbix.com/downloads/' %}
+
 zabbix-agent:
-  '4.2.3.2400':
-    {% if grains['cpuarch'] == 'AMD64' %}
+{% for major, subversions in versions.items() %}
+{% for minor in subversions %}
+  '{{major}}.{{minor}}.2400':
     full_name: 'Zabbix Agent (64-bit)'
-    installer: 'https://www.zabbix.com/downloads/4.2.3/zabbix_agent-4.2.3-win-amd64-openssl.msi'
+    {% if grains['cpuarch'] == 'AMD64' %}
+    installer: '{{source_path}}{{major}}.{{minor}}/zabbix_agent-{{major}}.{{minor}}-win-amd64-openssl.msi'
+    uninstall_flags: '/x {{source_path}}{{major}}.{{minor}}/zabbix_agent-{{major}}.{{minor}}-win-amd64-openssl.msi /quiet'
+    {% else %}
+    installer: '{{source_path}}{{major}}.{{minor}}/zabbix_agent-{{major}}.{{minor}}-win-i386-openssl.msi'
+    uninstall_flags: '/x {{source_path}}{{major}}.{{minor}}/zabbix_agent-{{major}}.{{minor}}-win-i386-openssl.msi /quiet'
     {% endif %}
     install_flags: '/quiet SERVER=localhost'
     uninstaller: 'msiexec.exe'
-    uninstall_flags: '/x https://www.zabbix.com/downloads/4.2.3/zabbix_agent-4.2.3-win-amd64-openssl.msi /quiet'
     locale: en_US
     reboot: False
-  '4.0.9.2400':
-    {% if grains['cpuarch'] == 'AMD64' %}
-    full_name: 'Zabbix Agent (64-bit)'
-    installer: 'https://www.zabbix.com/downloads/4.0.9/zabbix_agent-4.0.9-win-amd64-openssl.msi'
-    {% endif %}
-    install_flags: '/quiet SERVER=localhost'
-    uninstaller: 'msiexec.exe'
-    uninstall_flags: '/x https://www.zabbix.com/downloads/4.0.9/zabbix_agent-4.0.9-win-amd64-openssl.msi /quiet'
-    locale: en_US
-    reboot: False
-  '3.0.28.2400':
-    {% if grains['cpuarch'] == 'AMD64' %}
-    full_name: 'Zabbix Agent (64-bit)'
-    installer: 'https://www.zabbix.com/downloads/3.0.28/zabbix_agent-3.0.28-win-amd64-openssl.msi'
-    {% endif %}
-    install_flags: '/quiet SERVER=localhost'
-    uninstaller: 'msiexec.exe'
-    uninstall_flags: '/x https://www.zabbix.com/downloads/3.0.28/zabbix_agent-3.0.28-win-amd64-openssl.msi /quiet'
-    locale: en_US
-    reboot: False
+{% endfor %}
+{% endfor %}
