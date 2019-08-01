@@ -14,7 +14,7 @@ python3_x64:
   '{{ RAW_VER }}':
     full_name: 'Python {{ VER }} Core Interpreter (64-bit)'
     installer: 'https://www.python.org/ftp/python/{{ VER }}/python-{{ VER }}-amd64.exe'
-    install_flags: '/quiet InstallAllUsers=1 PrependPath=1 Include_test=0'
+    install_flags: '/quiet InstallAllUsers=1'
     uninstaller: 'https://www.python.org/ftp/python/{{ VER }}/python-{{ VER }}-amd64.exe'
     uninstall_flags: '/quiet /uninstall'
     msiexec: False
