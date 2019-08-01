@@ -6,16 +6,18 @@ zabbix-agent:
 {% for major, subversions in versions.items() %}
 {% for minor in subversions %}
   '{{major}}.{{minor}}.2400':
-    full_name: 'Zabbix Agent (64-bit)'
     {% if grains['cpuarch'] == 'AMD64' %}
+    full_name: 'Zabbix Agent (64-bit)'
     installer: '{{source_path}}{{major}}.{{minor}}/zabbix_agent-{{major}}.{{minor}}-win-amd64-openssl.msi'
-    uninstall_flags: '/x {{source_path}}{{major}}.{{minor}}/zabbix_agent-{{major}}.{{minor}}-win-amd64-openssl.msi /quiet'
+    uninstaller: '{{source_path}}{{major}}.{{minor}}/zabbix_agent-{{major}}.{{minor}}-win-amd64-openssl.msi'
     {% else %}
+    full_name: 'Zabbix Agent'
     installer: '{{source_path}}{{major}}.{{minor}}/zabbix_agent-{{major}}.{{minor}}-win-i386-openssl.msi'
-    uninstall_flags: '/x {{source_path}}{{major}}.{{minor}}/zabbix_agent-{{major}}.{{minor}}-win-i386-openssl.msi /quiet'
+    uninstaller:  '{{source_path}}{{major}}.{{minor}}/zabbix_agent-{{major}}.{{minor}}-win-i386-openssl.msi'
     {% endif %}
-    install_flags: '/quiet SERVER=localhost'
-    uninstaller: 'msiexec.exe'
+    install_flags: '/qn SERVER=localhost'
+    uninstall_flags: '/qn /norestart'
+    msiexec: True
     locale: en_US
     reboot: False
 {% endfor %}
