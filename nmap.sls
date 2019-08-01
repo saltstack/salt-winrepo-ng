@@ -17,4 +17,4 @@ nmap:
     msiexec: False
     locale: en_US
     reboot: False
-  {% endif %}
+  {% endfor %}
