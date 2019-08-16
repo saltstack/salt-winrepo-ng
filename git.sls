@@ -1,6 +1,13 @@
-# both 32-bit (x86) AND a 64-bit (AMD64) installer available
-{% set PROGRAM_FILES = "%ProgramFiles%" %}
-{% set versions = ['2.21.0',
+# both 32-bit (x86) AND a 64-bit (AMD64) installer available for git
+{% set PROGRAM_FILES = {'AMD64': '%ProgramFiles(x86)%', 'x86': '%ProgramFiles%'}[grains['cpuarch']] %}
+{% set arch = {'AMD64': '64', 'x86': '32'}[grains['cpuarch']] %}
+
+{% set new_style_versions = [
+  '2.22.0'
+] %}
+
+{% set versions = ['2.22.0',
+                   '2.21.0',
                    '2.20.1',
                    '2.20.0',
                    '2.19.2',
@@ -45,19 +52,21 @@ git:
     {% set short_version = version %}
     {% set win_ver = "1" %}
   {% endif %}
-  '{{ version }}':
-    full_name: Git version {{ version }}
-  {% if grains['cpuarch'] == 'AMD64' %}
-    installer: https://github.com/git-for-windows/git/releases/download/v{{ short_version }}.windows.{{ win_ver }}/Git-{{ version }}-64-bit.exe
+  {% set extended_version = short_version ~ ".windows." ~ win_ver %}
+  {% if version in new_style_versions %}
+    {% set display_version = extended_version %}
   {% else %}
-    installer: https://github.com/git-for-windows/git/releases/download/v{{ short_version }}.windows.{{ win_ver }}/Git-{{ version }}-32-bit.exe
+    {% set display_version = version %}
   {% endif %}
+  '{{ display_version }}':
+    full_name: Git version {{ display_version }}
+    installer: https://github.com/git-for-windows/git/releases/download/v{{ extended_version }}/Git-{{ version }}-{{ arch }}-bit.exe
     # It is impossible to downgrade git silently. It will always pop a message
     # that will cause salt to hang. `/SUPPRESSMSGBOXES` will suppress that
     # warning allowing salt to continue, but the package will not downgrade
     install_flags: /VERYSILENT /NORESTART /SP- /NOCANCEL /SUPPRESSMSGBOXES
     uninstaller: forfiles
-    uninstall_flags: '/p "{{ PROGRAM_FILES }}\Git" /m unins*.exe /c "cmd /c @path /VERYSILENT /NORESTART"'
+    uninstall_flags: '/p "%ProgramFiles%\Git" /m unins*.exe /c "cmd /c @path /VERYSILENT /NORESTART"'
     msiexec: False
     locale: en_US
     reboot: False
