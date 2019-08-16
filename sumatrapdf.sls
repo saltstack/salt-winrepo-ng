@@ -5,7 +5,7 @@
 {% endif %}
 sumatrapdf:
   '3.1.2':
-    full_name: 'Sumatra PDF 3.1.2'
+    full_name: 'SumatraPDF'
     installer: 'https://www.sumatrapdfreader.org/dl/{{ INSTALLER }}'
     install_flags: '/s /opt'
     uninstaller: '%ProgramFiles%\SumatraPDF\uninstall.exe'
