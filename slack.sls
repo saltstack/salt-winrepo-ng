@@ -1,10 +1,9 @@
 slack:
-  latest:
+  3.4.0:
     full_name: Slack
-    installer: 'https://slack-ssb-updates.global.ssl.fastly.net/releases/SlackSetup.exe'
-    install_flags: '-s'
-    uninstaller: '%LocalAppData%/slack/Update.exe'
-    uninstall_flags: '--uninstall -s'
-    msiexec: False
-    locale: en_US
+    installer: https://downloads.slack-edge.com/releases_x64/slack-standalone-3.4.0.0.msi
+    install_flags: '/qn /norestart'
+    uninstaller: https://downloads.slack-edge.com/releases_x64/slack-standalone-3.4.0.0.msi
+    uninstall_flags: '/qn /norestart'
+    msiexec: True
     reboot: False

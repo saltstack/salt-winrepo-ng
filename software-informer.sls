@@ -8,7 +8,7 @@
 software-informer:
   'Not Found':
     full_name: 'Software Informer'
-    installer: 'http://files.informer.com/siinst.exe'
+    installer: 'https://files.informer.com/siinst.exe'
     install_flags: '/SP- /VERYSILENT /NORESTART /SUPPRESSMSGBOXES'
     uninstaller: '{{ PROGRAM_FILES }}\Software Informer\unins000.exe'
     uninstall_flags: '/SP- /VERYSILENT /NORESTART /SUPPRESSMSGBOXES'
