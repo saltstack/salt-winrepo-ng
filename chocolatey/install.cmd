@@ -1,6 +1,4 @@
 :: Installs Chocolatey
-:: Get the passed version
-set "chocolateyVersion=%~1"
 set DIR=%~dp0%
 
 :: Download install.ps1
@@ -9,8 +7,11 @@ set DIR=%~dp0%
 :: Run Installer
 %systemroot%\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "& '%DIR%install.ps1' %*"
 
+:: Get version
+For /F "Tokens=*" %%I in ('C:\ProgramData\Chocolatey\choco.exe --version') Do Set chocolateyVersion=%%I
+
 :: Make Registry Entries
-reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Chocolatey" /v DisplayName /d "Chocolatey %chocolateyVersion%" /f
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Chocolatey" /v DisplayName /d "Chocolatey" /f
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Chocolatey" /v DisplayVersion /d %chocolateyVersion% /f
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Chocolatey" /v Publisher /d "Installed by Salt" /f
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Chocolatey" /v URLUpdateInfo /d "https://chocolatey.org" /f
