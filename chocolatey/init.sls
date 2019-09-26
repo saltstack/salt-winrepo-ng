@@ -1,12 +1,9 @@
 chocolatey:
-  {% for version in ['0.10.11'] %}
-  '{{ version }}':
-    full_name: 'Chocolatey {{ version }}'
+  latest:
+    full_name: 'Chocolatey'
     installer: 'salt://win/repo-ng/salt-winrepo-ng/chocolatey/install.cmd'
-    install_flags: {{ version }}
     uninstaller: 'salt://win/repo-ng/salt-winrepo-ng/chocolatey/uninstall.cmd'
     cache_dir: True
-  {% endfor %}
 
 # this software also has it's own salt execution module, which you might prefer to use, see
 # http://docs.saltstack.com/en/latest/ref/modules/all/salt.modules.chocolatey.html
