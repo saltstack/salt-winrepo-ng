@@ -3,10 +3,13 @@
 {% set arch = {'AMD64': '64', 'x86': '32'}[grains['cpuarch']] %}
 
 {% set new_style_versions = [
+  '2.23.0',
   '2.22.0'
 ] %}
 
-{% set versions = ['2.22.0',
+{% set versions = [
+                   '2.23.0',
+                   '2.22.0',
                    '2.21.0',
                    '2.20.1',
                    '2.20.0',
@@ -42,7 +45,9 @@
                    '2.6.2',
                    '2.5.3',
                    '2.5.2.2',
-                   '2.5.0'] %}
+                   '2.5.0'
+] %}
+
 git:
 {% for version in versions %}
   {% if version.count('.') == 3  %}
