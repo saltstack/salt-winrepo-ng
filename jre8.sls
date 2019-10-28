@@ -5,7 +5,7 @@
 # you more versions and also different builds. IF you do use these, make sure you adapt your sls file accordingly.  
 # http://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase8-2177648.html
 
-{% set versions = {'8.0':['201']} %}
+{% set versions = {'8.0':['201','211','221','231']} %}
 
 jre8:
 {% for major, subversions in versions.items() %}
@@ -20,7 +20,7 @@ jre8:
     installer: 'salt://win/repo-ng/jre8/jre8_x86/jre-8u{{minor}}-windows-i586.exe'
     uninstall_flags: '/qn /x {26A24AE4-039D-4CA4-87B4-2F32180{{minor}}F0} /norestart'
     {% endif %}
-    install_flags: '/s REBOOT=Suppress SPONSORS=0'
+    install_flags: '/s REBOOT=Suppress SPONSORS=0 REMOVEOUTOFDATEJRES=1 AUTO_UPDATE=Disable'
     uninstaller: 'msiexec.exe'
     msiexec: False
     locale: en_US
