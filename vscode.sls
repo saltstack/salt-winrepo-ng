@@ -16,7 +16,7 @@ vscode:
     installer: 'https://az764295.vo.msecnd.net/stable/c7d83e57cd18f18026a8162d042843bda1bcf21f/VSCodeSetup-ia32-{{version}}.exe'
 {% endif %}
     uninstaller: '{{ PROGRAM_FILES }}\Microsoft VS Code\unins000.exe'
-    install_flags: '/SP- /VERYSILENT /NORESTART /MERGETASKS=!RUNCODE'
+    install_flags: '/SP- /VERYSILENT /NORESTART /MERGETASKS="!RUNCODE,ADDCONTEXTMENUFILES,ADDCONTEXTMENUFOLDERS,ADDTOPATH"'
     uninstall_flags: '/VERYSILENT /NORESTART'
     msiexec: False
     locale: en_US
