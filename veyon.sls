@@ -5,7 +5,7 @@
 {% set arch = 'win32' %}
 {% endif %}
 
-{% set versions = ['4.3.1', '4.3.0', '4.0.7', '4.0.6'] %}
+{% set versions = ['4.3.1', '4.3.0', '4.0.7'] %}
 
 veyon:
 {% for version in versions %}
