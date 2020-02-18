@@ -5,7 +5,7 @@ firefox_x64:
   '{{ version }}':
     full_name: 'Mozilla Firefox {{ version }} (x64 {{ lang }})'
     installer: 'https://download-installer.cdn.mozilla.net/pub/firefox/releases/{{ version }}/win64/{{ lang }}/Firefox%20Setup%20{{ version }}.exe'
-    install_flags: '/s'
+    install_flags: '/S'
     uninstaller: '%ProgramFiles%\Mozilla Firefox\uninstall\helper.exe'
     uninstall_flags: '/S'
     msiexec: False

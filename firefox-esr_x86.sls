@@ -10,7 +10,7 @@ firefox-esr_x86:
   '{{ version }}':
     full_name: 'Mozilla Firefox {{ version }} ESR (x86 {{ lang }})'
     installer: 'https://download-installer.cdn.mozilla.net/pub/firefox/releases/{{ version }}esr/win32/{{ lang }}/Firefox%20Setup%20{{ version }}esr.exe'
-    install_flags: '/s'
+    install_flags: '/S'
     uninstaller: '{{ PROGRAM_FILES }}\Mozilla Firefox\uninstall\helper.exe'
     uninstall_flags: '/S'
     msiexec: False
