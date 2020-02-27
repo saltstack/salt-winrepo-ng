@@ -1,3 +1,6 @@
+# "Go is an open source programming language that makes it easy to build simple, reliable, and efficient software." - Google.
+# See https://golang.org/
+
 {% set source_path = 'https://dl.google.com/go' %}
 
 {% set versions = [
