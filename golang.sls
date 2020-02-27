@@ -1,4 +1,4 @@
-{% set source_path = 'https://storage.googleapis.com/golang' %}
+{% set source_path = 'https://dl.google.com/go' %}
 
 golang:
   {% for version in ['1.11.5', '1.10.8'] %}
