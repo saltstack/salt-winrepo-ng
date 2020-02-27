@@ -3,8 +3,14 @@
 
 {% set source_path = 'https://downloads.sourceforge.net/project/keepass' %}
 
+
+{% set versions = [
+  '2.44', '2.43', '2.42', '2.41', '2.40', '2.39', '2.38', '2.37', '2.36', '2.35', '2.34', '2.33', '2.32', '2.31', '2.30', '2.29',
+  '2.42.1', '2.39.1'
+] %}
+
 keepass-2x:
-{% for version in ['2.44', '2.43', '2.42', '2.42.1', '2.41', '2.40', '2.39.1', '2.39', '2.38', '2.37', '2.36', '2.35', '2.34', '2.33', '2.32', '2.31', '2.30', '2.29'] %}
+{% for version in versions %}
   {% set versionWithTrailingZero = version + ".0" if version.split('.')|count == 2 else version %}
   '{{ versionWithTrailingZero }}':
     full_name: 'KeePass {{ version }}'
