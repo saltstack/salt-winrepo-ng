@@ -16,9 +16,9 @@ keepass-2x:
   {% set versionWithTrailingZero = version + ".0" if version.split('.')|count == 2 else version %}
   '{{ versionWithTrailingZero }}':
     full_name: 'KeePass {{ version }}'
-    installer: '{{ source_path }}/{{ version }}/KeePass-{{ version }}.msi'
-    install_flags: '/qn /norestart'
+    installer:   '{{ source_path }}/{{ version }}/KeePass-{{ version }}.msi'
     uninstaller: '{{ source_path }}/{{ version }}/KeePass-{{ version }}.msi'
+    install_flags:   '/qn /norestart'
     uninstall_flags: '/qn /norestart'
     msiexec: True
     locale: en_US
