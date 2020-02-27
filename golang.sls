@@ -19,9 +19,13 @@
   '1.14',
 ] %}
 
+# Hint: the versionWithTrailingZero is required, because golang sets the version field in Windows to e.g. 1.14.0 or 1.13.0 if 1.14 or 1.13 is installed.
+# If we dont do that the version can not be removed anymore via saltstack.
+
 golang:
   {% for version in versions %}
-  '{{ version }}':
+  {% set versionWithTrailingZero = version + ".0" if version.split('.')|count == 2 else version %}
+  '{{ versionWithTrailingZero }}':
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name: 'Go Programming Language amd64 go{{ version }}'
     installer: '{{ source_path }}/go{{ version }}.windows-amd64.msi'
