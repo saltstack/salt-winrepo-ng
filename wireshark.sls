@@ -33,11 +33,9 @@ wireshark:
     locale: en_US
     reboot: False
   {% endfor %}
-
 # Now add all versions from 2.0.0 to before 2.2.17, hence .exe installer
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available
 {% set PROGRAM_FILES = "%ProgramFiles%" %}
-wireshark:
   {% for version in exeVersions %}
   '{{ version }}':
     {% if grains['cpuarch'] == 'AMD64' %}
