@@ -22,8 +22,7 @@
 
 wireshark:
   {% for version in msiVersions %}
-  {% set versionWithTrailingZero = version + ".0" if version.count('.') == 2 else version %}
-  '{{ versionWithTrailingZero }}':
+  '{{ version }}.0':
     full_name: 'Wireshark'
     installer:   '{{source_path}}/Wireshark-{{ arch }}-{{ version }}.msi'
     uninstaller: '{{source_path}}/Wireshark-{{ arch }}-{{ version }}.msi'
