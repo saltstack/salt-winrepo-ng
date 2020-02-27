@@ -1,7 +1,7 @@
 # Keepass 2.x installation from https://keepass.info/
 # to keep the versioning in the format of "2.<version>.minor", two seperate version arrays are created.
 
-{% set source_path = 'https://downloads.sourceforge.net/project/keepass' %}
+{% set source_path = 'https://downloads.sourceforge.net/project/keepass/KeePass%202.x' %}
 
 {% set versions = [
   '2.00',
@@ -18,9 +18,9 @@ keepass-2x:
   {% set versionWithTrailingZero = version + ".0" if version.split('.')|count == 2 else version %}
   '{{ versionWithTrailingZero }}':
     full_name: 'KeePass {{ version }}'
-    installer: '{{ source_path }}/KeePass%202.x/{{ version }}/KeePass-{{ version }}.msi'
+    installer: '{{ source_path }}/{{ version }}/KeePass-{{ version }}.msi'
     install_flags: '/qn /norestart'
-    uninstaller: '{{ source_path }}/KeePass%202.x/{{ version }}/KeePass-{{ version }}.msi'
+    uninstaller: '{{ source_path }}/{{ version }}/KeePass-{{ version }}.msi'
     uninstall_flags: '/qn /norestart'
     msiexec: True
     locale: en_US
