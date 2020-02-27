@@ -1,7 +1,9 @@
 {% set source_path = 'https://dl.google.com/go' %}
 
+{% set versions = ['1.11.5', '1.10.8'] %}
+
 golang:
-  {% for version in ['1.11.5', '1.10.8'] %}
+  {% for version in versions %}
   '{{ version }}':
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name: 'Go Programming Language amd64 go{{ version }}'
