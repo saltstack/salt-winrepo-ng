@@ -1,3 +1,11 @@
+# Firefox installs are available in many languages other than en-US
+# See https://releases.mozilla.org/pub/firefox/releases/latest/README.txt
+# for a list of possible installer language codes.
+# To install Firefox in a particular language on a minion, set the value of
+# `firefox:pkg:lang` to a language code in the master config file,
+# minion pillar, grains or config file. See
+# https://docs.saltstack.com/en/latest/ref/modules/all/salt.modules.config.html#salt.modules.config.get
+
 {%- set lang = salt['config.get']('firefox:pkg:lang', 'en-US') %}
 
 firefox_x64:
