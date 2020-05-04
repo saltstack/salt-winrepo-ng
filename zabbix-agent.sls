@@ -1,5 +1,5 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available
-{% set versions = {'4.4':[1,2,3,4], '4.2':[3,4,5,6,7,8], '4.0':[9,10,11,12,13,14,15,16], '3.0':[26,27,28,29]} %}
+{% set versions = {'4.4':[1,2,3,4,5], '4.2':[3,4,5,6,7,8], '4.0':[9,10,11,12,13,14,15,16,17], '3.0':[26,27,28,29]} %}
 {% set source_path = 'https://www.zabbix.com/downloads/' %}
 
 zabbix-agent:
