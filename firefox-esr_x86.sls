@@ -6,7 +6,8 @@
 # minion pillar, grains or config file. See
 # https://docs.saltstack.com/en/latest/ref/modules/all/salt.modules.config.html#salt.modules.config.get
 
-{%- set lang = salt['config.get']('firefox:pkg:lang', 'en-US') %}
+{# {%- set lang = salt['config.get']('firefox:pkg:lang', 'en-US') %} #}
+{% set lang = 'en-US' %}
 
 firefox-esr_x86:
   {% if grains['cpuarch'] == 'AMD64' %}
