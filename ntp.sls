@@ -9,7 +9,7 @@
     {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {% endif %}
 ntp:
-  {% for version in ['4.2.8p13', '4.2.8p12', '4.2.8p11'] %}
+  {% for version in ['4.2.8p14', '4.2.8p13', '4.2.8p12', '4.2.8p11'] %}
   '{{ version }}':
     full_name: 'Network Time Protocol'
     installer: 'https://www.meinberg.de/download/ntp/windows/ntp-{{ version }}-win32-setup.exe'
