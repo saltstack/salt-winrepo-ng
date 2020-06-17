@@ -12,6 +12,7 @@ from pprint import pprint
 from StringIO import StringIO
 from urlparse import urlparse
 
+reload(sys)
 sys.setdefaultencoding('utf8')
 
 test_status = True
