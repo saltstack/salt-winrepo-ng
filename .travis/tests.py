@@ -74,18 +74,18 @@ if help or len(opts) < 1 and len(args) < 1:
 
 def process_each(softwares):
     global teststatus
-    #pprint(softwares)
+    print("*" * 68)
+    pprint(softwares)
     for s, software in softwares.items():
         try:
             if software.get('skip_urltest', False):
                 continue
         except KeyError:
             pass
+        print("-" * 68)
+        pprint(version)
         for v, version in software.items():
             try:
-                printd('*' * 68)
-                printd(version)
-                printd('*' * 68)
                 if version.get('skip_urltest', False):
                     continue
             except KeyError:
