@@ -58,6 +58,7 @@ salt-minion-py3:
                      '2017.7.1',
                      '2017.7.0'] %}
   '{{ version }}':
+    skip_urltest: True
     full_name: 'Salt Minion {{ version }} (Python 3)'
     uninstaller: 'C:\salt\uninst.exe'
     uninstall_flags: '/S'

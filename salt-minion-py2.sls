@@ -69,6 +69,7 @@ salt-minion:
                      '2016.11.1',
                      '2016.11.0'] %}
   '{{ version }}':
+    skip_urltest: True
     full_name: 'Salt Minion {{ version }}'
     uninstaller: 'C:\salt\uninst.exe'
     uninstall_flags: '/S'

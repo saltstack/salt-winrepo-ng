@@ -74,8 +74,7 @@ if help or len(opts) < 1 and len(args) < 1:
 
 def process_each(softwares):
     global teststatus
-    print("*" * 68)
-    pprint(softwares)
+    # pprint(softwares)
     for s, software in softwares.items():
         try:
             if software.get('skip_urltest', False):
@@ -83,15 +82,13 @@ def process_each(softwares):
         except KeyError:
             pass
         for v, version in software.items():
-            print("-" * 68)
-            pprint(version)
             try:
                 if version.get('skip_urltest', False):
                     continue
             except KeyError:
                 pass
             # Testing each non-salt URL for availability
-            scheme=urlparse(version['installer']).scheme
+            scheme = urlparse(version['installer']).scheme
             if scheme in ['http', 'https']:
                 headers = StringIO()
                 printd("version['installer']", version['installer'])
