@@ -77,13 +77,13 @@ def process_each(softwares):
     #pprint(softwares)
     for s,software in softwares.items():
         try:
-            if software['skip_urltest']:
+            if software.get('skip_urltest', False):
                 continue
         except KeyError:
             pass
         for v,version in software.items():
             try:
-                if version['skip_urltest']:
+                if version.get('skip_urltest', False):
                     continue
             except KeyError:
                 pass
