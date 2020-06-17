@@ -120,7 +120,7 @@ def process_each(softwares):
                         print("PROBLEM HERE (Bad content type) : %s -- %s -- %s -- %s " % (s, v, version['installer'], content_type))
                         # print(headers.getvalue().split())
                     else:
-                        print("%s : Valid" % version['installer'])
+                        print("VALID : %s" % version['installer'])
                 except curl.error as e:
                     errno, errstr = e
                     printd("errno, errstr", (errno, errstr))
