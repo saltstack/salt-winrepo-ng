@@ -7,32 +7,16 @@
 # 2015.8.2 you will not be able to use pkg.install to upgrade Salt again. You
 # will have to upgrade Salt through another means.
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Versions of Salt that contain CVE's have been removed from the software
+# definition files. The binaries are still available and can be found at:
+# archive.repo.saltstack.com/windows
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 salt-minion-py3:
   {% for version in ['3000.3',
                      '3000.2',
-                     '3000.1',
-                     '3000',
                      '2019.2.5',
-                     '2019.2.4',
-                     '2019.2.3',
-                     '2019.2.2',
-                     '2019.2.1',
-                     '2019.2.0',
-                     '2018.3.5',
-                     '2018.3.4',
-                     '2018.3.3',
-                     '2018.3.2',
-                     '2018.3.1',
-                     '2018.3.0',
-                     '2017.7.8',
-                     '2017.7.7',
-                     '2017.7.6',
-                     '2017.7.5',
-                     '2017.7.4',
-                     '2017.7.3',
-                     '2017.7.2',
-                     '2017.7.1',
-                     '2017.7.0'] %}
+                     '2019.2.4'] %}
   '{{ version }}':
     full_name: 'Salt Minion {{ version }} (Python 3)'
     {% if grains['cpuarch'] == 'AMD64' %}
