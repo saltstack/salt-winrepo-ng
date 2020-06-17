@@ -119,6 +119,8 @@ def process_each(softwares):
                     if 'application/' not in content_type and 'binary/' not in content_type:
                         print("PROBLEM HERE (Bad content type) : %s -- %s -- %s -- %s " % (s, v, version['installer'], content_type))
                         # print(headers.getvalue().split())
+                    else:
+                        print("VALID : %s" % version['installer'])
                 except curl.error as e:
                     errno, errstr = e
                     printd("errno, errstr", (errno, errstr))
