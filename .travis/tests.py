@@ -82,9 +82,9 @@ def process_each(softwares):
                 continue
         except KeyError:
             pass
-        print("-" * 68)
-        pprint(version)
         for v, version in software.items():
+            print("-" * 68)
+            pprint(version)
             try:
                 if version.get('skip_urltest', False):
                     continue
