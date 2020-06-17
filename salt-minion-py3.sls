@@ -10,10 +10,34 @@
 salt-minion-py3:
   {% for version in ['3000.3',
                      '3000.2',
-                     '3000.1',
-                     '3000',
                      '2019.2.5',
-                     '2019.2.4',
+                     '2019.2.4'] %}
+  '{{ version }}':
+    full_name: 'Salt Minion {{ version }} (Python 3)'
+    {% if grains['cpuarch'] == 'AMD64' %}
+    installer: 'https://repo.saltstack.com/windows/Salt-Minion-{{ version }}-Py3-AMD64-Setup.exe'
+    {% else %}
+    installer: 'https://repo.saltstack.com/windows/Salt-Minion-{{ version }}-Py3-x86-Setup.exe'
+    {% endif %}
+    {% raw %}
+    # install_flags: "/S /master={{ salt['pillar.get']('salt:master', 'salt.domain.tld') }} /minion-id={{ salt['pillar.get']('salt:minion:ids:' ~ grains['host'] }}"
+    {% endraw %}
+    install_flags: '/S'
+    uninstaller: 'C:\salt\uninst.exe'
+    uninstall_flags: '/S'
+    msiexec: False
+    use_scheduler: True
+    reboot: False
+  {% endfor %}
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Versions of Salt that contain CVE's have been moved to an archive at:
+# archive.repo.saltstack.com/windows. The ability to install those versions
+# using winrepo has been removed.
+# An uninstall only definition will remain here so the packages will show up
+# correctly in `pkg.list_pkgs` and to allow for removal using `pkg.remove`
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  {% for version in ['3000.1',
+                     '3000',
                      '2019.2.3',
                      '2019.2.2',
                      '2019.2.1',
@@ -34,21 +58,9 @@ salt-minion-py3:
                      '2017.7.1',
                      '2017.7.0'] %}
   '{{ version }}':
+    skip_urltest: True
     full_name: 'Salt Minion {{ version }} (Python 3)'
-    {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'https://repo.saltstack.com/windows/Salt-Minion-{{ version }}-Py3-AMD64-Setup.exe'
-    {% else %}
-    installer: 'https://repo.saltstack.com/windows/Salt-Minion-{{ version }}-Py3-x86-Setup.exe'
-    {% endif %}
-    {% raw %}
-    # install_flags: "/S /master={{ salt['pillar.get']('salt:master', 'salt.domain.tld') }} /minion-id={{ salt['pillar.get']('salt:minion:ids:' ~ grains['host'] }}"
-    {% endraw %}
-    install_flags: '/S'
     uninstaller: 'C:\salt\uninst.exe'
     uninstall_flags: '/S'
-    refresh: true
-    msiexec: False
     use_scheduler: True
-    reboot: False
   {% endfor %}
-
