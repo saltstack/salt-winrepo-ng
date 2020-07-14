@@ -1,29 +1,27 @@
 #!/usr/bin/env python2.7
 # -*- coding: utf-8 -*-
 
-import yaml, glob, os
-from StringIO import StringIO
-from pprint import pprint
-from jinja2 import Template
-from urlparse import urlparse
+import getopt
+import git
 import pycurl as curl
-import traceback
-
 import sys
+import traceback
+import yaml, glob, os
+from jinja2 import Template
+from pprint import pprint
+from StringIO import StringIO
+from urlparse import urlparse
+
 reload(sys)
 sys.setdefaultencoding('utf8')
 
-teststatus=True
+test_status = True
 
-import git
-head=git.Repo(".").commit("HEAD")
-changed=[ i for i in head.stats.files.keys() if '.sls' in i ]
+head = git.Repo(".").commit("HEAD")
+changed = [i for i in head.stats.files.keys() if '.sls' in i]
 
 
-## TESTING AREA ##
-import getopt
-
-def printd( message=None, extra_debug_data=None ):
+def printd(message=None, extra_debug_data=None):
     global debug
     try:
         if debug:
@@ -31,64 +29,69 @@ def printd( message=None, extra_debug_data=None ):
             sys.stderr.write("\t--\t")
             pprint(extra_debug_data, stream=sys.stderr)
             return None
-    except:
-            pass
+    except Exception:
+        pass
+
 
 def usage():
     print("""
     Use either of these flags!
-        -h | --help     Show this help
+        -h | --help_     Show this help_
         -t | --travis   Run in travis (ignores files that have not been changed in last commit)
         -c | --cron     Run in cron mode  (Checks 
         -d | --debug    Run in debug mode (Prints more info)
     """)
 
+
 try:
-    opts, args = getopt.getopt(sys.argv[1:], "tcdh", ["travis", "cron", "debug", "help"])
+    opts, args = getopt.getopt(
+        sys.argv[1:], "tcdh", ["travis", "cron", "debug", "help_"])
     opts = dict(opts)
 except getopt.GetoptError:
     usage()
     sys.exit(2)
-travis, cron, debug, help = (False, False, False, False)
+travis, cron, debug, help_ = (False, False, False, False)
 
 try:
     if opts.has_key('-t') or opts.has_key('--travis'):
-        travis=True
+        travis = True
     if opts.has_key('-c') or opts.has_key('--cron'):
-        cron=True
+        cron = True
     if opts.has_key('-d') or opts.has_key('--debug'):
-        debug=True
+        debug = True
         from pprint import pprint
         printd("ploop", {'extra':'debug', 'data': None})
-    if opts.has_key('-h') or opts.has_key('--help'):
-        help=True
+    if opts.has_key('-h') or opts.has_key('--help_'):
+        help_ = True
 except KeyError:
     pass
-printd("opts, args", (opts, args) )
-printd("travis, cron, debug, help ", (travis, cron, debug, help ) )
+printd("opts, args", (opts, args))
+printd("travis, cron, debug, help_ ", (travis, cron, debug, help_))
 
-if help or len(opts) < 1 and len(args) < 1:
+if help_ or len(opts) < 1 and len(args) < 1:
     usage()
     exit(0)
+
 ##################
 
+
 def process_each(softwares):
-    global teststatus
-    #pprint(softwares)
-    for s,software in softwares.items():
+    global test_status
+    # pprint(softwares)
+    for s, software in softwares.items():
         try:
-            if software['skip_urltest']:
+            if software.get('skip_urltest', False):
                 continue
         except KeyError:
             pass
-        for v,version in software.items():
+        for v, version in software.items():
             try:
-                if version['skip_urltest']:
+                if version.get('skip_urltest', False):
                     continue
             except KeyError:
                 pass
             # Testing each non-salt URL for availability
-            scheme=urlparse(version['installer']).scheme
+            scheme = urlparse(version['installer']).scheme
             if scheme in ['http', 'https']:
                 headers = StringIO()
                 printd("version['installer']", version['installer'])
@@ -99,65 +102,68 @@ def process_each(softwares):
                 C.setopt(curl.CONNECTTIMEOUT, 2)
                 C.setopt(curl.TIMEOUT, 5)
                 C.setopt(C.HEADERFUNCTION, headers.write)
-                buf = StringIO()
                 try:
                     C.perform()
-                    #assert C.getinfo(curl.HTTP_CODE) != 404, "[ERROR]\tURL returned code 404. File Missing? "
-                    httpcode = C.getinfo(curl.HTTP_CODE)
-                    #print(headers.getvalue().split('\r\n')[1:])
+                    # assert C.getinfo(curl.HTTP_CODE) != 404, "[ERROR]\tURL returned code 404. File Missing? "
+                    http_code = C.getinfo(curl.HTTP_CODE)
+                    # print(headers.getvalue().split('\r\n')[1:])
                     try:
-                        contenttype=dict([ tuple(l.split(': ', 1)) for l in headers.getvalue().split('\r\n')[1:] if ':' in l ])['Content-Type']
+                        content_type = dict([tuple(l.split(': ', 1)) for l in headers.getvalue().split('\r\n')[1:] if ':' in l])['Content-Type']
                     except:
-                        contenttype='None/None'
-                    printd("contenttype:", contenttype)
-                    if httpcode == 404:
+                        content_type = 'None/None'
+                    printd("content_type:", content_type)
+                    if http_code == 404:
                         # This build is failing !
-                        print("PROBLEM HERE (404) : %s -- %s -- %s " % ( s, v, version['installer'] ) )
-                        teststatus=False
-                    if 'application/' not in contenttype and 'binary/' not in contenttype:
-                        print("PROBLEM HERE (Bad content type) : %s -- %s -- %s -- %s " % ( s, v, version['installer'], contenttype ) )
-                        #print(headers.getvalue().split())
+                        print("PROBLEM HERE (404) : %s -- %s -- %s " % (s, v, version['installer']))
+                        test_status = False
+                    if 'application/' not in content_type and 'binary/' not in content_type:
+                        print("PROBLEM HERE (Bad content type) : %s -- %s -- %s -- %s " % (s, v, version['installer'], content_type))
+                        # print(headers.getvalue().split())
+                    else:
+                        print("VALID : %s" % version['installer'])
                 except curl.error as e:
                     errno, errstr = e
                     printd("errno, errstr", (errno, errstr))
                     if errno == 28:
-                        print('[ERROR]\tConnection timeout or no server | errno: ' + str(errno) + ' | ' + errstr)
+                        print('[ERROR]\tConnection timeout or no server | '
+                              'errno: ' + str(errno) + ' | ' + errstr)
                         pass
                 C.close()
 
 
 if travis:
-    ourfiles=changed
+    our_files = changed
 else:
-    ourfiles=glob.glob('*.sls')
+    our_files = glob.glob('*.sls')
 
 
 for cpuarch in ['AMD64', 'x86']:
     try:    
         print("--------(arch: %s)--------" % cpuarch)
-        if len(ourfiles) == 0:
-            print("No files to check. No problem. ")
+        if len(our_files) == 0:
+            print("No files to check. No problem.")
             continue
-        for file in ourfiles:
+        for file in our_files:
             try:
-                print("---( "+ file + " )---")
+                print("---( " + file + " )---")
                 with open(file, 'r') as stream:
                     template = stream.read()
                 t = Template(template)
-                yml = t.render(grains={'cpuarch':cpuarch})
+                yml = t.render(grains={'cpuarch': cpuarch})
                 data = yaml.load(yml, Loader=yaml.FullLoader)
                 process_each(data)
-            except Exception as e:
-                e = sys.exc_info()[0]
-                print("[EXCEPTION] " + str(e) )
+            except Exception:
+                exc = sys.exc_info()[0]
+                print("[EXCEPTION] " + str(exc))
                 traceback.print_exc()
                 pass
-        print("-"*80)
-    except Exception as e:
-        e = sys.exc_info()[0]
-        print("[EXCEPTION] " + str(e) )
+        print("-" * 80)
+    except Exception:
+        exc = sys.exc_info()[0]
+        print("[EXCEPTION] " + str(exc))
         traceback.print_exc()
         pass
  
-assert teststatus, "BUILD FAILING. You can grep for 'PROBLEM HERE' to find out how to fix this. "
-print("Everything went smoothly. No errors were found. Happy deployment! ")
+assert test_status, "BUILD FAILING. You can grep for 'PROBLEM HERE' to find " \
+                    "out how to fix this."
+print("Everything went smoothly. No errors were found. Happy deployment!")

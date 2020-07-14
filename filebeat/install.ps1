@@ -27,6 +27,9 @@ $client.DownloadFile($url, $zip_file)
 $ProgressPreference = "SilentlyContinue"
 Get-ChildItem $zip_file | Expand-Archive -DestinationPath $env:ProgramFiles -Force
 
+# delete old filebeat folder
+Remove-Item -Force -Recurse -Path "$env:ProgramFiles\Filebeat" -ErrorAction Ignore
+
 # Rename the directory
 Rename-Item -Path "$env:ProgramFiles\filebeat-$version-windows-x86_64" -NewName "Filebeat"
 
