@@ -1,0 +1,20 @@
+name: pre-commit
+
+on: [pull_request, push]
+
+jobs:
+  pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - run: |
+          sudo apt update
+          sudo apt install -y libcurl4-openssl-dev
+      - id: file_changes
+        uses: trilom/file-changes-action@v1.2.4
+        with:
+          output: ' '
+      - uses: pre-commit/action@v2.0.0
+        with:
+          extra_args: --verbose --files ${{ steps.file_changes.outputs.files}}
