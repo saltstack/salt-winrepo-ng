@@ -136,33 +136,32 @@ elif cron:
 else:
     our_files = args
 
+if len(our_files) == 0:
+    print("No files to check. No problem.")
+    exit(0)
 
-for cpuarch in ['AMD64', 'x86']:
-    try:    
-        print("--------(arch: %s)--------" % cpuarch)
-        if len(our_files) == 0:
-            print("No files to check. No problem.")
-            continue
-        for file in our_files:
-            try:
-                print("---( " + file + " )---")
-                with open(file, 'r') as stream:
-                    template = stream.read()
-                t = Template(template)
+for file in our_files:
+    try:
+        print("---( " + file + " )---")
+        with open(file, 'r') as stream:
+            template = stream.read()
+        t = Template(template)
+        if "cpuarch" in template:
+            for cpuarch in ['AMD64', 'x86']:
+                print("--------(arch: %s)--------" % cpuarch)
                 yml = t.render(grains={'cpuarch': cpuarch})
                 data = yaml.load(yml, Loader=yaml.FullLoader)
                 process_each(data)
-            except Exception:
-                exc = sys.exc_info()[0]
-                print("[EXCEPTION] " + str(exc))
-                traceback.print_exc()
-                pass
-        print("-" * 80)
+        else:
+            yml = t.render()
+            data = yaml.load(yml, Loader=yaml.FullLoader)
+            process_each(data)
     except Exception:
         exc = sys.exc_info()[0]
         print("[EXCEPTION] " + str(exc))
         traceback.print_exc()
         pass
+print("-" * 80)
  
 assert test_status, "BUILD FAILING. You can grep for 'PROBLEM HERE' to find " \
                     "out how to fix this."
