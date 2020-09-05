@@ -17,10 +17,6 @@ sys.setdefaultencoding('utf8')
 
 test_status = True
 
-head = git.Repo(".").commit("HEAD")
-changed = [i for i in head.stats.files.keys() if '.sls' in i]
-
-
 def printd(message=None, extra_debug_data=None):
     global debug
     try:
@@ -132,9 +128,13 @@ def process_each(softwares):
 
 
 if travis:
+    head = git.Repo(".").commit("HEAD")
+    changed = [i for i in head.stats.files.keys() if '.sls' in i]
     our_files = changed
-else:
+elif cron:
     our_files = glob.glob('*.sls')
+else:
+    our_files = args
 
 
 for cpuarch in ['AMD64', 'x86']:
