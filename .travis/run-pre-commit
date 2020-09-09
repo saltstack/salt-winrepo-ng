@@ -1,5 +1,8 @@
 #!/usr/bin/env sh
 
+# Changed files logic inspired by
+# https://dev.to/ahferroin7/skip-ci-stages-in-travis-based-on-what-files-changed-3a4k
+
 if [ -z "${TRAVIS_COMMIT_RANGE}" ] ; then
     # This is a new branch.
     # shellcheck disable=SC2046 # Quote this to prevent word splitting.
