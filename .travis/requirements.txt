@@ -1,4 +1,5 @@
-pyaml
-jinja2
-pycurl
 gitpython
+jinja2
+pre-commit
+pyaml
+pycurl
