@@ -8,7 +8,7 @@ addons:
   apt:
     update: true
     packages:
-      - git-all
+      - git
       - libcurl4-openssl-dev
 
 install:
