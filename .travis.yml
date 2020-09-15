@@ -8,10 +8,9 @@ addons:
   apt:
     update: true
     packages:
-      - git
       - libcurl4-openssl-dev
 
 install:
-    - pip install -r .travis/requirements.txt
+    - pip3 install -r .travis/requirements.txt
 
 script: .travis/run-pre-commit
