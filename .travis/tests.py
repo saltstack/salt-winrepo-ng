@@ -17,10 +17,6 @@ sys.setdefaultencoding('utf8')
 
 test_status = True
 
-head = git.Repo(".").commit("HEAD")
-changed = [i for i in head.stats.files.keys() if '.sls' in i]
-
-
 def printd(message=None, extra_debug_data=None):
     global debug
     try:
@@ -132,37 +128,40 @@ def process_each(softwares):
 
 
 if travis:
+    head = git.Repo(".").commit("HEAD")
+    changed = [i for i in head.stats.files.keys() if '.sls' in i]
     our_files = changed
-else:
+elif cron:
     our_files = glob.glob('*.sls')
+else:
+    our_files = args
 
+if len(our_files) == 0:
+    print("No files to check. No problem.")
+    exit(0)
 
-for cpuarch in ['AMD64', 'x86']:
-    try:    
-        print("--------(arch: %s)--------" % cpuarch)
-        if len(our_files) == 0:
-            print("No files to check. No problem.")
-            continue
-        for file in our_files:
-            try:
-                print("---( " + file + " )---")
-                with open(file, 'r') as stream:
-                    template = stream.read()
-                t = Template(template)
+for file in our_files:
+    try:
+        print("---( " + file + " )---")
+        with open(file, 'r') as stream:
+            template = stream.read()
+        t = Template(template)
+        if "cpuarch" in template:
+            for cpuarch in ['AMD64', 'x86']:
+                print("--------(arch: %s)--------" % cpuarch)
                 yml = t.render(grains={'cpuarch': cpuarch})
                 data = yaml.load(yml, Loader=yaml.FullLoader)
                 process_each(data)
-            except Exception:
-                exc = sys.exc_info()[0]
-                print("[EXCEPTION] " + str(exc))
-                traceback.print_exc()
-                pass
-        print("-" * 80)
+        else:
+            yml = t.render()
+            data = yaml.load(yml, Loader=yaml.FullLoader)
+            process_each(data)
     except Exception:
         exc = sys.exc_info()[0]
         print("[EXCEPTION] " + str(exc))
         traceback.print_exc()
         pass
+print("-" * 80)
  
 assert test_status, "BUILD FAILING. You can grep for 'PROBLEM HERE' to find " \
                     "out how to fix this."
