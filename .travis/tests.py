@@ -6,7 +6,7 @@ import traceback
 import yaml, glob, os
 from jinja2 import Template
 from pprint import pprint
-from io import StringIO
+from io import BytesIO
 from urllib.parse import urlparse
 
 test_status = True
@@ -45,7 +45,6 @@ except getopt.GetoptError:
 travis, cron, debug, help_ = (False, False, False, False)
 
 for o in opts:
-    print(o)
     if o in ("-t", "--travis"):
         travis = True
     if o in ("-c", "--cron"):
@@ -84,9 +83,10 @@ def process_each(softwares):
             # Testing each non-salt URL for availability
             scheme = urlparse(version["installer"]).scheme
             if scheme in ["http", "https"]:
-                headers = StringIO()
+                headers = BytesIO()
                 printd("version['installer']", version["installer"])
                 c = curl.Curl()
+                # c.setopt(curl.WRITEFUNCTION, headers.write)
                 c.setopt(curl.URL, version["installer"])
                 c.setopt(curl.NOBODY, True)
                 c.setopt(curl.FOLLOWLOCATION, True)
@@ -97,12 +97,12 @@ def process_each(softwares):
                     c.perform()
                     # assert C.getinfo(curl.HTTP_CODE) != 404, "[ERROR]\tURL returned code 404. File Missing? "
                     http_code = c.getinfo(curl.HTTP_CODE)
-                    # print(headers.getvalue().split('\r\n')[1:])
+                    # print(headers.getvalue().decode("utf-8").split('\r\n')[1:])
                     try:
                         content_type = dict(
                             [
                                 tuple(l.split(": ", 1))
-                                for l in headers.getvalue().split("\r\n")[1:]
+                                for l in headers.getvalue().decode("utf-8").split("\r\n")[1:]
                                 if ":" in l
                             ]
                         )["Content-Type"]
@@ -124,7 +124,7 @@ def process_each(softwares):
                             "PROBLEM HERE (Bad content type) : %s -- %s -- %s -- %s "
                             % (s, v, version["installer"], content_type)
                         )
-                        # print(headers.getvalue().split())
+                        # print(headers.getvalue().decode("utf-8").split())
                     else:
                         print("VALID : %s" % version["installer"])
                 except curl.error as e:
