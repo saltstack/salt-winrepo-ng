@@ -1,15 +1,16 @@
 import getopt
 import git
+import glob
 import pycurl as curl
 import sys
 import traceback
-import yaml, glob, os
+import yaml
+from io import BytesIO
 from jinja2 import Template
 from pprint import pprint
-from io import BytesIO
 from urllib.parse import urlparse
 
-test_status = True
+TEST_STATUS = True
 
 
 def printd(message=None, extra_debug_data=None):
@@ -66,7 +67,7 @@ if help_ or len(opts) < 1 and len(args) < 1:
 
 
 def process_each(softwares):
-    global test_status
+    global TEST_STATUS
     # pprint(softwares)
     for s, software in softwares.items():
         try:
@@ -115,7 +116,7 @@ def process_each(softwares):
                             "PROBLEM HERE (404) : %s -- %s -- %s "
                             % (s, v, version["installer"])
                         )
-                        test_status = False
+                        TEST_STATUS = False
                     if (
                         "application/" not in content_type
                         and "binary/" not in content_type
@@ -125,6 +126,7 @@ def process_each(softwares):
                             % (s, v, version["installer"], content_type)
                         )
                         # print(headers.getvalue().decode("utf-8").split())
+                        TEST_STATUS = False
                     else:
                         print("VALID : %s" % version["installer"])
                 except curl.error as e:
@@ -175,7 +177,7 @@ for file in our_files:
         pass
 print("-" * 80)
 
-assert test_status, (
-    "BUILD FAILING. You can grep for 'PROBLEM HERE' to find " "out how to fix this."
+assert TEST_STATUS, (
+    "BUILD FAILING. You can grep for 'PROBLEM HERE' to find out how to fix this."
 )
 print("Everything went smoothly. No errors were found. Happy deployment!")
