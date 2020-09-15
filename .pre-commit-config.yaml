@@ -24,4 +24,9 @@ repos:
         language_version: python3.6
         entry: .travis/tests.py
         types: [salt]
-        additional_dependencies: [pyaml, jinja2, pycurl, gitpython]
+        additional_dependencies:
+          - gcg
+          - gitpython
+          - jinja2
+          - pyaml
+          - pycurl
