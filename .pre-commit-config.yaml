@@ -22,7 +22,7 @@ repos:
         name: Check URLs exist and are valid
         language: python
         language_version: python3
-        entry: .travis/tests.py
+        entry: python3 .travis/tests.py
         types: [salt]
         additional_dependencies:
           - gitpython
