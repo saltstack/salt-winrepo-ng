@@ -21,7 +21,7 @@ repos:
       - id: check-urls
         name: Check URLs exist and are valid
         language: python
-        language_version: python3.7
+        language_version: python3.6
         entry: .travis/tests.py
         types: [salt]
         additional_dependencies: [pyaml, jinja2, pycurl, gitpython]
