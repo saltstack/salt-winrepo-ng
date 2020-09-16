@@ -7,8 +7,10 @@ cache:
 addons:
   apt:
     update: true
-    packages: libcurl4-openssl-dev
+    packages:
+      - libcurl4-openssl-dev
 
-install: pip install pre-commit
+install:
+    - pip install pre-commit
 
 script: .travis/run-pre-commit
