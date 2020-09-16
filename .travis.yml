@@ -11,6 +11,6 @@ addons:
       - libcurl4-openssl-dev
 
 install:
-    - pip3 install -r .travis/requirements.txt
+    - pip install pre-commit
 
 script: .travis/run-pre-commit
