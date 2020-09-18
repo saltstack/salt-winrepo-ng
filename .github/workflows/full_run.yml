@@ -1,0 +1,23 @@
+name: full_run
+
+on:
+  # Allow manual trigger
+  workflow_dispatch:
+  schedule:
+    # At 17:03 on Saturday (on main SaltStack repo)
+    - cron: '3 17 * * 6'
+
+jobs:
+  pre-commit:
+    name: Check URLs
+    if: github.repository == 'saltstack/salt-winrepo-ng' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - run: |
+          sudo apt update
+          sudo apt install -y libcurl4-openssl-dev
+      - uses: pre-commit/action@v2.0.0
+        with:
+          extra_args: --verbose --all-files
