@@ -1,4 +1,4 @@
-{% set version_list = ['7.70', '7.60'] %}
+{% set version_list = ['7.80', '7.70', '7.60'] %}
 
 # just 32-bit x86 installer available
 {% if grains['cpuarch'] == 'AMD64' %}

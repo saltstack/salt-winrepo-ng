@@ -1,6 +1,21 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available
 {% set PROGRAM_FILES = "%ProgramFiles%" %}
 irfanview:
+  '4.54':
+    full_name: 'IrfanView'
+    {% if grains['cpuarch'] == 'AMD64' %}
+    installer: 'https://download.irfanview.de/iview454g_x64_setup.exe'
+    install_flags: '/silent /desktop=0 /thumbs=0 /group=1 /allusers=0 /assoc=0 /folder="%ProgramFiles%\irfanview"'
+    uninstaller: '%ProgramFiles(x86)%\irfanview\iv_uninstall.exe'
+    {% else %}
+    installer: 'https://download.irfanview.de/iview454g_setup.exe'
+    install_flags: '/silent /desktop=0 /thumbs=0 /group=1 /allusers=0 /assoc=0 /folder="%ProgramFiles(x86)%\irfanview"'
+    uninstaller: '%ProgramFiles(x86)%\irfanview\iv_uninstall.exe'
+    {% endif %}
+    uninstall_flags: '/silent'
+    msiexec: False
+    locale: en_US
+    reboot: False
   '4.51':
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name: 'IrfanView 64 (remove only)'

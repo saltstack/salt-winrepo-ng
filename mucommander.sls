@@ -3,7 +3,7 @@
 {% else %}
     {% set PROGRAM_FILES = "%PROGRAMFILES%" %}
 {% endif %}
-{% set versions = ['0.9.2'] %}
+{% set versions = ['0.9.5-1', '0.9.2'] %}
 mucommander:
 {% for version in versions %}
   '{{ version }}':
@@ -11,7 +11,7 @@ mucommander:
     installer: 'https://github.com/mucommander/mucommander/releases/download/{{ version }}/mucommander-{{ version }}.exe'
     uninstaller: '{{ PROGRAM_FILES }}\muCommander\uninstaller.exe'
     install_flags: '/S'
-    uninstall_flags: '/S' 
+    uninstall_flags: '/S'
     locale: en_US
     reboot: False
 {% endfor %}

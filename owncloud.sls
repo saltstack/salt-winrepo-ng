@@ -4,14 +4,14 @@ owncloud:
   {% else %}
     {% set PROGRAM_FILES = "%ProgramFiles%" %}
   {% endif %}
-  {% for version in '2.2.4.6408', '2.2.2.6192', '2.2.1.6146', '2.2.0.6076', '2.1.1.5837' %}
+  {% for version in '2.6.3.14058.13619' %}
   '{{ version }}':
     full_name: 'ownCloud'
-    installer: 'https://download.owncloud.com/desktop/stable/ownCloud-{{ version }}-setup.exe'
+    installer: 'https://download.owncloud.com/desktop/stable/ownCloud-{{ version }}.msi'
     install_flags: '/S'
-    uninstaller: '{{ PROGRAM_FILES }}\ownCloud\uninstall.exe'
-    uninstall_flags: '/S'
-    msiexec: False
+    uninstaller: 'msiexec.exe'
+    uninstall_flags: '/qn /x {84FE3CE4-1E1F-4CE7-9606-4DD7BF0AE35D} /norestart'
+    msiexec: True
     locale: en_US
     reboot: False
   {% endfor %}

@@ -1,4 +1,4 @@
-{% set versions = ['2.2.2', '2.2.1' ] %}
+{% set versions = ['2.4.2', '2.2.2', '2.2.1' ] %}
 {% if grains['cpuarch'] == 'AMD64' %}
     {% set PROGRAM_FILES = "%ProgramFiles(x86)%" %}
 {% else %}

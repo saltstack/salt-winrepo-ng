@@ -1,6 +1,6 @@
-{% set PROGRAM_FILES = "%ProgramFiles%" %} 
+{% set PROGRAM_FILES = "%ProgramFiles%" %}
 soapui:
-{% for version in ['5.4.0'] %}
+{% for version in ['5.6.0', '5.4.0'] %}
   '{{ version }}':
     full_name: 'SoapUI {{ version }} {{ version }}'
     {% if grains['cpuarch'] == 'AMD64' %}
