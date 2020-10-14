@@ -1,9 +1,4 @@
 owncloud:
-  {% if grains['cpuarch'] == 'AMD64' %}
-    {% set PROGRAM_FILES = "%ProgramFiles(x86)%" %}
-  {% else %}
-    {% set PROGRAM_FILES = "%ProgramFiles%" %}
-  {% endif %}
   2.6.3.14058.13619:
     full_name: 'ownCloud'
     installer: 'https://download.owncloud.com/desktop/stable/ownCloud-2.6.3.14058.13619.msi'
@@ -13,4 +8,3 @@ owncloud:
     msiexec: True
     locale: en_US
     reboot: False
-  {% endfor %}

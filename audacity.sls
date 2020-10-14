@@ -1,18 +1,14 @@
-{% set versions = ['2.4.2', '2.2.2', '2.2.1' ] %}
-{% if grains['cpuarch'] == 'AMD64' %}
-    {% set PROGRAM_FILES = "%ProgramFiles(x86)%" %}
-{% else %}
-    {% set PROGRAM_FILES = "%ProgramFiles%" %}
-{% endif %}
 audacity:
-  {% for version in versions %}
-  '{{ version }}':
-    full_name: 'Audacity {{ version }}'
-    installer: 'https://www.videohelp.com/download/audacity-win-{{ version }}.exe'
+  '2.4.2':
+    full_name: 'Audacity'
+    installer: 'https://fossies.org/windows/misc/audacity-win-2.4.2.exe'
     install_flags: '/SP- /verysilent /norestart'
-    uninstaller: '{{ PROGRAM_FILES }}\Audacity\unins000.exe'
+    {% if grains['cpuarch'] == 'AMD64' %}
+    uninstaller: '%ProgramFiles%\Audacity\unins000.exe'
+    {% else %}
+    uninstaller: '%ProgramFiles(x86)%\Audacity\unins000.exe'
+    {% endif %}
     uninstall_flags: '/SP- /verysilent /norestart'
     msiexec: False
     locale: en_US
     reboot: False
-  {% endfor %}

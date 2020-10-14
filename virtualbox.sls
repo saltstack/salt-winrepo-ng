@@ -10,11 +10,7 @@ virtualbox:
     installer: '{{ source_path }}{{ version }}/VirtualBox-{{ version }}-{{ build_number }}-Win.exe'
     install_flags: '--silent'
     uninstaller: 'msiexec.exe'
-    {% if grains['cpuarch'] == 'AMD64' %}
     uninstall_flags: '/qn /x {F54088F3-18F9-4953-A0AA-0D3E788E33E4} /norestart'
-    {% else %}
-    uninstall_flags: '/qn /x {9694DB45-EBEE-403A-8EA7-72A54DD4F307} /norestart'
-    {% endif %}
     msiexec: False
     locale: en_US
     reboot: False

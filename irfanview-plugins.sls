@@ -2,10 +2,10 @@ irfanview-plugins:
   '4.54':
     full_name: 'Irfanview Plugins 4.54'
     {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'https://download.irfanview.de/iview454_plugins_x64_setup.exe'
+    installer: 'https://www.irfanview.info/files/iview454g_x64_setup.exe'
     install_flags: '/silent /folder="%ProgramFiles%\irfanview"'
     {% else %}
-    installer: 'https://download.irfanview.de/iview454a_plugins_setup.exe'
+    installer: 'https://www.irfanview.info/files/iview454a_plugins_setup.exe'
     install_flags: '/silent /folder="%ProgramFiles(x86)%\irfanview"'
     {% endif %}
     uninstaller: ''
