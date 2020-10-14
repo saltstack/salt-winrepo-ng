@@ -4,10 +4,9 @@ owncloud:
   {% else %}
     {% set PROGRAM_FILES = "%ProgramFiles%" %}
   {% endif %}
-  {% for version in '2.6.3.14058.13619' %}
-  '{{ version }}':
+  2.6.3.14058.13619:
     full_name: 'ownCloud'
-    installer: 'https://download.owncloud.com/desktop/stable/ownCloud-{{ version }}.msi'
+    installer: 'https://download.owncloud.com/desktop/stable/ownCloud-2.6.3.14058.13619.msi'
     install_flags: '/S'
     uninstaller: 'msiexec.exe'
     uninstall_flags: '/qn /x {84FE3CE4-1E1F-4CE7-9606-4DD7BF0AE35D} /norestart'

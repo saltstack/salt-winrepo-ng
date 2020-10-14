@@ -4,7 +4,7 @@ dvdstyler:
   '3.1':
     full_name: 'DVDStyler v3.1'
     {% if grains['cpuarch'] == 'AMD64' %}
-    installer: https://netcologne.dl.sourceforge.net/project/dvdstyler/dvdstyler/3.1/DVDStyler-3.1-win64.exe'
+    installer: 'https://netcologne.dl.sourceforge.net/project/dvdstyler/dvdstyler/3.1/DVDStyler-3.1-win64.exe'
     {% else %}
     installer: 'https://netcologne.dl.sourceforge.net/project/dvdstyler/dvdstyler/3.1/DVDStyler-3.1-win32.exe'
     {% endif %}

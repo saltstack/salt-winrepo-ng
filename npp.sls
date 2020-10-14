@@ -5,12 +5,17 @@
     {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {% endif %}
 npp:
-  {% for version in ['7.9', '7.7.1', '7.7', '7.6.6', '7.6.4', '7.6.3', '7.6.2', '7.6.1', '7.5.9', '7.5.8', '7.5.7', '7.5.6', '7.5.5', '7.5.4', '7.5.3', '7.5.2', '7.5.1', '7.4.2'] %}
+  {% for version in ['7.9', '7.8', '7.7.1', '7.7'] %}
   '{{ version }}':
-    full_name: 'Notepad++ (32-bit x86)'
+    full_name: 'Notepad++'
+    {% if grains['cpuarch'] == 'AMD64' %}
+    installer: 'https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v{{ version }}/npp.{{ version }}.Installer.x64.exe'
+    uninstaller: '%ProgramFiles%\Notepad++\uninstall.exe'
+    {% else %}
     installer: 'https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v{{ version }}/npp.{{ version }}.Installer.exe'
+    uninstaller: '%ProgramFiles(x86)%\Notepad++\uninstall.exe'
+    {% endif %}
     install_flags: '/S'
-    uninstaller: '{{ PROGRAM_FILES }}\Notepad++\uninstall.exe'
     uninstall_flags: '/S'
     msiexec: False
     locale: en_US
