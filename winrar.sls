@@ -7,11 +7,11 @@ winrar:
   '{{major}}.{{minor}}.0':
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name: 'WinRAR {{major}}.{{minor}} (64-bit)'
-    installer: 'https://www.win-rar.com/fileadmin/winrar-versions/winrar/winrar-x64-{{major}}{{minor}}.exe'
+    installer: 'https://www.rarlab.com/rar/winrar-x64-{{major}}{{minor}}.exe'
     arch: x64
     {% else %}
     full_name: 'WinRAR {{major}}.{{minor}} (32-bit)'
-    installer: 'https://www.win-rar.com/fileadmin/winrar-versions/winrar/wrar{{major}}{{minor}}.exe'
+    installer: 'https://www.rarlab.com/rar/wrar{{major}}{{minor}}.exe'
     arch: x86
     {% endif %}
     uninstaller: '%ProgramFiles%\WinRAR\uninstall.exe'

@@ -4,11 +4,11 @@ irfanview:
   '4.54':
     full_name: 'IrfanView'
     {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'https://www.irfanview.info/files/iview454_x64.exe'
+    installer: 'http://download.betanews.com/download/967963863-1/iview454_x64_setup.exe'
     install_flags: '/silent /folder="%ProgramFiles%\irfanview"'
     uninstaller: '%ProgramFiles(x86)%\irfanview\iv_uninstall.exe'
     {% else %}
-    installer: 'https://www.irfanview.info/files/iview454_setup.exe'
+    installer: 'http://download.betanews.com/download/967963863-1/iview454_setup.exe'
     install_flags: '/silent /folder="%ProgramFiles(x86)%\irfanview"'
     uninstaller: '%ProgramFiles(x86)%\irfanview\iv_uninstall.exe'
     {% endif %}
