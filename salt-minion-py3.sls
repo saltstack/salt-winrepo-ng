@@ -8,7 +8,8 @@
 # will have to upgrade Salt through another means.
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 salt-minion-py3:
-  {% for version in ['3001.1',
+  {% for version in ['3002',
+                     '3001.1',
                      '3001',
                      '3000.3',
                      '3000.2',
@@ -38,7 +39,8 @@ salt-minion-py3:
 # An uninstall only definition will remain here so the packages will show up
 # correctly in `pkg.list_pkgs` and to allow for removal using `pkg.remove`
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  {% for version in ['3000.1',
+  {% for version in ['3001.1',
+                     '3000.1',
                      '3000',
                      '2019.2.3',
                      '2019.2.2',
