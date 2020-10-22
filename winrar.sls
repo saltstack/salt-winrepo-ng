@@ -1,5 +1,5 @@
 #if possible use 5.70 or newer due to vulnerabilities (CVE-2018-20250, CVE-2018-20251, CVE-2018-20252, CVE-2018-20253)
-{% set versions = {'5':['70', '61']} %}
+{% set versions = {'5':['91', '70', '61']} %}
 
 winrar:
 {% for major, subversions in versions.items() %}
@@ -11,11 +11,11 @@ winrar:
     arch: x64
     {% else %}
     full_name: 'WinRAR {{major}}.{{minor}} (32-bit)'
-    installer: 'https://www.rarlab.com/rar/wrar{{major}}{{minor}}.exe'    
+    installer: 'https://www.rarlab.com/rar/wrar{{major}}{{minor}}.exe'
     arch: x86
     {% endif %}
     uninstaller: '%ProgramFiles%\WinRAR\uninstall.exe'
-    install_flags: '/S'    
+    install_flags: '/S'
     uninstall_flags: '/S'
     msiexec: False
     locale: en_US
