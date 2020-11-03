@@ -8,8 +8,10 @@
 # will have to upgrade Salt through another means.
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 salt-minion:
-  {% for version in ['3000.3',
+  {% for version in ['3000.4',
+                     '3000.3',
                      '3000.2',
+                     '2019.2.6',
                      '2019.2.5',
                      '2019.2.4'] %}
   '{{ version }}':
