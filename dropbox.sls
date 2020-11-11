@@ -1,7 +1,7 @@
 # just 32-bit x86 installer available
 
 {% set SOURCE_PATH = 'https://clientupdates.dropboxstatic.com/dbx-releng/client/' %}
-{% set VERSION = '69.4.102' %}
+{% set VERSION = '109.4.517' %}
 
 {% if grains['cpuarch'] == 'AMD64' %}
     {% set PROGRAM_FILES = "%PROGRAMFILES(x86)%" %}
