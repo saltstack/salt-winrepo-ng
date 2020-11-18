@@ -1,6 +1,6 @@
 {% set PROGRAM_FILES = "%ProgramFiles%" %}
 ccleaner:
-  {% for version in ['5.72', '5.71', '5.57', '5.44'] %}
+  {% for version in ['5.74', '5.72', '5.71', '5.57', '5.44'] %}
   '{{ version }}':
     {% set dl_version = version | replace(".","") %}
     full_name: 'CCleaner'
