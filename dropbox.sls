@@ -9,9 +9,8 @@
 {% endif %}
 
 dropbox:
-  {% for version in ['109.4.517', '69.4.102'] %}
-  '{{ version }}':
-    {% set dl_version = version | replace(".","") %}
+  {% for VERSION in ['109.4.517', '69.4.102'] %}
+  '{{ VERSION }}':
     full_name: 'Dropbox'
     installer: '{{ SOURCE_PATH }}Dropbox%20{{ VERSION }}%20Offline%20Installer.exe'
     install_flags: '/NOLAUNCH'
