@@ -2,3 +2,4 @@ gitpython
 jinja2
 pyaml
 pycurl
+tabulate

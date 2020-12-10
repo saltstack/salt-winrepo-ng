@@ -20,3 +20,4 @@ repos:
           - jinja2
           - pyaml
           - pycurl
+          - tabulate

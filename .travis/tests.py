@@ -6,13 +6,18 @@ import pycurl as curl
 import sys
 import traceback
 import yaml
+from collections import Counter
 from io import BytesIO
 from jinja2 import Template
 from pprint import pprint
+from tabulate import tabulate
 from urllib.parse import urlparse
 
 TEST_STATUS = True
 
+count_status = Counter()
+count_c_types = Counter()
+count_http_codes = Counter()
 
 def printd(message=None, extra_debug_data=None):
     global debug
@@ -79,6 +84,7 @@ def process_each(softwares):
         for v, version in software.items():
             try:
                 if version.get("skip_urltest", False):
+                    count_status["skipped"] += 1
                     continue
             except KeyError:
                 pass
@@ -99,6 +105,7 @@ def process_each(softwares):
                     c.perform()
                     # assert C.getinfo(curl.HTTP_CODE) != 404, "[ERROR]\tURL returned code 404. File Missing? "
                     http_code = c.getinfo(curl.HTTP_CODE)
+                    count_http_codes[http_code] += 1
                     # print(headers.getvalue().decode("utf-8").split('\r\n')[1:])
                     try:
                         content_type = dict(
@@ -110,13 +117,16 @@ def process_each(softwares):
                         )["Content-Type"]
                     except Exception:
                         content_type = "None/None"
+                    count_c_types[content_type] += 1
                     printd("content_type:", content_type)
+                    http_failure = False
                     if http_code == 404:
                         # This build is failing !
                         print(
                             "PROBLEM HERE (404) : %s -- %s -- %s "
                             % (s, v, version["installer"])
                         )
+                        http_failure = True
                         TEST_STATUS = False
                     if (
                         "application/" not in content_type
@@ -127,9 +137,13 @@ def process_each(softwares):
                             % (s, v, version["installer"], content_type)
                         )
                         # print(headers.getvalue().decode("utf-8").split())
+                        http_failure = True
                         TEST_STATUS = False
                     else:
+                        count_status["passed"] += 1
                         print("VALID : %s" % version["installer"])
+                    if http_failure:
+                        count_status["failed"] += 1
                 except curl.error as e:
                     errno, errstr = e
                     printd("errno, errstr", (errno, errstr))
@@ -138,6 +152,7 @@ def process_each(softwares):
                             "[ERROR]\tConnection timeout or no server | "
                             "errno: " + str(errno) + " | " + errstr
                         )
+                        count_status["errored"] += 1
                         pass
                 c.close()
 
@@ -175,8 +190,13 @@ for file in our_files:
         exc = sys.exc_info()[0]
         print("[EXCEPTION] " + str(exc))
         traceback.print_exc()
+        count_status["exceptions"] += 1
         pass
-print("-" * 80)
+print("-" * 80 + "\n")
+
+print(tabulate(count_c_types.most_common(), ["Total", sum(count_c_types.values())]) + "\n")
+print(tabulate(count_http_codes.most_common(), ["Total", sum(count_http_codes.values())]) + "\n")
+print(tabulate(count_status.most_common(), ["Total", sum(count_status.values())]) + "\n")
 
 assert TEST_STATUS, (
     "BUILD FAILING. You can grep for 'PROBLEM HERE' to find out how to fix this."
