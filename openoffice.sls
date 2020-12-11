@@ -1,4 +1,13 @@
 openoffice:
+  '4.1.7':
+    full_name: 'OpenOffice 4.1.7'
+    installer: 'https://downloads.sourceforge.net/project/openofficeorg.mirror/4.1.7/binaries/en-US/Apache_OpenOffice_4.1.7_Win_x86_install_en-US.exe'
+    install_flags: '/S /v /qb'
+    uninstaller: 'msiexec.exe'
+    uninstall_flags: '/qn /x {A09D951F-4BA3-4383-97B3-D1B91835E779} /norestart'
+    msiexec: False
+    locale: en_US
+    reboot: False
   '4.1.2':
     full_name: 'OpenOffice 4.1.2'
     installer: 'https://downloads.sourceforge.net/project/openofficeorg.mirror/4.1.2/binaries/en-US/Apache_OpenOffice_4.1.2_Win_x86_install_en-US.exe'
