@@ -2,6 +2,7 @@
 import getopt
 import git
 import glob
+import magic
 import pycurl as curl
 import sys
 import traceback
@@ -92,15 +93,17 @@ def process_each(softwares):
             scheme = urlparse(version["installer"]).scheme
             if scheme in ["http", "https"]:
                 headers = BytesIO()
+                body = BytesIO()
                 printd("version['installer']", version["installer"])
                 c = curl.Curl()
                 # c.setopt(curl.WRITEFUNCTION, headers.write)
                 c.setopt(curl.URL, version["installer"])
-                c.setopt(curl.NOBODY, True)
                 c.setopt(curl.FOLLOWLOCATION, True)
                 c.setopt(curl.CONNECTTIMEOUT, 2)
                 c.setopt(curl.TIMEOUT, 5)
-                c.setopt(c.HEADERFUNCTION, headers.write)
+                c.setopt(curl.WRITEHEADER, headers)
+                c.setopt(curl.WRITEDATA, body)
+                c.setopt(curl.RANGE, "0-2047")
                 try:
                     c.perform()
                     # assert C.getinfo(curl.HTTP_CODE) != 404, "[ERROR]\tURL returned code 404. File Missing? "
@@ -116,15 +119,15 @@ def process_each(softwares):
                             ]
                         )["Content-Type"]
                     except Exception:
-                        content_type = "None/None"
+                        content_type = magic.from_buffer(body.getvalue(), mime=True)
                     count_c_types[content_type] += 1
                     printd("content_type:", content_type)
                     http_failure = False
-                    if http_code == 404:
+                    if http_code >= 400:
                         # This build is failing !
                         print(
-                            "PROBLEM HERE (404) : %s -- %s -- %s "
-                            % (s, v, version["installer"])
+                            "PROBLEM HERE (%s) : %s -- %s -- %s "
+                            % (http_code, s, v, version["installer"])
                         )
                         http_failure = True
                         TEST_STATUS = False
