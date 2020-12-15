@@ -120,11 +120,11 @@ def process_each(softwares):
                     count_c_types[content_type] += 1
                     printd("content_type:", content_type)
                     http_failure = False
-                    if http_code == 404:
+                    if http_code >= 400:
                         # This build is failing !
                         print(
-                            "PROBLEM HERE (404) : %s -- %s -- %s "
-                            % (s, v, version["installer"])
+                            "PROBLEM HERE (%s) : %s -- %s -- %s "
+                            % (http_code, s, v, version["installer"])
                         )
                         http_failure = True
                         TEST_STATUS = False
