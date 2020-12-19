@@ -1,9 +1,16 @@
 language: python
-cache: pip
-python:
-  - 2.7
-before_install:
-  - sudo apt-get update
-  - sudo apt-get install -y libcurl4-openssl-dev
-install: pip install -r ./.travis/requirements.txt
-script: ./.travis/tests.py --travis
+cache:
+    pip: true
+    directories:
+        - $HOME/.cache/pre-commit
+
+addons:
+  apt:
+    update: true
+    packages:
+      - libcurl4-openssl-dev
+
+install:
+    - pip install pre-commit
+
+script: .travis/run-pre-commit

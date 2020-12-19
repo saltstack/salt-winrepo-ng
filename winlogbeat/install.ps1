@@ -25,7 +25,13 @@ $client.DownloadFile($url, $zip_file)
 
 # Unzip the file to current location
 $ProgressPreference = "SilentlyContinue"
-Get-ChildItem $zip_file | Expand-Archive -DestinationPath $env:ProgramFiles -Force
+
+if ($PSVersionTable.PSVersion.Major -ge 5) {
+    Get-ChildItem $zip_file | Expand-Archive -DestinationPath $env:ProgramFiles -Force
+} else {
+    $Shell = new-object -com Shell.Application
+    $Shell.Namespace($env:ProgramFiles).copyhere($Shell.NameSpace($zip_file).Items(), 4)
+}
 
 # Rename the directory
 Rename-Item -Path "$env:ProgramFiles\winlogbeat-$version-windows-x86_64" -NewName "Winlogbeat"

@@ -1,4 +1,6 @@
-pyaml
-jinja2
-pycurl
 gitpython
+jinja2
+pyaml
+pycurl
+python-magic
+tabulate

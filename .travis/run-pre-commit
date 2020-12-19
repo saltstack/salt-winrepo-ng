@@ -1,0 +1,39 @@
+#!/usr/bin/env sh
+
+# Changed files logic inspired by
+# https://dev.to/ahferroin7/skip-ci-stages-in-travis-based-on-what-files-changed-3a4k
+
+if [ -z "${TRAVIS_COMMIT_RANGE}" ] ; then
+    # This is a new branch.
+    # shellcheck disable=SC2046 # Quote this to prevent word splitting.
+    echo "New branch - checking HEAD commit files:" $(git show --name-only --pretty=format:)
+    git show --name-only --pretty=format: -z | xargs -0 pre-commit run --verbose --files
+else
+    # This isn't a new branch.
+    echo "Working on commit range:" "${TRAVIS_COMMIT_RANGE}"
+    if [ "${TRAVIS_PULL_REQUEST}" = "false" ] ; then
+        # This isn't a PR build.
+
+        # We need the individual commits to detect force pushes.
+        COMMIT1="$(echo "${TRAVIS_COMMIT_RANGE}" | cut -f 1 -d '.')"
+        COMMIT2="$(echo "${TRAVIS_COMMIT_RANGE}" | cut -f 4 -d '.')"
+
+        if [ "$(git cat-file -t "${COMMIT1}" 2>/dev/null)" = commit ] && \
+           [ "$(git cat-file -t "${COMMIT2}" 2>/dev/null)" = commit ] ; then
+            # This is a 'normal' build.
+            # shellcheck disable=SC2046 # Quote this to prevent word splitting.
+            echo "Checking pushed commit files:" $(git diff --name-only "${COMMIT1}".."${COMMIT2}" --)
+            pre-commit run --verbose --from-ref "${COMMIT1}" --to-ref "${COMMIT2}"
+        else
+            # This was a history rewrite.
+            # shellcheck disable=SC2046 # Quote this to prevent word splitting.
+            echo "Likely forced push - checking HEAD commit files:" $(git show --name-only --pretty=format:)
+            git show --name-only --pretty=format: -z | xargs -0 pre-commit run --verbose --files
+        fi
+    else
+        # This is a PR build.
+        # shellcheck disable=SC2046 # Quote this to prevent word splitting.
+        echo "Checking PR commit files:" $(git diff --name-only "${TRAVIS_COMMIT_RANGE}" --)
+        git diff --name-only -z "${TRAVIS_COMMIT_RANGE}" -- | xargs -0 pre-commit run --verbose --files
+    fi
+fi
