@@ -1,5 +1,5 @@
 tightvnc:
-  {% for version in ['2.8.27', '2.8.23', '2.8.11', '2.8.8', '2.8.5', '2.8.2', '2.7.10'] %}
+  {% for version in ['2.8.59', '2.8.27', '2.8.23', '2.8.11', '2.8.8', '2.8.5', '2.8.2', '2.7.10'] %}
   {% set full_version = version ~ '.0' %}
   '{{ full_version }}':
     full_name: 'TightVNC'
