@@ -31,7 +31,7 @@
 ] %}
 
 powershell-core:
-  {% for version in ['6.1.3', '6.1.2', '6.1.1', '6.1.0', '6.0.5'] %}
+  {% for version in versions %}
   '{{ version }}.0':
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name: 'PowerShell 6-x64'
