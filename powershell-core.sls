@@ -1,7 +1,7 @@
 #PowerShell Core https://github.com/PowerShell/PowerShell
 
-{% set source_path = 'https://github.com/PowerShell/PowerShell/releases/download/v' %}
-{% set versions = [
+{% set SRC_PATH = 'https://github.com/PowerShell/PowerShell/releases/download/v' %}
+{% set VERS = [
   '7.1.0',
   '7.0.3',
   '7.0.2',
@@ -31,19 +31,20 @@
 ] %}
 
 powershell-core:
-  {% for version in versions %}
-  '{{ version }}.0':
+{% for VER in VERS%}
+  {% set MAJ_VER = VER.split(".")[0] %}
+  '{{ VER }}.0':
     {% if grains['cpuarch'] == 'AMD64' %}
-    full_name: 'PowerShell 6-x64'
-    installer: '{{ source_path }}{{ version }}/PowerShell-{{ version }}-win-x64.msi'
-    uninstaller: '{{ source_path }}{{ version }}/PowerShell-{{ version }}-win-x64.msi'
+    full_name: 'PowerShell {{ MAJ_VER }}-x64'
+    installer: '{{ SRC_PATH }}{{ VER }}/PowerShell-{{ VER }}-win-x64.msi'
+    uninstaller: '{{ SRC_PATH }}{{ VER }}/PowerShell-{{ VER }}-win-x64.msi'
     {% else %}
-    full_name: 'PowerShell 6-x86'
-    installer: '{{ source_path }}{{ version }}/PowerShell-{{ version }}-win-x86.msi'
-    uninstaller: '{{ source_path }}{{ version }}/PowerShell-{{ version }}-win-x86.msi'
+    full_name: 'PowerShell {{ MAJ_VER }}-x86'
+    installer: '{{ SRC_PATH }}{{ VER }}/PowerShell-{{ VER }}-win-x86.msi'
+    uninstaller: '{{ SRC_PATH }}{{ VER }}/PowerShell-{{ VER }}-win-x86.msi'
     {% endif %}
     install_flags: '/qn /norestart'
     uninstall_flags: '/qn /norestart'
     msiexec: True
     reboot: False
-  {% endfor %}
+{% endfor %}
