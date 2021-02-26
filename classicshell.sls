@@ -5,7 +5,7 @@ classicshell:
   ] %}
   '{{ version }}':
     full_name: 'Classic Shell'
-    installer: 'https://www.mediafire.com/file/{{ hash }}/ClassicShellSetup_{{ version | replace(".", "_") }}.exe/file'
+    installer: 'https://www.fosshub.com/Classic-Shell.html?dwl=ClassicShellSetup_{{ version | replace(".", "_") }}.exe'
     install_flags: '/passive'
     uninstaller: 'msiexec.exe'
     {% if grains['cpuarch'] == 'AMD64' %}
