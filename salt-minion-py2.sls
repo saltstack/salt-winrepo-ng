@@ -10,6 +10,7 @@
 salt-minion:
   {%
       for version in [
+          '3000.9',
           '3000.8',
           '3000.7',
       ]
