@@ -27,6 +27,7 @@ audacity:
   '{{ version }}':
     skip_urltest: True
     full_name: 'Audacity {{ version }}'
+    # official page has counter measures for automaitc downloads - no alternative like fossies archive found as yet
     #installer: "https://www.fosshub.com/Audacity-old.html?dwl=audacity-win-{{ version }}.exe"
     uninstaller: '{{ PROGRAM_FILES }}\Audacity\unins000.exe'
     uninstall_flags: '/SP- /verysilent /norestart'
