@@ -1,7 +1,7 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available
 {% set PROGRAM_FILES = "%ProgramFiles%" %}
 vlc:
-{% for version in ['3.0.10', '3.0.8', '3.0.6', '3.0.4'] %}
+{% for version in ['3.0.12', '3.0.10', '3.0.8', '3.0.6', '3.0.4'] %}
   '{{ version }}':
     full_name: 'VLC media player'
     {% if grains['cpuarch'] == 'AMD64' %}
