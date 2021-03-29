@@ -4,7 +4,6 @@
 {% else %}
     {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {% endif %}
-{% for version in ['5.3.1.29', '5.3.1.23', '5.3.1.21'] %}
 
 glarysoft-absolute-uninstaller:
   {% for version in ['5.3.1.29', '5.3.1.23', '5.3.1.21'] %}
