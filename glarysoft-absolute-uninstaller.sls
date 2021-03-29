@@ -7,6 +7,7 @@
 {% for version in ['5.3.1.29', '5.3.1.23', '5.3.1.21'] %}
 
 glarysoft-absolute-uninstaller:
+  {% for version in ['5.3.1.29', '5.3.1.23', '5.3.1.21'] %}
   '{{ version }}':
     full_name: 'Absolute Uninstaller {{ version }}'
     installer: 'https://download.glarysoft.com/ausetup.exe'
@@ -16,4 +17,4 @@ glarysoft-absolute-uninstaller:
     msiexec: False
     locale: en_US
     reboot: False
-{% endfor %}
+  {% endfor %}
