@@ -1,8 +1,8 @@
 #
 {% if grains['cpuarch'] == 'AMD64' %}
-    {% set PROGRAM_FILES = "%ProgramFiles(x86)%" %}
-{% else %}
     {% set PROGRAM_FILES = "%ProgramFiles%" %}
+{% else %}
+    {% set PROGRAM_FILES = "%ProgramFiles(x86)%" %}
 {% endif %}
 
 bitwarden:
