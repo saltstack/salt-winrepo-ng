@@ -1,9 +1,5 @@
 #
-{% if grains['cpuarch'] == 'AMD64' %}
-    {% set PROGRAM_FILES = "%ProgramFiles%" %}
-{% else %}
-    {% set PROGRAM_FILES = "%ProgramFiles(x86)%" %}
-{% endif %}
+{% set PROGRAM_FILES = "%ProgramFiles%" %}
 
 bitwarden:
   {% for version in ['1.25.1', '1.25.0', '1.24.6', '1.24.4', '1.24.1', '1.23.1', '1.23.0' ] %}
