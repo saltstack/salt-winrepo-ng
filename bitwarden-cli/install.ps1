@@ -28,6 +28,12 @@ $ProgressPreference = "SilentlyContinue"
 New-Item -Path $env:ProgramFiles -Type Directory -Name "Bitwarden CLI" | Out-Null
 Get-ChildItem $zip_file | Expand-Archive -DestinationPath "$env:ProgramFiles\Bitwarden CLI\" -Force
 
+# add to machine PATH
+$OLDPATH = [System.Environment]::GetEnvironmentVariable('PATH','machine')
+$INCLUDE = "$env:ProgramData\Bitwarden CLI"
+$NEWPATH = "$OLDPATH;$INCLUDE"
+[Environment]::SetEnvironmentVariable("PATH", "$NEWPATH", "Machine")
+
 # Calculate installation size
 $size = (Get-ChildItem "$env:ProgramFiles\Bitwarden CLI" | Measure Length -Sum).Sum /1KB
 
