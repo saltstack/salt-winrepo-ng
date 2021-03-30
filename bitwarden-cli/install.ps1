@@ -28,12 +28,6 @@ $ProgressPreference = "SilentlyContinue"
 New-Item -Path $env:ProgramFiles -Type Directory -Name "Bitwarden CLI" | Out-Null
 Get-ChildItem $zip_file | Expand-Archive -DestinationPath "$env:ProgramFiles\Bitwarden CLI\" -Force
 
-## Rename the directory NA
-##Rename-Item -Path "$env:ProgramFiles\bw-windows-$version" -NewName "Bitwarden CLI"
-
-## Install the auditbeat service NA
-##& "$env:ProgramFiles\Auditbeat\install-service-auditbeat.ps1" | Out-Null
-
 # Calculate installation size
 $size = (Get-ChildItem "$env:ProgramFiles\Bitwarden CLI" | Measure Length -Sum).Sum /1KB
 
