@@ -30,7 +30,7 @@ Get-ChildItem $zip_file | Expand-Archive -DestinationPath "$env:ProgramFiles\Bit
 
 # add to machine PATH
 $OLDPATH = [System.Environment]::GetEnvironmentVariable('PATH','machine')
-$INCLUDE = "$env:ProgramFile\Bitwarden CLI"
+$INCLUDE = "$env:ProgramFiles\Bitwarden CLI"
 $NEWPATH = "$OLDPATH;$INCLUDE"
 [Environment]::SetEnvironmentVariable("PATH", "$NEWPATH", "Machine")
 
