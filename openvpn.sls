@@ -15,7 +15,7 @@
     msiexec: False
     locale: en_US
     reboot: False
-  {% else installer == 'msi' %}
+  {% else %}
   '{{ version }}':
     full_name: 'OpenVPN {{ version }} ' # Note: the OpenVPN installer adds a space at the end of its install string
     installer: 'https://swupdate.openvpn.org/community/releases/openvpn-{{ version }}-{{ arch }}.msi'
