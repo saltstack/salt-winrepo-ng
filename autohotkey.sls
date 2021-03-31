@@ -3,40 +3,16 @@
 {% else %}
     {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {% endif %}
+
 autohotkey:
-  '1.1.29.01':
-    full_name: 'AutoHotkey 1.1.29.01'
-    installer: 'http://ahkscript.org/download/1.1/AutoHotkey112706_Install.exe'
+  {% for version in ['1.1.33.06', '1.1.33.05', '1.1.33.04', '1.1.33.02', '1.1.33.01', '1.1.33.00', '1.1.32.00', '1.1.31.01', '1.1.31.00', '1.1.30.03', '1.1.30.02', '1.1.30.01', '1.1.30.00', '1.1.29.01', '1.1.29.00', '1.1.28.02', '1.1.28.01', '1.1.28.00', '1.1.27.07', '1.1.27.06', '1.1.27.05', '1.1.27.04', '1.1.27.03', '1.1.27.02', '1.1.27.01', '1.1.27.00', '1.1.26.01', '1.1.26.00', '1.1.25.02', '1.1.25.01', '1.1.25.00', '1.1.24.05', '1.1.24.04', '1.1.24.03', '1.1.24.02'] %}
+  '{{ version }}':
+    full_name: 'AutoHotkey {{ version }}'
+    installer: 'https://github.com/Lexikos/AutoHotkey_L/releases/download/v{{ version }}/AutoHotkey_{{ version }}_setup.exe'
     install_flags: '/S /U32 /D="{{ PROGRAM_FILES }}\AutoHotkey"'
     uninstaller: '{{ PROGRAM_FILES }}\AutoHotKey\AutoHotKey.exe'
     uninstall_flags: '"{{ PROGRAM_FILES }}\AutoHotkey\Installer.ahk" /Uninstall'
     msiexec: False
     locale: en_US
     reboot: False
-  '1.1.27.06':
-    full_name: 'AutoHotkey 1.1.27.06'
-    installer: 'http://ahkscript.org/download/1.1/AutoHotkey112706_Install.exe'
-    install_flags: '/S /U32 /D="{{ PROGRAM_FILES }}\AutoHotkey"'
-    uninstaller: '{{ PROGRAM_FILES }}\AutoHotKey\AutoHotKey.exe'
-    uninstall_flags: '"{{ PROGRAM_FILES }}\AutoHotkey\Installer.ahk" /Uninstall'
-    msiexec: False
-    locale: en_US
-    reboot: False
-  '1.1.24.00':
-    full_name: 'AutoHotkey 1.1.24.00'
-    installer: 'http://ahkscript.org/download/1.1/AutoHotkey112400_Install.exe'
-    install_flags: '/S /U32 /D="{{ PROGRAM_FILES }}\AutoHotkey"'
-    uninstaller: '{{ PROGRAM_FILES }}\AutoHotKey\AutoHotKey.exe'
-    uninstall_flags: '"{{ PROGRAM_FILES }}\AutoHotkey\Installer.ahk" /Uninstall'
-    msiexec: False
-    locale: en_US
-    reboot: False
-  '1.1.22.09':
-    full_name: 'AutoHotkey 1.1.22.09'
-    installer: 'http://ahkscript.org/download/1.1/AutoHotkey112209_Install.exe'
-    install_flags: '/S /U32 /D="{{ PROGRAM_FILES }}\AutoHotkey"'
-    uninstaller: '{{ PROGRAM_FILES }}\AutoHotKey\AutoHotKey.exe'
-    uninstall_flags: '"{{ PROGRAM_FILES }}\AutoHotkey\Installer.ahk" /Uninstall'
-    msiexec: False
-    locale: en_US
-    reboot: False
+  {% endfor %}
