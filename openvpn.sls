@@ -5,17 +5,7 @@
                     '2.4.8+': {'2016Server': '-Win10', '2019Server': '-Win10', '10': '-Win10'}} %}
 
 {% macro print_openvpn(version, installer, arch='') %}
-  {% if installer == 'exe' %}
-  '{{ version }}':
-    full_name: 'OpenVPN {{ version }} ' # Note: the OpenVPN installer adds a space at the end of its install string
-    installer: 'https://swupdate.openvpn.org/community/releases/openvpn-install-{{ version }}{{ arch }}.exe'
-    install_flags: '/S /SELECT_OPENSSL_UTILITIES=1 /SELECT_EASYRSA=1 /SELECTSHORTCUTS=1 /SELECTOPENVPN=1 /SELECTASSOCIATIONS=1 /SELECTOPENVPNGUI=1 /SELECTPATH=1'
-    uninstaller: '%ProgramFiles%\OpenVPN\Uninstall.exe'
-    uninstall_flags: '/S'
-    msiexec: False
-    locale: en_US
-    reboot: False
-  {% else %}
+  {% if installer == 'msi' %}
   '{{ version }}':
     full_name: 'OpenVPN {{ version }} ' # Note: the OpenVPN installer adds a space at the end of its install string
     installer: 'https://swupdate.openvpn.org/community/releases/openvpn-{{ version }}-{{ arch }}.msi'
@@ -25,6 +15,16 @@
     msiexec: True
     locale: en_US
     reboot: False
+  {% else %}
+  '{{ version }}':
+    full_name: 'OpenVPN {{ version }} ' # Note: the OpenVPN installer adds a space at the end of its install string
+    installer: 'https://swupdate.openvpn.org/community/releases/openvpn-install-{{ version }}{{ arch }}.exe'
+    install_flags: '/S /SELECT_OPENSSL_UTILITIES=1 /SELECT_EASYRSA=1 /SELECTSHORTCUTS=1 /SELECTOPENVPN=1 /SELECTASSOCIATIONS=1 /SELECTOPENVPNGUI=1 /SELECTPATH=1'
+    uninstaller: '%ProgramFiles%\OpenVPN\Uninstall.exe'
+    uninstall_flags: '/S'
+    msiexec: False
+    locale: en_US
+    reboot: False    
   {% endif %} 
 {% endmacro %}
 
