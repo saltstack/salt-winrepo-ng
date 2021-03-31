@@ -8,9 +8,9 @@
   {% if installer == 'msi' %}
   '{{ version }}':
     full_name: 'OpenVPN {{ version }} ' # Note: the OpenVPN installer adds a space at the end of its install string
-    installer: 'https://swupdate.openvpn.org/community/releases/openvpn-{{ version }}-{{ arch }}.msi'
+    installer: 'https://swupdate.openvpn.org/community/releases/openvpn-{{ version }}{{ arch }}.msi'
     install_flags: '/qn /SELECT_OPENSSL_UTILITIES=1 /SELECT_EASYRSA=1 /SELECTSHORTCUTS=1 /SELECTOPENVPN=1 /SELECTASSOCIATIONS=1 /SELECTOPENVPNGUI=1 /SELECTPATH=1 /norestart'
-    uninstaller: 'https://swupdate.openvpn.org/community/releases/openvpn-{{ version }}-{{ arch }}.msi'
+    uninstaller: 'https://swupdate.openvpn.org/community/releases/openvpn-{{ version }}{{ arch }}.msi'
     uninstall_flags: '/qn /norestart'
     msiexec: True
     locale: en_US
