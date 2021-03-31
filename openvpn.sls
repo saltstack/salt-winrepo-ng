@@ -17,7 +17,7 @@
 {% endmacro %}
 
 openvpn:
-{% set version = '2.4.10-I601' ~ os_suffix['2.4.8+'][grains['osrelease']]|default('-Win10') %}
+{% set version = '2.4.10-I601' ~ os_suffix['2.4.8+'][grains['osrelease']]|default('-Win7') %}
 {{ print_openvpn(version) }}
 {% set version = '2.4.9-I601' ~ os_suffix['2.4.8+'][grains['osrelease']]|default('-Win7') %}
 {{ print_openvpn(version) }}
