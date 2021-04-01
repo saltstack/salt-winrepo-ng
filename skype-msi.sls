@@ -64,4 +64,4 @@ skype-msi:
 #
 # for explanation of silent switches read:
 # http://community.skype.com/t5/Windows-archive/Unattended-install/td-p/184628
-# you can also check microsite http://skype.techygeekshome.info/
+# you can also check microsite http://skype.techygeekshome.info/ 
