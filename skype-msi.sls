@@ -33,7 +33,7 @@ skype-msi:
                                                 ('7.40.104', '7.40', '104', '{3B7E914A-93D5-4A29-92BB-AF8C3F66C431}'), 
                                                 ('7.40.103', '7.40', '103', '{3B7E914A-93D5-4A29-92BB-AF8C3F66C431}') 
                                                ) %}
-  {% set full_version = '{{ version }}' ~ '.0.' ~ '{{ build }}' %}
+  {% set full_version = "{{ version }} ~ '.0.' ~ {{ build }}" %}
   '{{ rel_version }}':
     skip_urltest: True
     full_name: 'Skype™ {{ version }}'
