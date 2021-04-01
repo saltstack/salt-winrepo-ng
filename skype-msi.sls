@@ -21,7 +21,7 @@ skype-msi:
   {% endfor %}
 
   # old ver 7.x
-  {% for rel_version, version, build, guid  in (('7.41.101', '7.41', '101', '{3B7E914A-93D5-4A29-92BB-AF8C3F66C431}')) %}
+  {% for rel_version, version, build, guid  in (('7.41.101', '7.41', '101', '{3B7E914A-93D5-4A29-92BB-AF8C3F66C431}'), ('7.42.102', '7.41', '101', '{3B7E914A-93D5-4A29-92BB-AF8C3F66C431}')) %}
   {% set full_version = '{{ version }}' ~ '.0.' ~ '{{ build }}' %} 
   '{{ rel_version }}':
     full_name: 'Skype™ {{ version }}'
