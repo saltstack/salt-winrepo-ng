@@ -29,3 +29,18 @@ urlrewrite:
     msiexec: True
     locale: en_US
     reboot: False
+  '7.2.1993':
+    full_name: 'IIS URL Rewrite Module 2'
+    {% if grains['cpuarch'] == 'AMD64' %}
+    installer: 'https://download.microsoft.com/download/1/2/8/128E2E22-C1B9-44A4-BE2A-5859ED1D4592/rewrite_amd64_en-US.msi'
+    uninstaller: 'https://download.microsoft.com/download/1/2/8/128E2E22-C1B9-44A4-BE2A-5859ED1D4592/rewrite_amd64_en-US.msi'
+    {% else %}
+    installer: 'https://download.microsoft.com/download/D/8/1/D81E5DD6-1ABB-46B0-9B4B-21894E18B77F/rewrite_x86_en-US.msi'
+    uninstaller: 'https://download.microsoft.com/download/D/8/1/D81E5DD6-1ABB-46B0-9B4B-21894E18B77F/rewrite_x86_en-US.msi'
+    {% endif %}
+    install_flags: '/qn /norestart'
+    uninstall_flags: '/qn /norestart'
+    msiexec: True
+    locale: en_US
+    reboot: False
+
