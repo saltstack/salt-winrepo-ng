@@ -46,7 +46,7 @@ skype-msi:
   {% for version, build, guid  in (('7.40', '151', '{3B7E914A-93D5-4A29-92BB-AF8C3F66C431}'), ('7.40', '104', '{3B7E914A-93D5-4A29-92BB-AF8C3F66C431}'), ('7.40', '103', '{3B7E914A-93D5-4A29-92BB-AF8C3F66C431}') ) %}
   {% set full_version = '{{ version }}' ~ '.0.' ~ '{{ build }}' %}
   {% set rel_version = '{{ version }}' ~ '.' ~ '{{ build }}' %}
-  '{{ rel_version }}'
+  '{{ rel_version }}':
     skip_urltest: True
     full_name: 'Skype™ {{ version }}'
     #installer: 'https://download.skype.com/msi/SkypeSetup_{{ full_version }}.msi'
