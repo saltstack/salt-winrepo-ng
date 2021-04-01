@@ -8,7 +8,7 @@ winscp:
   '{{ version }}':
     full_name: 'WinSCP {{ version }}'
     installer: 'https://downloads.sourceforge.net/project/winscp/WinSCP/{{ version }}/WinSCP-{{ version }}-Setup.exe'
-    install_flags: '/SP- /verysilent /norestart'
+    install_flags: '/SP- /verysilent /SUPPRESSMSGBOXES /norestart'
     uninstaller: '{{ PROGRAM_FILES }}\WinSCP\unins000.exe'
     uninstall_flags: '/verysilent'
     msiexec: False
