@@ -20,19 +20,6 @@ skype-msi:
     reboot: False
   {% endfor %}
 
-  # old ver 7.x
-  {% for rel_version, version, build, guid  in (('7.41.101', '7.41', '101', '{3B7E914A-93D5-4A29-92BB-AF8C3F66C431}'), ('7.42.102', '7.41', '101', '{3B7E914A-93D5-4A29-92BB-AF8C3F66C431}')) %}
-  {% set full_version = '{{ version }}' ~ '.0.' ~ '{{ build }}' %} 
-  '{{ rel_version }}':
-    full_name: 'Skype™ {{ version }}'
-    installer: 'https://download.skype.com/msi/SkypeSetup_{{ full_version }}.msi'
-    install_flags: '/qn /norestart STARTSKYPE=FALSE TRANSFORMS=:RemoveDesktopShortcut.mst TRANSFORMS=:RemoveStartup.mst'
-    uninstaller: 'msiexec'
-    uninstall_flags: '/x {{ guid }} /qn /norestart'
-    msiexec: True
-    locale: en_US
-    reboot: False
-  {% endfor %}
 #
 #
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -41,7 +28,8 @@ skype-msi:
 # correctly in `pkg.list_pkgs` and to allow for removal using `pkg.remove`
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #  
-  {% for rel_version, version, build, guid  in (('7.40.151', '7.40', '151', '{3B7E914A-93D5-4A29-92BB-AF8C3F66C431}'), 
+  {% for rel_version, version, build, guid  in (('7.41.101', '7.41', '101', '{3B7E914A-93D5-4A29-92BB-AF8C3F66C431}'),
+                                                ('7.40.151', '7.40', '151', '{3B7E914A-93D5-4A29-92BB-AF8C3F66C431}'), 
                                                 ('7.40.104', '7.40', '104', '{3B7E914A-93D5-4A29-92BB-AF8C3F66C431}'), 
                                                 ('7.40.103', '7.40', '103', '{3B7E914A-93D5-4A29-92BB-AF8C3F66C431}') 
                                                ) %}
