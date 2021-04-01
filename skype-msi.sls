@@ -22,7 +22,7 @@ skype-msi:
   {% endfor %}
 
   # old ver 7.x
-  {% for version, build, guid  in ('7.41', '101', '{3B7E914A-93D5-4A29-92BB-AF8C3F66C431}')  %}
+  {% for version, build, guid  in (('7.41', '101', '{3B7E914A-93D5-4A29-92BB-AF8C3F66C431}'), ('7.33', '333', '{3B7E914A-93D5-4A29-92BB-AF8C3F66C431}') )  %}
   {% set full_version = '{{ version }}' ~ '.0.' ~ '{{ build }}' %}
   {% set rel_version = '{{ version }}' ~ '.' ~ '{{ build }}' %}  
   '{{ rel_version }}':
