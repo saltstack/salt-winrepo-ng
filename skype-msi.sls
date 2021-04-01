@@ -1,15 +1,14 @@
 skype-msi:
   # new current versions of 8.x
-  {% for version, build, guid  in (('8.68', '96', '{0B447F1C-97B5-4FE3-BE1D-D3CB831E4BE2}'), 
-                                   ('8.65', '78', '{8FCFFF11-79D7-4AB6-98E8-06013FE7CF89}'), 
-                                   ('8.63', '76', '{64F6F29F-C59A-4CF5-83EB-C1DB34B8C463}'), 
-                                   ('8.61', '87', '{0A904146-BD29-450B-8460-30C19948FD27}'), 
-                                   ('8.60', '76', '{8B163110-D657-43CC-8929-4F3C8756AB15}'), 
-                                   ('8.58', '93', '{F091C5BB-969D-4322-8369-20DD57B2E8F9}'), 
-                                   ('8.57', '116', '{D7CA7D65-B108-4DF4-85C8-B64EFBEB512D}')
+  {% for rel_version, version, build, guid  in (('8.68.96', '8.68', '96', '{0B447F1C-97B5-4FE3-BE1D-D3CB831E4BE2}'), 
+                                                ('8.65.78', '8.65', '78', '{8FCFFF11-79D7-4AB6-98E8-06013FE7CF89}'), 
+                                                ('8.63.76', '8.63', '76', '{64F6F29F-C59A-4CF5-83EB-C1DB34B8C463}'), 
+                                                ('8.61.87', '8.61', '87', '{0A904146-BD29-450B-8460-30C19948FD27}'), 
+                                                ('8.60.76', '8.60', '76', '{8B163110-D657-43CC-8929-4F3C8756AB15}'), 
+                                                ('8.58.93', '8.58', '93', '{F091C5BB-969D-4322-8369-20DD57B2E8F9}'), 
+                                                ('8.57.116', '8.57', '116', '{D7CA7D65-B108-4DF4-85C8-B64EFBEB512D}')
                                   ) %}
   {% set full_version = '{{ version }}' ~ '.0.' ~ '{{ build }}' %}
-  {% set rel_version = '{{ version }}' ~ '.' ~ '{{ build }}' %}
   '{{ rel_version }}':
     full_name: 'Skype™ {{ version }}'
     installer: 'https://download.skype.com/s4l/download/win/Skype-{{ full_version }}.msi'
@@ -22,9 +21,8 @@ skype-msi:
   {% endfor %}
 
   # old ver 7.x
-  {% for version, build, guid  in (('7.41', '101', '{3B7E914A-93D5-4A29-92BB-AF8C3F66C431}'), ('7.33', '333', '{3B7E914A-93D5-4A29-92BB-AF8C3F66C431}') )  %}
-  {% set full_version = '{{ version }}' ~ '.0.' ~ '{{ build }}' %}
-  {% set rel_version = '{{ version }}' ~ '.' ~ '{{ build }}' %}  
+  {% for rel_version, version, build, guid  in (('7.41.101', '7.41', '101', '{3B7E914A-93D5-4A29-92BB-AF8C3F66C431}')) %}
+  {% set full_version = '{{ version }}' ~ '.0.' ~ '{{ build }}' %} 
   '{{ rel_version }}':
     full_name: 'Skype™ {{ version }}'
     installer: 'https://download.skype.com/msi/SkypeSetup_{{ full_version }}.msi'
@@ -43,9 +41,11 @@ skype-msi:
 # correctly in `pkg.list_pkgs` and to allow for removal using `pkg.remove`
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #  
-  {% for version, build, guid  in (('7.40', '151', '{3B7E914A-93D5-4A29-92BB-AF8C3F66C431}'), ('7.40', '104', '{3B7E914A-93D5-4A29-92BB-AF8C3F66C431}'), ('7.40', '103', '{3B7E914A-93D5-4A29-92BB-AF8C3F66C431}') ) %}
+  {% for rel_version, version, build, guid  in (('7.40.151', '7.40', '151', '{3B7E914A-93D5-4A29-92BB-AF8C3F66C431}'), 
+                                                ('7.40.104', '7.40', '104', '{3B7E914A-93D5-4A29-92BB-AF8C3F66C431}'), 
+                                                ('7.40.103', '7.40', '103', '{3B7E914A-93D5-4A29-92BB-AF8C3F66C431}') 
+                                               ) %}
   {% set full_version = '{{ version }}' ~ '.0.' ~ '{{ build }}' %}
-  {% set rel_version = '{{ version }}' ~ '.' ~ '{{ build }}' %}
   '{{ rel_version }}':
     skip_urltest: True
     full_name: 'Skype™ {{ version }}'
