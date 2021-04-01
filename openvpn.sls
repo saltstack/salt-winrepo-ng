@@ -1,4 +1,5 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available
+# WIP! check this next line before removing WIP in PR title
 {% set arch = {'AMD64': '-x86_64', 'x86': '-i686'}[grains['cpuarch']] %}
 {% set installer_ver = {'2.4.7': {'Windows-2016Server': '-I603'}} %}
 {% set os_suffix = {'2.4.7': {'2016Server': '', '10': '-Win10'},
@@ -9,6 +10,7 @@
   '{{ version }}':
     full_name: 'OpenVPN {{ version }} ' # Note: the OpenVPN installer adds a space at the end of its install string
     installer: 'https://swupdate.openvpn.org/community/releases/openvpn-{{ version }}{{ arch }}.msi'
+    # WIP! check out new supported msi installer args
     install_flags: '/qn /SELECT_OPENSSL_UTILITIES=1 /SELECT_EASYRSA=1 /SELECTSHORTCUTS=1 /SELECTOPENVPN=1 /SELECTASSOCIATIONS=1 /SELECTOPENVPNGUI=1 /SELECTPATH=1 /norestart'
     uninstaller: 'https://swupdate.openvpn.org/community/releases/openvpn-{{ version }}{{ arch }}.msi'
     uninstall_flags: '/qn /norestart'
@@ -29,6 +31,7 @@
 {% endmacro %}
 
 openvpn:
+# WIP! check these next four lines before removing WIP in PR title 
 {% set version = '2.5.1-I601' ~ arch[grains['cpuarch']] %}
 {% set installer = 'msi' %}
 {% set version = '2.5.0-I601' ~ arch[grains['cpuarch']] %}
