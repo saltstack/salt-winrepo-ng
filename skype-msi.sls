@@ -8,7 +8,7 @@ skype-msi:
                                                 ('8.58.93', '8.58', '93', '{F091C5BB-969D-4322-8369-20DD57B2E8F9}'), 
                                                 ('8.57.116', '8.57', '116', '{D7CA7D65-B108-4DF4-85C8-B64EFBEB512D}')
                                   ) %}
-  {% set full_version = "{{ version }}" ~ '.0.' ~ "{{ build }}" %}
+  {% set full_version = {{ version }} ~ '.0.' ~ {{ build }} %}
   '{{ rel_version }}':
     full_name: 'Skype™ {{ version }}'
     installer: 'https://download.skype.com/s4l/download/win/Skype-{{ full_version }}.msi'
@@ -33,7 +33,7 @@ skype-msi:
                                                 ('7.40.104', '7.40', '104', '{3B7E914A-93D5-4A29-92BB-AF8C3F66C431}'), 
                                                 ('7.40.103', '7.40', '103', '{3B7E914A-93D5-4A29-92BB-AF8C3F66C431}') 
                                                ) %}
-  {% set full_version = "{{ version }}" ~ '.0.' ~ "{{ build }}" %}
+  {% set full_version = {{ version }} ~ '.0.' ~ {{ build }} %}
   '{{ rel_version }}':
     skip_urltest: True
     full_name: 'Skype™ {{ version }}'
