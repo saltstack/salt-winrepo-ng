@@ -20,7 +20,7 @@ handbrake:
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'https://download.handbrake.fr/handbrake/releases/{{ version }}/HandBrake-{{ version }}-x86_64-Win_GUI.exe'
     {% else %}
-    installer: 'https://handbrake.fr/mirror/HandBrake-{{ version }}-i686-Win_GUI.exe'
+    installer: 'https://download.handbrake.fr/handbrake/releases/{{ version }}/HandBrake-{{ version }}-i686-Win_GUI.exe'
     {% endif %}
     install_flags: '/S'
     uninstaller: '{{ PROGRAM_FILES }}\Handbrake\uninst.exe'
@@ -44,7 +44,7 @@ handbrake:
     {% if grains['cpuarch'] == 'AMD64' %}
     #installer: 'https://download.handbrake.fr/handbrake/releases/{{ version }}/HandBrake-{{ version }}-x86_64-Win_GUI-1.exe'
     {% else %}
-    #installer: 'https://handbrake.fr/mirror/HandBrake-{{ version }}-i686-Win_GUI-1.exe'
+    #installer: 'https://download.handbrake.fr/handbrake/releases/{{ version }}/HandBrake-{{ version }}-i686-Win_GUI-1.exe'
     {% endif %}
     #install_flags: '/S'
     uninstaller: '{{ PROGRAM_FILES }}\Handbrake\uninst.exe'
