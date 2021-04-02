@@ -17,11 +17,9 @@ handbrake:
                      '1.0.0'] %}
   '{{ version }}':
     full_name: 'Handbrake {{ version }}'
+    # as of ver. 1.0 they only produce 64-bit installers
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'https://download.handbrake.fr/handbrake/releases/{{ version }}/HandBrake-{{ version }}-x86_64-Win_GUI.exe'
-    {% else %}
-    installer: 'https://download.handbrake.fr/handbrake/releases/{{ version }}/HandBrake-{{ version }}-i686-Win_GUI.exe'
-    {% endif %}
     install_flags: '/S'
     uninstaller: '{{ PROGRAM_FILES }}\Handbrake\uninst.exe'
     uninstall_flags: '/S'
