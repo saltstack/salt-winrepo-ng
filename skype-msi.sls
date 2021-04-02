@@ -1,5 +1,5 @@
 skype-msi:
-  # new current versions of 8.x
+  # new current versions of 8.x 
   {% for full_version, rel_version, version, build, guid  in (('8.68.0.96', '8.68.96', '8.68', '96', '{0B447F1C-97B5-4FE3-BE1D-D3CB831E4BE2}'), 
                                                               ('8.65.0.78', '8.65.78', '8.65', '78', '{8FCFFF11-79D7-4AB6-98E8-06013FE7CF89}'), 
                                                               ('8.63.0.76', '8.63.76', '8.63', '76', '{64F6F29F-C59A-4CF5-83EB-C1DB34B8C463}'), 
@@ -53,3 +53,4 @@ skype-msi:
 # for explanation of silent switches read:
 # http://community.skype.com/t5/Windows-archive/Unattended-install/td-p/184628
 # you can also check microsite http://skype.techygeekshome.info/ 
+#
