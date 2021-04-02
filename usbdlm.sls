@@ -1,5 +1,6 @@
 usbdlm:
   # author only keeps one msi online with latest version, wich keeps increaasing at random
+  # info at https://www.uwe-sieber.de/usbdlm_e.html#download
   'latest':
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name: 'USB Drive Letter Manager (x64)'
