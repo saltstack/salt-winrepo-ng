@@ -1,5 +1,5 @@
 texmaker:
-  '5.0.4':
+  'Not Found':
     full_name: 'Texmaker 5.0.4 (64-bit)'
     {% if grains['cpuarch'] == 'AMD64' %}
     installer: 'https://www.xm1math.net/texmaker/assets/files/Texmaker_5.0.4_Win_x64.msi'
