@@ -22,7 +22,7 @@
 rakudo-star-{{ star_version }}_x64:
   '{{ star_version }}':
     full_name: 'Rakudo Star {{ star_version }}'
-    installer: 'https://rakudo.org/dl/star/rakudo-star-{{ star_version }}-01-x86_64-(JIT).msi'
+    installer: 'https://rakudo.org/dl/star/rakudo-star-{{ star_version }}-01-win-x86_64-(JIT).msi'
     install_flags: '/qn /norestart'
     uninstaller: 'misexec'
     uninstall_flags: '/x {{ guid }} /qn /norestart'
