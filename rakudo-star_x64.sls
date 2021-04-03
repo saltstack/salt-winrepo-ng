@@ -1,6 +1,6 @@
 rakudo-star_x64:
 #
-#  placeholder name, Rakudo Star re-use the veriosn number 1.0.0 for each and every release
+#  placeholder name, Rakudo Star re-use the veriosn number '1.0.0' for each and every release
 # so we have to treat each and every release as a separate pkg in its own right
 #
 {% for star-version, version, guid in (('2020.05.1', '1.0.0', '{4762F693-2C3A-4B0F-BC05-C3585669F7D7}'), 
@@ -19,7 +19,7 @@ rakudo-star_x64:
                                        ('2016.04', '1.0.0', '{D5447817-6E7F-410B-B68B-5EB715A1AAAE}'), 
                                        ('2016.01', '1.0.0', '{53927780-9C62-47BA-A846-972EFFA69EA3}')) %})
 #
-'rakudo-star-{{ star-version }}_x64:
+'rakudo-star-{{ star-version }}_x64':
   '{{ version }}':
     full_name: 'Rakudo Star {{ star-version }}'
     installer: 'https://rakudo.org/dl/star/rakudo-star-{{ star-version }}-01-x86_64-(JIT).msi'
