@@ -20,7 +20,7 @@ rakudo-star_x64:
                                        ('2016.01', '-1', '{53927780-9C62-47BA-A846-972EFFA69EA3}') 
                                      ) %}
 #
-  rakudo-star-{{ star_version }}_x64:
+  rakudo-star-{{ star_version }}_x64.sls:
     '{{ star_version }}':
       full_name: 'Rakudo Star {{ star_version }}'
       installer: 'https://rakudo.org/dl/star/rakudo-star-{{ star_version }}-01-x86_64-(JIT).msi'
