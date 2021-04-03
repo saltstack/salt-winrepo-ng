@@ -3,7 +3,7 @@
 #  placeholder name, Rakudo Star re-use the version number '1.0.0' for each and every release
 # so we have to treat each and every Rakudo Star release as a separate pkg in its own right
 #
-{% for star_version, guid, number in ( ('2020.05.1', '-15', '{4762F693-2C3A-4B0F-BC05-C3585669F7D7}'), 
+{% for star_version, number, guid in ( ('2020.05.1', '-15', '{4762F693-2C3A-4B0F-BC05-C3585669F7D7}'), 
                                        ('2020.01', '-14', '{E8982F92-0BFC-4381-89F4-49EBAA0CAD34}'), 
                                        ('2019.03', '-13', '{2612A516-13DD-4C59-8196-B34544084AF5}'), 
                                        ('2018.10', '-12', '{93EDC490-BBE1-4FB6-8B79-D71DEDBE5FC0}'), 
