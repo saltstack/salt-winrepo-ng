@@ -6,7 +6,7 @@
 {% endif %}
 # Source: http://www.safer-networking.org/
 spybot:
-  '2.7.64.0':
+  '2.7.64':
     full_name: 'Spybot - Search & Destroy'
     installer: 'https://updates2.safer-networking.org/spybot1/spybotsd-2.7.64.0.exe'
     install_flags: '/VERYSILENT /SuppressMsgGBoxes /NoRestart /SP-'
