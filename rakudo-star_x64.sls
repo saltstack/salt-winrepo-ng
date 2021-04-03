@@ -16,18 +16,19 @@ rakudo-star_x64:
                                        ('2017.01', '-5', '{72ED036A-8340-4228-9D47-8D10A4E56256}'), 
                                        ('2016.11', '-4', '{E817B182-BDEB-43F9-97C2-5051B8B0ECF7}'), 
                                        ('2016.07', '-3', '{73C56149-1826-4EA4-B5D0-FAA643AAC906}'), 
-                                       ('2016.04', '-2', '{D5447817-6E7F-410B-B68B-5EB715A1AAAE}'),                                         ('2016.01', '-1', '{53927780-9C62-47BA-A846-972EFFA69EA3}') 
+                                       ('2016.04', '-2', '{D5447817-6E7F-410B-B68B-5EB715A1AAAE}'), 
+                                       ('2016.01', '-1', '{53927780-9C62-47BA-A846-972EFFA69EA3}') 
                                      ) %}
 #
-rakudo-star-{{ star_version }}_x64:
-  '{{ star_version }}':
-    full_name: 'Rakudo Star {{ star_version }}'
-    installer: 'https://rakudo.org/dl/star/rakudo-star-{{ star_version }}-01-x86_64-(JIT).msi'
-    install_flags: '/qn /norestart'
-    uninstaller: 'misexec'
-    uninstall_flags: '/x {{ guid }} /qn /norestart'
-    msiexec: True
-    locale: en_US
-    reboot: False
-{% endfor %}
+  rakudo-star-{{ star_version }}_x64:
+    '{{ star_version }}':
+      full_name: 'Rakudo Star {{ star_version }}'
+      installer: 'https://rakudo.org/dl/star/rakudo-star-{{ star_version }}-01-x86_64-(JIT).msi'
+      install_flags: '/qn /norestart'
+      uninstaller: 'misexec'
+      uninstall_flags: '/x {{ guid }} /qn /norestart'
+      msiexec: True
+      locale: en_US
+      reboot: False
+  {% endfor %}
 #
