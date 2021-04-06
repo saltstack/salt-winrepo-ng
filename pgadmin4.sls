@@ -21,10 +21,16 @@ pgadmin4:
     full_name: 'pgAdmin 4 version {{ version }}'
     installer: 'https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v{{ version }}/windows/pgadmin4-{{ version }}-x86.exe'
     install_flags: '/SP- /verysilent /norestart'
-  {% if version == "1.6" %}
+  {% if version >= "1.0" and version <= "1.99" %}
     uninstaller: '{{ PROGRAM_FILES }}\pgAdmin 4\v1\unins000.exe'
-  {% elif version == "2.0" or version == "2.1" %}
+  {% elif version >= "2.0" and version <= "2.99" %}
     uninstaller: '{{ PROGRAM_FILES }}\pgAdmin 4\v2\unins000.exe'
+  {% elif version >= "3.0" and version <= "3.99" %}
+    uninstaller: '{{ PROGRAM_FILES }}\pgAdmin 4\v3\unins000.exe'
+  {% elif version >= "4.0" and version <= "4.99" %}
+    uninstaller: '{{ PROGRAM_FILES }}\pgAdmin 4\v4\unins000.exe'
+  {% elif version >= "5.0" and version <= "5.99" %}
+    uninstaller: '{{ PROGRAM_FILES }}\pgAdmin 4\v5\unins000.exe'  
   {% endif %}
     uninstall_flags: '/verysilent /norestart'
     msiexec: False
@@ -76,10 +82,16 @@ pgadmin4:
     full_name: 'pgAdmin 4 version {{ version }}'
     installer: 'https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v{{ version }}/windows/pgadmin4-{{ version }}-x86.exe'
     install_flags: '/SP- /verysilent /norestart'
-  {% if version == "1.6" %}
+  {% if version >= "1.0" and version <= "1.99" %}
     uninstaller: '{{ PROGRAM_FILES }}\pgAdmin 4\v1\unins000.exe'
-  {% elif version == "2.0" or version == "2.1" %}
+  {% elif version >= "2.0" and version <= "2.99" %}
     uninstaller: '{{ PROGRAM_FILES }}\pgAdmin 4\v2\unins000.exe'
+  {% elif version >= "3.0" and version <= "3.99" %}
+    uninstaller: '{{ PROGRAM_FILES }}\pgAdmin 4\v3\unins000.exe'
+  {% elif version >= "4.0" and version <= "4.99" %}
+    uninstaller: '{{ PROGRAM_FILES }}\pgAdmin 4\v4\unins000.exe'
+  {% elif version >= "5.0" and version <= "5.99" %}
+    uninstaller: '{{ PROGRAM_FILES }}\pgAdmin 4\v5\unins000.exe' 
   {% endif %}
     uninstall_flags: '/verysilent /norestart'
     msiexec: False
