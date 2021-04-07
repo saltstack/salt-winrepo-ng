@@ -1,7 +1,7 @@
 # just 32-bit x86 installer available
 
 {% set source_path = 'https://updates.atomicorp.com/channels/atomic/windows/' %}
-
+https://updates.atomicorp.com/channels/atomic/windows/ossec-agent-win32-3.2.0-6132.exe
 {% if grains['cpuarch'] == 'AMD64' %}
     {% set program_files = "%ProgramFiles(x86)%" %}
 {% else %}
@@ -9,6 +9,14 @@
 {% endif %}
 
 {% set versions = {
+'3.6.0':['14954'],
+'3.6.0':['14066'],
+'3.6.0':['12032'],
+'3.6.0':['12030'],
+'3.6.0':['11279'],
+'3.5.0':['10635'],
+'3.4.0':['9608'],
+'3.3.0':['8264'],
 '3.2.0':['6132'],
 '3.1.0':['5732'],
 '3.0.1':['5667'],
