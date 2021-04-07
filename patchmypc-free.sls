@@ -1,6 +1,6 @@
 # Source: https://patchmypc.net/
 patchmypc-free:
-  '3.0.1.1':
+  'latest':
     full_name: 'PatchMyPC'
     installer: 'https://patchmypc.net/freeupdater/PatchMyPC.exe'
     install_flags: |
