@@ -3,6 +3,9 @@
 #       setup.ini, which should be stored at C:/ProgramData/NTP/setup.ini.
 #       The file is documented at
 #       https://www.meinberg.de/german/sw/readme-ntpinstaller.htm#unattended
+#
+# find latest downloads at https://www.meinberg.de/german/sw/ntp.htm#ntp_stable
+#
 {% if grains['cpuarch'] == 'AMD64' %}
     {% set PROGRAM_FILES = "%ProgramFiles(x86)%" %}
 {% else %}
