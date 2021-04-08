@@ -17,7 +17,7 @@ bandizip:
 #
   '{{ version7 }}':
     full_name: 'Bandizip'
-    installer: '{{ source_path_v7 }}/BANDIZIP-SETUP-STD-ALL.EXE?1'
+    installer: '{{ source_path_v7 }}/BANDIZIP-SETUP-STD-ALL.EXE'
     install_flags: '/S'
     uninstaller: '%ProgramFiles%\Bandizip\Uninstall.exe'
     uninstall_flags: '/S'
