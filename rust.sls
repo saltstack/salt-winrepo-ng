@@ -2,7 +2,7 @@
 # download from https://forge.rust-lang.org/infra/other-installation-methods.html
 #
 {% set arch = 'x86_64-pc-windows' if grains['cpuarch'] == 'AMD64' else 'i686-pc-windows' %}
-{% set source_path = 'https://static.rust-lang.org/dist/' %}
+{% set source_path = 'https://static.rust-lang.org/dist' %}
 #
 rust-msvc:
   {% for version, guid32, guid64 in [('1.51.0', '{252A90C9-218C-4149-963D-93242AB48EAF}', '{BF1CEB33-249F-4360-A9B5-FE901E5849E7}')] %}
