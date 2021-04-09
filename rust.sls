@@ -5,7 +5,7 @@
 {% set source_path = 'https://static.rust-lang.org/dist/' %}
 #
 rust-msvc:
-  {% for version, guid32, guid64 in (('1.51.0', '{252A90C9-218C-4149-963D-93242AB48EAF}', '{BF1CEB33-249F-4360-A9B5-FE901E5849E7}')) %}
+  {% for version, guid32, guid64 in [('1.51.0', '{252A90C9-218C-4149-963D-93242AB48EAF}', '{BF1CEB33-249F-4360-A9B5-FE901E5849E7}')] %}
   '{{ version }}.0':
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name: 'Rust {{ version }} (MSVC 64-bit)'
