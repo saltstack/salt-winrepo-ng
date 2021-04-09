@@ -6,7 +6,7 @@
 #
 microsoft-jdk:
   {% if grains['cpuarch'] == 'AMD64' %}
-  {% for version, disp_version, guid in (('11.0.10.9', '11.0.10+9', '{8650B43A-3575-46E9-852B-47A35C3CA85B}')) %}
+  {% for version, disp_version, guid in [('11.0.10.9', '11.0.10+9', '{8650B43A-3575-46E9-852B-47A35C3CA85B}')] %}
   '{{ version }}':
     full_name: 'Microsoft Build of OpenJDK with Hotspot {{ disp_version }} ({{ arch }})'
     installer:   '{{source_path}}/microsoft-jdk-{{ version }}-windows-{{ arch }}.msi'
