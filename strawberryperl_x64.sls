@@ -8,7 +8,7 @@ strawberryperl_x64:
                                  ('5.20.3003', '5.20.3.3'),
                                  ('5.18.4001', '5.18.4.1'),
                                  ('5.16.3001', '5.16.3.1'),
-                                 ('5.14.4001', '5.14.4.1') %}
+                                 ('5.14.4001', '5.14.4.1')) %}
 #
   '{{ version }}':
     full_name: 'Strawberry Perl (64-bit)'
@@ -20,3 +20,4 @@ strawberryperl_x64:
     locale: en_US
     reboot: False
   {% endfor %}
+#  
