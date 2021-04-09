@@ -23,7 +23,7 @@ rust-msvc:
   {% endfor %} 
 #
 rust-gnu:
-  {% for version, guid32, guid64 in (('1.51.0', '{4F02C97C-75A4-49A5-AF37-9CBE74E8B6CD}', '{FBE1449D-4AAA-4381-A35A-EE3BDFBC968C}')) %}
+  {% for version, guid32, guid64 in [('1.51.0', '{4F02C97C-75A4-49A5-AF37-9CBE74E8B6CD}', '{FBE1449D-4AAA-4381-A35A-EE3BDFBC968C}')] %}
   '{{ version }}.0':
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name: 'Rust {{ version }} (GNU 64-bit)'
