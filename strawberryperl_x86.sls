@@ -8,7 +8,7 @@ strawberryperl_x86:
                                  ('5.20.3003', '5.20.3.3'),
                                  ('5.18.4001', '5.18.4.1'),
                                  ('5.16.3001', '5.16.3.1'),
-                                 ('5.14.4001', '5.14.4.1') %}
+                                 ('5.14.4001', '5.14.4.1')) %}
   '{{ version }}':
     full_name: 'Strawberry Perl'
     installer: 'http://strawberryperl.com/download/{{ dl_version }}/strawberry-perl-{{ dl_version }}-32bit.msi'
@@ -19,3 +19,4 @@ strawberryperl_x86:
     locale: en_US
     reboot: False
   {% endfor %}
+#
