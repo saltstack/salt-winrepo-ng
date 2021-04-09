@@ -20,6 +20,7 @@ duplicati:
     refresh: False
     cache_dir: False
     use_scheduler: False
+  {% endfor %}
 #
 #
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -46,3 +47,4 @@ duplicati:
     refresh: False
     cache_dir: False
     use_scheduler: False
+#
