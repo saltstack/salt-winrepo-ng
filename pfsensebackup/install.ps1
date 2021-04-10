@@ -28,7 +28,7 @@ $client.DownloadFile($url, $exe_file)
 New-Item -Type Directory -Path "$env:ProgramFiles(x86)\pfSenseBackup" -Verbose -Force | Out-Null
 
 # Copy program into place
-Copy-Item -Path "$exe_file" -Destination "$env:ProgramFiles(x86)\pfSenseBackup"" -Verbose -Force | Out-Null
+Copy-Item -Path "$exe_file" -Destination "$env:ProgramFiles(x86)\pfSenseBackup" -Verbose -Force | Out-Null
 
 # Add to Machine PATH
 
