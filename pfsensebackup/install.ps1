@@ -28,22 +28,9 @@ $client.DownloadFile($url, $exe_file)
 New-Item -Type Directory -Path "$env:ProgramFiles(x86)\pfSenseBackup" -Verbose -Force | Out-Null
 
 # Copy program into place
-Copy-Item -Path "$env:exe_file" -Destination "$env:ProgramFiles(x86)\pfSenseBackup"" -Verbose -Force | Out-Null
-
+Copy-Item -Path "$exe_file" -Destination "$env:ProgramFiles(x86)\pfSenseBackup"" -Verbose -Force | Out-Null
 
 # Add to Machine PATH
-
-# 64-bit
-$OLDPATH = [System.Environment]::GetEnvironmentVariable('PATH','machine')
-$INCLUDE = "$env:ProgramFiles(x86)\pfSenseBackup"
-$NEWPATH = "$OLDPATH;$INCLUDE"
-[Environment]::SetEnvironmentVariable("PATH", "$NEWPATH", "Machine")
-
-# 32-bit
-# $OLDPATH = [System.Environment]::GetEnvironmentVariable('PATH','machine')
-# $INCLUDE = "$env:ProgramFiles\pfSenseBackup"
-# $NEWPATH = "$OLDPATH;$INCLUDE"
-# [Environment]::SetEnvironmentVariable("PATH", "$NEWPATH", "Machine")
 
 # Calculate installation size
 $size = (Get-ChildItem "$env:ProgramFiles(x86)\pfSenseBackup" | Measure Length -Sum).Sum /1KB
