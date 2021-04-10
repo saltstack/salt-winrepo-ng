@@ -16,7 +16,7 @@
 pfsensebackup:
   {% for version in ['2.6.0',
                      '2.5.2', 
-                     '2.5.1., 
+                     '2.5.1', 
                      '2.5'] %}
   '{{ version }}':
     full_name: 'pfSenseBackup {{ version }}'
