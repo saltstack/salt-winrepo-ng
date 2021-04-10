@@ -13,7 +13,7 @@ $script_path = $script_path.DirectoryName
 
 # Define variables
 $base_url="https://github.com/KoenZomers/pfSenseBackup/releases/download"
-$filename = "pfSenseBackup.exe"
+$filename = "pfSenseBackupv$version-win-x64.exe"
 $url = "$base_url/$version/$filename"
 $exe_file = "$script_path\$filename"
 $date = Get-Date -Format "yyyyMMdd"
@@ -28,7 +28,7 @@ $client.DownloadFile($url, $exe_file)
 New-Item -Type Directory -Path "$env:ProgramFiles(x86)\pfSenseBackup" -Verbose -Force | Out-Null
 
 # Copy program into place
-Copy-Item -Path "$exe_file" -Destination "$env:ProgramFiles(x86)\pfSenseBackup" -Verbose -Force | Out-Null
+Copy-Item -Path "$exe_file" -Destination "$env:ProgramFiles(x86)\pfSenseBackup\pfSenseBackup.exe" -Verbose -Force | Out-Null
 
 # Add to Machine PATH
 
