@@ -25,15 +25,15 @@ $client = new-object System.Net.WebClient
 $client.DownloadFile($url, $exe_file)
 
 # Create directory
-New-Item -Type Directory -Path "$env:ProgramFiles(x86)\pfSenseBackup" -Verbose -Force | Out-Null
+New-Item -Type Directory -Path "${env:ProgramFiles(x86)}\pfSenseBackup" -Verbose -Force | Out-Null
 
 # Copy program into place
-Copy-Item -Path "$exe_file" -Destination "$env:ProgramFiles(x86)\pfSenseBackup\pfSenseBackup.exe" -Verbose -Force | Out-Null
+Copy-Item -Path "$exe_file" -Destination "${env:ProgramFiles(x86)}\pfSenseBackup\pfSenseBackup.exe" -Verbose -Force | Out-Null
 
 # Add to Machine PATH
 
 # Calculate installation size
-$size = (Get-ChildItem "$env:ProgramFiles(x86)\pfSenseBackup" | Measure Length -Sum).Sum /1KB
+$size = (Get-ChildItem "${env:ProgramFiles(x86)}\pfSenseBackup" | Measure Length -Sum).Sum /1KB
 
 #Make registry entries
 New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall" -Name "pfSenseBackup" | Out-Null
