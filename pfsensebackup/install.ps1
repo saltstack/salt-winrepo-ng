@@ -1,5 +1,5 @@
 # Script to setup pfSenseBackup
-# Called by install.cmd
+# Called by install.cmd 
 
 # Load parameters
 param(
@@ -27,13 +27,14 @@ $client.DownloadFile($url, $exe_file)
 # Create directory
 New-Item -Type Directory -Path "${env:ProgramFiles(x86)}\pfSenseBackup" -Verbose -Force | Out-Null
 
+# Stop any running instance of pfSenseBackup
+taskkill /F /T /IM pfsensebackup.exe | Out-Null
+
 # Copy program into place
 Copy-Item -Path "$exe_file" -Destination "${env:ProgramFiles(x86)}\pfSenseBackup\pfSenseBackup.exe" -Verbose -Force | Out-Null
 
 # Copy uninstall script into place
 Copy-Item -Path "$script_path\remove.cmd" -Destination "${env:ProgramFiles(x86)}\pfSenseBackup\remove.cmd" -Verbose -Force | Out-Null
-
-# Add to Machine PATH
 
 # Calculate installation size
 $size = (Get-ChildItem "${env:ProgramFiles(x86)}\pfSenseBackup" | Measure Length -Sum).Sum /1KB
