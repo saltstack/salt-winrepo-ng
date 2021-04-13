@@ -30,6 +30,9 @@ New-Item -Type Directory -Path "${env:ProgramFiles(x86)}\pfSenseBackup" -Verbose
 # Copy program into place
 Copy-Item -Path "$exe_file" -Destination "${env:ProgramFiles(x86)}\pfSenseBackup\pfSenseBackup.exe" -Verbose -Force | Out-Null
 
+# Copy uninstall script into place
+Copy-Item -Path "$script_path\remove.cmd" -Destination "${env:ProgramFiles(x86)}\pfSenseBackup\remove.cmd" -Verbose -Force | Out-Null
+
 # Add to Machine PATH
 
 # Calculate installation size
@@ -39,7 +42,7 @@ $size = (Get-ChildItem "${env:ProgramFiles(x86)}\pfSenseBackup" | Measure Length
 New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall" -Name "pfSenseBackup" | Out-Null
 New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\pfSenseBackup" -Name "DisplayName" -Value "pfSenseBackup" | Out-Null
 New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\pfSenseBackup" -Name "DisplayVersion" -Value "$version" | Out-Null
-New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\pfSenseBackup" -Name "UninstallString" -Value "Managed by Salt" | Out-Null
+New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\pfSenseBackup" -Name "UninstallString" -Value "${env:ProgramFiles(x86)}\pfSenseBackup\remove.cmd" | Out-Null
 New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\pfSenseBackup" -Name "Publisher" -Value "Koen Zomers - (Github)" | Out-Null
 New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\pfSenseBackup" -Name "InstallDate" -Value $date | Out-Null
 New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\pfSenseBackup" -Name "EstimatedSize" -Value $size -PropertyType "DWord" | Out-Null
