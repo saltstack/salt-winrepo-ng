@@ -2,6 +2,9 @@
 
 {% set SRC_PATH = 'https://github.com/PowerShell/PowerShell/releases/download/v' %}
 {% set VERS = [
+  '7.1.3',
+  '7.1.2',
+  '7.1.1',
   '7.1.0',
   '7.0.3',
   '7.0.2',
