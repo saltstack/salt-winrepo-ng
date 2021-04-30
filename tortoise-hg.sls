@@ -1,30 +1,25 @@
 # Source: http://tortoisehg.bitbucket.org/
+
+{% if grains['cpuarch'] == 'AMD64' %}
+{% set msi_arch = 'x64' %}
+{% else %}
+{% set msi_arch = 'x86' %}
+{% endif %}
+
 tortoise-hg:
   '3.6.2':
-    {% if grains['cpuarch'] == 'AMD64' %}
-    full_name: 'TortoiseHg 3.6.2 (x64)'
-    installer: 'salt://win/repo-ng/tortoise-hg/tortoisehg-3.6.2-x64.msi'
-    uninstaller: 'salt://win/repo-ng/tortoise-hg/tortoisehg-3.6.2-x64.msi'
-    {% else %}
-    full_name: 'TortoiseHg 3.6.2 (x86)'
-    installer: 'salt://win/repo-ng/tortoise-hg/tortoisehg-3.6.2-x86.msi'
-    uninstaller: 'salt://win/repo-ng/tortoise-hg/tortoisehg-3.6.2-x86.msi'
-    {% endif %}
+    full_name: 'TortoiseHg 3.6.2 ({{ msi_arch }})'
+    installer: 'salt://win/repo-ng/tortoise-hg/tortoisehg-3.6.2-{{ msi_arch }}.msi'
+    uninstaller: 'salt://win/repo-ng/tortoise-hg/tortoisehg-3.6.2-{{ msi_arch }}.msi'
     install_flags: '/qn /norestart'
     uninstall_flags: '/qn /norestart'
     msiexec: True
     locale: en_US
     reboot: False
   '3.3.0':
-    {% if grains['cpuarch'] == 'AMD64' %}
-    full_name: 'TortoiseHg 3.3.0 (x64)'
-    installer: 'salt://win/repo-ng/tortoise-hg/tortoisehg-3.3.0-x64.msi'
-    uninstaller: 'salt://win/repo-ng/tortoise-hg/tortoisehg-3.3.0-x64.msi'
-    {% else %}
-    full_name: 'TortoiseHg 3.3.0 (x86)'
-    installer: 'salt://win/repo-ng/tortoise-hg/tortoisehg-3.3.0-x86.msi'
-    uninstaller: 'salt://win/repo-ng/tortoise-hg/tortoisehg-3.3.0-x86.msi'
-    {% endif %}
+    full_name: 'TortoiseHg 3.3.0 ({{ msi_arch }})'
+    installer: 'salt://win/repo-ng/tortoise-hg/tortoisehg-3.3.0-{{ msi_arch }}.msi'
+    uninstaller: 'salt://win/repo-ng/tortoise-hg/tortoisehg-3.3.0-{{ msi_arch }}.msi'
     install_flags: '/qn /norestart'
     uninstall_flags: '/qn /norestart'
     msiexec: True
