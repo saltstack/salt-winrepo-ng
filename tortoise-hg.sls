@@ -11,18 +11,14 @@ tortoise-hg:
     uninstaller: 'https://www.mercurial-scm.org/release/tortoisehg/windows/tortoisehg-5.7.1-{{ msi_arch }}.msi'
   '3.6.2':
     full_name: 'TortoiseHg 3.6.2 ({{ msi_arch }})'
-    installer: 'salt://win/repo-ng/tortoise-hg/tortoisehg-3.6.2-{{ msi_arch }}.msi'
     uninstaller: 'salt://win/repo-ng/tortoise-hg/tortoisehg-3.6.2-{{ msi_arch }}.msi'
-    install_flags: '/qn /norestart'
     uninstall_flags: '/qn /norestart'
     msiexec: True
     locale: en_US
     reboot: False
   '3.3.0':
     full_name: 'TortoiseHg 3.3.0 ({{ msi_arch }})'
-    installer: 'salt://win/repo-ng/tortoise-hg/tortoisehg-3.3.0-{{ msi_arch }}.msi'
     uninstaller: 'salt://win/repo-ng/tortoise-hg/tortoisehg-3.3.0-{{ msi_arch }}.msi'
-    install_flags: '/qn /norestart'
     uninstall_flags: '/qn /norestart'
     msiexec: True
     locale: en_US
