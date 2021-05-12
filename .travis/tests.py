@@ -97,6 +97,8 @@ def process_each(softwares):
                 printd("version['installer']", version["installer"])
                 c = curl.Curl()
                 # c.setopt(curl.WRITEFUNCTION, headers.write)
+                if debug:
+                    c.setopt(curl.VERBOSE, 1)
                 c.setopt(curl.URL, version["installer"])
                 c.setopt(curl.USERAGENT, "curl/7.76.0")
                 c.setopt(curl.FOLLOWLOCATION, True)
