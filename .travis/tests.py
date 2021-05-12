@@ -98,6 +98,7 @@ def process_each(softwares):
                 c = curl.Curl()
                 # c.setopt(curl.WRITEFUNCTION, headers.write)
                 c.setopt(curl.URL, version["installer"])
+                c.setopt(curl.USERAGENT, "curl/7.76.0")
                 c.setopt(curl.FOLLOWLOCATION, True)
                 c.setopt(curl.CONNECTTIMEOUT, 2)
                 c.setopt(curl.TIMEOUT, 5)
