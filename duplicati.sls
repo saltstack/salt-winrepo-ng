@@ -7,11 +7,11 @@ duplicati:
   '{{ version }}':    
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name: 'Duplicati 2'
-    installer: 'https://github.com/duplicati/duplicati/releases/download/v{{ version }}_{{ type }}_{{ date }}/duplicati-{{ version }}_{{ type }}_{{ date }}-x64.msi'
+    installer: 'https://github.com/duplicati/duplicati/releases/download/v{{ version }}-{{ version }}_{{ type }}_{{ date }}/duplicati-{{ version }}_{{ type }}_{{ date }}-x64.msi'
     uninstall_flags: '/x {{ guid64 }} /qn /norestart'
     {% else %}
     full_name: 'Duplicati 2'
-    installer: 'https://github.com/duplicati/duplicati/releases/download/v{{ version }}_{{ type }}_{{ date }}/duplicati-{{ version }}_{{ type }}_{{ date }}-x86.msi'
+    installer: 'https://github.com/duplicati/duplicati/releases/download/v{{ version }}-{{ version }}_{{ type }}_{{ date }}/duplicati-{{ version }}_{{ type }}_{{ date }}-x86.msi'
     uninstall_flags: '/x {{ guid32 }} /qn /norestart'
     {% endif %}
     install_flags: '/qn ALLUSERS=1 /norestart'
