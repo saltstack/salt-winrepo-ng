@@ -19,7 +19,7 @@ cdroller:
 #
 #
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# Below are versions of Notepad Plus Plus that have had the installer assets removed.
+# Below are versions of CDRoller that have had the installer assets removed.
 # An uninstall only definition will remain here so the packages will show up
 # correctly in `pkg.list_pkgs` and to allow for removal using `pkg.remove`
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
