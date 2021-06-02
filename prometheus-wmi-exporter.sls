@@ -1,12 +1,20 @@
 # Installs the WMI Exporter used by prometheus to scrape metrics from windows based systems
 # WMI Exporter: https://github.com/martinlindhe/wmi_exporter
 # Prometheus Monitoring: https://prometheus.io/
+# Hint: Since Version 0.13.0, the full_name has changed from "WMI Exporter" to "windows_exporter".
+#    This causes the issue, that previous versions will just be updated, and still be named
+#    "WMI Exporter". New installations are named "windows_exporter".
 
-{% set versions = [
+# full_name: WMI Exporter for new installations, updating existing installations 0.12.0 and lower are still named "WMI Exporter"
+{% set newversions = [
                    '0.16.0',
                    '0.15.0',
                    '0.14.0',
-                   '0.13.0',
+                   '0.13.0'
+] %}
+
+# full_name: WMI Exporter
+{% set legacyversions = [
                    '0.12.0',
                    '0.11.1',
                    '0.11.0',
@@ -31,21 +39,53 @@
                    '0.3.0'
 ] %}
 
+# For new installations beginning 0.13.0
+prometheus-wmi-exporter-new-naming:
+{% for version in newversions %}
+  '{{ version }}':
+    full_name: 'windows_exporter'
+    {% set package_arch = '386' %}
+    {% if grains['cpuarch'] == 'AMD64' %}
+      {% set package_arch = 'amd64' %}
+    {% endif %}
+    installer:   'https://github.com/prometheus-community/windows_exporter/releases/download/v{{version}}/windows_exporter-{{version}}-{{package_arch}}.msi'
+    uninstaller: 'https://github.com/prometheus-community/windows_exporter/releases/download/v{{version}}/windows_exporter-{{version}}-{{package_arch}}.msi'
+    install_flags: '/qn /norestart'
+    uninstall_flags: '/qn /norestart'
+    msiexec: True
+    locale: en_US
+    reboot: False
+{% endfor %}
 
-prometheus-wmi-exporter:
-{% for version in versions %}
+# For updated installations from 0.12.0 and lower updated to 0.13.0 and later
+prometheus-wmi-exporter-old-naming-new:
+{% for version in newversions %}
   '{{ version }}':
     full_name: 'WMI Exporter'
     {% set package_arch = '386' %}
     {% if grains['cpuarch'] == 'AMD64' %}
       {% set package_arch = 'amd64' %}
     {% endif %}
-    {% set package_name = 'wmi_exporter' %}
-    {% if salt.pkg_resource.version_compare(version, '>=', '0.13.0') %}
-      {% set package_name = 'windows_exporter' %}
+    installer:   'https://github.com/prometheus-community/windows_exporter/releases/download/v{{version}}/windows_exporter-{{version}}-{{package_arch}}.msi'
+    uninstaller: 'https://github.com/prometheus-community/windows_exporter/releases/download/v{{version}}/windows_exporter-{{version}}-{{package_arch}}.msi'
+    install_flags: '/qn /norestart'
+    uninstall_flags: '/qn /norestart'
+    msiexec: True
+    locale: en_US
+    reboot: False
+{% endfor %}
+
+# For existing installations 0.12.0 and below
+prometheus-wmi-exporter-old-naming-legacy:
+{% for version in legacyversions %}
+  '{{ version }}':
+    full_name: 'WMI Exporter'
+    {% set package_arch = '386' %}
+    {% if grains['cpuarch'] == 'AMD64' %}
+      {% set package_arch = 'amd64' %}
     {% endif %}
-    installer:   'https://github.com/prometheus-community/windows_exporter/releases/download/v{{version}}/{{package_name}}-{{version}}-{{package_arch}}.msi'
-    uninstaller: 'https://github.com/prometheus-community/windows_exporter/releases/download/v{{version}}/{{package_name}}-{{version}}-{{package_arch}}.msi'
+    installer:   'https://github.com/prometheus-community/windows_exporter/releases/download/v{{version}}/wmi_exporter-{{version}}-{{package_arch}}.msi'
+    uninstaller: 'https://github.com/prometheus-community/windows_exporter/releases/download/v{{version}}/wmi_exporter-{{version}}-{{package_arch}}.msi'
     install_flags: '/qn /norestart'
     uninstall_flags: '/qn /norestart'
     msiexec: True
