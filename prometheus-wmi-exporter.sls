@@ -1,7 +1,7 @@
 # Installs the WMI Exporter used by prometheus to scrape metrics from windows based systems
 # WMI Exporter: https://github.com/martinlindhe/wmi_exporter
 # Prometheus Monitoring: https://prometheus.io/
-# Hint: Since Version 0.13, the full_name has changed from "WMI Exporter" to "windows_exporter".
+# Hint: Since Version 0.13.0, the full_name has changed from "WMI Exporter" to "windows_exporter".
 
 {% set versions = [
                    '0.16.0',
