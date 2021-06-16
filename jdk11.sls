@@ -15,3 +15,4 @@ jdk11:
     msiexec: False
     locale: en_US
     reboot: False
+    source_hash: 'sha256=c02b94ce3ac7491652f5fac7dfbf94bf2be4c0869abd9bbc312be06d8c2fb5c0'
