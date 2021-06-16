@@ -1,3 +1,10 @@
+# installer to be downloaded from archive:
+# https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html#license-lightbox
+# current direct link:
+# https://download.oracle.com/otn/java/jdk/11.0.8%2B10/dc5cf74f97104e8eac863698146a7ac3/jdk-11.0.8_windows-x64_bin.exe
+# despite Oracle's documentation saying they drop trailing zeros, the removal pulls from the Registry version
+# this version is the full version, hence the discrepancy below between 11.0.8.0 and 11.0.8
+
 jdk11:
   '11.0.8.0':
     full_name: 'Java(TM) SE Development Kit 11.0.8 (64-bit)'
