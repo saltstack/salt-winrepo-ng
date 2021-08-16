@@ -1,15 +1,17 @@
 # https://www.duplicati.com
-# https://www.duplicati.com/download
+# https://github.com/duplicati/duplicati/releases
 duplicati:
-  {% for version, type, date, guid32, guid64 in [('2.0.5.1', 'beta', '2020-01-18', '{5BDF9713-1281-4651-AC19-C4D80FE040E7}', '{FC1F2B24-1783-4352-98E9-669896601613}')] %}
+  {% for version, type, date, guid32, guid64 in [('2.0.6.1', 'beta', '2021-05-03', '{0E6E0121-37E6-49A5-BE4D-0E5A61781EBE}', '{C0FED19D-F7F2-4DB2-8FDB-50AD2F34E921}'),
+                                                 ('2.0.5.1', 'beta', '2020-01-18', '{5BDF9713-1281-4651-AC19-C4D80FE040E7}', '{FC1F2B24-1783-4352-98E9-669896601613}')
+                                                 ] %}
   '{{ version }}':    
     {% if grains['cpuarch'] == 'AMD64' %}
     full_name: 'Duplicati 2'
-    installer: 'https://updates.duplicati.com/beta/duplicati{{ version }}_{{ type }}_{{ date }}.x64.msi'
+    installer: 'https://github.com/duplicati/duplicati/releases/download/v{{ version }}-{{ version }}_{{ type }}_{{ date }}/duplicati-{{ version }}_{{ type }}_{{ date }}-x64.msi'
     uninstall_flags: '/x {{ guid64 }} /qn /norestart'
     {% else %}
     full_name: 'Duplicati 2'
-    installer: 'https://updates.duplicati.com/beta/duplicati{{ version }}_{{ type }}_{{ date }}.msi'
+    installer: 'https://github.com/duplicati/duplicati/releases/download/v{{ version }}-{{ version }}_{{ type }}_{{ date }}/duplicati-{{ version }}_{{ type }}_{{ date }}-x86.msi'
     uninstall_flags: '/x {{ guid32 }} /qn /norestart'
     {% endif %}
     install_flags: '/qn ALLUSERS=1 /norestart'

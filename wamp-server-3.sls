@@ -19,7 +19,7 @@ wamp-server-3:
 #
 #
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# Below are versions of Notepad Plus Plus that have had the installer assets removed from gihub.
+# Below are versions of Wamp Server that have had the installer assets removed 
 # An uninstall only definition will remain here so the packages will show up
 # correctly in `pkg.list_pkgs` and to allow for removal using `pkg.remove`
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
