@@ -41,7 +41,7 @@ $size = (Get-ChildItem "${env:ProgramFiles(x86)}\pfSenseBackup" | Measure Length
 
 #Make registry entries
 New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall" -Name "pfSenseBackup" | Out-Null
-New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\pfSenseBackup" -Name "DisplayName" -Value "pfSenseBackup" | Out-Null
+New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\pfSenseBackup" -Name "DisplayName" -Value "pfSenseBackup $version" | Out-Null
 New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\pfSenseBackup" -Name "DisplayVersion" -Value "$version" | Out-Null
 New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\pfSenseBackup" -Name "UninstallString" -Value "${env:ProgramFiles(x86)}\pfSenseBackup\remove.cmd" | Out-Null
 New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\pfSenseBackup" -Name "Publisher" -Value "Koen Zomers - (Github)" | Out-Null

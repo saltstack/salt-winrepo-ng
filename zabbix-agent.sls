@@ -11,7 +11,7 @@ zabbix-agent:
     installer: '{{source_path}}{{major}}/{{major}}.{{minor}}/zabbix_agent-{{major}}.{{minor}}-windows-amd64-openssl.msi'
     uninstaller: '{{source_path}}{{major}}/{{major}}.{{minor}}/zabbix_agent-{{major}}.{{minor}}-windows-amd64-openssl.msi'
     {% else %}
-    full_name: 'Zabbix Agent'
+    full_name: 'Zabbix Agent (32-bit)'
     installer: '{{source_path}}{{major}}/{{major}}.{{minor}}/zabbix_agent-{{major}}.{{minor}}-windows-i386-openssl.msi'
     uninstaller:  '{{source_path}}{{major}}/{{major}}.{{minor}}/zabbix_agent-{{major}}.{{minor}}-windows-i386-openssl.msi'
     {% endif %}
