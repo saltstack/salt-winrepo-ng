@@ -2,6 +2,11 @@
 {% set PROGRAM_FILES = {'AMD64': '%ProgramFiles(x86)%', 'x86': '%ProgramFiles%'}[grains['cpuarch']] %}
 {% set arch = {'AMD64': '64', 'x86': '32'}[grains['cpuarch']] %}
 
+# Since version 2.33.0 no version number is added to the full_name field
+# See https://github.com/git-for-windows/build-extra/pull/365
+
+# There was a short-lived change in version format
+# See https://github.com/git-for-windows/git/issues/2223
 {% set new_style_versions = [
   '2.23.0',
   '2.22.0'
@@ -88,7 +93,10 @@ git:
     {% set display_version = version %}
   {% endif %}
   '{{ display_version }}':
-    full_name: Git version {{ display_version }}
+    {% if salt["pkg.compare_versions"](version, "<", "2.33.0") -%}
+    {%   set displayname_version = " version " ~ display_version -%}
+    {% endif -%}
+    full_name: Git{{ displayname_version | default("") }}
     installer: https://github.com/git-for-windows/git/releases/download/v{{ extended_version }}/Git-{{ version }}-{{ arch }}-bit.exe
     # It is impossible to downgrade git silently. It will always pop a message
     # that will cause salt to hang. `/SUPPRESSMSGBOXES` will suppress that
