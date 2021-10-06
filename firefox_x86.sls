@@ -9,8 +9,7 @@
 # Since version 90.0 no version number is added to the full_name field
 # See https://bugzilla.mozilla.org/show_bug.cgi?id=1713393
 
-{# {%- set lang = salt['config.get']('firefox:pkg:lang', 'en-US') %} #}
-{% set lang = 'en-US' %}
+{%- set lang = salt['config.get']('firefox:pkg:lang', 'en-US') %}
 
 firefox_x86:
   {% if grains['cpuarch'] == 'AMD64' %}
