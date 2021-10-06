@@ -1,6 +1,5 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available for git
-{% set PROGRAM_FILES = {'AMD64': '%ProgramFiles(x86)%', 'x86': '%ProgramFiles%'}[grains['cpuarch']] %}
-{% set arch = {'AMD64': '64', 'x86': '32'}[grains['cpuarch']] %}
+{% set arch = {'AMD64': '64', 'x86': '32'}[salt["grains.get"]("cpuarch")] -%}
 
 # Since version 2.33.0 no version number is added to the full_name field
 # See https://github.com/git-for-windows/build-extra/pull/365
@@ -108,6 +107,8 @@ git:
     locale: en_US
     reboot: False
 {% endfor %}
+
+{% set PROGRAM_FILES = {'AMD64': '%ProgramFiles(x86)%', 'x86': '%ProgramFiles%'}[salt["grains.get"]("cpuarch")] -%}
 
 msysgit:
   '1.9.5-preview20150319':
