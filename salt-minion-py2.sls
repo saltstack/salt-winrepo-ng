@@ -1,6 +1,6 @@
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # This software definition will only work in versions of Salt newer than
-# 2015.8.2. In verion 2015.8.2 we added the `use_scheduler` option which
+# 2015.8.2. In version 2015.8.2 we added the `use_scheduler` option which
 # allowed us to launch the installer using the Windows task manager.
 # This option is not available in earlier versions of Salt. So, while this
 # software definition will allow you to install versions of Salt older than
@@ -10,10 +10,9 @@
 salt-minion:
   {%
       for version in [
-          '3000.6',
-          '3000.4',
-          '2019.2.8',
-          '2019.2.6',
+          '3000.9',
+          '3000.8',
+          '3000.7',
       ]
   %}
   '{{ version }}':
@@ -42,12 +41,16 @@ salt-minion:
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   {%
       for version in [
+          '3000.6',
+          '3000.4',
           '3000.3',
           '3000.2',
           '3000.1',
           '3000',
+          '2019.2.8',
+          '2019.2.6',
           '2019.2.5',
-          '2019.2.4'
+          '2019.2.4',
           '2019.2.3',
           '2019.2.2',
           '2019.2.1',
@@ -77,7 +80,7 @@ salt-minion:
           '2016.11.3',
           '2016.11.2',
           '2016.11.1',
-          '2016.11.0'
+          '2016.11.0',
       ]
   %}
   '{{ version }}':

@@ -1,6 +1,6 @@
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # This software definition will only work in versions of Salt newer than
-# 2015.8.2. In verion 2015.8.2 we added the `use_scheduler` option which
+# 2015.8.2. In version 2015.8.2 we added the `use_scheduler` option which
 # allowed us to launch the installer using the Windows task manager.
 # This option is not available in earlier versions of Salt. So, while this
 # software definition will allow you to install versions of Salt older than
@@ -10,14 +10,9 @@
 salt-minion-py3:
   {%
       for version in [
-          '3002.2',
-          '3002.1',
-          '3001.4',
-          '3001.2',
-          '3000.6',
-          '3000.4',
-          '2019.2.8',
-          '2019.2.6'
+          '3003.3',
+          '3002.7',
+          '3001.8',
       ]
   %}
   '{{ version }}':
@@ -46,13 +41,34 @@ salt-minion-py3:
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   {%
       for version in [
+          '3003.2',
+          '3003.1',
+          '3003',
+          '3002.6',
+          '3002.5',
+          '3002.4',
+          '3002.3',
+          '3002.2',
+          '3002.1',
           '3002',
+          '3001.7',
+          '3001.6',
+          '3001.5',
+          '3000.9',
+          '3000.8',
+          '3000.7',
+          '3001.4',
+          '3001.2',
           '3001.1',
           '3001',
+          '3000.6',
+          '3000.4',
           '3000.3',
           '3000.2',
           '3000.1',
           '3000',
+          '2019.2.8',
+          '2019.2.6',
           '2019.2.5',
           '2019.2.4',
           '2019.2.3',
@@ -73,7 +89,7 @@ salt-minion-py3:
           '2017.7.3',
           '2017.7.2',
           '2017.7.1',
-          '2017.7.0'
+          '2017.7.0',
       ]
   %}
   '{{ version }}':
