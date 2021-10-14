@@ -81,8 +81,8 @@ pgadmin4:
   '{{ version }}':
     skip_urltest: True
     full_name: 'pgAdmin 4 version {{ version }}'
-    installer: 'https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v{{ version }}/windows/pgadmin4-{{ version }}-x86.exe'
-    install_flags: '/SP- /verysilent /norestart'
+    #installer: 'https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v{{ version }}/windows/pgadmin4-{{ version }}-x86.exe'
+    #install_flags: '/SP- /verysilent /norestart'
   {% if version >= "1.0" and version <= "1.99" %}
     uninstaller: '{{ PROGRAM_FILES }}\pgAdmin 4\v1\unins000.exe'
   {% elif version >= "2.0" and version <= "2.99" %}
