@@ -3,14 +3,13 @@
 {% else %}
   {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {% endif %}
-{% set versions = ['5.1', 
-                   '5.0', 
-                   '4.30', 
-                   '4.29',                    
-                   '4.28',
-                   '4.27', 
-                   '4.26', 
-                   '4.25' 
+{% set versions = ['6.0',
+                   '5.7',
+                   '5.6',
+                   '5.5',
+                   '5.4',
+                   '5.3',
+                   '5.2',
                    '3.6', 
                    '2.1', 
                    '1.6'] %}
@@ -30,7 +29,9 @@ pgadmin4:
   {% elif version >= "4.0" and version <= "4.99" %}
     uninstaller: '{{ PROGRAM_FILES }}\pgAdmin 4\v4\unins000.exe'
   {% elif version >= "5.0" and version <= "5.99" %}
-    uninstaller: '{{ PROGRAM_FILES }}\pgAdmin 4\v5\unins000.exe'  
+    uninstaller: '{{ PROGRAM_FILES }}\pgAdmin 4\v5\unins000.exe' 
+  {% elif version >= "6.0" and version <= "6.99" %}
+    uninstaller: '{{ PROGRAM_FILES }}\pgAdmin 4\v6\unins000.exe'   
   {% endif %}
     uninstall_flags: '/verysilent /norestart'
     msiexec: False
@@ -45,7 +46,15 @@ pgadmin4:
 # An uninstall only definition will remain here so the packages will show up
 # correctly in `pkg.list_pkgs` and to allow for removal using `pkg.remove`
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  {% set versions = ['4.24',
+  {% set versions = ['5.1', 
+                     '5.0', 
+                     '4.30', 
+                     '4.29',                    
+                     '4.28',
+                     '4.27', 
+                     '4.26', 
+                     '4.25' 
+                     '4.24',
                      '4.23', 
                      '4.22',
                      '4.21',                     
