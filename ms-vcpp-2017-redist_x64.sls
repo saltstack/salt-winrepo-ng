@@ -21,4 +21,7 @@ ms-vcpp-2017-redist_x64:
       uninstaller: 'https://download.visualstudio.microsoft.com/download/pr/{{ subpath }}/VC_redist.x64.exe'
       uninstall_flags: '/uninstall /quiet /norestart'
       msiexec: False
+      reboot: False
+{% endfor %}
+{% endfor %}
 
