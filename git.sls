@@ -1,13 +1,21 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available for git
-{% set PROGRAM_FILES = {'AMD64': '%ProgramFiles(x86)%', 'x86': '%ProgramFiles%'}[grains['cpuarch']] %}
-{% set arch = {'AMD64': '64', 'x86': '32'}[grains['cpuarch']] %}
+{% set arch = {'AMD64': '64', 'x86': '32'}[salt["grains.get"]("cpuarch")] -%}
 
+# Since version 2.33.0 no version number is added to the full_name field
+# See https://github.com/git-for-windows/build-extra/pull/365
+
+# There was a short-lived change in version format
+# See https://github.com/git-for-windows/git/issues/2223
 {% set new_style_versions = [
   '2.23.0',
   '2.22.0'
 ] %}
 
 {% set versions = [
+                   '2.33.0.2',
+                   '2.33.0',
+                   '2.32.0.2',
+                   '2.32.0',
                    '2.31.1',
                    '2.31.0',
                    '2.30.2',
@@ -84,7 +92,10 @@ git:
     {% set display_version = version %}
   {% endif %}
   '{{ display_version }}':
-    full_name: Git version {{ display_version }}
+    {% if salt["pkg.compare_versions"](version, "<", "2.33.0") -%}
+    {%   set displayname_version = " version " ~ display_version -%}
+    {% endif -%}
+    full_name: Git{{ displayname_version | default("") }}
     installer: https://github.com/git-for-windows/git/releases/download/v{{ extended_version }}/Git-{{ version }}-{{ arch }}-bit.exe
     # It is impossible to downgrade git silently. It will always pop a message
     # that will cause salt to hang. `/SUPPRESSMSGBOXES` will suppress that
@@ -96,6 +107,8 @@ git:
     locale: en_US
     reboot: False
 {% endfor %}
+
+{% set PROGRAM_FILES = {'AMD64': '%ProgramFiles(x86)%', 'x86': '%ProgramFiles%'}[salt["grains.get"]("cpuarch")] -%}
 
 msysgit:
   '1.9.5-preview20150319':
