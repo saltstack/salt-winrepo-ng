@@ -2,7 +2,12 @@
 {% set PROGRAM_FILES = "%ProgramFiles%" %}
 # Source: https://handbrake.fr
 handbrake:
-{% for version in ['1.3.1',
+{% for version in ['1.4.2',
+                 '1.4.1',
+                 '1.4.0',
+                 '1.3.3',
+                 '1.3.2',
+                 '1.3.1',
                  '1.3.0',
                  '1.2.2',
                  '1.2.1',
