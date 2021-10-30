@@ -1,10 +1,7 @@
-# just 32-bit x86 installer used for now. x64 was introduced at ver. 7.0, but most plugins are still only 32-bit.
-{% if grains['cpuarch'] == 'AMD64' %}
-    {% set PROGRAM_FILES = "%ProgramFiles(x86)%" %}
-{% else %}
-    {% set PROGRAM_FILES = "%ProgramFiles%" %}
-{% endif %}
-npp:
+# just 64-bit installer. x64 was introduced at ver. 7.0, but most plugins are
+# still only 32-bit, so a seperate X64 sls for those who don't use the 32Bit
+# plugins or need x64 for different reasons.
+npp_x64:
   {% for version in ['8.1.9',
                      '8.1.8',
                      '8.1.7',
@@ -16,7 +13,7 @@ npp:
 	                 '8.1.1',
 	                 '8.1',
 	                 '8.0',
-	                 '7.9.5', 
+	                 '7.9.5',
   					 '7.9.4',
 					 '7.9.3',
 					 '7.9.2',
@@ -35,10 +32,10 @@ npp:
   					 '7.7.1',
   					 '7.7',] %}
   '{{ version }}':
-    full_name: 'Notepad++ (32-bit x86)'
-    installer: 'https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v{{ version }}/npp.{{ version }}.Installer.exe'
+    full_name: 'Notepad++ (64-bit x64)'
+    installer: 'https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v{{ version }}/npp.{{ version }}.Installer.x64.exe'
     install_flags: '/S'
-    uninstaller: '{{ PROGRAM_FILES }}\Notepad++\uninstall.exe'
+    uninstaller: '%ProgramFiles%\Notepad++\uninstall.exe'
     uninstall_flags: '/S'
     msiexec: False
     locale: en_US
@@ -47,9 +44,10 @@ npp:
 #
 #
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# Below are versions of Notepad Plus Plus that have had the installer assets removed from gihub.
-# An uninstall only definition will remain here so the packages will show up
-# correctly in `pkg.list_pkgs` and to allow for removal using `pkg.remove`
+# Below are versions of Notepad Plus Plus that have had the installer assets
+# removed from github. An uninstall only definition will remain here so the
+# packages will show up correctly in `pkg.list_pkgs` and to allow for removal
+# using `pkg.remove`
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   {% for version in ['7.6.6',
 					 '7.6.5',
@@ -82,13 +80,10 @@ npp:
 					 '7'] %}
   '{{ version }}':
     skip_urltest: True
-    full_name: 'Notepad++ (32-bit x86)'
-    uninstaller: '{{ PROGRAM_FILES }}\Notepad++\uninstall.exe'
+    full_name: 'Notepad++ (64-bit x64)'
+    uninstaller: '%ProgramFiles%\Notepad++\uninstall.exe'
     uninstall_flags: '/S'
     msiexec: False
     locale: en_US
     reboot: False
   {% endfor %}
-#
-# the 64-bit installer is available from:
-# https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v<version>/npp.<version>.Installer.x64.exe
