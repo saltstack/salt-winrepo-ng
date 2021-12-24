@@ -1,3 +1,5 @@
+{% set install_dir = salt["reg.read_value"]("HKLM", "SOFTWARE\\Salt Project\\Salt", "install_dir").vdata %}
+{% set install_dir = install_dir or "C:\\salt" %}
 salt-minion-py3:
   {%
       for version in [
@@ -17,7 +19,7 @@ salt-minion-py3:
     installer: 'https://repo.saltproject.io/windows/Salt-Minion-{{ version }}-Py3-x86-Setup.exe'
     {% endif %}
     install_flags: '/S'
-    uninstaller: 'C:\salt\uninst.exe'
+    uninstaller: '{{ install_dir }}\uninst.exe'
     uninstall_flags: '/S'
     msiexec: False
     use_scheduler: True
@@ -86,7 +88,7 @@ salt-minion-py3:
   '{{ version }}':
     skip_urltest: True
     full_name: 'Salt Minion {{ version }} (Python 3)'
-    uninstaller: 'C:\salt\uninst.exe'
+    uninstaller: '{{ install_dir }}\uninst.exe'
     uninstall_flags: '/S'
     use_scheduler: True
   {% endfor %}
