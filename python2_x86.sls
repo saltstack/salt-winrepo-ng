@@ -1,5 +1,5 @@
 python2_x86:
-  {% for minor in range(1, 18) %}
+  {% for minor in range(1, 19) %}
   {% set version = '2.7.' ~ minor %}
   {% set full_version = version ~ '150' %}
 

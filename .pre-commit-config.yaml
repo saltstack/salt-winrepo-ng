@@ -17,8 +17,7 @@ repos:
         types: [salt]
         additional_dependencies:
           - gitpython
-          - jinja2
-          - pyaml
           - pycurl
           - python-magic
+          - salt
           - tabulate
