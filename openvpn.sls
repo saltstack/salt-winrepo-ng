@@ -4,8 +4,9 @@
 {# Since v2.5 the version recorded in the registry differs from that displayed as part of the
    name and used in the download URL. Salt must understand the registry version so that the
    software can be uninstalled using Salt. -#}
-{% set display_version = {
+{% set display_version = { "2.5.029": "2.5.6-I601",
                            "2.5.028": "2.5.5-I602",
+                           "2.5.027": "2.5.5-I601",
                            "2.5.023": "2.5.4-I601",
                            "2.5.022": "2.5.3-I601",
                            "2.5.021": "2.5.2-I601",
@@ -43,7 +44,7 @@
 {% endmacro -%}
 
 openvpn:
-{% for version in ["2.5.028", "2.5.023", "2.5.022", "2.5.021", "2.5.020", "2.5.019"] -%}
+{% for version in ["2.5.029", "2.5.028", "2.5.027", "2.5.023", "2.5.022", "2.5.021", "2.5.020", "2.5.019"] -%}
 {{ print_openvpn_msi(version) }}
 {% endfor -%}
 {# Combined installer since v2.4+ so no arch needed -#}
