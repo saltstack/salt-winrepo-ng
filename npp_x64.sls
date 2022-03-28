@@ -1,6 +1,6 @@
 # just 64-bit installer. x64 was introduced at ver. 7.0. Most plugins are
-# now also available for x64 but not all of them. Therefore there's still
-# a seperate X64 sls for those who don't use the 32Bit.
+# now also available for x64 but not all of them. Therefore there's now
+# a seperate x64 sls for those who want to use the x64 version.
 npp_x64:
   {% for version in ['8.3.3',
                      '8.3.2',
