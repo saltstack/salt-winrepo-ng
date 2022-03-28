@@ -69,6 +69,7 @@ salt-minion-py3:
           '3004-3',
           '3004-2',
           '3004',
+      ]
   %}
   '{{ version }}':
     skip_urltest: True
