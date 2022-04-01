@@ -19,5 +19,8 @@ repos:
           - gitpython
           - pycurl
           - python-magic
+        # Pin jinja until we have a release of salt
+        # that handles the new jinja
+          - jinja2<3.1.0
           - salt
           - tabulate
