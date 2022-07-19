@@ -26,7 +26,7 @@ salt-minion-py3:
     # install_flags: "/S /master={{ salt['pillar.get']('salt:master', 'salt.domain.tld') }} /minion-id={{ salt['pillar.get']('salt:minion:ids:' ~ grains['host'] }}"
     {% endraw %}
     install_flags: '/S'
-    uninstaller: 'C:\ProgramData\Salt Project\Salt\uninst.exe'
+    uninstaller: 'C:\Program Files\Salt Project\Salt\uninst.exe'
     uninstall_flags: '/S'
     msiexec: False
     use_scheduler: True
@@ -75,7 +75,7 @@ salt-minion-py3:
   '{{ version }}':
     skip_urltest: True
     full_name: 'Salt Minion {{ version }} (Python 3)'
-    uninstaller: 'C:\ProgramData\Salt Project\Salt\uninst.exe'
+    uninstaller: 'C:\Program Files\Salt Project\Salt\uninst.exe'
     uninstall_flags: '/S'
     use_scheduler: True
   {% endfor %}
