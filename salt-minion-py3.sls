@@ -12,7 +12,7 @@ salt-minion-py3:
   # The uninstaller will be in ProgramData\Salt Project\Salt
   {%
       for version in [
-          '3004.1-1',
+          '3004.2-1',
       ]
   %}
   '{{ version }}':
@@ -26,7 +26,7 @@ salt-minion-py3:
     # install_flags: "/S /master={{ salt['pillar.get']('salt:master', 'salt.domain.tld') }} /minion-id={{ salt['pillar.get']('salt:minion:ids:' ~ grains['host'] }}"
     {% endraw %}
     install_flags: '/S'
-    uninstaller: 'C:\ProgramData\Salt Project\Salt\uninst.exe'
+    uninstaller: 'C:\Program Files\Salt Project\Salt\uninst.exe'
     uninstall_flags: '/S'
     msiexec: False
     use_scheduler: True
@@ -34,8 +34,8 @@ salt-minion-py3:
   {% endfor %}
   {%
       for version in [
-          '3003.4-1',
-          '3002.8-1',
+          '3003.5-1',
+          '3002.9-1',
       ]
   %}
   '{{ version }}':
@@ -66,6 +66,7 @@ salt-minion-py3:
   # The uninstaller will be in ProgramData\Salt Project\Salt
   {%
       for version in [
+          '3004.1-1',
           '3004-3',
           '3004-2',
           '3004',
@@ -74,18 +75,19 @@ salt-minion-py3:
   '{{ version }}':
     skip_urltest: True
     full_name: 'Salt Minion {{ version }} (Python 3)'
-    uninstaller: 'C:\ProgramData\Salt Project\Salt\uninst.exe'
+    uninstaller: 'C:\Program Files\Salt Project\Salt\uninst.exe'
     uninstall_flags: '/S'
     use_scheduler: True
   {% endfor %}
   {%
       for version in [
+          '3003.4-1',
           '3003.3',
-          '3002.7',
-          '3001.8',
           '3003.2',
           '3003.1',
           '3003',
+          '3002.8-1',
+          '3002.7',
           '3002.6',
           '3002.5',
           '3002.4',
@@ -93,16 +95,17 @@ salt-minion-py3:
           '3002.2',
           '3002.1',
           '3002',
+          '3001.8',
           '3001.7',
           '3001.6',
           '3001.5',
-          '3000.9',
-          '3000.8',
-          '3000.7',
           '3001.4',
           '3001.2',
           '3001.1',
           '3001',
+          '3000.9',
+          '3000.8',
+          '3000.7',
           '3000.6',
           '3000.4',
           '3000.3',
