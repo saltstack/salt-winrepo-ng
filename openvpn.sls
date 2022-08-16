@@ -1,6 +1,6 @@
 {% set installer_ver = {'2.4.7': {'2016Server': '-I603'}} -%}
 {% set os_suffix = {'2.4.7': {'2016Server': '', '10': '-Win10'},
-                    '2.4.8+': {'2016Server': '-Win10', '2019Server': '-Win10', '10': '-Win10'}} -%}
+                    '2.4.8+': {'2016Server': '-Win10', '2019Server': '-Win10', '2022Server': '-Win10', '10': '-Win10'}} -%}
 {# Since v2.5 the version recorded in the registry differs from that displayed as part of the
    name and used in the download URL. Salt must understand the registry version so that the
    software can be uninstalled using Salt. -#}
