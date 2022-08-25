@@ -13,6 +13,7 @@ salt-minion-py3:
   {%
       for version in [
           '3004.2-1',
+          '3005-1',
       ]
   %}
   '{{ version }}':
