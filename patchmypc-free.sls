@@ -5,7 +5,7 @@ patchmypc-free:
     installer: 'https://patchmypc.net/freeupdater/PatchMyPC.exe'
     install_flags: |
                    ' & cmd /c taskkill /F /IM PatchMyPC.exe &
-                   xcopy /q /c /r /y "c:\salt\var\cache\salt\minion\extrn_files\base\patchmypc.net\freeupdater\PatchMyPC.exe" "%SystemRoot%" &
+                   xcopy /q /c /r /y "c:\ProgramData\Salt Project\salt\var\cache\salt\minion\extrn_files\base\patchmypc.net\freeupdater\PatchMyPC.exe" "%SystemRoot%" &
                    exit 0'
     uninstaller: 'cmd'
     uninstall_flags: |
