@@ -31,7 +31,7 @@
 # An uninstall only definition will remain here so the packages will show up
 # correctly in `pkg.list_pkgs` and to allow for removal using `pkg.remove`
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-{% set versions = [ '18':['06', '05', '03', '01'], '16':['04', '03', '02', '00']} %}
+{% set versions = { '18':['06', '05', '03', '01'], '16':['04', '03', '02', '00']} %}
   {% for major, subversions in versions.items() %}
   {% for minor in subversions %}
     '{{major}}.{{minor}}.00.0':
@@ -53,4 +53,4 @@
       reboot: False
   {% endfor %}
   {% endfor %}
-{% endfor %}
+
