@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import certifi
 import getopt
 import git
 import glob
@@ -100,9 +101,10 @@ def process_each(softwares):
                     c.setopt(curl.VERBOSE, 1)
                 c.setopt(curl.URL, version["installer"])
                 c.setopt(curl.USERAGENT, "curl/7.76.0")
+                c.setopt(curl.CAINFO, certifi.where())
                 c.setopt(curl.FOLLOWLOCATION, True)
-                c.setopt(curl.CONNECTTIMEOUT, 2)
-                c.setopt(curl.TIMEOUT, 5)
+                c.setopt(curl.CONNECTTIMEOUT, 5)
+                c.setopt(curl.TIMEOUT, 10)
                 c.setopt(curl.WRITEHEADER, headers)
                 c.setopt(curl.WRITEDATA, body)
                 c.setopt(curl.RANGE, "0-2047")
