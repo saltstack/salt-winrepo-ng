@@ -1,0 +1,52 @@
+name: Test `pkg.refresh_db`
+
+on:
+  - pull_request
+  - push
+  - workflow_call
+  - workflow_dispatch
+
+jobs:
+  gsv:
+    name: Get Salt versions
+    runs-on: ubuntu-latest
+    outputs:
+      salt-versions: ${{ steps.get-salt-versions.outputs.salt-versions }}
+    steps:
+      - id: get-salt-versions
+        uses: dafyddj/get-salt-versions@v2
+  test:
+    name: Test `pkg.refresh_db`
+    needs: gsv
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        salt-version: ${{ fromJSON(needs.gsv.outputs.salt-versions) }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          path: win/repo-ng
+      - name: Setup Salt
+        uses: dafyddj/setup-salt-win@v2
+        with:
+          salt-version: ${{ matrix.salt-version }}
+          custom-config: |
+            osenv:
+              driver: env
+            file_roots:
+              base:
+                - sdb://osenv/GITHUB_WORKSPACE
+      - name: Run `salt-call pkg.refresh_db`
+        run: |
+          $pkgs = (salt-call --out=json pkg.refresh_db | ConvertFrom-Json).local
+          if ($LASTEXITCODE) {
+              Write-Host ("::error title=salt-call::salt-call returned exit code: $LASTEXITCODE")
+              exit 1
+          }
+          $pkgs
+  release:
+    name: Release
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Tests succeeded!"
