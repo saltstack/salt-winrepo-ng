@@ -28,7 +28,7 @@ veyon:
     ("4.0.6", "4.0.6.0"),
 ) %}
 
-{% for version in versions %}
+{% for version, dl_version in versions %}
   '{{ version }}':
     full_name: 'Veyon {{ version }}'
     uninstaller: '%ProgramFiles%\Veyon\uninstall.exe'
