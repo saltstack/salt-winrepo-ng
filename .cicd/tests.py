@@ -90,7 +90,7 @@ def process_each(softwares):
             except KeyError:
                 pass
             # Testing each non-salt URL for availability
-            scheme = urlparse(version["installer"]).scheme
+            scheme = urlparse(version.get(["installer"], "")).scheme
             if scheme in ["http", "https"]:
                 headers = BytesIO()
                 body = BytesIO()
