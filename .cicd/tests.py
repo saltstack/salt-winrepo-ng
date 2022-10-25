@@ -80,15 +80,16 @@ def process_each(softwares):
     global TEST_STATUS
     # pprint(softwares)
     for s, software in softwares.items():
-        if software.get("skip_urltest", False):
+        # Some software definitions may compile to None, meaning there are no
+        # definitions
+        if not software:
             continue
         for v, version in software.items():
-            try:
-                if version.get("skip_urltest", False):
-                    count_status["skipped"] += 1
-                    continue
-            except KeyError:
-                pass
+            # "skip_urltest" allows us to not run this test for known
+            # unreachable urls... they may be pointing to salt:// for example
+            if version.get("skip_urltest", False):
+                count_status["skipped"] += 1
+                continue
             # Testing each non-salt URL for availability
             scheme = urlparse(version.get("installer", "")).scheme
             if scheme in ["http", "https"]:
