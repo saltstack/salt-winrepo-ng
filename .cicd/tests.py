@@ -148,6 +148,13 @@ def process_each(softwares):
                     TEST_STATUS = False
                     TEST_FAILURES.append(failure)
                     count_status["failed"] += 1
+                except requests.exceptions.ConnectTimeout as e:
+                    # filezilla.sls
+                    failure = "PROBLEM HERE (Connection Timeout) : %s -- %s\n -- %s" % (s, v, version["installer"])
+                    print(failure)
+                    TEST_STATUS = False
+                    TEST_FAILURES.append(failure)
+                    count_status["failed"] += 1
                 except Exception as e:
                     failure = "PROBLEM HERE (%s) : %s -- %s\n -- %s" % (e, s, v, version["installer"])
                     trace_back = "-" * 30 + "\n" + traceback.print_exc() + "\n" + "-" * 30
