@@ -1,5 +1,5 @@
 nxlog:
-  '2.10.2100':
+  '2.10.2150':
     full_name:  'NXLog-CE'
     uninstaller: 'https://nxlog.co/system/files/products/files/348/nxlog-ce-2.10.2150.msi'
     uninstall_flags: '/quiet /norestart'
