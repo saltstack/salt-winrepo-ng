@@ -149,17 +149,35 @@ def process_each(softwares):
                     TEST_STATUS = False
                     TEST_FAILURES.append(failure)
                     count_status["failed"] += 1
-                except requests.exceptions.ConnectTimeout as e:
+                except requests.exceptions.ConnectTimeout:
                     # filezilla.sls
                     failure = "PROBLEM HERE (Connection Timeout) : %s -- %s\n -- %s" % (s, v, version["installer"])
                     print(failure)
                     TEST_STATUS = False
                     TEST_FAILURES.append(failure)
                     count_status["failed"] += 1
-                except Exception as e:
-                    failure = "PROBLEM HERE (%s) : %s -- %s\n -- %s" % (e, s, v, version["installer"])
-                    trace_back = "-" * 30 + "\n" + traceback.print_exc() + "\n" + "-" * 30
+                except requests.exceptions.ConnectionError:
+                    # pdfcreater.sls
+                    failure = "PROBLEM HERE (Connection Error) : %s -- %s\n -- %s" % (s, v, version["installer"])
                     print(failure)
+                    TEST_STATUS = False
+                    TEST_FAILURES.append(failure)
+                    count_status["failed"] += 1
+                except requests.exceptions.ReadTimeoutError:
+                    # npp.sls... maybe a network issue as well
+                    failure = "PROBLEM HERE (Read Timeoue Error) : %s -- %s\n -- %s" % (s, v, version["installer"])
+                    print(failure)
+                    TEST_STATUS = False
+                    TEST_FAILURES.append(failure)
+                    count_status["failed"] += 1
+                except Exception as e:
+                    print("dir e: ", dir(e))
+                    print("e: ", e)
+                    print("traceback: ", traceback.print_exc())
+
+                    failure = "PROBLEM HERE (%s) : %s -- %s\n -- %s" % (e, s, v, version["installer"])
+                    print(failure)
+                    trace_back = "-" * 30 + "\n" + traceback.print_exc() + "\n" + "-" * 30
                     print(trace_back)
                     TEST_STATUS = False
                     TEST_FAILURES.append(failure)
