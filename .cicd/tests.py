@@ -163,9 +163,9 @@ def process_each(softwares):
                     TEST_STATUS = False
                     TEST_FAILURES.append(failure)
                     count_status["failed"] += 1
-                except requests.exceptions.ReadTimeoutError:
+                except requests.exceptions.ReadTimeout:
                     # npp.sls... maybe a network issue as well
-                    failure = "PROBLEM HERE (Read Timeoue Error) : %s -- %s\n -- %s" % (s, v, version["installer"])
+                    failure = "PROBLEM HERE (Read Timeout) : %s -- %s\n -- %s" % (s, v, version["installer"])
                     print(failure)
                     TEST_STATUS = False
                     TEST_FAILURES.append(failure)
