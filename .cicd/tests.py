@@ -89,6 +89,12 @@ def process_each(softwares):
             # unreachable urls... they may be pointing to salt:// for example
             if version.get("skip_urltest", False):
                 count_status["skipped"] += 1
+                msg = "SKIPPED : %s -- %s" % (s, v)
+                print(msg)
+                continue
+            if not version.get("installer", ""):
+                msg = "SKIPPED (No URL) : %s -- %s" % (s, v)
+                print(msg)
                 continue
             # Testing each non-salt URL for availability
             scheme = urlparse(version.get("installer", "")).scheme
@@ -202,49 +208,65 @@ if len(our_files) == 0:
 label_rev = {"AMD64": "x86", "x86": "AMD64"}
 
 for file in our_files:
-#    try:
-    label = " ( {} ) ".format(file)
-    count = 80 - len(label)
-    count = count - count % 2
-    count = round( count / 2)
-    label = ">" * count + label + "<" * count
-    print(label + "<" * (80 - len(label)))
-    with open(file, "r") as stream:
-        template = stream.read()
-    if "cpuarch" in template:
-        for cpuarch in ["AMD64", "x86"]:
-            label = " ( arch: {} ) ".format(label_rev[cpuarch])
-            count = 80 - len(label)
-            count = count - count % 2
-            count = round( count / 2)
-            label = "-" * count + label + "-" * count
-            print(label + "-" * (80 - len(label)))
+    try:
+        label = " ( {} ) ".format(file)
+        count = 80 - len(label)
+        count = count - count % 2
+        count = round( count / 2)
+        label = ">" * count + label + "<" * count
+        print(label + "<" * (80 - len(label)))
+        with open(file, "r") as stream:
+            template = stream.read()
+        if "cpuarch" in template:
+            for cpuarch in ["AMD64", "x86"]:
+                label = " ( arch: {} ) ".format(label_rev[cpuarch])
+                count = 80 - len(label)
+                count = count - count % 2
+                count = round( count / 2)
+                label = "-" * count + label + "-" * count
+                print(label + "-" * (80 - len(label)))
+                caller = salt.client.Caller(".cicd/minion")
+                caller.cmd("grains.set", "cpuarch", cpuarch)
+                data = caller.cmd("winrepo.show_sls", file)
+                process_each(data)
+        else:
             caller = salt.client.Caller(".cicd/minion")
-            caller.cmd("grains.set", "cpuarch", cpuarch)
             data = caller.cmd("winrepo.show_sls", file)
             process_each(data)
-    else:
-        caller = salt.client.Caller(".cicd/minion")
-        data = caller.cmd("winrepo.show_sls", file)
-        process_each(data)
-#    except Exception:
-#        exc = sys.exc_info()[0]
-#        print("[EXCEPTION] " + str(exc))
-#        traceback.print_exc()
-#        count_status["exceptions"] += 1
-#        pass
+    except Exception:
+        exc = sys.exc_info()[0]
+        print("[EXCEPTION] " + str(exc))
+        traceback.print_exc()
+        count_status["exceptions"] += 1
+        pass
+
 print("-" * 80 + "\n")
 
+if not TEST_STATUS:
+    print("URLs With Failures:")
+    print("*" * 80)
+    print("\n".join(TEST_FAILURES))
+    print("*" * 80)
+
+print("")
+print("Content Type:")
+print("=============")
 print(tabulate(count_c_types.most_common(), ["Total", sum(count_c_types.values())]) + "\n")
+print("")
+print("HTTP Codes:")
+print("===========")
 print(tabulate(count_http_codes.most_common(), ["Total", sum(count_http_codes.values())]) + "\n")
+print("")
+print("Test Summary:")
+print("=============")
 print(tabulate(count_status.most_common(), ["Total", sum(count_status.values())]) + "\n")
 
 if not TEST_STATUS:
-    print("*" * 80)
-    print("\n".join(TEST_FAILURES))
     print("*" * 80)
     print("BUILD FAILING. You can grep for 'PROBLEM HERE' to find out how to fix this.")
     print("*" * 80)
     exit(1)
 
+print("*" * 80)
 print("Everything went smoothly. No errors were found. Happy deployment!")
+print("*" * 80)
