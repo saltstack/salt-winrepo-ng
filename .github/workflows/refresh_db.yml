@@ -20,6 +20,7 @@ jobs:
     needs: gsv
     runs-on: windows-latest
     strategy:
+      fail-fast: false
       matrix:
         salt-version: ${{ fromJSON(needs.gsv.outputs.salt-versions) }}
     steps:
