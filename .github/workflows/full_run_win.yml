@@ -11,7 +11,7 @@ on:
 jobs:
   gsv:
     name: Get Salt versions
-    if: github.repository == 'saltstack/salt-winrepo-ng' || github.event_name == 'workflow_dispatch'
+    if: github.event_name == 'workflow_dispatch' || !github.event.repository.fork
     runs-on: ubuntu-latest
     outputs:
       salt-latest: ${{ steps.get-salt-versions.outputs.salt-latest }}
