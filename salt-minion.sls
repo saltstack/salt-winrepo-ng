@@ -7,6 +7,8 @@
 # 2015.8.2 you will not be able to use pkg.install to upgrade Salt again. You
 # will have to upgrade Salt through another means.
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{% set install_dir = salt["reg.read_value"]("HKLM", "SOFTWARE\\Salt Project\\Salt", "install_dir").vdata %}
+{% set install_dir = install_dir or "C:\\salt" %}
 salt-minion-py3:
   # Starting in Version 3004 salt is installed in ProgramData by default
   # The uninstaller will be in ProgramData\Salt Project\Salt
@@ -17,27 +19,6 @@ salt-minion-py3:
           '3005.1-1',
           '3005-1',
           '3004.2-1',
-      ]
-  %}
-  '{{ version }}':
-    full_name: 'Salt Minion {{ version }} (Python 3)'
-    {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'https://repo.saltproject.io/windows/Salt-Minion-{{ version }}-Py3-AMD64-Setup.exe'
-    {% else %}
-    installer: 'https://repo.saltproject.io/windows/Salt-Minion-{{ version }}-Py3-x86-Setup.exe'
-    {% endif %}
-    {% raw %}
-    # install_flags: "/S /master={{ salt['pillar.get']('salt:master', 'salt.domain.tld') }} /minion-id={{ salt['pillar.get']('salt:minion:ids:' ~ grains['host'] }}"
-    {% endraw %}
-    install_flags: '/S'
-    uninstaller: 'C:\Program Files\Salt Project\Salt\uninst.exe'
-    uninstall_flags: '/S'
-    msiexec: False
-    use_scheduler: True
-    reboot: False
-  {% endfor %}
-  {%
-      for version in [
           '3003.5-1',
           '3002.9-1',
       ]
@@ -53,7 +34,7 @@ salt-minion-py3:
     # install_flags: "/S /master={{ salt['pillar.get']('salt:master', 'salt.domain.tld') }} /minion-id={{ salt['pillar.get']('salt:minion:ids:' ~ grains['host'] }}"
     {% endraw %}
     install_flags: '/S'
-    uninstaller: 'C:\salt\uninst.exe'
+    uninstaller: '{{ install_dir }}\uninst.exe'
     uninstall_flags: '/S'
     msiexec: False
     use_scheduler: True
@@ -74,17 +55,6 @@ salt-minion-py3:
           '3004-3',
           '3004-2',
           '3004',
-      ]
-  %}
-  '{{ version }}':
-    skip_urltest: True
-    full_name: 'Salt Minion {{ version }} (Python 3)'
-    uninstaller: 'C:\Program Files\Salt Project\Salt\uninst.exe'
-    uninstall_flags: '/S'
-    use_scheduler: True
-  {% endfor %}
-  {%
-      for version in [
           '3003.4-1',
           '3003.3',
           '3003.2',
@@ -144,7 +114,7 @@ salt-minion-py3:
   '{{ version }}':
     skip_urltest: True
     full_name: 'Salt Minion {{ version }} (Python 3)'
-    uninstaller: 'C:\salt\uninst.exe'
+    uninstaller: '{{ install_dir }}\uninst.exe'
     uninstall_flags: '/S'
     use_scheduler: True
   {% endfor %}
