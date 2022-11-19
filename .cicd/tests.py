@@ -3,17 +3,19 @@ import getopt
 import git
 import glob
 import magic
-import pycurl as curl
+import requests
 import salt.client
 import sys
+import time
 import traceback
 from collections import Counter
-from io import BytesIO
 from pprint import pprint
 from tabulate import tabulate
 from urllib.parse import urlparse
 
+
 TEST_STATUS = True
+TEST_FAILURES = []
 
 count_status = Counter()
 count_c_types = Counter()
@@ -38,6 +40,8 @@ def usage():
         -t | --travis   Run in travis (ignores files that have not been changed in last commit)
         -c | --cron     Run in cron mode
         -d | --debug    Run in debug mode (Prints more info)
+
+    python test.py software.sls
     """)
 
 
@@ -76,91 +80,116 @@ def process_each(softwares):
     global TEST_STATUS
     # pprint(softwares)
     for s, software in softwares.items():
-        try:
-            if software.get("skip_urltest", False):
-                continue
-        except KeyError:
-            pass
+        # Some software definitions may compile to None, meaning there are no
+        # definitions
+        if not software:
+            continue
         for v, version in software.items():
-            try:
-                if version.get("skip_urltest", False):
-                    count_status["skipped"] += 1
-                    continue
-            except KeyError:
-                pass
+            # "skip_urltest" allows us to not run this test for known
+            # unreachable urls... they may be pointing to salt:// for example
+            if version.get("skip_urltest", False):
+                count_status["skipped"] += 1
+                msg = "SKIPPED : %s -- %s" % (s, v)
+                print(msg)
+                continue
+            if not version.get("installer", ""):
+                msg = "SKIPPED (No URL) : %s -- %s" % (s, v)
+                print(msg)
+                continue
             # Testing each non-salt URL for availability
-            scheme = urlparse(version["installer"]).scheme
+            scheme = urlparse(version.get("installer", "")).scheme
             if scheme in ["http", "https"]:
-                headers = BytesIO()
-                body = BytesIO()
                 printd("version['installer']", version["installer"])
-                c = curl.Curl()
-                # c.setopt(curl.WRITEFUNCTION, headers.write)
-                if debug:
-                    c.setopt(curl.VERBOSE, 1)
-                c.setopt(curl.URL, version["installer"])
-                c.setopt(curl.USERAGENT, "curl/7.76.0")
-                c.setopt(curl.FOLLOWLOCATION, True)
-                c.setopt(curl.CONNECTTIMEOUT, 2)
-                c.setopt(curl.TIMEOUT, 5)
-                c.setopt(curl.WRITEHEADER, headers)
-                c.setopt(curl.WRITEDATA, body)
-                c.setopt(curl.RANGE, "0-2047")
+                headers = {
+                    "User-Agent": "curl/7.76.0",
+                    "Range": "bytes=0-10",
+                }
                 try:
-                    c.perform()
-                    # assert C.getinfo(curl.HTTP_CODE) != 404, "[ERROR]\tURL returned code 404. File Missing? "
-                    http_code = c.getinfo(curl.HTTP_CODE)
-                    count_http_codes[http_code] += 1
-                    # print(headers.getvalue().decode("utf-8").split('\r\n')[1:])
-                    try:
-                        content_type = dict(
-                            [
-                                tuple(l.split(": ", 1))
-                                for l in headers.getvalue().decode("utf-8").split("\r\n")[1:]
-                                if ":" in l
-                            ]
-                        )["Content-Type"]
-                    except Exception:
-                        content_type = magic.from_buffer(body.getvalue(), mime=True)
-                    count_c_types[content_type] += 1
-                    printd("content_type:", content_type)
-                    http_failure = False
-                    if http_code >= 400:
-                        # This build is failing !
-                        print(
-                            "PROBLEM HERE (%s) : %s -- %s -- %s "
-                            % (http_code, s, v, version["installer"])
-                        )
-                        http_failure = True
-                        TEST_STATUS = False
-                    if (
-                        "application/" not in content_type
-                        and "binary/" not in content_type
-                    ):
-                        print(
-                            "PROBLEM HERE (Bad content type) : %s -- %s -- %s -- %s "
-                            % (s, v, version["installer"], content_type)
-                        )
-                        # print(headers.getvalue().decode("utf-8").split())
-                        http_failure = True
-                        TEST_STATUS = False
-                    else:
-                        count_status["passed"] += 1
-                        print("VALID : %s" % version["installer"])
-                    if http_failure:
-                        count_status["failed"] += 1
-                except curl.error as e:
-                    errno, errstr = e
-                    printd("errno, errstr", (errno, errstr))
-                    if errno == 28:
-                        print(
-                            "[ERROR]\tConnection timeout or no server | "
-                            "errno: " + str(errno) + " | " + errstr
-                        )
-                        count_status["errored"] += 1
-                        pass
-                c.close()
+                    with requests.get(
+                        version.get("installer"),
+                        allow_redirects=True,
+                        timeout=10,
+                        stream=True,
+                    ) as get:
+                        http_code = get.status_code
+                        count_http_codes[http_code] += 1
+                        try:
+                            content_type = get.headers["Content-Type"]
+                        except KeyError:
+                            content_type = magic.from_buffer(get.content, mime=True)
+                        count_c_types[content_type] += 1
+                        printd("content_type:", content_type)
+                        if http_code >= 400:
+                            # This build is failing !
+                            failure = (
+                                "PROBLEM HERE (%s) : %s -- %s\n -- %s "
+                                % (http_code, s, v, version["installer"])
+                            )
+                            print(failure)
+                            TEST_STATUS = False
+                            TEST_FAILURES.append(failure)
+                            count_status["failed"] += 1
+                        elif (
+                            "application/" not in content_type
+                            and "binary/" not in content_type
+                        ):
+                            # This build is failing !
+                            failure = (
+                                "PROBLEM HERE (Bad content type) : %s -- %s -- %s\n -- %s "
+                                % (s, v, content_type, version["installer"])
+                            )
+                            print(failure)
+                            TEST_STATUS = False
+                            TEST_FAILURES.append(failure)
+                            count_status["failed"] += 1
+                        else:
+                            count_status["passed"] += 1
+                            print("VALID : %s" % version["installer"])
+                except requests.exceptions.SSLError as e:
+                    # mercurial.sls will fail here
+                    failure = (
+                        "PROBLEM HERE (Bad Certificate) : %s -- %s\n -- %s"
+                        % (s, v, version["installer"])
+                    )
+                    print(failure)
+                    TEST_STATUS = False
+                    TEST_FAILURES.append(failure)
+                    count_status["failed"] += 1
+                except requests.exceptions.ConnectTimeout:
+                    # filezilla.sls
+                    failure = "PROBLEM HERE (Connection Timeout) : %s -- %s\n -- %s" % (s, v, version["installer"])
+                    print(failure)
+                    TEST_STATUS = False
+                    TEST_FAILURES.append(failure)
+                    count_status["failed"] += 1
+                except requests.exceptions.ConnectionError:
+                    # pdfcreater.sls
+                    failure = "PROBLEM HERE (Connection Error) : %s -- %s\n -- %s" % (s, v, version["installer"])
+                    print(failure)
+                    TEST_STATUS = False
+                    TEST_FAILURES.append(failure)
+                    count_status["failed"] += 1
+                except requests.exceptions.ReadTimeout:
+                    # npp.sls... maybe a network issue as well
+                    failure = "PROBLEM HERE (Read Timeout) : %s -- %s\n -- %s" % (s, v, version["installer"])
+                    print(failure)
+                    TEST_STATUS = False
+                    TEST_FAILURES.append(failure)
+                    count_status["failed"] += 1
+                except Exception as e:
+                    print("dir e: ", dir(e))
+                    print("e: ", e)
+                    print("traceback: ", traceback.print_exc())
 
+                    failure = "PROBLEM HERE (%s) : %s -- %s\n -- %s" % (e, s, v, version["installer"])
+                    print(failure)
+                    trace_back = "-" * 30 + "\n" + traceback.print_exc() + "\n" + "-" * 30
+                    print(trace_back)
+                    TEST_STATUS = False
+                    TEST_FAILURES.append(failure)
+                    TEST_FAILURES.append(trace_back)
+
+                    count_status["failed"] += 1
 
 if travis:
     head = git.Repo(".").commit("HEAD")
@@ -175,20 +204,33 @@ if len(our_files) == 0:
     print("No files to check. No problem.")
     exit(0)
 
-caller = salt.client.Caller(".cicd/minion")
+# This is a stupid thing we have to do because the grains don't flip right
+label_rev = {"AMD64": "x86", "x86": "AMD64"}
 
 for file in our_files:
     try:
-        print("---( " + file + " )---")
+        label = " ( {} ) ".format(file)
+        count = 80 - len(label)
+        count = count - count % 2
+        count = round( count / 2)
+        label = ">" * count + label + "<" * count
+        print(label + "<" * (80 - len(label)))
         with open(file, "r") as stream:
             template = stream.read()
         if "cpuarch" in template:
             for cpuarch in ["AMD64", "x86"]:
-                print("--------(arch: %s)--------" % cpuarch)
+                label = " ( arch: {} ) ".format(label_rev[cpuarch])
+                count = 80 - len(label)
+                count = count - count % 2
+                count = round( count / 2)
+                label = "-" * count + label + "-" * count
+                print(label + "-" * (80 - len(label)))
+                caller = salt.client.Caller(".cicd/minion")
                 caller.cmd("grains.set", "cpuarch", cpuarch)
                 data = caller.cmd("winrepo.show_sls", file)
                 process_each(data)
         else:
+            caller = salt.client.Caller(".cicd/minion")
             data = caller.cmd("winrepo.show_sls", file)
             process_each(data)
     except Exception:
@@ -197,13 +239,34 @@ for file in our_files:
         traceback.print_exc()
         count_status["exceptions"] += 1
         pass
+
 print("-" * 80 + "\n")
 
+if not TEST_STATUS:
+    print("URLs With Failures:")
+    print("*" * 80)
+    print("\n".join(TEST_FAILURES))
+    print("*" * 80)
+
+print("")
+print("Content Type:")
+print("=============")
 print(tabulate(count_c_types.most_common(), ["Total", sum(count_c_types.values())]) + "\n")
+print("")
+print("HTTP Codes:")
+print("===========")
 print(tabulate(count_http_codes.most_common(), ["Total", sum(count_http_codes.values())]) + "\n")
+print("")
+print("Test Summary:")
+print("=============")
 print(tabulate(count_status.most_common(), ["Total", sum(count_status.values())]) + "\n")
 
-assert TEST_STATUS, (
-    "BUILD FAILING. You can grep for 'PROBLEM HERE' to find out how to fix this."
-)
+if not TEST_STATUS:
+    print("*" * 80)
+    print("BUILD FAILING. You can grep for 'PROBLEM HERE' to find out how to fix this.")
+    print("*" * 80)
+    exit(1)
+
+print("*" * 80)
 print("Everything went smoothly. No errors were found. Happy deployment!")
+print("*" * 80)

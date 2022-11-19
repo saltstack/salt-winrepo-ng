@@ -7,26 +7,34 @@
 # 2015.8.2 you will not be able to use pkg.install to upgrade Salt again. You
 # will have to upgrade Salt through another means.
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-salt-minion:
+{% set install_dir = salt["reg.read_value"]("HKLM", "SOFTWARE\\Salt Project\\Salt", "install_dir").vdata %}
+{% set install_dir = install_dir or "C:\\salt" %}
+salt-minion-py3:
+  # Starting in Version 3004 salt is installed in ProgramData by default
+  # The uninstaller will be in ProgramData\Salt Project\Salt
   {%
       for version in [
-          '3000.9',
-          '3000.8',
-          '3000.7',
+          '3005.1-3',
+          '3005.1-2',
+          '3005.1-1',
+          '3005-1',
+          '3004.2-1',
+          '3003.5-1',
+          '3002.9-1',
       ]
   %}
   '{{ version }}':
-    full_name: 'Salt Minion {{ version }}'
+    full_name: 'Salt Minion {{ version }} (Python 3)'
     {% if grains['cpuarch'] == 'AMD64' %}
-    installer: 'https://repo.saltstack.com/windows/Salt-Minion-{{ version }}-Py2-AMD64-Setup.exe'
+    installer: 'https://repo.saltproject.io/windows/Salt-Minion-{{ version }}-Py3-AMD64-Setup.exe'
     {% else %}
-    installer: 'https://repo.saltstack.com/windows/Salt-Minion-{{ version }}-Py2-x86-Setup.exe'
+    installer: 'https://repo.saltproject.io/windows/Salt-Minion-{{ version }}-Py3-x86-Setup.exe'
     {% endif %}
     {% raw %}
     # install_flags: "/S /master={{ salt['pillar.get']('salt:master', 'salt.domain.tld') }} /minion-id={{ salt['pillar.get']('salt:minion:ids:' ~ grains['host'] }}"
     {% endraw %}
     install_flags: '/S'
-    uninstaller: 'C:\salt\uninst.exe'
+    uninstaller: '{{ install_dir }}\uninst.exe'
     uninstall_flags: '/S'
     msiexec: False
     use_scheduler: True
@@ -39,8 +47,39 @@ salt-minion:
 # An uninstall only definition will remain here so the packages will show up
 # correctly in `pkg.list_pkgs` and to allow for removal using `pkg.remove`
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  # Starting in Version 3004 salt is installed in ProgramData by default
+  # The uninstaller will be in ProgramData\Salt Project\Salt
   {%
       for version in [
+          '3004.1-1',
+          '3004-3',
+          '3004-2',
+          '3004',
+          '3003.4-1',
+          '3003.3',
+          '3003.2',
+          '3003.1',
+          '3003',
+          '3002.8-1',
+          '3002.7',
+          '3002.6',
+          '3002.5',
+          '3002.4',
+          '3002.3',
+          '3002.2',
+          '3002.1',
+          '3002',
+          '3001.8',
+          '3001.7',
+          '3001.6',
+          '3001.5',
+          '3001.4',
+          '3001.2',
+          '3001.1',
+          '3001',
+          '3000.9',
+          '3000.8',
+          '3000.7',
           '3000.6',
           '3000.4',
           '3000.3',
@@ -70,23 +109,12 @@ salt-minion:
           '2017.7.2',
           '2017.7.1',
           '2017.7.0',
-          '2016.11.10',
-          '2016.11.9',
-          '2016.11.8',
-          '2016.11.7',
-          '2016.11.6',
-          '2016.11.5',
-          '2016.11.4',
-          '2016.11.3',
-          '2016.11.2',
-          '2016.11.1',
-          '2016.11.0',
       ]
   %}
   '{{ version }}':
     skip_urltest: True
-    full_name: 'Salt Minion {{ version }}'
-    uninstaller: 'C:\salt\uninst.exe'
+    full_name: 'Salt Minion {{ version }} (Python 3)'
+    uninstaller: '{{ install_dir }}\uninst.exe'
     uninstall_flags: '/S'
     use_scheduler: True
   {% endfor %}

@@ -1,14 +1,20 @@
 {% set installer_ver = {'2.4.7': {'2016Server': '-I603'}} -%}
 {% set os_suffix = {'2.4.7': {'2016Server': '', '10': '-Win10'},
-                    '2.4.8+': {'2016Server': '-Win10', '2019Server': '-Win10', '10': '-Win10'}} -%}
+                    '2.4.8+': {'2016Server': '-Win10', '2019Server': '-Win10', '2022Server': '-Win10', '10': '-Win10'}} -%}
 {# Since v2.5 the version recorded in the registry differs from that displayed as part of the
    name and used in the download URL. Salt must understand the registry version so that the
    software can be uninstalled using Salt. -#}
-{% set display_version = { "2.5.023": "2.5.4-I601",
+{% set display_version = {
+                           "2.5.036": "2.5.7-I602",
+                           "2.5.029": "2.5.6-I601",
+                           "2.5.028": "2.5.5-I602",
+                           "2.5.027": "2.5.5-I601",
+                           "2.5.023": "2.5.4-I601",
                            "2.5.022": "2.5.3-I601",
                            "2.5.021": "2.5.2-I601",
                            "2.5.020": "2.5.1-I601",
-                           "2.5.019": "2.5.0-I601" } -%}
+                           "2.5.019": "2.5.0-I601"
+                          } -%}
 
 {# MSI installation can be customized using the ADDLOCAL parameter, for example:
    ADDLOCAL=OpenVPN.Service,OpenVPN,Drivers,Drivers.Wintun
@@ -40,11 +46,11 @@
 {% endmacro -%}
 
 openvpn:
-{% for version in ["2.5.023", "2.5.022", "2.5.021", "2.5.020", "2.5.019"] -%}
+{% for version in ["2.5.036", "2.5.029", "2.5.028", "2.5.027", "2.5.023", "2.5.022", "2.5.021", "2.5.020", "2.5.019"] -%}
 {{ print_openvpn_msi(version) }}
 {% endfor -%}
 {# Combined installer since v2.4+ so no arch needed -#}
-{% for version in ['2.4.11-I602', '2.4.10-I601', '2.4.9-I601', '2.4.8-I602'] -%}
+{% for version in ['2.4.12-I601', '2.4.11-I602', '2.4.10-I601', '2.4.9-I601', '2.4.8-I602'] -%}
 {%   set version = version ~ os_suffix['2.4.8+'][salt["grains.get"]("osrelease")]|default('-Win7') -%}
 {{ print_openvpn_exe(version) }}
 {% endfor -%}
