@@ -8,17 +8,11 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    container:
-      image: python:3.8-slim-bullseye
-
     steps:
-
-    - name: Install System Deps
-      run: |
-        apt-get update
-        apt-get install -y git libcurl4-openssl-dev gcc libssl-dev libmagic1
-
     - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
 
     - name: Set Pre-Commit Cache Key
       run: echo "PY=$(python --version --version | sha256sum | cut -d' ' -f1)" >> $GITHUB_ENV
