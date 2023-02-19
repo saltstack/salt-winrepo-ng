@@ -1,0 +1,49 @@
+name: Test on Windows
+
+on:
+  - pull_request
+  - push
+  - workflow_call
+  - workflow_dispatch
+
+jobs:
+  gsv:
+    name: Get Salt versions
+    runs-on: ubuntu-latest
+    outputs:
+      salt-latest: ${{ steps.get-salt-versions.outputs.salt-latest }}
+    steps:
+      - id: get-salt-versions
+        uses: dafyddj/get-salt-versions@v2
+  test:
+    name: Run URL tests
+    needs: gsv
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Salt
+        uses: dafyddj/setup-salt-win@v2
+        with:
+          salt-version: ${{ needs.gsv.outputs.salt-latest }}
+      - name: Setup `pip` dependencies
+        run: |
+          salt-call state.single pip.installed name=dependencies `
+            pkgs='["python-magic-bin", "tabulate"]' `
+            cwd='C:\Program Files\Salt Project\Salt\bin\Scripts' `
+            bin_env='C:\Program Files\Salt Project\Salt\bin\Scripts\pip.exe'
+          if ($LASTEXITCODE) {
+              Write-Host ("::error title=salt-call::salt-call returned exit code: $LASTEXITCODE")
+              exit 1
+          }
+      - id: changed-files
+        name: Get changed files
+        uses: dorny/paths-filter@v2
+        with:
+          list-files: json
+          filters: |
+            sls:
+              - added|modified:
+                - '**/*.sls'
+      - name: Run URL test
+        run: |
+          & "C:\Program Files\Salt Project\Salt\bin\python.exe" .\.cicd\tests.py ${{ join(fromJSON(steps.changed-files.outputs.sls_files), ' ') }}
