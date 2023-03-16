@@ -1,6 +1,10 @@
 name: Pre-Commit
 
-on: [push, pull_request]
+on:
+  - pull_request
+  - push
+  - workflow_call
+  - workflow_dispatch
 
 jobs:
   Pre-Commit:
@@ -13,29 +17,7 @@ jobs:
     - uses: actions/setup-python@v4
       with:
         python-version: '3.10'
-
-    - name: Set Pre-Commit Cache Key
-      run: echo "PY=$(python --version --version | sha256sum | cut -d' ' -f1)" >> $GITHUB_ENV
-
-    - name: Setup Pre-Commit Cache
-      uses: pat-s/always-upload-cache@v3
-      with:
-        path: ~/.cache/pre-commit
-        key: pre-commit|${{ env.PY }}|${{ hashFiles('.pre-commit-config.yaml') }}
-
-    - id: changed-files
-      name: Get Changed Files
-      uses: dorny/paths-filter@v2
-      with:
-        token: ${{ github.token }}
-        list-files: json
-        filters: |
-          repo:
-            - added|modified:
-              - '**'
-
-    - name: Check Changed Files
+        cache: pip
+        cache-dependency-path: .cicd/pre-commit.txt
+    - name: Run Pre-Commit
       uses: pre-commit/action@v3.0.0
-      if: steps.changed-files.outputs.repo == 'true'
-      with:
-        extra_args: --verbose --files ${{ join(fromJSON(steps.changed-files.outputs.repo_files), ' ') }}
