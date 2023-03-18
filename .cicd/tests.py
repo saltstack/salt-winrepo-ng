@@ -93,6 +93,7 @@ def process_each(softwares):
                 print(msg)
                 continue
             if not version.get("installer", ""):
+                count_status["skipped"] += 1
                 msg = "SKIPPED (No URL) : %s -- %s" % (s, v)
                 print(msg)
                 continue
@@ -242,24 +243,35 @@ for file in our_files:
 
 print("-" * 80 + "\n")
 
+# For GitHub Actions to display multiline output we must change \n to %0A
+# See e.g. https://github.com/orgs/community/discussions/26288
 if not TEST_STATUS:
-    print("URLs With Failures:")
-    print("*" * 80)
-    print("\n".join(TEST_FAILURES))
-    print("*" * 80)
+    failure_output = "%0A".join(TEST_FAILURES)
+    failure_output = failure_output.replace("\n", "%0A")
+    print(f"::error title=URLs with Failures::URLs with Failures:%0A{failure_output}")
+    print("")
 
+test_summary = tabulate(count_status.most_common(), ["Total", sum(count_status.values())])
+content_type_summary = tabulate(count_c_types.most_common(), ["Total", sum(count_c_types.values())])
+http_code_summary = tabulate(count_http_codes.most_common(), ["Total", sum(count_http_codes.values())])
+
+test_summaries = [
+    "Test Summary:",
+    "=============",
+    test_summary,
+    "",
+    "Content Type:",
+    "=============",
+    content_type_summary,
+    "",
+    "HTTP Codes:",
+    "===========",
+    http_code_summary
+]
+test_summaries_output = "%0A".join(test_summaries)
+test_summaries_output = test_summaries_output.replace("\n", "%0A")
+print(f"::notice title=Test Summary::{test_summaries_output}")
 print("")
-print("Content Type:")
-print("=============")
-print(tabulate(count_c_types.most_common(), ["Total", sum(count_c_types.values())]) + "\n")
-print("")
-print("HTTP Codes:")
-print("===========")
-print(tabulate(count_http_codes.most_common(), ["Total", sum(count_http_codes.values())]) + "\n")
-print("")
-print("Test Summary:")
-print("=============")
-print(tabulate(count_status.most_common(), ["Total", sum(count_status.values())]) + "\n")
 
 if not TEST_STATUS:
     print("*" * 80)
