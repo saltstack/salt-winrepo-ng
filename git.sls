@@ -12,6 +12,20 @@
 ] %}
 
 {% load_yaml as versions -%}
+- 2.40.0
+- 2.39.2
+- 2.39.1
+- 2.39.0.2
+- 2.39.0
+- 2.38.1
+- 2.38.0
+- 2.37.3
+- 2.37.2.2
+- 2.37.1
+- 2.37.0
+- 2.36.1
+- 2.36.0
+- 2.35.3
 - 2.35.2
 - 2.35.1.2
 - 2.35.1
@@ -32,6 +46,7 @@
 - 2.29.2.3
 - 2.29.2.2
 - 2.29.2
+- 2.29.1
 - 2.29.0
 - 2.28.0
 - 2.27.0
@@ -48,43 +63,79 @@
 - 2.21.0
 - 2.20.1
 - 2.20.0
-- 2.19.2
 - 2.19.1
 - 2.19.0
 - 2.18.0
 - 2.17.1.2
+- 2.17.1
 - 2.17.0
 - 2.16.3
 - 2.16.2
+- 2.16.1.4
+- 2.16.1.3
+- 2.16.1.2
+- 2.16.1
 - 2.16.0.2
+- 2.15.1.2
+- 2.15.1
 - 2.15.0
+- 2.14.3
+- 2.14.2.3
+- 2.14.2.2
 - 2.14.2
+- 2.14.1
+- 2.14.0.2
+- 2.14.0
 - 2.13.3
+- 2.13.2
 - 2.13.1.2
+- 2.13.1
+- 2.13.0
+- 2.12.2.2
 - 2.12.2
 - 2.12.1
+- 2.12.0
+- 2.11.1
 - 2.11.0.3
+- 2.11.0.2
 - 2.11.0
 - 2.10.2
 - 2.10.1
 - 2.10.0
+- 2.9.3.2
+- 2.9.3
+- 2.9.2
 - 2.9.0
 - 2.8.4
 - 2.8.3
 - 2.8.2
 - 2.8.1
+- 2.8.0
+- 2.7.4
+- 2.7.3
 - 2.7.2
+- 2.7.1.2
 - 2.7.1
+- 2.7.0.2
 - 2.7.0
 - 2.6.4
+- 2.6.3
 - 2.6.2
+- 2.6.1
+- 2.6.0
 - 2.5.3
 - 2.5.2.2
+- 2.5.2
+- 2.5.1
 - 2.5.0
 {% endload -%}
 
+{% load_yaml as uninstall_only -%}
+- 2.19.2
+{% endload -%}
+
 git:
-{% for version in versions %}
+{% for version in versions + uninstall_only %}
   {% if version.count('.') == 3  %}
     {% set short_version = version[:-2] %}
     {% set win_ver = version[-1:] %}
@@ -103,11 +154,13 @@ git:
     {%   set displayname_version = " version " ~ display_version -%}
     {% endif -%}
     full_name: Git{{ displayname_version | default("") }}
+    {%- if version not in uninstall_only %}
     installer: https://github.com/git-for-windows/git/releases/download/v{{ extended_version }}/Git-{{ version }}-{{ arch }}-bit.exe
     # It is impossible to downgrade git silently. It will always pop a message
     # that will cause salt to hang. `/SUPPRESSMSGBOXES` will suppress that
     # warning allowing salt to continue, but the package will not downgrade
     install_flags: /VERYSILENT /NORESTART /SP- /NOCANCEL /SUPPRESSMSGBOXES
+    {%- endif %}
     uninstaller: forfiles
     uninstall_flags: '/p "%ProgramFiles%\Git" /m unins*.exe /c "cmd /c @path /VERYSILENT /NORESTART"'
     msiexec: False
