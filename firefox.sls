@@ -174,18 +174,66 @@
 - '42.0'
 {% endload -%}
 
-firefox_x64:
-  {%- for version in versions %}
+{% load_yaml as x86_only -%}
+- 41.0.2
+- 41.0.1
+- '41.0'
+- 40.0.3
+- 40.0.2
+- '40.0'
+- 39.0.3
+- '39.0'
+- 38.0.6
+- 38.0.5
+- 38.0.1
+- '38.0'
+- 37.0.2
+- 37.0.1
+- '37.0'
+- 36.0.4
+- 36.0.3
+- 36.0.1
+- '36.0'
+- 35.0.1
+- '35.0'
+- 34.0.5
+- '34.0'
+- 33.1.1
+- '33.1'
+- 33.0.3
+- 33.0.2
+- 33.0.1
+- '33.0'
+- 32.0.3
+- 32.0.2
+- 32.0.1
+- '32.0'
+- '31.0'
+- '30.0'
+- 29.0.1
+{% endload -%}
+
+{% macro _get_program_files(exe_arch) -%}
+{%   if grains["cpuarch"] == "AMD64" and exe_arch == 86 -%}
+%ProgramFiles(x86)%
+{%   else -%}
+%ProgramFiles%
+{%   endif -%}
+{% endmacro -%}
+
+{% set arch_specific_versions = {64: versions, 86: versions + x86_only} -%}
+
+{% for arch in 64, 86 -%}
+firefox_x{{ arch }}:
+  {%- for version in arch_specific_versions[arch] %}
   '{{ version }}':
     {% if salt["pkg.compare_versions"](version, "<", "90.0") -%}
     {%   set display_version = " " ~ version -%}
     {% endif -%}
-    full_name: 'Mozilla Firefox{{ display_version | default("") }} (x64 {{ lang }})'
-    installer: 'https://download-installer.cdn.mozilla.net/pub/firefox/releases/{{ version }}/win64/{{ lang }}/Firefox%20Setup%20{{ version }}.exe'
-    install_flags: '/S'
-    uninstaller: '%ProgramFiles%\Mozilla Firefox\uninstall\helper.exe'
-    uninstall_flags: '/S'
-    msiexec: False
-    locale: en_US
-    reboot: False
+    full_name: Mozilla Firefox{{ display_version|d }} (x{{ arch }} {{ lang }})
+    installer: https://download-installer.cdn.mozilla.net/pub/firefox/releases/{{ version }}/win{{ 32 if arch == 86 else 64 }}/{{ lang }}/Firefox%20Setup%20{{ version }}.exe
+    install_flags: /S
+    uninstaller: '{{ _get_program_files(arch)|trim }}\Mozilla Firefox\uninstall\helper.exe'
+    uninstall_flags: /S
   {%- endfor %}
+{% endfor -%}
