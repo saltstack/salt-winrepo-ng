@@ -1,6 +1,4 @@
 gitpython
-jinja2
-pyaml
-pycurl
 python-magic
+salt
 tabulate

@@ -3,13 +3,16 @@
 #       setup.ini, which should be stored at C:/ProgramData/NTP/setup.ini.
 #       The file is documented at
 #       https://www.meinberg.de/german/sw/readme-ntpinstaller.htm#unattended
+#
+# find latest downloads at https://www.meinberg.de/german/sw/ntp.htm#ntp_stable
+#
 {% if grains['cpuarch'] == 'AMD64' %}
     {% set PROGRAM_FILES = "%ProgramFiles(x86)%" %}
 {% else %}
     {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {% endif %}
 ntp:
-  {% for version in ['4.2.8p14', '4.2.8p13', '4.2.8p12', '4.2.8p11'] %}
+  {% for version in ['4.2.8p15-v2', '4.2.8p15', '4.2.8p14', '4.2.8p13', '4.2.8p12', '4.2.8p11'] %}
   '{{ version }}':
     full_name: 'Network Time Protocol'
     installer: 'https://www.meinberg.de/download/ntp/windows/ntp-{{ version }}-win32-setup.exe'
