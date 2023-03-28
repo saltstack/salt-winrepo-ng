@@ -122,6 +122,9 @@
 - 45.0.2
 - 45.0.1
 - '45.0'
+{% endload -%}
+
+{% load_yaml as x86_only -%}
 - 38.8.0
 - 38.7.1
 - 38.7.0
@@ -135,23 +138,27 @@
 - 38.2.1
 {% endload -%}
 
-firefox-esr_x86:
-  {%- if grains['cpuarch'] == 'AMD64' %}
-    {%- set PROGRAM_FILES = "%ProgramFiles(x86)%" %}
-  {%- else %}
-    {%- set PROGRAM_FILES = "%ProgramFiles%" %}
-  {%- endif %}
-  {%- for version in versions %}
+{% macro _get_program_files(exe_arch) -%}
+{%   if grains["cpuarch"] == "AMD64" and exe_arch == 86 -%}
+%ProgramFiles(x86)%
+{%   else -%}
+%ProgramFiles%
+{%   endif -%}
+{% endmacro -%}
+
+{% set arch_specific_versions = {64: versions, 86: versions + x86_only} -%}
+
+{% for arch in 64, 86 -%}
+firefox-esr_x{{ arch }}:
+  {%- for version in arch_specific_versions[arch] %}
   '{{ version }}':
     {% if salt["pkg.compare_versions"](version, "<", "78.12.0") -%}
     {%   set display_version = " " ~ version -%}
     {% endif -%}
-    full_name: 'Mozilla Firefox{{ display_version | default("") }} ESR (x86 {{ lang }})'
-    installer: 'https://download-installer.cdn.mozilla.net/pub/firefox/releases/{{ version }}esr/win32/{{ lang }}/Firefox%20Setup%20{{ version }}esr.exe'
-    install_flags: '/S'
-    uninstaller: '{{ PROGRAM_FILES }}\Mozilla Firefox\uninstall\helper.exe'
-    uninstall_flags: '/S'
-    msiexec: False
-    locale: en_US
-    reboot: False
+    full_name: Mozilla Firefox{{ display_version|d }} ESR (x{{ arch }} {{ lang }})
+    installer: https://download-installer.cdn.mozilla.net/pub/firefox/releases/{{ version }}esr/win{{ 32 if arch == 86 else 64 }}/{{ lang }}/Firefox%20Setup%20{{ version }}esr.exe
+    install_flags: /S
+    uninstaller: '{{ _get_program_files(arch)|trim }}\Mozilla Firefox\uninstall\helper.exe'
+    uninstall_flags: /S
   {%- endfor %}
+{% endfor -%}
