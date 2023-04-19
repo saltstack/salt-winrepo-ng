@@ -14,7 +14,7 @@
 # Relative Environment for Python project (relenv). The url changed as a result
 {%- load_yaml as versions_relenv %}
 - 3006.0
-{% endload -%}
+{%- endload %}
 
 # Starting in Version 3004 salt is installed in ProgramData by default
 # The uninstaller will be in ProgramData\Salt Project\Salt
@@ -28,7 +28,7 @@
 - 3004.2-1
 - 3003.5-1
 - 3002.9-1
-{% endload -%}
+{%- endload %}
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Versions of Salt that contain CVE's have been moved to an archive at:
@@ -96,10 +96,9 @@
 - 2017.7.2
 - 2017.7.1
 - 2017.7.0
-{% endload -%}
+{%- endload %}
 
 salt-minion-py3:
-
   # RELENV VERSIONS
   {%- for version in versions_relenv %}
   '{{ version }}':
