@@ -18,7 +18,18 @@ blender:
 
 # Note: Since April/May 2021, installer name has changed slightly (windows64 -> windows-x64).
 # Note2: Newer versions of Blender do not provide 32-bit installers anymore.
-{% for version, patch in [('2.93', '7'),
+{% for version, patch in [('3.3', '3'),
+                          ('3.3', '2'),
+                          ('3.3', '1'),
+                          ('3.3', '0'),
+                          ('2.93', '14'),
+                          ('2.93', '13'),
+                          ('2.93', '12'),
+                          ('2.93', '11'),
+                          ('2.93', '10'),
+                          ('2.93', '9'),
+                          ('2.93', '8'),
+                          ('2.93', '7'),
                           ('2.93', '6'),
                           ('2.93', '5'),
                           ('2.93', '4'),
