@@ -14,6 +14,7 @@
 # Relative Environment for Python project (relenv). The url changed as a result
 {%- load_yaml as versions_relenv %}
 - 3006.1
+- 3006.1
 - 3006.0
 {%- endload %}
 
