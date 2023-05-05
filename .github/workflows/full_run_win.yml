@@ -32,12 +32,12 @@ jobs:
         run: |
           salt-call state.single pip.installed name=dependencies `
             pkgs='["python-magic-bin", "tabulate"]' `
-            cwd='C:\Program Files\Salt Project\Salt\bin\Scripts' `
-            bin_env='C:\Program Files\Salt Project\Salt\bin\Scripts\pip.exe'
+            cwd='C:\Program Files\Salt Project\Salt\Scripts' `
+            bin_env='C:\Program Files\Salt Project\Salt\Scripts\pip.exe'
           if ($LASTEXITCODE) {
               Write-Host ("::error title=salt-call::salt-call returned exit code: $LASTEXITCODE")
               exit 1
           }
       - name: Run URL test
         run: |
-          & "C:\Program Files\Salt Project\Salt\bin\python.exe" .\.cicd\tests.py --cron
+          & "C:\Program Files\Salt Project\Salt\Scripts\python.exe" .\.cicd\tests.py --cron

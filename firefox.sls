@@ -12,8 +12,46 @@
 {%- set lang = salt['config.get']('firefox:pkg:lang', 'en-US') %}
 
 {% load_yaml as versions -%}
+- 112.0.2
+- 112.0.1
+- '112.0'
+- 111.0.1
+- '111.0'
+- 110.0.1
+- '110.0'
+- 109.0.1
 - '109.0'
 - 108.0.2
+- 108.0.1
+- '108.0'
+- 107.0.1
+- '107.0'
+- 106.0.5
+- 106.0.4
+- 106.0.3
+- 106.0.2
+- 106.0.1
+- '106.0'
+- 105.0.3
+- 105.0.2
+- 105.0.1
+- '105.0'
+- 104.0.2
+- 104.0.1
+- '104.0'
+- 103.0.2
+- 103.0.1
+- '103.0'
+- 102.0.1
+- '102.0'
+- 101.0.1
+- '101.0'
+- 100.0.2
+- 100.0.1
+- '100.0'
+- 99.0.1
+- '99.0'
+- 98.0.2
 - 98.0.1
 - '98.0'
 - 97.0.2
@@ -172,6 +210,9 @@
 - 43.0.1
 - '43.0'
 - '42.0'
+{% endload -%}
+
+{% load_yaml as x86_only -%}
 - 41.0.2
 - 41.0.1
 - '41.0'
@@ -208,26 +249,153 @@
 - '31.0'
 - '30.0'
 - 29.0.1
+- '29.0'
+- '28.0'
+- 27.0.1
+- '27.0'
+- '26.0'
+- 25.0.1
+- '25.0'
+- '24.0'
+- 23.0.1
+- '23.0'
+- '22.0'
+- '21.0'
+- 20.0.1
+- '20.0'
+- 19.0.2
+- 19.0.1
+- '19.0'
+- 18.0.2
+- 18.0.1
+- '18.0'
+- 17.0.1
+- '17.0'
+- 16.0.2
+- 16.0.1
+- '16.0'
+- 15.0.1
+- '15.0'
+- 14.0.1
+- 13.0.1
+- '13.0'
+- '12.0'
+- '11.0'
+- 10.0.2
+- 10.0.1
+- '10.0'
+- 9.0.1
+- '9.0'
+- 8.0.1
+- '8.0'
+- 7.0.1
+- '7.0'
+- 6.0.2
+- 6.0.1
+- '6.0'
+- 5.0.1
+- '5.0'
+- 4.0.1
+- '4.0'
+- 3.6.28
+- 3.6.27
+- 3.6.26
+- 3.6.25
+- 3.6.24
+- 3.6.23
+- 3.6.22
+- 3.6.21
+- 3.6.20
+- 3.6.19
+- 3.6.18
+- 3.6.17
+- 3.6.16
+- 3.6.15
+- 3.6.14
+- 3.6.13
+- 3.6.12
+- 3.6.11
+- 3.6.10
+- 3.6.9
+- 3.6.8
+- 3.6.7
+- 3.6.6
+- 3.6.4
+- 3.6.3
+- 3.6.2
+- '3.6'
+- 3.5.19
+- 3.5.18
+- 3.5.17
+- 3.5.16
+- 3.5.15
+- 3.5.14
+- 3.5.13
+- 3.5.12
+- 3.5.11
+- 3.5.10
+- 3.5.9
+- 3.5.8
+- 3.5.7
+- 3.5.6
+- 3.5.5
+- 3.5.4
+- 3.5.3
+- 3.5.2
+- 3.5.1
+- '3.5'
+- 3.0.18
+- 3.0.17
+- 3.0.15
+- 3.0.14
+- 3.0.13
+- 3.0.12
+- 3.0.11
+- 3.0.10
+- 3.0.9
+- 3.0.8
+- 3.0.7
+- 3.0.6
+- 3.0.5
+- 3.0.4
+- 3.0.3
+- 3.0.2
+- 3.0.1
+- '3.0'
+- '2.0'
+- '1.5'
+- 1.0.8
+- 1.0.7
+- 1.0.6
+- 1.0.5
+- 1.0.4
+- 1.0.3
+- 1.0.2
+- 1.0.1
+- '1.0'
 {% endload -%}
 
+{% macro _get_program_files(exe_arch) -%}
+{%   if grains["cpuarch"] == "AMD64" and exe_arch == 86 -%}
+%ProgramFiles(x86)%
+{%   else -%}
+%ProgramFiles%
+{%   endif -%}
+{% endmacro -%}
 
-firefox_x86:
-  {%- if grains['cpuarch'] == 'AMD64' %}
-    {%- set PROGRAM_FILES = "%ProgramFiles(x86)%" %}
-  {%- else %}
-    {%- set PROGRAM_FILES = "%ProgramFiles%" %}
-  {%- endif %}
-  {%- for version in versions %}
+{% set arch_specific_versions = {64: versions, 86: versions + x86_only} -%}
+
+{% for arch in 64, 86 -%}
+firefox_x{{ arch }}:
+  {%- for version in arch_specific_versions[arch] %}
   '{{ version }}':
     {% if salt["pkg.compare_versions"](version, "<", "90.0") -%}
     {%   set display_version = " " ~ version -%}
     {% endif -%}
-    full_name: 'Mozilla Firefox{{ display_version | default("") }} (x86 {{ lang }})'
-    installer: 'https://download-installer.cdn.mozilla.net/pub/firefox/releases/{{ version }}/win32/{{ lang }}/Firefox%20Setup%20{{ version }}.exe'
-    install_flags: '/S'
-    uninstaller: '{{ PROGRAM_FILES }}\Mozilla Firefox\uninstall\helper.exe'
-    uninstall_flags: '/S'
-    msiexec: False
-    locale: en_US
-    reboot: False
+    full_name: Mozilla Firefox{{ display_version|d }} (x{{ arch }} {{ lang }})
+    installer: https://download-installer.cdn.mozilla.net/pub/firefox/releases/{{ version }}/win{{ 32 if arch == 86 else 64 }}/{{ lang }}/Firefox%20Setup%20{{ version }}.exe
+    install_flags: /S
+    uninstaller: '{{ _get_program_files(arch)|trim }}\Mozilla Firefox\uninstall\helper.exe'
+    uninstall_flags: /S
   {%- endfor %}
+{% endfor -%}
