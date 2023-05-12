@@ -45,8 +45,8 @@ jobs:
               exit 1
           }
           $pkgs
-  release:
-    name: Release
+  results:
+    name: Collect results
     needs: test
     runs-on: ubuntu-latest
     steps:
