@@ -38,12 +38,9 @@ jobs:
       - name: Setup `pip` dependencies
         if: steps.changed-files.outputs.sls == 'true'
         run: |
-          salt-call state.single pip.installed name=dependencies `
-            pkgs='["python-magic-bin", "tabulate"]' `
-            cwd='C:\Program Files\Salt Project\Salt\Scripts' `
-            bin_env='C:\Program Files\Salt Project\Salt\Scripts\pip.exe'
+          salt-pip install python-magic-bin tabulate
           if ($LASTEXITCODE) {
-              Write-Host ("::error title=salt-call::salt-call returned exit code: $LASTEXITCODE")
+              Write-Host ("::error title=salt-pip::salt-pip returned exit code: $LASTEXITCODE")
               exit 1
           }
       - name: Run URL test
