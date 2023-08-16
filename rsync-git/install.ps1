@@ -10,6 +10,8 @@ param(
 # Script Settings
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]'Tls,Tls11,Tls12'
 $ProgressPreference = "SilentlyContinue"
+$script_path = Get-ChildItem "$($myInvocation.MyCommand.Definition)"
+$script_path = $script_path.DirectoryName
 
 # Functions
 function Add-SystemPathValue{
@@ -120,6 +122,7 @@ $size = (Get-ChildItem "$env:TEMP\rsync\usr\bin" | Measure Length -Sum).Sum /1KB
 
 # Copy files to Git usr/bin
 Get-ChildItem -Path "$env:TEMP\rsync\usr\bin" | Move-Item -Destination "$git_bin_dir" -Force
+Copy-Item -Path "$script_path\remove.ps1" -Destination "$git_bin_dir\remove_rsync.ps1"
 
 # Cleanup Temp Dir
 Remove-Item -Path "$env:TEMP\rsync" -Recurse -Force
@@ -131,7 +134,7 @@ Add-SystemPathValue -Path $git_bin_dir
 New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall" -Name "rSyncForGit" -Force | Out-Null
 New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\rSyncForGit" -Name "DisplayName" -Value "rSync for Git" | Out-Null
 New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\rSyncForGit" -Name "DisplayVersion" -Value "$Version" | Out-Null
-New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\rSyncForGit" -Name "UninstallString" -Value "Managed by Salt" | Out-Null
+New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\rSyncForGit" -Name "UninstallString" -Value "powershell -ExecutionPolicy UnRestricted -file `"$git_bin_dir\remove_rsync.ps1`"" | Out-Null
 New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\rSyncForGit" -Name "Publisher" -Value "msys2.org" | Out-Null
 New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\rSyncForGit" -Name "InstallDate" -Value $date | Out-Null
 New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\rSyncForGit" -Name "EstimatedSize" -Value $size -PropertyType "DWord" | Out-Null
