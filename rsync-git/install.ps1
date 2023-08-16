@@ -66,13 +66,9 @@ function Add-SystemPathValue{
 $base_url = "https://repo.msys2.org/msys/x86_64"
 # Do we need to break out the other 2 into their own repos?
 $rsync_file = "rsync-$Version-x86_64.pkg.tar.zst"
-$rsync_dir = "rsync-$Version-x86_64.pkg"
 $libxxhash_file = "libxxhash-0.8.2-1-x86_64.pkg.tar.zst"
-$libxxhash_dir = "libxxhash-0.8.2-1-x86_64.pkg"
 $libzstd_file = "libzstd-1.5.5-1-x86_64.pkg.tar.zst"
-$libzstd_dir = "libzstd-1.5.5-1-x86_64.pkg"
 $files = $rsync_file, $libxxhash_file, $libzstd_file
-$dirs = $rsync_dir, $libxxhash_dir, $libzstd_dir
 $date = Get-Date -Format "yyyyMMdd"
 $7z_bin = "$env:ProgramFiles\7-Zip-Zstandard\7z.exe"
 $git_bin_dir = "$env:ProgramFiles\Git\usr\bin"
