@@ -14,7 +14,7 @@
 - 5.5.0
 {%- endload %}
 
-rsync-git:
+cwrsync:
 {% for version in versions %}
   '{{ version }}':
     full_name: 'cwRsync'
