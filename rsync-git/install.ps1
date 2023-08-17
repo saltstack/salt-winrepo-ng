@@ -18,14 +18,8 @@ function Add-SystemPathValue{
     # Add a new entry to the system path environment variable. Only adds the new
     # path if it does not already exist.
     #
-    # Used by:
-    # - Install-SaltMinion
-    #
     # Args:
     #     Path (string): The target path to add
-    #
-    # Warning:
-    #     Logs a warning if the target path does not exist
     [Cmdletbinding()]
     param (
         [parameter(Mandatory=$True)]

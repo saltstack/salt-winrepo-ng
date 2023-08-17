@@ -21,7 +21,6 @@ function Remove-SystemPathValue {
     foreach ($item in $current_path.Split(";")) {
         # Don't add if we find the new path
         if ($item -imatch "^$regex_path(\\)?$") {
-            Write-Host "Removing target path: $Path"
             $removed = 1
         } else {
             # Add the item to our new path array
@@ -41,29 +40,22 @@ function Remove-SystemPathValue {
     }
 }
 
-
 # Script to uninstall rSyncForGit
-$git_bin_dir = "$env:ProgramFiles\Git\usr\bin"
-
-# Remove Files
-$files = "msys-xxhash-0.dll",
-         "msys-zstd-1.dll",
-         "rsync.exe",
-         "rsync-ssl"
-$files | ForEach-Object {
-    if ( Test-Path -Path "$git_bin_dir\$_" ) {
-        Remove-Item -Path "$git_bin_dir\$_" -Force
-    }
-}
+$target_dir = "$env:ProgramFiles\cwRsync"
 
 # Remove Registry Entries
-if ( Test-Path -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\rSyncForGit") {
-    Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\rSyncForGit" -Force
+if ( Test-Path -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\cwRsync" ) {
+    Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\cwRsync" -Force
 }
 
 # Remove path from the System path
-Remove-SystemPathValue -Path $git_bin_dir
+Remove-SystemPathValue -Path "$target_dir\bin"
 
 $paths = [System.Environment]::GetEnvironmentVariable("Path", "Machine"),
          [System.Environment]::GetEnvironmentVariable("Path", "User")
 $env:Path = $paths -join ";"
+
+# Remove Files
+if ( Test-Path -Path "$target_dir" ) {
+    Remove-Item -Path "$target_dir" -Recurse -Force
+}
