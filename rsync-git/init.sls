@@ -8,10 +8,6 @@
 
 {%- load_yaml as versions %}
 - 3.2.7-2
-- 3.2.7-1
-- 3.2.6-1
-- 3.2.3-2
-- 3.2.3-1
 {%- endload %}
 
 rsync-git:
