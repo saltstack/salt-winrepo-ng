@@ -1,5 +1,5 @@
 #if possible use 5.70 or newer due to vulnerabilities (CVE-2018-20250, CVE-2018-20251, CVE-2018-20252, CVE-2018-20253)
-{% set versions = {'5':['91', '70', '61'], '6':['21', '20', '11', '10', '02', '01', '00']} %}
+{% set versions = {'5':['91', '70', '61'], '6':['22', '21', '20', '11', '10', '02', '01', '00']} %}
 
 winrar:
 {% for major, subversions in versions.items() %}
