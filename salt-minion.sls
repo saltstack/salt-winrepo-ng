@@ -20,6 +20,7 @@
 # Starting in Version 3004 salt is installed in ProgramData by default
 # The uninstaller will be in ProgramData\Salt Project\Salt
 {%- load_yaml as versions_classic %}
+- 3005.3
 - 3005.2
 {%- endload %}
 
