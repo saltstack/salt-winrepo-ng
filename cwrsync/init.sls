@@ -7,6 +7,8 @@
 # - remove.ps1
 
 {%- load_yaml as versions %}
+- 6.2.11
+- 6.2.10
 - 6.2.9
 - 6.2.8
 - 6.2.7
