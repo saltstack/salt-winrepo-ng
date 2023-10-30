@@ -14,15 +14,12 @@
 # Relative Environment for Python project (relenv). The url changed as a result
 {%- load_yaml as versions_relenv %}
 - 3006.4
-- 3006.3
-- 3006.2
 {%- endload %}
 
 # Starting in Version 3004 salt is installed in ProgramData by default
 # The uninstaller will be in ProgramData\Salt Project\Salt
 {%- load_yaml as versions_classic %}
-- 3005.3
-- 3005.2
+- 3005.4
 {%- endload %}
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -33,8 +30,12 @@
 # correctly in `pkg.list_pkgs` and to allow for removal using `pkg.remove`
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 {%- load_yaml as versions_cve %}
+- 3006.3
+- 3006.2
 - 3006.1
 - 3006.0
+- 3005.3
+- 3005.2
 - 3005.1-5
 - 3005.1-4
 - 3005.1-3
