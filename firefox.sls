@@ -12,6 +12,7 @@
 {%- set lang = salt['config.get']('firefox:pkg:lang', 'en-US') %}
 
 {% load_yaml as versions -%}
+- 119.0.1
 - '119.0'
 - 118.0.2
 - 118.0.1
