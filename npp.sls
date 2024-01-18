@@ -77,9 +77,6 @@ npp:
 # correctly in `pkg.list_pkgs` and to allow for removal using `pkg.remove`
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   {% for version in [
-    '8.6.2',
-    '8.6.1',
-    '8.6',
     '7.6.6',
     '7.6.5',
     '7.6.4',
