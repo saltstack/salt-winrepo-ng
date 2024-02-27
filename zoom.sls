@@ -1,10 +1,21 @@
-{% set url = "https://www.zoom.us/client/latest/ZoomInstallerFull.msi" %}
-zoom:
+{% set data = {
+     64: {
+       "pkg": "_x64",
+       "name": " (64-bit)",
+       "url": "?archType=x64",
+     },
+     86: {
+       "name": " (32-bit)",
+     },
+   }
+-%}
+
+{% for arch in 64, 86 -%}
+zoom{{ data[arch].pkg|d }}:
   latest:
-    full_name: 'Zoom'
-    installer: '{{ url }}'
-    install_flags: '/qn /norestart'
-    uninstaller: '{{ url }}'
-    uninstall_flags: '/qn /norestart'
-    msiexec: True
-    reboot: False
+    full_name: Zoom{{ data[arch].name|d }}
+    installer: https://zoom.us/client/latest/ZoomInstallerFull.msi{{ data[arch].url|d }}
+    install_flags: /qn /norestart
+    uninstall_flags: /qn /norestart
+    msiexec: true
+{% endfor -%}
