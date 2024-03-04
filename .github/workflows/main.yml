@@ -20,10 +20,10 @@ jobs:
     needs: gsv
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - id: changed-files
         name: Get changed files
-        uses: dorny/paths-filter@v2
+        uses: dorny/paths-filter@v3
         with:
           list-files: json
           filters: |
