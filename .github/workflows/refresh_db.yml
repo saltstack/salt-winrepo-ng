@@ -24,7 +24,7 @@ jobs:
       matrix:
         salt-version: ${{ fromJSON(needs.gsv.outputs.salt-versions) }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
         with:
           path: win/repo-ng
       - name: Setup Salt
