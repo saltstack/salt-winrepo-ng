@@ -11,10 +11,11 @@ jobs:
     name: Get Salt versions
     runs-on: ubuntu-latest
     outputs:
+      salt-versions-els: ${{ steps.get-salt-versions.outputs.salt-versions-els }}
       salt-versions: ${{ steps.get-salt-versions.outputs.salt-versions }}
     steps:
       - id: get-salt-versions
-        uses: dafyddj/get-salt-versions@facbecc73d55759ff6940c48e22dfa52e6e74f63 # v2.13.0
+        uses: dafyddj/get-salt-versions@1fcbea0eee4404137e534d66f3c22846f7c2a7ec # v3.0.0
   test:
     name: Test `pkg.refresh_db`
     needs: gsv
@@ -22,7 +23,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        salt-version: ${{ fromJSON(needs.gsv.outputs.salt-versions) }}
+        salt-version:
+          - ${{ fromJSON(needs.gsv.outputs.salt-versions-els) }}
+          - ${{ fromJSON(needs.gsv.outputs.salt-versions) }}
     steps:
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
         with:
