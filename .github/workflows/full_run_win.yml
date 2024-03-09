@@ -17,15 +17,15 @@ jobs:
       salt-latest: ${{ steps.get-salt-versions.outputs.salt-latest }}
     steps:
       - id: get-salt-versions
-        uses: dafyddj/get-salt-versions@v2
+        uses: dafyddj/get-salt-versions@facbecc73d55759ff6940c48e22dfa52e6e74f63 # v2.13.0
   test:
     name: Run URL tests
     needs: gsv
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
       - name: Setup Salt
-        uses: dafyddj/setup-salt-win@v2
+        uses: dafyddj/setup-salt-win@f40127f4980d09e8c6bf82759dd29e97b17e3356 # v2.1.1
         with:
           salt-version: ${{ needs.gsv.outputs.salt-latest }}
       - name: Setup `pip` dependencies
