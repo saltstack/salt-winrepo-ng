@@ -28,7 +28,7 @@ jobs:
         with:
           path: win/repo-ng
       - name: Setup Salt
-        uses: dafyddj/setup-salt-win@v2
+        uses: dafyddj/setup-salt-win@f40127f4980d09e8c6bf82759dd29e97b17e3356 # v2.1.1
         with:
           salt-version: ${{ matrix.salt-version }}
           custom-config: |
