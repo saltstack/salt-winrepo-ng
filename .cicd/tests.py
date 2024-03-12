@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import getopt
-import git
 import glob
 import magic
 import requests
@@ -37,7 +36,6 @@ def usage():
     print("""
     Use either of these flags!
         -h | --help_    Show this help_
-        -t | --travis   Run in travis (ignores files that have not been changed in last commit)
         -c | --cron     Run in cron mode
         -d | --debug    Run in debug mode (Prints more info)
 
@@ -47,17 +45,15 @@ def usage():
 
 try:
     opts, args = getopt.getopt(
-        sys.argv[1:], "tcdh", ["travis", "cron", "debug", "help_"]
+        sys.argv[1:], "cdh", ["cron", "debug", "help_"]
     )
     opts = dict(opts)
 except getopt.GetoptError:
     usage()
     sys.exit(2)
-travis, cron, debug, help_ = (False, False, False, False)
+cron, debug, help_ = (False, False, False)
 
 for o in opts:
-    if o in ("-t", "--travis"):
-        travis = True
     if o in ("-c", "--cron"):
         cron = True
     if o in ("-d", "--debug"):
@@ -67,7 +63,7 @@ for o in opts:
         help_ = True
 
 printd("opts, args", (opts, args))
-printd("travis, cron, debug, help_ ", (travis, cron, debug, help_))
+printd("cron, debug, help_ ", (cron, debug, help_))
 
 if help_ or len(opts) < 1 and len(args) < 1:
     usage()
@@ -192,11 +188,7 @@ def process_each(softwares):
 
                     count_status["failed"] += 1
 
-if travis:
-    head = git.Repo(".").commit("HEAD")
-    changed = [i for i in head.stats.files.keys() if ".sls" in i]
-    our_files = changed
-elif cron:
+if cron:
     our_files = glob.glob("*.sls")
 else:
     our_files = args
