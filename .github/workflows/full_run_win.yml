@@ -25,7 +25,7 @@ jobs:
     steps:
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
       - name: Setup Salt
-        uses: dafyddj/setup-salt-win@f40127f4980d09e8c6bf82759dd29e97b17e3356 # v2.1.1
+        uses: dafyddj/setup-salt-win@1fe09b1c0cdb721a43f9e5faa9bd079af8701803 # v2.2.0
         with:
           salt-version: ${{ needs.gsv.outputs.salt-latest }}
       - name: Setup `pip` dependencies
