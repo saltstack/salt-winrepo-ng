@@ -1,4 +1,4 @@
-name: Test on Windows
+name: Test
 
 on:
   - pull_request
@@ -23,15 +23,48 @@ jobs:
     name: Get Salt versions
     runs-on: ubuntu-latest
     outputs:
+      salt-versions-els: ${{ steps.get-salt-versions.outputs.salt-versions-els }}
+      salt-versions: ${{ steps.get-salt-versions.outputs.salt-versions }}
       salt-latest: ${{ steps.get-salt-versions.outputs.salt-latest }}
     steps:
       - id: get-salt-versions
         uses: dafyddj/get-salt-versions@1fcbea0eee4404137e534d66f3c22846f7c2a7ec # v3.0.0
+  refresh_db:
+    name: Test `pkg.refresh_db`
+    needs: gsv
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        salt-version:
+          - ${{ fromJSON(needs.gsv.outputs.salt-versions-els) }}
+          - ${{ fromJSON(needs.gsv.outputs.salt-versions) }}
+    steps:
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        with:
+          path: win/repo-ng
+      - name: Setup Salt
+        uses: dafyddj/setup-salt-win@1fe09b1c0cdb721a43f9e5faa9bd079af8701803 # v2.2.0
+        with:
+          salt-version: ${{ matrix.salt-version }}
+          custom-config: |
+            osenv:
+              driver: env
+            file_roots:
+              base:
+                - sdb://osenv/GITHUB_WORKSPACE
+      - name: Run `salt-call pkg.refresh_db`
+        run: |
+          $pkgs = (salt-call --out=json pkg.refresh_db | ConvertFrom-Json).local
+          if ($LASTEXITCODE) {
+              Write-Host ("::error title=salt-call::salt-call returned exit code: $LASTEXITCODE")
+              exit 1
+          }
+          $pkgs
   test:
     name: Run URL tests
     needs:
       - gsv
-      - pre-commit
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
@@ -61,3 +94,12 @@ jobs:
         if: steps.changed-files.outputs.sls == 'true'
         run: |
           & "C:\Program Files\Salt Project\Salt\Scripts\python.exe" .\.cicd\tests.py ${{ join(fromJSON(steps.changed-files.outputs.sls_files), ' ') }}
+  results:
+    name: Collect results
+    needs:
+      - pre-commit
+      - refresh_db
+      - test
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Tests succeeded!"
