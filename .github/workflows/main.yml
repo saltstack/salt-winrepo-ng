@@ -7,6 +7,18 @@ on:
   - workflow_dispatch
 
 jobs:
+  pre-commit:
+    name: Run `pre-commit`
+    runs-on: ubuntu-latest
+    env:
+      # renovate: datasource=github-tags depName=python/cpython
+      PYTHON_VERSION: 3.12.2
+    steps:
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+      - uses: actions/setup-python@0a5c61591373683505ea898e09a3ea4f39ef2b9c # v5.0.0
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - uses: pre-commit/action@2c7b3805fd2a0fd8c1884dcaebf91fc102a13ecd # v3.0.1
   gsv:
     name: Get Salt versions
     runs-on: ubuntu-latest
@@ -17,7 +29,9 @@ jobs:
         uses: dafyddj/get-salt-versions@1fcbea0eee4404137e534d66f3c22846f7c2a7ec # v3.0.0
   test:
     name: Run URL tests
-    needs: gsv
+    needs:
+      - gsv
+      - pre-commit
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
