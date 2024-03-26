@@ -12,8 +12,8 @@ functionbeat:
 {% for version in versions %}
   '{{ version }}':
     full_name: 'Functionbeat'
-    installer: 'salt://win/repo-ng/salt-winrepo-ng/functionbeat/install.cmd'
+    installer: 'salt://win/repo-ng/salt-winrepo-ng/_/functionbeat/install.cmd'
     install_flags: {{ version }}
-    uninstaller: 'salt://win/repo-ng/salt-winrepo-ng/functionbeat/remove.cmd'
+    uninstaller: 'salt://win/repo-ng/salt-winrepo-ng/_/functionbeat/remove.cmd'
     cache_dir: True
 {% endfor %}

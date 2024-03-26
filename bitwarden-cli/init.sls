@@ -11,8 +11,8 @@ bitwarden-cli:
 {% for version in versions %}
   '{{ version }}':
     full_name: 'Bitwarden CLI {{ version }}'
-    installer: 'salt://win/repo-ng/salt-winrepo-ng/bitwarden-cli/install.cmd'
+    installer: 'salt://win/repo-ng/salt-winrepo-ng/_/bitwarden-cli/install.cmd'
     install_flags: {{ version }}
-    uninstaller: 'salt://win/repo-ng/salt-winrepo-ng/bitwarden-cli/remove.cmd'
+    uninstaller: 'salt://win/repo-ng/salt-winrepo-ng/_/bitwarden-cli/remove.cmd'
     cache_dir: True
 {% endfor %}

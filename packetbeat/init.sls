@@ -12,8 +12,8 @@ packetbeat:
 {% for version in versions %}
   '{{ version }}':
     full_name: 'Packetbeat'
-    installer: 'salt://win/repo-ng/salt-winrepo-ng/packetbeat/install.cmd'
+    installer: 'salt://win/repo-ng/salt-winrepo-ng/_/packetbeat/install.cmd'
     install_flags: {{ version }}
-    uninstaller: 'salt://win/repo-ng/salt-winrepo-ng/packetbeat/remove.cmd'
+    uninstaller: 'salt://win/repo-ng/salt-winrepo-ng/_/packetbeat/remove.cmd'
     cache_dir: True
 {% endfor %}

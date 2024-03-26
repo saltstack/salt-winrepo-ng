@@ -12,8 +12,8 @@ auditbeat:
 {% for version in versions %}
   '{{ version }}':
     full_name: 'Auditbeat'
-    installer: 'salt://win/repo-ng/salt-winrepo-ng/auditbeat/install.cmd'
+    installer: 'salt://win/repo-ng/salt-winrepo-ng/_/auditbeat/install.cmd'
     install_flags: {{ version }}
-    uninstaller: 'salt://win/repo-ng/salt-winrepo-ng/auditbeat/remove.cmd'
+    uninstaller: 'salt://win/repo-ng/salt-winrepo-ng/_/auditbeat/remove.cmd'
     cache_dir: True
 {% endfor %}
