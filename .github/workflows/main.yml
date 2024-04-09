@@ -85,7 +85,7 @@ jobs:
       - name: Setup `pip` dependencies
         if: steps.changed-files.outputs.sls == 'true'
         run: |
-          salt-pip install python-magic-bin tabulate
+          salt-pip install -r .cicd/requirements.txt
           if ($LASTEXITCODE) {
               Write-Host ("::error title=salt-pip::salt-pip returned exit code: $LASTEXITCODE")
               exit 1
