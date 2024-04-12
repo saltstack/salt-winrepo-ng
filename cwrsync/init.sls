@@ -20,8 +20,8 @@ cwrsync:
 {% for version in versions %}
   '{{ version }}':
     full_name: 'cwRsync'
-    installer: 'salt://win/repo-ng/salt-winrepo-ng/cwrsync/install.cmd'
+    installer: 'salt://win/repo-ng/salt-winrepo-ng/_/cwrsync/install.cmd'
     install_flags: {{ version }}
-    uninstaller: 'salt://win/repo-ng/salt-winrepo-ng/cwrsync/remove.cmd'
+    uninstaller: 'salt://win/repo-ng/salt-winrepo-ng/_/cwrsync/remove.cmd'
     cache_dir: True
 {% endfor %}

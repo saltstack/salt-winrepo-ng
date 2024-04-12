@@ -12,8 +12,8 @@ heartbeat:
 {% for version in versions %}
   '{{ version }}':
     full_name: 'Heartbeat'
-    installer: 'salt://win/repo-ng/salt-winrepo-ng/heartbeat/install.cmd'
+    installer: 'salt://win/repo-ng/salt-winrepo-ng/_/heartbeat/install.cmd'
     install_flags: {{ version }}
-    uninstaller: 'salt://win/repo-ng/salt-winrepo-ng/heartbeat/remove.cmd'
+    uninstaller: 'salt://win/repo-ng/salt-winrepo-ng/_/heartbeat/remove.cmd'
     cache_dir: True
 {% endfor %}

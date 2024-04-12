@@ -23,8 +23,8 @@ winlogbeat:
 {% for version in versions %}
   '{{ version }}':
     full_name: 'Winlogbeat'
-    installer: 'salt://win/repo-ng/salt-winrepo-ng/winlogbeat/install.cmd'
+    installer: 'salt://win/repo-ng/salt-winrepo-ng/_/winlogbeat/install.cmd'
     install_flags: {{ version }}
-    uninstaller: 'salt://win/repo-ng/salt-winrepo-ng/winlogbeat/remove.cmd'
+    uninstaller: 'salt://win/repo-ng/salt-winrepo-ng/_/winlogbeat/remove.cmd'
     cache_dir: True
 {% endfor %}

@@ -12,8 +12,8 @@ metricbeat:
 {% for version in versions %}
   '{{ version }}':
     full_name: 'Metricbeat'
-    installer: 'salt://win/repo-ng/salt-winrepo-ng/metricbeat/install.cmd'
+    installer: 'salt://win/repo-ng/salt-winrepo-ng/_/metricbeat/install.cmd'
     install_flags: {{ version }}
-    uninstaller: 'salt://win/repo-ng/salt-winrepo-ng/metricbeat/remove.cmd'
+    uninstaller: 'salt://win/repo-ng/salt-winrepo-ng/_/metricbeat/remove.cmd'
     cache_dir: True
 {% endfor %}

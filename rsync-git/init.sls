@@ -14,8 +14,8 @@ rsync-git:
 {% for version in versions %}
   '{{ version }}':
     full_name: 'rSync for Git'
-    installer: 'salt://win/repo-ng/salt-winrepo-ng/rsync-git/install.cmd'
+    installer: 'salt://win/repo-ng/salt-winrepo-ng/_/rsync-git/install.cmd'
     install_flags: {{ version }}
-    uninstaller: 'salt://win/repo-ng/salt-winrepo-ng/rsync-git/remove.cmd'
+    uninstaller: 'salt://win/repo-ng/salt-winrepo-ng/_/rsync-git/remove.cmd'
     cache_dir: True
 {% endfor %}

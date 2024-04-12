@@ -43,10 +43,10 @@ gpg4win:
   {{ VERSION }}:
     full_name: 'Gpg4win ({{ VERSION }})'
     installer: 'http://files.gpg4win.org/gpg4win-{{ VERSION }}.exe'
-    install_flags: '/S /C="C:\ProgramData\Salt Project\salt\var\cache\salt\minion\files\base\win\repo-ng\salt-winrepo-ng\gpg4win\silent.ini"'
+    install_flags: '/S /C="C:\ProgramData\Salt Project\salt\var\cache\salt\minion\files\base\win\repo-ng\salt-winrepo-ng\_\gpg4win\silent.ini"'
     uninstaller: '{{ PROGRAM_FILES }}\gpg4win\gpg4win-uninstall.exe'
     uninstall_flags: '/S'
-    cache_file: salt://win/repo-ng/salt-winrepo-ng/gpg4win/silent.ini
+    cache_file: salt://win/repo-ng/salt-winrepo-ng/_/gpg4win/silent.ini
     msiexec: False
     reboot: False
   {% endfor %}

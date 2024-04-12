@@ -1,8 +1,8 @@
 chocolatey:
   latest:
     full_name: 'Chocolatey'
-    installer: 'salt://win/repo-ng/salt-winrepo-ng/chocolatey/install.cmd'
-    uninstaller: 'salt://win/repo-ng/salt-winrepo-ng/chocolatey/uninstall.cmd'
+    installer: 'salt://win/repo-ng/salt-winrepo-ng/_/chocolatey/install.cmd'
+    uninstaller: 'salt://win/repo-ng/salt-winrepo-ng/_/chocolatey/uninstall.cmd'
     cache_dir: True
 
 # this software also has it's own salt execution module, which you might prefer to use, see
