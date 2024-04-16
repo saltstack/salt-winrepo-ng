@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       # renovate: datasource=github-tags depName=python/cpython
-      PYTHON_VERSION: 3.12.2
+      PYTHON_VERSION: 3.12.3
     steps:
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
       - uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d # v5.1.0
