@@ -28,7 +28,7 @@ jobs:
       salt-latest: ${{ steps.get-salt-versions.outputs.salt-latest }}
     steps:
       - id: get-salt-versions
-        uses: dafyddj/get-salt-versions@1fcbea0eee4404137e534d66f3c22846f7c2a7ec # v3.0.0
+        uses: dafyddj/get-salt-versions@ee33ae707a4646311c1a62dd54b57d6b2e9b3a33 # v3.1.0
   refresh_db:
     name: Test `pkg.refresh_db`
     needs: gsv
