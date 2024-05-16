@@ -7,8 +7,19 @@ on:
   - workflow_dispatch
 
 jobs:
+  should-run:
+    name: Should run
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      should-run: ${{ steps.action.outputs.should-run }}
+    steps:
+      - id: action
+        uses: techneg-it/should-workflow-run@dcbb88600d59ec2842778ef1e2d41f680f876329 # v1.0.0
   pre-commit:
     name: Run `pre-commit`
+    needs: should-run
+    if: fromJSON(needs.should-run.outputs.should-run)
     runs-on: ubuntu-latest
     env:
       # renovate: datasource=github-releases depName=actions/python-versions extractVersion=^(?<version>\S+)-\d+$
@@ -21,6 +32,8 @@ jobs:
       - uses: pre-commit/action@2c7b3805fd2a0fd8c1884dcaebf91fc102a13ecd # v3.0.1
   gsv:
     name: Get Salt versions
+    needs: should-run
+    if: fromJSON(needs.should-run.outputs.should-run)
     runs-on: ubuntu-latest
     outputs:
       salt-versions-els: ${{ steps.get-salt-versions.outputs.salt-versions-els }}
