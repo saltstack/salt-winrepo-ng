@@ -13,6 +13,7 @@
 # Starting in Version 3006 salt standardized builds across all OSes on the
 # Relative Environment for Python project (relenv). The url changed as a result
 {%- load_yaml as versions_relenv %}
+- 3007.1
 - 3007.0
 - 3006.8
 - 3006.7
