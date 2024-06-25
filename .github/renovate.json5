@@ -7,6 +7,26 @@
     "helpers:pinGitHubActionDigestsToSemver",
     "regexManagers:githubActionsVersions",
   ],
+  "customDatasources": {
+      "firefox": {
+        "defaultRegistryUrlTemplate": "https://product-details.mozilla.org/1.0/firefox_versions.json",
+        "transformTemplates": [
+          "{\"releases\": [ {\"version\": $.LATEST_FIREFOX_VERSION } ] }"
+        ],
+      },
+  },
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": ["^firefox.sls$"],
+      "matchStrings": [
+        "load_yaml as versions -%}\\n- (?<currentValue>\\S+)\\n",
+      ],
+      "autoReplaceStringTemplate": "load_yaml as versions -%}\n- {{{newValue}}}\n- {{{currentValue}}}\n",
+      "datasourceTemplate": "custom.firefox",
+      "depNameTemplate": "firefox",
+    },
+  ],
   "packageRules": [
     {
       "matchPackageNames": ["python/cpython"],
