@@ -26,6 +26,14 @@
       "datasourceTemplate": "custom.firefox",
       "depNameTemplate": "firefox",
     },
+    {
+      "customType": "regex",
+      "fileMatch": ["\\.sls$"],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>\\S+?)(?: packageName=(?<packageName>\\S+?))?\\s+- [\"']?(?<currentValue>.+?)[\"']?\\s",
+      ],
+      "autoReplaceStringTemplate": "# renovate: datasource={{{datasource}}} depName={{{depName}}}{{#if packageName}} packageName={{{packageName}}}{{/if}}\n- '{{{newValue}}}'\n- '{{{currentValue}}}'\n",
+    },
   ],
   "packageRules": [
     {
@@ -34,11 +42,12 @@
     },
     {
       "matchFileNames": ["**/*.sls"],
-      "commitMessageExtra": "to {{prettyNewVersion}}",
-      "commitMessageTopic": "package {{depName}}",
+      "commitMessageAction": "add",
+      "commitMessageExtra": "{{prettyNewVersion}}",
+      "commitMessageTopic": "`{{depName}}` version",
       "extends": [
-        ":semanticPrefixFix",
         ":semanticCommitScopeDisabled",
+        ":semanticCommitType(update)",
       ],
     },
   ],
