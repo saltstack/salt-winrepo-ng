@@ -1,5 +1,10 @@
+{% load_yaml as versions -%}
+# renovate: datasource=custom.putty depName=putty
+- '0.80'
+{% endload -%}
+
 putty:
-{% for version in ['0.79', '0.78', '0.77', '0.76', '0.75', '0.74', '0.73', '0.72', '0.71', '0.70', '0.69', '0.68'] %}
+{% for version in versions + ['0.79', '0.78', '0.77', '0.76', '0.75', '0.74', '0.73', '0.72', '0.71', '0.70', '0.69', '0.68'] %}
   '{{ version }}.0.0':
     {% if grains['cpuarch'] == 'AMD64' %}
     {% set ver_arch = " (64-bit)" %}
