@@ -14,6 +14,10 @@
           "{\"releases\": [ {\"version\": $.LATEST_FIREFOX_VERSION } ] }"
         ],
       },
+      "putty": {
+        "defaultRegistryUrlTemplate": "https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html",
+        "format": "html",
+      },
   },
   "customManagers": [
     {
@@ -26,6 +30,10 @@
     },
   ],
   "packageRules": [
+    {
+      "matchDatasources": ["custom.putty"],
+      "extractVersion": "putty-64bit-(?<version>.+)-installer.msi$"
+    },
     {
       "matchPackageNames": ["python/cpython"],
       "separateMinorPatch": true,
