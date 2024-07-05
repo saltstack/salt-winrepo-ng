@@ -12,7 +12,7 @@
 {%- set lang = salt['config.get']('firefox:pkg:lang', 'en-US') %}
 
 {% load_yaml as versions -%}
-# renovate: datasource=custom.firefox depName=firefox
+# renovate: datasource=custom.firefox depName=firefox packageName=LATEST_FIREFOX_VERSION
 - 127.0.2
 - 127.0.1
 - '127.0'

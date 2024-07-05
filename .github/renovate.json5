@@ -11,7 +11,7 @@
       "firefox": {
         "defaultRegistryUrlTemplate": "https://product-details.mozilla.org/1.0/firefox_versions.json",
         "transformTemplates": [
-          "{\"releases\": [ {\"version\": $.LATEST_FIREFOX_VERSION } ] }"
+          "{\"releases\": [{ \"version\": $.{{packageName}} }] }"
         ],
       },
       "putty": {
