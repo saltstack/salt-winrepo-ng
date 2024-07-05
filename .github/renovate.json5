@@ -7,6 +7,7 @@
     "helpers:pinGitHubActionDigestsToSemver",
     "regexManagers:githubActionsVersions",
   ],
+  "dependencyDashboardTitle": "Renovate Dashboard",
   "customDatasources": {
       "firefox": {
         "defaultRegistryUrlTemplate": "https://product-details.mozilla.org/1.0/firefox_versions.json",
