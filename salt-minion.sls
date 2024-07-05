@@ -12,9 +12,14 @@
 
 # Starting in Version 3006 salt standardized builds across all OSes on the
 # Relative Environment for Python project (relenv). The url changed as a result
+# Use Renovate to apply automatic version updates. Due to the way Renovate works
+# each major version must be updated separately (otherwise all versions would be
+# updated to the latest version). New major versions e.g. 3008.0 must be added manually.
 {%- load_yaml as versions_relenv %}
+# renovate: datasource=github-tags depName=salt-3007.x packageName=saltstack/salt
 - 3007.1
 - 3007.0
+# renovate: datasource=github-tags depName=salt-3006.x packageName=saltstack/salt
 - 3006.8
 - 3006.7
 - 3006.6
