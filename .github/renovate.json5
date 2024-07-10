@@ -33,7 +33,7 @@
   "packageRules": [
     {
       "matchDatasources": ["custom.putty"],
-      "extractVersion": "putty-64bit-(?<version>.+)-installer.msi$"
+      "extractVersion": "putty-64bit-(?<version>.+)-installer\\.msi$",
     },
     {
       "matchDepNames": ["firefox-esr"],
