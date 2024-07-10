@@ -36,6 +36,10 @@
       "extractVersion": "putty-64bit-(?<version>.+)-installer.msi$"
     },
     {
+      "matchDepNames": ["firefox-esr"],
+      "extractVersion": "(?<version>.+)esr$",
+    },
+    {
       "matchPackageNames": ["python/cpython"],
       "separateMinorPatch": true,
     },
