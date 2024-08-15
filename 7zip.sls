@@ -7,6 +7,7 @@
 {% set source_path = 'https://github.com/ip7z/7zip/releases/download/' %}
 
 {%- load_yaml as versions %}
+# renovate: datasource=github-releases depName=7zip packageName=ip7z/7zip
 - '24.07'
 - '24.06'
 - '24.05'
