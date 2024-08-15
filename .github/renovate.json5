@@ -19,6 +19,10 @@
         "defaultRegistryUrlTemplate": "https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html",
         "format": "html",
       },
+      "vlc": {
+        "defaultRegistryUrlTemplate": "https://get.videolan.org/vlc/last/win64/",
+        "format": "html",
+      },
   },
   "customManagers": [
     {
@@ -31,6 +35,10 @@
     },
   ],
   "packageRules": [
+    {
+      "matchDatasources": ["custom.vlc"],
+      "extractVersion": "vlc-(?<version>.+)-win64\\.exe$",
+    },
     {
       "matchDatasources": ["custom.putty"],
       "extractVersion": "putty-64bit-(?<version>.+)-installer\\.msi$",

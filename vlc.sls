@@ -1,6 +1,10 @@
 # both 32-bit (x86) AND a 64-bit (AMD64) installer available
 {% set PROGRAM_FILES = "%ProgramFiles%" %}
-{% set versions = [
+{%- load_yaml as versions %}
+# renovate: datasource=custom.vlc depName=vlc
+- '3.0.19'
+{%- endload %}
+{% set versions_old = [
     '3.0.18',
     '3.0.17.4',
     '3.0.17.3',
@@ -21,7 +25,7 @@
 ] %}
 
 vlc:
-{% for version in versions %}
+{% for version in versions + versions_old %}
   '{{ version }}':
     full_name: 'VLC media player'
     {% if grains['cpuarch'] == 'AMD64' %}
