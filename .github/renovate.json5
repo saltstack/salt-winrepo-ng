@@ -48,6 +48,10 @@
       "extractVersion": "(?<version>.+)esr$",
     },
     {
+      "matchDepNames": ["7zip"],
+      "versioning": "loose",
+    },
+    {
       "matchPackageNames": ["python/cpython"],
       "separateMinorPatch": true,
     },
