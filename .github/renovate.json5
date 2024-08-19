@@ -32,6 +32,7 @@
         "# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>\\S+?)(?: packageName=(?<packageName>\\S+?))?\\s+- [\"']?(?<currentValue>.+?)[\"']?\\s",
       ],
       "autoReplaceStringTemplate": "# renovate: datasource={{{datasource}}} depName={{{depName}}}{{#unless (equals depName packageName)}} packageName={{{packageName}}}{{/unless}}\n- '{{{newValue}}}'\n- '{{{currentValue}}}'\n",
+      "versioningTemplate": "loose",
     },
   ],
   "packageRules": [
@@ -46,10 +47,6 @@
     {
       "matchDepNames": ["firefox-esr"],
       "extractVersion": "(?<version>.+)esr$",
-    },
-    {
-      "matchDepNames": ["7zip"],
-      "versioning": "loose",
     },
     {
       "matchPackageNames": ["python/cpython"],
