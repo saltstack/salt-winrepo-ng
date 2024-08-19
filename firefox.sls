@@ -15,6 +15,8 @@
 # renovate: datasource=custom.firefox depName=firefox packageName=LATEST_FIREFOX_VERSION
 - '129.0.1'
 - '129.0'
+- '128.0.3'
+- '128.0.2'
 - '128.0'
 - '127.0.2'
 - 127.0.1
