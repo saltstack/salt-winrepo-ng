@@ -7,7 +7,6 @@
     "helpers:pinGitHubActionDigestsToSemver",
     "regexManagers:githubActionsVersions",
   ],
-  "automerge": true,
   "dependencyDashboardTitle": "Renovate Dashboard",
   "customDatasources": {
       "firefox": {
