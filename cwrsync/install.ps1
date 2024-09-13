@@ -104,7 +104,7 @@ function Expand-ZipFile {
 }
 
 # Define variables
-$base_url = "https://itefix.net/dl/free-software"
+$base_url = "https://itefix.net/download/free"
 $file_name = "cwrsync_$Version`_x64_free.zip"
 $date = Get-Date -Format "yyyyMMdd"
 $target_dir = "$env:ProgramFiles\cwRsync"
