@@ -12,6 +12,7 @@
 {% endload -%}
 
 {% load_yaml as versions -%}
+# renovate: datasource=github-releases depName=git packageName=git-for-windows/git
 - 2.45.0.windows.1
 - 2.44.0.windows.1
 - 2.43.0.windows.1
