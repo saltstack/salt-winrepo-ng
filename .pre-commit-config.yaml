@@ -11,7 +11,7 @@ repos:
         args: [--assume-in-merge]
       - id: check-yaml
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.29.2
+    rev: 0.29.3
     hooks:
       - id: check-github-workflows
         name: Check GitHub workflows with check-jsonschema
