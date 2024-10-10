@@ -9,12 +9,12 @@
   ],
   "dependencyDashboardTitle": "Renovate Dashboard",
   "customDatasources": {
-//      "firefox": {
-//        "defaultRegistryUrlTemplate": "https://product-details.mozilla.org/1.0/firefox_versions.json",
-//        "transformTemplates": [
-//          "{\"releases\": [{ \"version\": $.{{packageName}} }] }"
-//        ],
-//      },
+      "firefox": {
+        "defaultRegistryUrlTemplate": "https://product-details.mozilla.org/1.0/firefox_versions.json",
+        "transformTemplates": [
+          "{\"releases\": [{ \"version\": $.{{packageName}} }] }",
+        ],
+      },
       "putty": {
         "defaultRegistryUrlTemplate": "https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html",
         "format": "html",
