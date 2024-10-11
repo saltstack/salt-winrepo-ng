@@ -62,6 +62,7 @@
     },
     {
       "matchFileNames": ["**/*.sls"],
+      "automerge": true,
       "commitMessageAction": "add",
       "commitMessageExtra": "{{prettyNewVersion}}",
       "commitMessageTopic": "`{{depName}}` version",
@@ -69,6 +70,22 @@
         ":semanticCommitScopeDisabled",
         ":semanticCommitType(update)",
       ],
+    },
+    {
+      "matchManagers": [
+        "github-actions",
+        "pre-commit"
+      ],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true,
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "groupName": "github-actions minor/patch",
+    },
+    {
+      "matchManagers": ["pre-commit"],
+      "groupName": "pre-commit hook minor/patch",
     },
   ],
 }
