@@ -19,6 +19,12 @@
         "defaultRegistryUrlTemplate": "https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html",
         "format": "html",
       },
+      "python-versions": {
+        "defaultRegistryUrlTemplate": "https://raw.githubusercontent.com/actions/python-versions/refs/heads/main/versions-manifest.json",
+        "transformTemplates": [
+          "{\"releases\": $ }",
+        ],
+      },
       "vlc": {
         "defaultRegistryUrlTemplate": "https://get.videolan.org/vlc/last/win64/",
         "format": "html",
@@ -47,10 +53,6 @@
     {
       "matchDepNames": ["firefox-esr"],
       "extractVersion": "(?<version>.+)esr$",
-    },
-    {
-      "matchPackageNames": ["python/cpython"],
-      "separateMinorPatch": true,
     },
     {
       // Salt major version releases must be added manually to the sls file
