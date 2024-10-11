@@ -15,6 +15,7 @@
 # renovate: datasource=custom.firefox depName=firefox-esr packageName=FIREFOX_ESR
 - '128.3.1'
 - '128.3.0'
+- '115.16.0'
 - '115.15.0'
 - '115.14.0'
 - '115.13.0'
