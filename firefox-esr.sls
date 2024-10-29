@@ -13,6 +13,7 @@
 
 {% load_yaml as versions -%}
 # renovate: datasource=custom.firefox depName=firefox-esr packageName=FIREFOX_ESR
+- '128.4.0'
 - '128.3.1'
 - '128.3.0'
 - '115.16.1'
