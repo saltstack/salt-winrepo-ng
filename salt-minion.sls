@@ -15,7 +15,7 @@
 # Use Renovate to apply automatic version updates. Due to the way Renovate works
 # each major version must be updated separately (otherwise all versions would be
 # updated to the latest version). New major versions e.g. 3008.0 must be added manually.
-{%- load_yaml as versions_relenv %}
+{%- load_yaml as relenv_versions %}
 # renovate: datasource=github-tags depName=salt-3007.x packageName=saltstack/salt
 - 3007.1
 - 3007.0
@@ -118,7 +118,7 @@
 
 salt-minion-py3:
   # RELENV VERSIONS
-  {%- for version in versions_relenv %}
+  {%- for version in relenv_versions %}
   '{{ version }}':
     full_name: 'Salt Minion {{ version }} (Python 3)'
     {% if grains['cpuarch'] == 'AMD64' -%}
@@ -138,7 +138,7 @@ salt-minion-py3:
   {% endfor -%}
 
   # REMOVE ONLY VERSIONS (CVE, Unsupported, Missing Artifacts)
-  {%- for version in remove_only_version %}
+  {%- for version in remove_only_versions %}
   '{{ version }}':
     skip_urltest: True
     full_name: 'Salt Minion {{ version }} (Python 3)'
