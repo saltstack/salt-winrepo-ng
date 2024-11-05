@@ -1,91 +1,111 @@
 {
-  "extends": [
-    "config:recommended",
-    ":enablePreCommit",
-    ":semanticCommitScopeDisabled",
-    ":semanticPrefixChore",
-    "helpers:pinGitHubActionDigestsToSemver",
-    "regexManagers:githubActionsVersions",
+  extends: [
+    'config:recommended',
+    ':enablePreCommit',
+    ':semanticCommitScopeDisabled',
+    ':semanticPrefixChore',
+    'helpers:pinGitHubActionDigestsToSemver',
+    'customManagers:githubActionsVersions',
   ],
-  "dependencyDashboardTitle": "Renovate Dashboard",
-  "customDatasources": {
-      "firefox": {
-        "defaultRegistryUrlTemplate": "https://product-details.mozilla.org/1.0/firefox_versions.json",
-        "transformTemplates": [
-          "{\"releases\": [{ \"version\": $.{{packageName}} }] }",
-        ],
-      },
-      "putty": {
-        "defaultRegistryUrlTemplate": "https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html",
-        "format": "html",
-      },
-      "python-versions": {
-        "defaultRegistryUrlTemplate": "https://raw.githubusercontent.com/actions/python-versions/refs/heads/main/versions-manifest.json",
-        "transformTemplates": [
-          "{\"releases\": $ }",
-        ],
-      },
-      "vlc": {
-        "defaultRegistryUrlTemplate": "https://get.videolan.org/vlc/last/win64/",
-        "format": "html",
-      },
+  dependencyDashboardTitle: 'Renovate Dashboard',
+  customDatasources: {
+    firefox: {
+      defaultRegistryUrlTemplate: 'https://product-details.mozilla.org/1.0/firefox_versions.json',
+      transformTemplates: [
+        '{"releases": [{ "version": $.{{packageName}} }] }',
+      ],
+    },
+    putty: {
+      defaultRegistryUrlTemplate: 'https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html',
+      format: 'html',
+    },
+    'python-versions': {
+      defaultRegistryUrlTemplate: 'https://raw.githubusercontent.com/actions/python-versions/refs/heads/main/versions-manifest.json',
+      transformTemplates: [
+        '{"releases": $ }',
+      ],
+    },
+    vlc: {
+      defaultRegistryUrlTemplate: 'https://get.videolan.org/vlc/last/win64/',
+      format: 'html',
+    },
   },
-  "customManagers": [
+  customManagers: [
     {
-      "customType": "regex",
-      "fileMatch": ["\\.sls$"],
-      "matchStrings": [
-        "# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>\\S+?)(?: packageName=(?<packageName>\\S+?))?\\s+- [\"']?(?<currentValue>.+?)[\"']?\\s",
+      customType: 'regex',
+      fileMatch: [
+        '\\.sls$',
       ],
-      "autoReplaceStringTemplate": "# renovate: datasource={{{datasource}}} depName={{{depName}}}{{#unless (equals depName packageName)}} packageName={{{packageName}}}{{/unless}}\n- '{{{newValue}}}'\n- '{{{currentValue}}}'\n",
-      "versioningTemplate": "loose",
+      matchStrings: [
+        '# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>\\S+?)(?: packageName=(?<packageName>\\S+?))?\\s+- ["\']?(?<currentValue>.+?)["\']?\\s',
+      ],
+      autoReplaceStringTemplate: "# renovate: datasource={{{datasource}}} depName={{{depName}}}{{#unless (equals depName packageName)}} packageName={{{packageName}}}{{/unless}}\n- '{{{newValue}}}'\n- '{{{currentValue}}}'\n",
+      versioningTemplate: 'loose',
     },
   ],
-  "packageRules": [
+  packageRules: [
     {
-      "matchDatasources": ["custom.vlc"],
-      "extractVersion": "vlc-(?<version>.+)-win64\\.exe$",
+      matchDatasources: [
+        'custom.vlc',
+      ],
+      extractVersion: 'vlc-(?<version>.+)-win64\\.exe$',
     },
     {
-      "matchDatasources": ["custom.putty"],
-      "extractVersion": "putty-64bit-(?<version>.+)-installer\\.msi$",
+      matchDatasources: [
+        'custom.putty',
+      ],
+      extractVersion: 'putty-64bit-(?<version>.+)-installer\\.msi$',
     },
     {
-      "matchDepNames": ["firefox-esr"],
-      "extractVersion": "(?<version>.+)esr$",
+      matchDepNames: [
+        'firefox-esr',
+      ],
+      extractVersion: '(?<version>.+)esr$',
     },
     {
-      // Salt major version releases must be added manually to the sls file
-      "matchDepPrefixes": ["salt-"],
-      "matchUpdateTypes": ["major"],
-      "enabled": false,
-    },
-    {
-      "matchFileNames": ["**/*.sls"],
-      "automerge": true,
-      "commitMessageAction": "add",
-      "commitMessageExtra": "{{prettyNewVersion}}",
-      "commitMessageTopic": "`{{depName}}` version",
-      "extends": [
-        ":semanticCommitScopeDisabled",
-        ":semanticCommitType(update)",
+      matchUpdateTypes: [
+        'major',
+      ],
+      enabled: false,
+      matchDepNames: [
+        'salt-{/,}**',
       ],
     },
     {
-      "matchManagers": [
-        "github-actions",
-        "pre-commit"
+      matchFileNames: [
+        '**/*.sls',
       ],
-      "matchUpdateTypes": ["minor", "patch"],
-      "automerge": true,
+      automerge: true,
+      commitMessageAction: 'add',
+      commitMessageExtra: '{{prettyNewVersion}}',
+      commitMessageTopic: '`{{depName}}` version',
+      extends: [
+        ':semanticCommitScopeDisabled',
+        ':semanticCommitType(update)',
+      ],
     },
     {
-      "matchManagers": ["github-actions"],
-      "groupName": "github-actions minor/patch",
+      matchManagers: [
+        'github-actions',
+        'pre-commit',
+      ],
+      matchUpdateTypes: [
+        'minor',
+        'patch',
+      ],
+      automerge: true,
     },
     {
-      "matchManagers": ["pre-commit"],
-      "groupName": "pre-commit hook minor/patch",
+      matchManagers: [
+        'github-actions',
+      ],
+      groupName: 'github-actions minor/patch',
+    },
+    {
+      matchManagers: [
+        'pre-commit',
+      ],
+      groupName: 'pre-commit hook minor/patch',
     },
   ],
 }
