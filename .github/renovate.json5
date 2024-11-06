@@ -5,7 +5,7 @@
     ":semanticCommitScopeDisabled",
     ":semanticPrefixChore",
     "helpers:pinGitHubActionDigestsToSemver",
-    "regexManagers:githubActionsVersions",
+    "customManagers:githubActionsVersions",
   ],
   "dependencyDashboardTitle": "Renovate Dashboard",
   "customDatasources": {
@@ -56,7 +56,7 @@
     },
     {
       // Salt major version releases must be added manually to the sls file
-      "matchDepPrefixes": ["salt-"],
+      "matchPackageNames": ["saltstack/salt"],
       "matchUpdateTypes": ["major"],
       "enabled": false,
     },
