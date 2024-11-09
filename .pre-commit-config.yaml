@@ -17,5 +17,7 @@ repos:
         args: ["--verbose"]
       - id: check-renovate
         name: Check Renovate config with check-jsonschema
-        additional_dependencies: [json5==0.9.14]
+        additional_dependencies:
+          # renovate: datasource=pypi
+          - json5==0.9.14
         args: ["--verbose"]
