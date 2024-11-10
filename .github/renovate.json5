@@ -33,7 +33,7 @@
   "customManagers": [
     { // See https://github.com/renovatebot/renovate/issues/20780
       "customType": "regex",
-      "fileMatch": ["^.pre-commit-config.yaml$"],
+      "fileMatch": ["^\\.pre-commit-config\\.yaml$"],
       "matchStrings": [
         "# renovate: datasource=(?<datasource>.*?)( versioning=(?<versioning>.*?))?\\s+-\\s+['\"]?(?<depName>[^=]+)(?:==(?<currentValue>[^'\"\\s]*))?"
       ],
