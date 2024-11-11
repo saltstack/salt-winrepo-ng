@@ -19,5 +19,5 @@ repos:
         name: Check Renovate config with check-jsonschema
         additional_dependencies:
           # renovate: datasource=pypi
-          - json5==0.9.25
+          - json5==0.9.28
         args: ["--verbose"]
