@@ -21,3 +21,9 @@ repos:
           # renovate: datasource=pypi
           - json5==0.9.28
         args: ["--verbose"]
+  - repo: https://github.com/biomejs/pre-commit
+    rev: v0.5.0
+    hooks:
+      - id: biome-check
+        name: Check JavaScript with biome
+        additional_dependencies: ["@biomejs/biome@1.9.4"]
