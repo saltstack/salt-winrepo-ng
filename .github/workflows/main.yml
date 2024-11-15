@@ -121,7 +121,7 @@ jobs:
           ignore: Collect results
           token: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-      - uses: codfish/semantic-release-action@9a999e0cdb207de2c9d9d4276860435727818989 # v3.4.1
+      - uses: codfish/semantic-release-action@b621d34fabe0940f031e89b6ebfea28322892a10 # v3.5.0
         with:
           additional-packages: conventional-changelog-conventionalcommits@7.0.2
         env:
