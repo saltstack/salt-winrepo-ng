@@ -5,7 +5,8 @@
 {%- endload%}
 pandoc:
 {%- for version in versions %}
-  {%- if salt["pkg.version_cmp"](version, "2.2") > 0 %}
+  {%- set parts = version.split(".") %}
+  {%- if [parts[0], parts[1]] | map('int') | list >= [2, 2]%}
     # Starting in version 2.2 "-x86_64" is added to the filename
     {%- set file_name = "pandoc-" ~ version ~ "-windows-x86_64.msi" %}
   {%- else %}
