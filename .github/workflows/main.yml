@@ -6,6 +6,10 @@ on:
   - workflow_call
   - workflow_dispatch
 
+env:
+  REPO_JSON_DIR: repo_data
+  REPO_JSON_FILE: repo.json
+
 jobs:
   should-run:
     name: Should run
@@ -74,6 +78,21 @@ jobs:
               exit 1
           }
           $pkgs
+      - name: Run `salt-call pkg.get_repo_data` (Only for latest Salt version)
+        if: needs.gsv.outputs.salt-latest == matrix.salt-version
+        run: |
+          salt-call --out=json pkg.get_repo_data > $env:REPO_JSON_FILE
+          if ($LASTEXITCODE) {
+              Write-Host ("::error title=salt-call::salt-call returned exit code: $LASTEXITCODE")
+              exit 1
+          }
+      - uses: actions/upload-artifact@v4.4.3
+        if: needs.gsv.outputs.salt-latest == matrix.salt-version
+        with:
+          if-no-files-found: error
+          name: ${{ env.REPO_JSON_DIR }}
+          path: ${{ env.REPO_JSON_FILE }}
+          retention-days: 10
   test:
     name: Run URL tests
     needs:
