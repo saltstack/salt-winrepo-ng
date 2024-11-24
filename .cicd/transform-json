@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Check if the jq binary exists
+if ! [ -x "$(command -v jq)" ]; then
+  echo "Error: 'jq' binary not found or not executable" >&2
+  exit 1
+fi
+
+readonly OUTPUT_DIR="${OUTPUT_DIR:-public}"
+
+process_repo() {
+  # For each defined package, output a list of its versions to a file <package>.json in the output directory
+  echo "$1" | jq -r '.local.repo | to_entries[] | "\(.key).json"' | while read -r filename; do
+    echo "$1" | jq --arg pkg "${filename%.json}" \
+       '{"releases": [ .local.repo[$pkg] | keys[] | {version: .} ]}' > "$OUTPUT_DIR/$filename"
+  done
+}
+
+repo_as_json=$(cat)
+
+if ! echo "$repo_as_json" | jq empty 2>/dev/null; then
+    echo "Error:  Valid JSON is required" >&2
+    exit 1
+else
+  if [ ! -d "$OUTPUT_DIR" ]; then
+    mkdir -p "$OUTPUT_DIR"
+  fi
+  process_repo "$repo_as_json"
+fi

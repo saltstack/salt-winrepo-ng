@@ -23,6 +23,7 @@ const releaseRules = [
 ];
 
 const config = {
+	branches: [{ name: "ma(in|ster)", channel: "latest" }],
 	plugins: [
 		["@semantic-release/commit-analyzer", { releaseRules: releaseRules }],
 		"@semantic-release/release-notes-generator",
