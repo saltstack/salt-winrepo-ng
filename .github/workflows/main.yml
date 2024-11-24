@@ -150,7 +150,7 @@ jobs:
           additional-packages: conventional-changelog-conventionalcommits@7.0.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions/download-artifact@v4.1.8
+      - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4.1.8
         if: runner.debug || fromJSON(steps.sem-rel.outputs.new-release-published)
       - name: Transform dumped repo data to Renovate-style JSON
         if: runner.debug || fromJSON(steps.sem-rel.outputs.new-release-published)
@@ -161,14 +161,14 @@ jobs:
             ls --almost-all --recursive --ignore node_modules --ignore .git
             echo "::endgroup::"
           fi
-      - uses: peaceiris/actions-gh-pages@v4.0.0
+      - uses: peaceiris/actions-gh-pages@4f9cc6602d3f66b9c108549d475ec49e8ef4d45e # v4.0.0
         if: fromJSON(steps.sem-rel.outputs.new-release-published)
         with:
           commit_message: |
             deploy: ${{ steps.sem-rel.outputs.git-tag }}
           destination_dir: ${{ steps.sem-rel.outputs.git-tag }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: peaceiris/actions-gh-pages@v4.0.0
+      - uses: peaceiris/actions-gh-pages@4f9cc6602d3f66b9c108549d475ec49e8ef4d45e # v4.0.0
         if: fromJSON(steps.sem-rel.outputs.new-release-published)
         with:
           commit_message: |
