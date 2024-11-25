@@ -31,8 +31,7 @@ cpu-z:
 {%- for version in versions %}
   '{{ version }}':
     full_name: CPUID CPU-Z {{ version }}
-    # http url used as https does not exist for download.cpuid.com subdomain
-    installer: http://download.cpuid.com/cpu-z/cpu-z_{{ version }}-en.exe
+    installer: https://download.cpuid.com/cpu-z/cpu-z_{{ version }}-en.exe
     install_flags: /SP- /VERYSILENT /SUPPRESSMSGBOXES /NORESTART
     uninstaller: '%ProgramFiles%\CPUID\CPU-Z\unins000.exe'
     uninstall_flags: /SP- /VERYSILENT /SUPPRESSMSGBOXES /NORESTART
