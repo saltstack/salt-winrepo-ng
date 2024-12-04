@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       # renovate: datasource=custom.python-versions depName=actions/python-versions versioning=pep440
-      PYTHON_VERSION: 3.13.0
+      PYTHON_VERSION: 3.13.1
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # v5.3.0
