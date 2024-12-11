@@ -13,6 +13,8 @@ env:
 jobs:
   should-run:
     name: Should run
+    permissions:
+      pull-requests: read
     runs-on: ubuntu-latest
     timeout-minutes: 5
     outputs:
