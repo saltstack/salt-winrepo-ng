@@ -11,11 +11,8 @@
 - '0.4.3.143'
 - '0.4.3.88'
 {%- endload%}
-# This is to handle the architecture
-{%- if grains['cpuarch'] == 'AMD64' %}
-  {%- set arch_file = "x64" %}
-  {%- set arch_name = "x64" %}
-{%- else %}
+
+{%- if grains["cpuarch"] == "x86" %}
   {%- set arch_file = "Win32" %}
   {%- set arch_name = "x86" %}
 {%- endif %}
@@ -30,9 +27,9 @@ nsclient:
   {%- endif %}
 
   '{{ display_version|d(version) }}':
-    full_name:  'NSClient++ ({{ arch_name }})'
-    installer: 'https://github.com/mickem/nscp/releases/download/{{ version }}/NSCP-{{ version }}-{{ arch_file }}.msi'
-    uninstaller: 'https://github.com/mickem/nscp/releases/download/{{ version }}/NSCP-{{ version }}-{{ arch_file }}.msi'
+    full_name:  'NSClient++ ({{ arch_name|d("x64") }})'
+    installer: 'https://github.com/mickem/nscp/releases/download/{{ version }}/NSCP-{{ version }}-{{ arch_file|d("x64") }}.msi'
+    uninstaller: 'https://github.com/mickem/nscp/releases/download/{{ version }}/NSCP-{{ version }}-{{ arch_file|d("x64") }}.msi'
     install_flags: '/quiet'
     uninstall_flags: '/quiet'
     msiexec: True
