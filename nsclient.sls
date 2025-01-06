@@ -1,4 +1,4 @@
-{%- load_yaml as versions %}
+{% load_yaml as versions -%}
 # renovate: datasource=github-releases depName=nscp packageName=mickem/nscp
 - '0.5.3.4'
 - '0.5.2.39'
@@ -10,7 +10,7 @@
 - '0.4.4.19'
 - '0.4.3.143'
 - '0.4.3.88'
-{%- endload%}
+{% endload -%}
 
 {%- if grains["cpuarch"] == "x86" %}
   {%- set arch_file = "Win32" %}
@@ -27,12 +27,9 @@ nsclient:
   {%- endif %}
 
   '{{ display_version|d(version) }}':
-    full_name:  'NSClient++ ({{ arch_name|d("x64") }})'
-    installer: 'https://github.com/mickem/nscp/releases/download/{{ version }}/NSCP-{{ version }}-{{ arch_file|d("x64") }}.msi'
-    uninstaller: 'https://github.com/mickem/nscp/releases/download/{{ version }}/NSCP-{{ version }}-{{ arch_file|d("x64") }}.msi'
-    install_flags: '/quiet'
-    uninstall_flags: '/quiet'
-    msiexec: True
-    locale: en_US
-    reboot: False
+    full_name:  NSClient++ ({{ arch_name|d("x64") }})
+    installer: https://github.com/mickem/nscp/releases/download/{{ version }}/NSCP-{{ version }}-{{ arch_file|d("x64") }}.msi
+    install_flags: /quiet
+    uninstall_flags: /quiet
+    msiexec: true
 {%- endfor %}
