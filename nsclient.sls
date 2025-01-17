@@ -31,7 +31,7 @@ nsclient:
   '{{ display_version|d(version) }}':
     full_name:  NSClient++ ({{ arch_name|d("x64") }})
     installer: https://github.com/mickem/nscp/releases/download/{{ version }}/NSCP-{{ version }}-{{ arch_file|d("x64") }}.msi
-    install_flags: /quiet
-    uninstall_flags: /quiet
+    install_flags: /qn /norestart
+    uninstall_flags: /qn /norestart
     msiexec: true
 {%- endfor %}
