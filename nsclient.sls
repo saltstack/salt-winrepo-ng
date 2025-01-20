@@ -22,12 +22,17 @@
 
 nsclient:
 {%- for version in versions %}
-  {#- v0.5.x.x and later Windows display versions have only three parts (e.g. 0.5.2039) #}
+  {#- v0.5.x.x up to v0.6.4 Windows display versions have only three parts (e.g. 0.5.2039) #}
+  {#- v0.6.5 and newer have display versions similar to 0.6.5.000 #}
   {%- if salt["pkg.compare_versions"](version, ">=", "0.5") %}
     {%- set parts = version.split(".") %}
     {%- set major, minor, patch = parts[:3] %}
     {%- set build = parts[3]|d("0") %}
-    {%- set display_version = ".".join([major, minor, patch ~ build.zfill(3)]) %}
+    {%- if salt["pkg.compare_versions"](version, "<", "0.6.5") %}
+      {%- set display_version = ".".join([major, minor, patch ~ build.zfill(3)]) %}
+    {%- else %}
+      {%- set display_version = ".".join([major, minor, patch, build.zfill(3)]) %}
+    {%- endif %}
   {%- endif %}
 
   '{{ display_version|d(version) }}':
