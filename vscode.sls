@@ -21,10 +21,10 @@ vscode:
     full_name: 'Microsoft Visual Studio Code'
     {% if grains['cpuarch'] == 'AMD64' %}
 #    installer: 'salt://win/repo-ng/vscode/VSCodeSetup-x64-{{ version }}.exe'
-    installer: 'https://az764295.vo.msecnd.net/stable/{{ guid }}/VSCodeSetup-x64-{{version}}.exe'
+    installer: 'https://vscode.download.prss.microsoft.com/dbazure/download/stable/{{ guid }}/VSCodeSetup-x64-{{ version }}.exe'
 {% else %}
 #    installer: 'salt://win/repo-ng/vscode/VSCodeSetup-ia32-{{ version }}.exe'
-    installer: 'https://az764295.vo.msecnd.net/stable/{{ guid }}/VSCodeSetup-ia32-{{version}}.exe'
+    installer: 'https://vscode.download.prss.microsoft.com/dbazure/download/stable/{{ guid }}/VSCodeSetup-ia32-{{ version }}.exe'
 {% endif %}
     uninstaller: '{{ PROGRAM_FILES }}\Microsoft VS Code\unins000.exe'
     install_flags: '/SP- /VERYSILENT /NORESTART /MERGETASKS="!RUNCODE,ADDCONTEXTMENUFILES,ADDCONTEXTMENUFOLDERS,ADDTOPATH"'
