@@ -1,5 +1,6 @@
 {% load_yaml as versions -%}
 # renovate: datasource=custom.putty depName=putty
+- '0.83'
 - '0.82'
 - '0.81'
 - '0.80'
