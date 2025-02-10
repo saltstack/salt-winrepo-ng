@@ -5,6 +5,7 @@
 {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {% set versions = {'5':['70', '61']} %}
 {% set VERSIONS = (
+        ('1.97.0', '33fc5a94a3f99ebe7087e8fe79fbe1d37a251016'),
         ('1.50.1', 'd2e414d9e4239a252d1ab117bd7067f125afd80a'),
         ('1.49.3', '2af051012b66169dde0c4dfae3f5ef48f787ff69'),
         ('1.48.2', 'a0479759d6e9ea56afa657e454193f72aef85bd0'),
@@ -21,10 +22,10 @@ vscode:
     full_name: 'Microsoft Visual Studio Code'
     {% if grains['cpuarch'] == 'AMD64' %}
 #    installer: 'salt://win/repo-ng/vscode/VSCodeSetup-x64-{{ version }}.exe'
-    installer: 'https://az764295.vo.msecnd.net/stable/{{ guid }}/VSCodeSetup-x64-{{version}}.exe'
+    installer: 'https://vscode.download.prss.microsoft.com/dbazure/download/stable/{{ guid }}/VSCodeSetup-x64-{{ version }}.exe'
 {% else %}
 #    installer: 'salt://win/repo-ng/vscode/VSCodeSetup-ia32-{{ version }}.exe'
-    installer: 'https://az764295.vo.msecnd.net/stable/{{ guid }}/VSCodeSetup-ia32-{{version}}.exe'
+    installer: 'https://vscode.download.prss.microsoft.com/dbazure/download/stable/{{ guid }}/VSCodeSetup-ia32-{{ version }}.exe'
 {% endif %}
     uninstaller: '{{ PROGRAM_FILES }}\Microsoft VS Code\unins000.exe'
     install_flags: '/SP- /VERYSILENT /NORESTART /MERGETASKS="!RUNCODE,ADDCONTEXTMENUFILES,ADDCONTEXTMENUFOLDERS,ADDTOPATH"'
