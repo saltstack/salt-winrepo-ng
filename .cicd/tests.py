@@ -3,12 +3,14 @@ import getopt
 import glob
 import magic
 import requests
-import salt.client
+import salt.config
+import salt.loader
 import sys
 import time
 import traceback
 from collections import Counter
 from pprint import pprint
+from salt._logging import setup_console_handler
 from tabulate import tabulate
 from urllib.parse import urlparse
 
@@ -59,6 +61,7 @@ for o in opts:
     if o in ("-d", "--debug"):
         debug = True
         printd("ploop", {"extra": "debug", "data": None})
+        setup_console_handler(LOG_LEVELS["debug"])
     if o in ("-h", "--help_"):
         help_ = True
 
@@ -197,8 +200,18 @@ if len(our_files) == 0:
     print("No files to check. No problem.")
     exit(0)
 
-# This is a stupid thing we have to do because the grains don't flip right
-label_rev = {"AMD64": "x86", "x86": "AMD64"}
+__salt__ = {}
+grains = {"kernel": "Windows", "os": "Windows", "os_family": "Windows", "osrelease": "10"}
+overrides = {"providers": {"pkg": "win_pkg", "reg": "test_salt_winrepo_mod", "winrepo": "winrepo"}, "root_dir": "/tmp/salt"}
+
+__opts__ = salt.config.apply_minion_config(overrides)
+__utils__ = salt.loader.utils(__opts__)
+
+__opts__ = salt.config.apply_minion_config(overrides | {"grains": grains | {"cpuarch": "AMD64"}})
+__salt__["AMD64"] = salt.loader.minion_mods(__opts__, utils=__utils__)
+
+__opts__ = salt.config.apply_minion_config(overrides | {"grains": grains | {"cpuarch": "x86"}})
+__salt__["x86"] = salt.loader.minion_mods(__opts__, utils=__utils__)
 
 for file in our_files:
     try:
@@ -212,19 +225,16 @@ for file in our_files:
             template = stream.read()
         if "cpuarch" in template:
             for cpuarch in ["AMD64", "x86"]:
-                label = " ( arch: {} ) ".format(label_rev[cpuarch])
+                label = " ( arch: {} ) ".format(cpuarch)
                 count = 80 - len(label)
                 count = count - count % 2
                 count = round( count / 2)
                 label = "-" * count + label + "-" * count
                 print(label + "-" * (80 - len(label)))
-                caller = salt.client.Caller(".cicd/minion")
-                caller.cmd("grains.set", "cpuarch", cpuarch)
-                data = caller.cmd("winrepo.show_sls", file)
+                data = __salt__[cpuarch]["winrepo.show_sls"](file)
                 process_each(data)
         else:
-            caller = salt.client.Caller(".cicd/minion")
-            data = caller.cmd("winrepo.show_sls", file)
+            data = __salt__["AMD64"]["winrepo.show_sls"](file)
             process_each(data)
     except Exception:
         exc = sys.exc_info()[0]
