@@ -4,6 +4,7 @@
 # Hint: Since Version 0.13.0, the full_name has changed from "WMI Exporter" to "windows_exporter".
 
 {% set versions = [
+                   '0.30.4',
                    '0.20.0',
                    '0.19.0',
                    '0.18.0',
