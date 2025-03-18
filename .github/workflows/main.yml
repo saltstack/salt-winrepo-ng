@@ -155,7 +155,7 @@ jobs:
           additional-packages: conventional-changelog-conventionalcommits@7.0.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions/download-artifact@cc203385981b70ca67e1cc392babf9cc229d5806 # v4.1.9
+      - uses: actions/download-artifact@b14cf4c92620c250e1c074ab0a5800e37df86765 # v4.2.0
         if: runner.debug || fromJSON(steps.sem-rel.outputs.new-release-published)
       - name: Transform dumped repo data to Renovate-style JSON
         if: runner.debug || fromJSON(steps.sem-rel.outputs.new-release-published)
