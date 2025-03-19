@@ -1,5 +1,6 @@
-# both 32-bit (x86) AND a 64-bit (AMD64) installer available for git
-{% set arch = {'AMD64': '64', 'x86': '32'}[salt["grains.get"]("cpuarch")] -%}
+# Both 32-bit (x86) AND a 64-bit (AMD64) installer available for Git until v2.48.1
+{% set cpu_arch = salt["grains.get"]("cpuarch", "AMD64") -%}
+{% set url_arch = {'AMD64': '64', 'x86': '32'}[cpu_arch] ~ "-bit" -%}
 
 # Since version 2.33.0 no version number is added to the full_name field
 # See https://github.com/git-for-windows/build-extra/pull/365
@@ -13,6 +14,10 @@
 
 {% load_yaml as versions -%}
 # renovate: datasource=github-releases depName=git packageName=git-for-windows/git
+[]
+{% endload -%}
+
+{% load_yaml as x64_and_x86_versions -%}
 - '2.48.1.windows.1'
 - '2.47.1.windows.2'
 - '2.47.1.windows.1'
@@ -153,8 +158,10 @@
 - 2.19.2.windows.1
 {% endload -%}
 
+{% set arch_specific_versions = {"AMD64": versions + x64_and_x86_versions, "x86": x64_and_x86_versions} -%}
+
 git:
-{%- for version in versions + uninstall_only %}
+{%- for version in arch_specific_versions[cpu_arch] + uninstall_only %}
   {% set git_version = version.split(".")[:3]|join(".") -%}
   {% set win_suffix = version[-1:] -%}
   {% if win_suffix|int > 1 -%}
@@ -173,7 +180,7 @@ git:
     {% endif -%}
     full_name: Git{{ full_name_suffix|d }}
     {% if version not in uninstall_only -%}
-    installer: https://github.com/git-for-windows/git/releases/download/v{{ version }}/Git-{{ compact_version }}-{{ arch }}-bit.exe
+    installer: https://github.com/git-for-windows/git/releases/download/v{{ version }}/Git-{{ compact_version }}-{{ url_arch }}.exe
     # It is impossible to downgrade git silently. It will always pop a message
     # that will cause salt to hang. `/SUPPRESSMSGBOXES` will suppress that
     # warning allowing salt to continue, but the package will not downgrade
@@ -183,7 +190,7 @@ git:
     uninstall_flags: /p "%ProgramFiles%\Git" /m unins*.exe /c "cmd /c @path /VERYSILENT /NORESTART"
 {%- endfor %}
 
-{% set PROGRAM_FILES = {'AMD64': '%ProgramFiles(x86)%', 'x86': '%ProgramFiles%'}[salt["grains.get"]("cpuarch")] -%}
+{% set PROGRAM_FILES = {'AMD64': '%ProgramFiles(x86)%', 'x86': '%ProgramFiles%'}[cpu_arch] -%}
 
 msysgit:
   '1.9.5-preview20150319':
