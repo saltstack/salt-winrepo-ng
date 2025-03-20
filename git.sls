@@ -1,23 +1,65 @@
-# Both 32-bit (x86) AND a 64-bit (AMD64) installer available for Git until v2.48.1
-{% set cpu_arch = salt["grains.get"]("cpuarch", "AMD64") -%}
-{% set url_arch = {"AMD64": "64", "x86": "32"}[cpu_arch] ~ "-bit" -%}
+# The git installer has changed format throughout the years. These have been broken down into
+# groups for each change. These changes are related to the name as displayed in Windows as well
+# as the URL to the installer file itself.
 
-# Since version 2.33.0 no version number is added to the full_name field
-# See https://github.com/git-for-windows/build-extra/pull/365
+# both 32-bit (x86) AND a 64-bit (AMD64) installer available for git
+{% set cpuarch = salt["grains.get"]("cpuarch") -%}
 
-# There was a short-lived change in version format
-# See https://github.com/git-for-windows/git/issues/2223
-{% load_yaml as new_style_versions -%}
-- '2.23.0.windows.1'
-- '2.22.0.windows.1'
-{% endload -%}
+{% macro print_install(display_version, version, pkg_version, arch, full_name) -%}
+  # Set the following, then call this macro
+  # display_version
+  # version
+  # pkg_version
+  # arch
+  # full_name
+  '{{ display_version }}':
+    full_name: {{ full_name|d }}
+    installer: https://github.com/git-for-windows/git/releases/download/v{{ version }}/Git-{{ pkg_version }}-{{ arch }}-bit.exe
+    # It is impossible to downgrade git silently. It will always pop a message
+    # that will cause salt to hang. `/SUPPRESSMSGBOXES` will suppress that
+    # warning allowing salt to continue, but the package will not downgrade
+    install_flags: /VERYSILENT /NORESTART /SP- /NOCANCEL /SUPPRESSMSGBOXES
+    uninstaller: forfiles
+    uninstall_flags: /p "%ProgramFiles%\Git" /m unins*.exe /c "cmd /c @path /VERYSILENT /NORESTART"
+{% endmacro -%}
 
-{% load_yaml as versions -%}
+{% macro print_uninstall_only(display_version, full_name) -%}
+  # Set the following, then call this macro
+  # display_version
+  # full_name
+  '{{ display_version }}':
+    full_name: {{ full_name|d }}
+    uninstaller: forfiles
+    uninstall_flags: /p "%ProgramFiles%\Git" /m unins*.exe /c "cmd /c @path /VERYSILENT /NORESTART"
+{% endmacro -%}
+
+git:
+# Version 2.49.0 and forward only provide a 64 bit installer
+# See https://github.com/git-for-windows/git/releases/tag/v2.48.1.windows.1
+{% load_yaml as versions_64 -%}
 # renovate: datasource=github-releases depName=git packageName=git-for-windows/git
 - '2.49.0.windows.1'
 {% endload -%}
 
-{% load_yaml as x64_and_x86_versions -%}
+{% if cpuarch == "AMD64" -%}
+  {%- for version in versions_64 %}
+    {% set full_name = "Git" -%}
+    {% set git_version = version.split(".")[:3]|join(".") -%}
+    {% set win_suffix = version[-1:] -%}
+    {% if win_suffix|int > 1 -%}
+      {% set pkg_version = git_version ~ "." ~ win_suffix -%}
+    {% else -%}
+      {% set pkg_version = git_version -%}
+    {% endif -%}
+    {% set display_version = pkg_version -%}
+    {% set arch = "64" %}
+    {{ print_install(display_version, version, pkg_version, arch, full_name) }}
+  {% endfor -%}
+{% endif -%}
+
+# Version 2.48.1 is the last version to provide a 32-bit installer
+# See https://github.com/git-for-windows/git/releases/tag/v2.48.1.windows.1
+{% load_yaml as versions_32_64 -%}
 - '2.48.1.windows.1'
 - '2.47.1.windows.2'
 - '2.47.1.windows.1'
@@ -59,6 +101,24 @@
 - '2.33.1.windows.1'
 - '2.33.0.windows.2'
 - '2.33.0.windows.1'
+{% endload -%}
+{% set arch = {'AMD64': '64', 'x86': '32'}[cpuarch] -%}
+{%- for version in versions_32_64 %}
+  {% set full_name = "Git" -%}
+  {% set git_version = version.split(".")[:3] | join(".") -%}
+  {% set win_suffix = version[-1:] -%}
+  {% if win_suffix|int > 1 -%}
+    {% set pkg_version = git_version ~ "." ~ win_suffix -%}
+  {% else -%}
+    {% set pkg_version = git_version -%}
+  {% endif -%}
+  {% set display_version = pkg_version -%}
+  {{ print_install(display_version, version, pkg_version, arch, full_name) }}
+{% endfor -%}
+
+# Version prior to 2.33.0 have version number added to the full_name field
+# See https://github.com/git-for-windows/build-extra/pull/365
+{% load_yaml as versions_32_64_full_name -%}
 - '2.32.0.windows.2'
 - '2.32.0.windows.1'
 - '2.31.1.windows.1'
@@ -82,8 +142,6 @@
 - '2.24.1.windows.2'
 - '2.24.0.windows.2'
 - '2.24.0.windows.1'
-- '2.23.0.windows.1'
-- '2.22.0.windows.1'
 - '2.21.0.windows.1'
 - '2.20.1.windows.1'
 - '2.20.0.windows.1'
@@ -153,45 +211,58 @@
 - '2.5.1.windows.1'
 - '2.5.0.windows.1'
 {% endload -%}
-
-{% load_yaml as uninstall_only -%}
-- '2.19.2.windows.1'
-{% endload -%}
-
-{% set arch_specific_versions = {"AMD64": versions + x64_and_x86_versions, "x86": x64_and_x86_versions} -%}
-
-git:
-{%- for version in arch_specific_versions[cpu_arch] + uninstall_only %}
+{% set arch = {'AMD64': '64', 'x86': '32'}[cpuarch] -%}
+{%- for version in versions_32_64_full_name %}
   {% set git_version = version.split(".")[:3]|join(".") -%}
   {% set win_suffix = version[-1:] -%}
   {% if win_suffix|int > 1 -%}
-  {%   set compact_version = git_version ~ "." ~ win_suffix -%}
+    {% set pkg_version = git_version ~ "." ~ win_suffix -%}
   {% else -%}
-  {%   set compact_version = git_version -%}
+    {% set pkg_version = git_version -%}
   {% endif -%}
-  {% if version in new_style_versions -%}
-  {%   set display_version = version -%}
+  {% set display_version = pkg_version -%}
+  {% set full_name = "Git version " ~ pkg_version -%}
+  {{ print_install(display_version, version, pkg_version, arch, full_name) }}
+{% endfor -%}
+
+# There was a short-lived change in version format
+# See https://github.com/git-for-windows/git/issues/2223
+{% load_yaml as versions_new_style-%}
+- '2.23.0.windows.1'
+- '2.22.0.windows.1'
+{% endload -%}
+{% set arch = {'AMD64': '64', 'x86': '32'}[cpuarch] -%}
+{%- for version in versions_new_style %}
+{% set git_version = version.split(".")[:3]|join(".") -%}
+  {% set win_suffix = version[-1:] -%}
+  {% if win_suffix|int > 1 -%}
+    {% set pkg_version = git_version ~ "." ~ win_suffix -%}
   {% else -%}
-  {%   set display_version = compact_version -%}
+    {% set pkg_version = git_version -%}
   {% endif -%}
-  '{{ display_version }}':
-    {% if salt["pkg.compare_versions"](version, "<", "2.33.0.windows.1") -%}
-    {%   set full_name_suffix = " version " ~ display_version -%}
-    {% endif -%}
-    full_name: Git{{ full_name_suffix|d }}
-    {% if version not in uninstall_only -%}
-    installer: https://github.com/git-for-windows/git/releases/download/v{{ version }}/Git-{{ compact_version }}-{{ url_arch }}.exe
-    # It is impossible to downgrade git silently. It will always pop a message
-    # that will cause salt to hang. `/SUPPRESSMSGBOXES` will suppress that
-    # warning allowing salt to continue, but the package will not downgrade
-    install_flags: /VERYSILENT /NORESTART /SP- /NOCANCEL /SUPPRESSMSGBOXES
-    {% endif -%}
-    uninstaller: forfiles
-    uninstall_flags: /p "%ProgramFiles%\Git" /m unins*.exe /c "cmd /c @path /VERYSILENT /NORESTART"
-{%- endfor %}
+  {% set display_version = version -%}
+  {% set full_name = "Git version " ~ pkg_version -%}
+  {{ print_install(display_version, version, pkg_version, arch, full_name) }}
+{% endfor -%}
 
-{% set PROGRAM_FILES = {"AMD64": "%ProgramFiles(x86)%", "x86": "%ProgramFiles%"}[cpu_arch] -%}
+{% load_yaml as versions_uninstall_only -%}
+- '2.19.2.windows.1'
+{% endload -%}
+{% set arch = {'AMD64': '64', 'x86': '32'}[cpuarch] -%}
+{%- for version in versions_uninstall_only%}
+  {% set git_version = version.split(".")[:3]|join(".") -%}
+  {% set win_suffix = version[-1:] -%}
+  {% if win_suffix|int > 1 -%}
+    {% set pkg_version = git_version ~ "." ~ win_suffix -%}
+  {% else -%}
+    {% set pkg_version = git_version -%}
+  {% endif -%}
+  {% set display_version = pkg_version -%}
+  {% set full_name = "Git version " ~ pkg_version -%}
+  {{ print_uninstall_only(display_version, full_name) }}
+{% endfor -%}
 
+{% set PROGRAM_FILES = {'AMD64': '%ProgramFiles(x86)%', 'x86': '%ProgramFiles%'}[cpuarch] -%}
 msysgit:
   '1.9.5-preview20150319':
     full_name: 'Git version 1.9.5-preview20150319'
