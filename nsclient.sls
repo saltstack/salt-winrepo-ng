@@ -27,15 +27,18 @@
 nsclient:
 {%- for version in versions %}
   {#- v0.5.x.x up to v0.6.4 Windows display versions have only three parts (e.g. 0.5.2039) #}
-  {#- v0.6.5 and newer have display versions similar to 0.6.5.000 #}
+  {#- v0.6.5 up to v0.6.9 have a zero-filled build number like 0.6.5.000 #}
+  {#- v0.7.0 and newer have a display version similar to 0.7.0.0 #}
   {%- if salt["pkg.compare_versions"](version, ">=", "0.5") %}
     {%- set parts = version.split(".") %}
     {%- set major, minor, patch = parts[:3] %}
     {%- set build = parts[3]|d("0") %}
     {%- if salt["pkg.compare_versions"](version, "<", "0.6.5") %}
       {%- set display_version = ".".join([major, minor, patch ~ build.zfill(3)]) %}
-    {%- else %}
+    {%- elif salt["pkg.compare_versions"](version, "<", "0.7.0") %}
       {%- set display_version = ".".join([major, minor, patch, build.zfill(3)]) %}
+    {%- else %}
+      {%- set display_version = ".".join([major, minor, patch, build]) %}
     {%- endif %}
   {%- endif %}
 
