@@ -13,6 +13,7 @@
 
 {% load_yaml as versions -%}
 # renovate: datasource=custom.firefox depName=firefox packageName=LATEST_FIREFOX_VERSION
+- '137.0.1'
 - '137.0'
 - '136.0.4'
 - '136.0.3'
