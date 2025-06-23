@@ -14,6 +14,7 @@
 
 {% load_yaml as versions -%}
 # renovate: datasource=github-releases depName=git packageName=git-for-windows/git
+- '2.50.0.windows.1'
 - '2.49.0.windows.1'
 {% endload -%}
 
