@@ -26,7 +26,6 @@ repos:
     hooks:
       - id: biome-check
         name: Check JavaScript with biome
-        additional_dependencies: ["@biomejs/biome@1.9.4"]
   - repo: https://github.com/shellcheck-py/shellcheck-py
     rev: v0.10.0.1
     hooks:
