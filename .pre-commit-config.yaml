@@ -22,11 +22,10 @@ repos:
           - json5==0.12.0
         args: ["--verbose"]
   - repo: https://github.com/biomejs/pre-commit
-    rev: v1.9.4
+    rev: v2.0.6
     hooks:
       - id: biome-check
         name: Check JavaScript with biome
-        additional_dependencies: ["@biomejs/biome@1.9.4"]
   - repo: https://github.com/shellcheck-py/shellcheck-py
     rev: v0.10.0.1
     hooks:
