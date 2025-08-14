@@ -15,7 +15,7 @@ jobs:
     name: Should run
     permissions:
       pull-requests: read
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 5
     outputs:
       should-run: ${{ steps.action.outputs.should-run }}
@@ -26,7 +26,7 @@ jobs:
     name: Run `pre-commit`
     needs: should-run
     if: fromJSON(needs.should-run.outputs.should-run)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     env:
       # renovate: datasource=custom.python-versions depName=actions/python-versions versioning=pep440
       PYTHON_VERSION: 3.13.6
@@ -40,7 +40,7 @@ jobs:
     name: Get Salt versions
     needs: should-run
     if: fromJSON(needs.should-run.outputs.should-run)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     outputs:
       salt-versions-els: ${{ steps.get-salt-versions.outputs.salt-versions-els }}
       salt-versions: ${{ steps.get-salt-versions.outputs.salt-versions }}
@@ -51,7 +51,7 @@ jobs:
   refresh_db:
     name: Test `pkg.refresh_db`
     needs: gsv
-    runs-on: windows-latest
+    runs-on: windows-2022
     strategy:
       fail-fast: false
       matrix:
@@ -102,7 +102,7 @@ jobs:
     permissions:
       contents: read
       pull-requests: read
-    runs-on: windows-latest
+    runs-on: windows-2022
     steps:
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
       - id: changed-files
@@ -138,7 +138,7 @@ jobs:
       issues: write
       pull-requests: write
       checks: read
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: poseidon/wait-for-status-checks@899c768d191b56eef585c18f8558da19e1f3e707 # v0.6.0
         with:
