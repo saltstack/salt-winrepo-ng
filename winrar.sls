@@ -1,6 +1,7 @@
 #if possible use 5.70 or newer due to vulnerabilities (CVE-2018-20250, CVE-2018-20251, CVE-2018-20252, CVE-2018-20253)
 
 {%- load_yaml as versions %}
+# renovate: datasource=custom.winrar depName=winrar
 - '7.01'
 - '7.00'
 - '6.22'
