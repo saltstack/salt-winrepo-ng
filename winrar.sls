@@ -4,7 +4,6 @@
 
 {% load_yaml as versions -%}
 # renovate: datasource=custom.winrar depName=winrar
-- '7.13'
 - '7.12'
 - '7.11'
 - '7.10'
@@ -38,9 +37,9 @@ winrar-x{{ arch }}-
 winrar:
 {%- for version in arch_specific_versions[cpu_arch] %}
   {% set major, minor = version.split('.') -%}
-  '{{major}}.{{minor}}.0':
-    full_name: WinRAR {{major}}.{{minor}} ({{ arch }}-bit)
-    installer: https://www.rarlab.com/rar/{{ _get_exe_prefix(version)|trim }}{{major}}{{minor}}.exe
+  '{{ major }}.{{ minor }}.0':
+    full_name: WinRAR {{ major }}.{{ minor }} ({{ arch }}-bit)
+    installer: https://www.rarlab.com/rar/{{ _get_exe_prefix(version)|trim }}{{ major }}{{ minor }}.exe
     uninstaller: '%ProgramFiles%\WinRAR\uninstall.exe'
     install_flags: /S
     uninstall_flags: /S
