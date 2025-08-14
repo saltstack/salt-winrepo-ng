@@ -1,6 +1,15 @@
-#if possible use 5.70 or newer due to vulnerabilities (CVE-2018-20250, CVE-2018-20251, CVE-2018-20252, CVE-2018-20253)
+# Both 32-bit (x86) AND a 64-bit (AMD64) installer available for WinRAR until v7.01
+{% set cpu_arch = salt["grains.get"]("cpuarch", "AMD64") -%}
+{% set arch = {"AMD64": "64", "x86": "32"}[cpu_arch] -%}
 
-{%- load_yaml as versions %}
+{% load_yaml as versions -%}
+# renovate: datasource=custom.winrar depName=winrar
+- '7.12'
+- '7.11'
+- '7.10'
+{% endload -%}
+
+{% load_yaml as x64_and_x86_versions -%}
 - '7.01'
 - '7.00'
 - '6.22'
@@ -13,29 +22,25 @@
 - '5.91'
 - '5.70'
 - '5.61'
-{%- endload %}
+{% endload -%}
+
+{% macro _get_exe_prefix(version) -%}
+{%   if cpu_arch == "x86" and salt["pkg.compare_versions"](version, "<", "6.10") -%}
+wrar
+{%   else -%}
+winrar-x{{ arch }}-
+{%   endif -%}
+{% endmacro -%}
+
+{% set arch_specific_versions = {"AMD64": versions + x64_and_x86_versions, "x86": x64_and_x86_versions} -%}
 
 winrar:
-{%- for version in versions %}
-  {%- set major, minor = version.split('.') %}
+{%- for version in arch_specific_versions[cpu_arch] %}
+  {% set major, minor = version.split('.') -%}
   '{{major}}.{{minor}}.0':
-  {%- if grains['cpuarch'] == 'AMD64' %}
-    arch: x64
-    full_name: 'WinRAR {{major}}.{{minor}} (64-bit)'
-    installer: 'https://www.rarlab.com/rar/winrar-x64-{{major}}{{minor}}.exe'
-  {%- else %}
-    arch: x86
-    full_name: 'WinRAR {{major}}.{{minor}} (32-bit)'
-    {%- if (major <= '5') or (major <= '6' and minor <= '02') %}
-    installer: 'https://www.rarlab.com/rar/wrar{{major}}{{minor}}.exe'
-    {%- else %}
-    installer: 'https://www.rarlab.com/rar/winrar-x32-{{major}}{{minor}}.exe'
-    {%- endif %}
-  {%- endif %}
+    full_name: WinRAR {{major}}.{{minor}} ({{ arch }}-bit)
+    installer: https://www.rarlab.com/rar/{{ _get_exe_prefix(version)|trim }}{{major}}{{minor}}.exe
     uninstaller: '%ProgramFiles%\WinRAR\uninstall.exe'
-    install_flags: '/S'
-    uninstall_flags: '/S'
-    msiexec: False
-    locale: en_US
-    reboot: False
+    install_flags: /S
+    uninstall_flags: /S
 {%- endfor %}

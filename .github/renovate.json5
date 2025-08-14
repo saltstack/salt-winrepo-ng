@@ -29,6 +29,13 @@
         "defaultRegistryUrlTemplate": "https://get.videolan.org/vlc/last/win64/",
         "format": "html",
       },
+    winrar: {
+      defaultRegistryUrlTemplate: "https://www.rarlab.com/download.htm",
+      format: "html",
+      transformTemplates: [
+        "$ ~> | releases | $each(function($v, $n) { { $n: $replace($v, /(\\d)(\\d{2})\\.exe$/, '$1.$2.exe') } } ) ~> $merge() |",
+      ],
+    },
   },
   "customManagers": [
     { // See https://github.com/renovatebot/renovate/issues/20780
@@ -57,6 +64,10 @@
     {
       "matchDatasources": ["custom.putty"],
       "extractVersion": "putty-64bit-(?<version>.+)-installer\\.msi$",
+    },
+    {
+      matchDatasources: ['custom.winrar'],
+      extractVersion: 'winrar-x64-(?<version>(\\d|\\.)+)\\.exe$',
     },
     {
       "matchDepNames": ["firefox-esr"],
