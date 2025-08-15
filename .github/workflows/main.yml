@@ -7,7 +7,7 @@ on:
   - workflow_dispatch
 
 env:
-  REPO_JSON_DIR: repo_data
+  REPO_JSON_ARTIFACT: repo_data
   REPO_JSON_FILE: repo.json
 
 jobs:
@@ -92,7 +92,7 @@ jobs:
         if: needs.gsv.outputs.salt-latest == matrix.salt-version
         with:
           if-no-files-found: error
-          name: ${{ env.REPO_JSON_DIR }}
+          name: ${{ env.REPO_JSON_ARTIFACT }}
           path: ${{ env.REPO_JSON_FILE }}
           retention-days: 10
   test:
@@ -160,11 +160,14 @@ jobs:
       - name: Transform dumped repo data to Renovate-style JSON
         if: runner.debug || fromJSON(steps.sem-rel.outputs.new-release-published)
         run: |
-          if [ -f "$REPO_JSON_DIR/$REPO_JSON_FILE" ]; then
-            .cicd/transform-json < "$REPO_JSON_DIR/$REPO_JSON_FILE"
+          if [ -f "$REPO_JSON_FILE" ]; then
+            .cicd/transform-json < "$REPO_JSON_FILE"
             echo "::group::Display resulting directory structure"
             ls --almost-all --recursive --ignore node_modules --ignore .git
             echo "::endgroup::"
+          else
+            echo "::error ::Data file '$REPO_JSON_FILE' not found."
+            exit 1
           fi
       - uses: peaceiris/actions-gh-pages@4f9cc6602d3f66b9c108549d475ec49e8ef4d45e # v4.0.0
         if: fromJSON(steps.sem-rel.outputs.new-release-published)
