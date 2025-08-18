@@ -150,7 +150,7 @@ jobs:
             .cicd/
             .releaserc.cjs
       - id: sem-rel
-        uses: codfish/semantic-release-action@b621d34fabe0940f031e89b6ebfea28322892a10 # v3.5.0
+        uses: codfish/semantic-release-action@22ce451ffd02a9ee2c4bfd126d028e4bd655770e # v4.0.0
         with:
           additional-packages: conventional-changelog-conventionalcommits@7.0.2
         env:
