@@ -29,6 +29,12 @@
         "defaultRegistryUrlTemplate": "https://get.videolan.org/vlc/last/win64/",
         "format": "html",
       },
+    thunderbird: {
+      defaultRegistryUrlTemplate: 'https://product-details.mozilla.org/1.0/thunderbird_versions.json',
+      transformTemplates: [
+        '{"releases": [{ "version": $.{{packageName}} }] }'
+      ],
+    },
     winrar: {
       defaultRegistryUrlTemplate: "https://www.rarlab.com/download.htm",
       format: "html",
@@ -72,6 +78,10 @@
     {
       "matchDepNames": ["firefox-esr"],
       "extractVersion": "(?<version>.+)esr$",
+    },
+    {
+      matchDepNames: ['thunderbird-esr'],
+      extractVersion: '(?<version>.+)esr$',
     },
     {
       // Salt major version releases must be added manually to the sls file
