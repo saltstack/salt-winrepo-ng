@@ -139,6 +139,9 @@ jobs:
       pull-requests: write
       checks: read
     runs-on: ubuntu-24.04
+    env:
+      # renovate: datasource=npm depName=conventional-changelog-conventionalcommits
+      CC_CONV_COMMITS_VERSION: 9.1.0
     steps:
       - uses: poseidon/wait-for-status-checks@899c768d191b56eef585c18f8558da19e1f3e707 # v0.6.0
         with:
@@ -152,7 +155,7 @@ jobs:
       - id: sem-rel
         uses: codfish/semantic-release-action@6c65402abb31a48c3f7396d7d099da015be67c2b # v4.0.1
         with:
-          additional-packages: conventional-changelog-conventionalcommits@7.0.2
+          additional-packages: conventional-changelog-conventionalcommits@${{ env.CC_CONV_COMMITS_VERSION }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5.0.0
