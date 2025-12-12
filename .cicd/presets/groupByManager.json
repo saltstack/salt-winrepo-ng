@@ -1,0 +1,11 @@
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"description": "Group non-major updates by manager",
+	"packageRules": [
+		{
+			"groupName": "`{{arg0}}` non-major {{arg1}}",
+			"matchManagers": ["{{arg0}}"],
+			"matchUpdateTypes": ["digest", "minor", "patch"]
+		}
+	]
+}

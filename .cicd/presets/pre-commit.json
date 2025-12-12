@@ -1,0 +1,19 @@
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"description": "Enable `pre-commit` manager and group non-major updates",
+	"extends": [
+		"github>saltstack/salt-winrepo-ng//.cicd/presets/groupByManager(pre-commit,hooks)",
+		":enablePreCommit"
+	],
+	"customManagers": [
+		{
+			"description": "Manage `pre-commit` additional dependencies with comment. See https://github.com/renovatebot/renovate/issues/20780",
+			"customType": "regex",
+			"managerFilePatterns": ["/(^|/)\\.pre-commit-config\\.ya?ml$/"],
+			"matchStrings": [
+				"# renovate: datasource=(?<datasource>.*?)( versioning=(?<versioning>.*?))?\\s+-\\s+['\"]?(?<depName>[^=]+)(?:==(?<currentValue>[^'\"\\s]*))?"
+			],
+			"versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}pep440{{/if}}"
+		}
+	]
+}

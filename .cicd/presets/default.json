@@ -1,0 +1,17 @@
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"description": "Default preset for use with Salt Winrepo repos",
+	"extends": [
+		"config:best-practices",
+		"github>saltstack/salt-winrepo-ng//.cicd/presets/github-actions",
+		"github>saltstack/salt-winrepo-ng//.cicd/presets/package-sls",
+		"github>saltstack/salt-winrepo-ng//.cicd/presets/pre-commit",
+		"github>saltstack/salt-winrepo-ng//.cicd/presets/weekends",
+		":automergeStableNonMajor",
+		":prHourlyLimit4",
+		":semanticCommitScopeDisabled",
+		":semanticPrefixChore"
+	],
+	"automergeStrategy": "merge-commit",
+	"dependencyDashboardTitle": "Renovate Dashboard"
+}
