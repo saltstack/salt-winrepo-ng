@@ -1,13 +1,7 @@
 {
   "extends": [
-    "config:recommended",
-    ":enablePreCommit",
-    ":semanticCommitScopeDisabled",
-    ":semanticPrefixChore",
-    "helpers:pinGitHubActionDigestsToSemver",
-    "customManagers:githubActionsVersions",
+    "github>saltstack/salt-winrepo-ng//.cicd/presets/default",
   ],
-  "dependencyDashboardTitle": "Renovate Dashboard",
   "customDatasources": {
       "firefox": {
         "defaultRegistryUrlTemplate": "https://product-details.mozilla.org/1.0/firefox_versions.json",
@@ -43,25 +37,6 @@
       ],
     },
   },
-  "customManagers": [
-    { // See https://github.com/renovatebot/renovate/issues/20780
-      "customType": "regex",
-      "managerFilePatterns": ["/(^|/)\\.pre-commit-config\\.ya?ml$/"],
-      "matchStrings": [
-        "# renovate: datasource=(?<datasource>.*?)( versioning=(?<versioning>.*?))?\\s+-\\s+['\"]?(?<depName>[^=]+)(?:==(?<currentValue>[^'\"\\s]*))?"
-      ],
-      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}pep440{{/if}}"
-    },
-    {
-      "customType": "regex",
-      "managerFilePatterns": ["**/*.sls"],
-      "matchStrings": [
-        "# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>\\S+?)(?: packageName=(?<packageName>\\S+?))?\\s+- [\"']?(?<currentValue>.+?)[\"']?\\s",
-      ],
-      "autoReplaceStringTemplate": "# renovate: datasource={{{datasource}}} depName={{{depName}}}{{#unless (equals depName packageName)}} packageName={{{packageName}}}{{/unless}}\n- '{{{newValue}}}'\n- '{{{currentValue}}}'\n",
-      "versioningTemplate": "loose",
-    },
-  ],
   "packageRules": [
     {
       "matchDatasources": ["custom.vlc"],
@@ -88,33 +63,6 @@
       "matchPackageNames": ["saltstack/salt"],
       "matchUpdateTypes": ["major"],
       "enabled": false,
-    },
-    {
-      "matchFileNames": ["**/*.sls"],
-      "automerge": true,
-      "commitMessageAction": "add",
-      "commitMessageExtra": "{{prettyNewVersion}}",
-      "commitMessageTopic": "`{{depName}}` version",
-      "extends": [
-        ":semanticCommitScopeDisabled",
-        ":semanticCommitType(update)",
-      ],
-    },
-    {
-      "matchManagers": [
-        "github-actions",
-        "pre-commit"
-      ],
-      "matchUpdateTypes": ["minor", "patch"],
-      "automerge": true,
-    },
-    {
-      "matchManagers": ["github-actions"],
-      "groupName": "github-actions minor/patch",
-    },
-    {
-      "matchManagers": ["pre-commit"],
-      "groupName": "pre-commit hook minor/patch",
     },
   ],
 }
