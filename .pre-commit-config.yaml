@@ -2,6 +2,13 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
+  - repo: local
+    hooks:
+      - id: check-json-in-config
+        name: Check JSON files are in pre-commit-config.yaml
+        entry: .cicd/check-json-in-config.py
+        language: python
+        types: [json]
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
     hooks:
@@ -31,3 +38,19 @@ repos:
     hooks:
       - id: shellcheck
         name: Check shell scripts with shellcheck
+  - repo: https://github.com/renovatebot/pre-commit-hooks
+    rev: 42.46.0
+    hooks:
+      - id: renovate-config-validator
+        name: Check Renovate config with renovate-config-validator
+        files: |
+          (?x)(
+               (^|/).?renovate(?:rc)?(?:\.json5?)?$|
+               default.json|
+               github-actions.json|
+               groupByManager.json|
+               package-sls.json|
+               pre-commit.json|
+               weekends.json|
+               (?!)
+          )$

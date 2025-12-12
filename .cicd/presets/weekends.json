@@ -1,0 +1,5 @@
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"description": "Schedule updates between 00:00 and 07:59 on weekends",
+	"schedule": ["* 0-7 * * 0,6"]
+}

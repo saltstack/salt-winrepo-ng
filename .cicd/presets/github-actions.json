@@ -1,0 +1,8 @@
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"description": "Group `github-actions` non-major updates and enable regex versions",
+	"extends": [
+		"github>saltstack/salt-winrepo-ng//.cicd/presets/groupByManager(github-actions,actions/images)",
+		"customManagers:githubActionsVersions"
+	]
+}
