@@ -1,5 +1,6 @@
 {% load_yaml as versions -%}
 # renovate: datasource=github-releases depName=arduino-ide packageName=arduino/arduino-ide
+- '2.3.7'
 - '2.3.6'
 - '2.3.5'
 - '2.3.4'
