@@ -1,5 +1,6 @@
 {% load_yaml as versions -%}
 # renovate: datasource=github-releases depName=nscp packageName=mickem/nscp
+- '0.11.6'
 - '0.10.9'
 - '0.10.8'
 - '0.10.7'
