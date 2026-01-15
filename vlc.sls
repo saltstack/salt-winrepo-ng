@@ -2,6 +2,7 @@
 {% set PROGRAM_FILES = "%ProgramFiles%" %}
 {%- load_yaml as versions %}
 # renovate: datasource=custom.vlc depName=vlc
+- '3.0.23'
 - '3.0.21'
 - '3.0.20'
 - '3.0.19'
