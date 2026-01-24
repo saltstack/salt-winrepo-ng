@@ -29,7 +29,7 @@ repos:
           - json5==0.13.0
         args: ["--verbose"]
   - repo: https://github.com/biomejs/pre-commit
-    rev: v2.3.11
+    rev: v2.3.12
     hooks:
       - id: biome-check
         name: Check JavaScript with biome
