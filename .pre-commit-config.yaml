@@ -17,7 +17,7 @@ repos:
         args: [--assume-in-merge]
       - id: check-yaml
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.36.0
+    rev: 0.36.1
     hooks:
       - id: check-github-workflows
         name: Check GitHub workflows with check-jsonschema
@@ -29,7 +29,7 @@ repos:
           - json5==0.13.0
         args: ["--verbose"]
   - repo: https://github.com/biomejs/pre-commit
-    rev: v2.3.12
+    rev: v2.3.13
     hooks:
       - id: biome-check
         name: Check JavaScript with biome
@@ -39,7 +39,7 @@ repos:
       - id: shellcheck
         name: Check shell scripts with shellcheck
   - repo: https://github.com/renovatebot/pre-commit-hooks
-    rev: 42.84.0
+    rev: 42.95.1
     hooks:
       - id: renovate-config-validator
         name: Check Renovate config with renovate-config-validator
