@@ -31,7 +31,7 @@ jobs:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
         with:
-          python-version: 3.14.2
+          python-version: 3.14.3
       - uses: pre-commit/action@2c7b3805fd2a0fd8c1884dcaebf91fc102a13ecd # v3.0.1
   gsv:
     name: Get Salt versions
@@ -44,7 +44,7 @@ jobs:
       salt-latest: ${{ steps.get-salt-versions.outputs.salt-latest }}
     steps:
       - id: get-salt-versions
-        uses: dafyddj/get-salt-versions@331e984660a00363a0aa67ee33a42f2d4d25db57 # v3.4.14
+        uses: dafyddj/get-salt-versions@fd177f8f40a8464bf4892bd680a7d715ec6a1ead # v3.4.15
   refresh_db:
     name: Test `pkg.refresh_db`
     needs: gsv
