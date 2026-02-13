@@ -17,7 +17,7 @@ jobs:
       salt-latest: ${{ steps.get-salt-versions.outputs.salt-latest }}
     steps:
       - id: get-salt-versions
-        uses: dafyddj/get-salt-versions@fd177f8f40a8464bf4892bd680a7d715ec6a1ead # v3.4.15
+        uses: dafyddj/get-salt-versions@bf9e13590e771716b5091c39a8411c84278b0e4e # v3.4.17
   test:
     name: Run URL tests
     needs: gsv
