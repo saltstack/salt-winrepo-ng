@@ -10,6 +10,7 @@
 
 {% load_yaml as versions -%}
 # renovate: datasource=custom.thunderbird depName=thunderbird packageName=LATEST_THUNDERBIRD_VERSION
+- '148.0'
 - '147.0.2'
 - '147.0.1'
 - '147.0'
