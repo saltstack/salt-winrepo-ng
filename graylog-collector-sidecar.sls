@@ -1,5 +1,6 @@
 {%- load_yaml as versions %}
 # renovate: datasource=github-releases depName=graylog-collector-sidecar packageName=Graylog2/collector-sidecar
+- '1.5.2'
 - '1.5.1'
 - '1.5.0'
 - 1.4.0
