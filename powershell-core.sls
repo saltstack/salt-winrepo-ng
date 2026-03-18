@@ -2,6 +2,7 @@
 
 {% load_yaml as versions -%}
 # renovate: datasource=github-releases depName=powershell-core packageName=PowerShell/PowerShell
+- '7.6.0'
 - '7.5.5'
 - '7.5.4'
 - '7.5.3'
