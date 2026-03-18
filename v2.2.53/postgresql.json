@@ -1,0 +1,16 @@
+{
+  "releases": [
+    {
+      "version": "9.3"
+    },
+    {
+      "version": "9.4"
+    },
+    {
+      "version": "9.5"
+    },
+    {
+      "version": "9.6"
+    }
+  ]
+}
