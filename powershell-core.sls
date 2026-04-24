@@ -3,7 +3,6 @@
 {% load_yaml as versions -%}
 # renovate: datasource=github-releases depName=powershell-core packageName=PowerShell/PowerShell
 - '7.6.1'
-- '7.6.0'
 - '7.5.5'
 - '7.5.4'
 - '7.5.3'
@@ -100,8 +99,14 @@
 - '6.0.0'
 {% endload -%}
 
+{% load_yaml as x64_only -%}
+- '7.6.0'
+{% endload -%}
+
+{% set arch_specific_versions = {"x64": versions + x64_only, "x86": versions} -%}
+
 powershell-core:
-{%- for version in versions %}
+{%- for version in arch_specific_versions[arch] %}
   {% set major_version = version.split(".")[0] %}
   '{{ version }}.0':
     full_name: PowerShell {{ major_version }}-{{ arch }}
