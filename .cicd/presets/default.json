@@ -3,6 +3,7 @@
 	"description": "Default preset for use with Salt Winrepo repos",
 	"extends": [
 		"config:best-practices",
+		"github>saltstack/salt-winrepo-ng//.cicd/presets/configure-get-salt-versions",
 		"github>saltstack/salt-winrepo-ng//.cicd/presets/github-actions",
 		"github>saltstack/salt-winrepo-ng//.cicd/presets/package-sls",
 		"github>saltstack/salt-winrepo-ng//.cicd/presets/pre-commit",
