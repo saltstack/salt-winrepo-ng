@@ -46,6 +46,7 @@ repos:
         files: |
           (?x)(
                (^|/).?renovate(?:rc)?(?:\.json5?)?$|
+               configure-get-salt-versions.json|
                default.json|
                github-actions.json|
                groupByManager.json|
