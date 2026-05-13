@@ -31,7 +31,7 @@ jobs:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
         with:
-          python-version: 3.14.4
+          python-version: 3.14.5
       - uses: pre-commit/action@2c7b3805fd2a0fd8c1884dcaebf91fc102a13ecd # v3.0.1
   gsv:
     name: Get Salt versions
@@ -45,7 +45,7 @@ jobs:
       salt-latest: ${{ steps.get-salt-versions.outputs.salt-latest }}
     steps:
       - id: get-salt-versions
-        uses: dafyddj/get-salt-versions@d71b616e6a669e86b660726d71295ed07a4e54be # v3.5.2
+        uses: dafyddj/get-salt-versions@c60c302c912a1eb5136efefa96d39604fd80006d # v3.5.3
   refresh_db:
     name: Test `pkg.refresh_db`
     needs: gsv
@@ -171,14 +171,14 @@ jobs:
             echo "::error ::Data file '$REPO_JSON_FILE' not found."
             exit 1
           fi
-      - uses: peaceiris/actions-gh-pages@4f9cc6602d3f66b9c108549d475ec49e8ef4d45e # v4.0.0
+      - uses: peaceiris/actions-gh-pages@84c30a85c19949d7eee79c4ff27748b70285e453 # v4.1.0
         if: fromJSON(steps.sem-rel.outputs.new-release-published)
         with:
           commit_message: |
             deploy: ${{ steps.sem-rel.outputs.git-tag }}
           destination_dir: ${{ steps.sem-rel.outputs.git-tag }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: peaceiris/actions-gh-pages@4f9cc6602d3f66b9c108549d475ec49e8ef4d45e # v4.0.0
+      - uses: peaceiris/actions-gh-pages@84c30a85c19949d7eee79c4ff27748b70285e453 # v4.1.0
         if: fromJSON(steps.sem-rel.outputs.new-release-published)
         with:
           commit_message: |
