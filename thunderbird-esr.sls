@@ -10,6 +10,7 @@
 
 {% load_yaml as versions -%}
 # renovate: datasource=custom.thunderbird depName=thunderbird-esr packageName=THUNDERBIRD_ESR
+- '140.11.1'
 - '140.11.0'
 - '140.10.2'
 - '140.10.1'
