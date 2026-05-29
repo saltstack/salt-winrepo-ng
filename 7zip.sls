@@ -46,10 +46,6 @@
 {% set source_path = 'https://d.7-zip.org/a/' %}
 
 {%- load_yaml as versions %}
-- '24.04'
-- '24.03'
-- '24.02'
-- '24.01'
 - '19.00'
 {%- endload %}
 {%- for version in versions %}
