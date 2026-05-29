@@ -1,0 +1,17 @@
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"description": "Auto-merge settings for Salt Winrepo repositories",
+	"extends": [":automergeStableNonMajor"],
+	"packageRules": [
+		{
+			"description": "Auto-merge minor updates of `check-jsonschema` despite versions being v0.x",
+			"matchDepNames": ["python-jsonschema/check-jsonschema"],
+			"extends": [":automergeMinor"]
+		},
+		{
+			"description": "Auto-merge minor updates of `json5` despite versions being v0.x",
+			"matchDepNames": ["json5"],
+			"extends": [":automergeMinor"]
+		}
+	]
+}
