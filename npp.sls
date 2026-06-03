@@ -6,6 +6,7 @@
 {% endif %}
 {%- load_yaml as versions %}
 # renovate: datasource=github-releases depName=npp packageName=notepad-plus-plus/notepad-plus-plus
+- '8.9.6.4'
 - '8.9.6.2'
 - '8.9.6.1'
 - '8.9.6'
