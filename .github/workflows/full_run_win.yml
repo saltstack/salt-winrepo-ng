@@ -23,7 +23,7 @@ jobs:
     needs: gsv
     runs-on: windows-2025
     steps:
-      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
       - name: Setup Salt
         uses: dafyddj/setup-salt-win@a81ff6460b4847498f56176fce5b5f76c5fc5de0 # v3.1.0
         with:
