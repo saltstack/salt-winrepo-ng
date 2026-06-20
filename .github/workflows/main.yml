@@ -28,7 +28,7 @@ jobs:
     if: fromJSON(needs.should-run.outputs.should-run)
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
       - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
         with:
           python-version: 3.14.6
@@ -58,7 +58,7 @@ jobs:
           - ${{ fromJSON(needs.gsv.outputs.salt-versions-rc) }}
           - ${{ fromJSON(needs.gsv.outputs.salt-versions) }}
     steps:
-      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           path: win/repo-ng
       - name: Setup Salt
@@ -103,7 +103,7 @@ jobs:
       pull-requests: read
     runs-on: windows-2025
     steps:
-      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
       - id: changed-files
         name: Get changed files
         uses: dorny/paths-filter@fbd0ab8f3e69293af611ebaee6363fc25e6d187d # v4.0.1
@@ -146,7 +146,7 @@ jobs:
         with:
           ignore: Collect results
           token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           sparse-checkout: |
             .cicd/
