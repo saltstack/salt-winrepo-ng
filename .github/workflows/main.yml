@@ -152,7 +152,7 @@ jobs:
             .cicd/
             .releaserc.cjs
       - id: sem-rel
-        uses: codfish/semantic-release-action@6abd188d2458e2fd6c99073454f6cc49196362e8 # v5.0.0
+        uses: docker://ghcr.io/codfish/semantic-release-action@sha256:c6a4e05d93f73f2870887434c1286df7a23a55770be16cb826b6e2432f92e650 # v5.0.0
         with:
           additional-packages: conventional-changelog-conventionalcommits@${{ env.CC_CONV_COMMITS_VERSION }}
         env:
