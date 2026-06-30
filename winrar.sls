@@ -4,6 +4,7 @@
 
 {% load_yaml as versions -%}
 # renovate: datasource=custom.winrar depName=winrar
+- '7.23'
 - '7.22'
 - '7.21'
 - '7.20'
