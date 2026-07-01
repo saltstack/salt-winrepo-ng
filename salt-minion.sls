@@ -36,6 +36,7 @@
 - '3007.1'
 - 3007.0
 # renovate: datasource=github-tags depName=salt-3006.x packageName=saltstack/salt
+- '3006.27'
 - '3006.26'
 - '3006.25'
 - '3006.24'
