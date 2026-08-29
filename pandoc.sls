@@ -1,5 +1,6 @@
 {% load_yaml as versions -%}
 # renovate: datasource=github-releases depName=pandoc packageName=jgm/pandoc
+- '3.11'
 - '3.10.2'
 - '3.10.1'
 - '3.10'
