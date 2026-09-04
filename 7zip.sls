@@ -8,6 +8,7 @@
 
 {%- load_yaml as versions %}
 # renovate: datasource=github-releases depName=7zip packageName=ip7z/7zip
+- '26.03'
 - '26.02'
 - '26.01'
 - '26.00'
