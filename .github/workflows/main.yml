@@ -15,7 +15,7 @@ jobs:
     name: Should run
     permissions:
       pull-requests: read
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     timeout-minutes: 5
     outputs:
       should-run: ${{ steps.action.outputs.should-run }}
@@ -26,7 +26,7 @@ jobs:
     name: Run `pre-commit`
     needs: should-run
     if: fromJSON(needs.should-run.outputs.should-run)
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
@@ -37,7 +37,7 @@ jobs:
     name: Get Salt versions
     needs: should-run
     if: fromJSON(needs.should-run.outputs.should-run)
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     outputs:
       salt-versions-els: ${{ steps.get-salt-versions.outputs.salt-versions-els }}
       salt-versions-rc: ${{ steps.get-salt-versions.outputs.salt-versions-rc }}
@@ -137,7 +137,7 @@ jobs:
       issues: write
       pull-requests: write
       checks: read
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     env:
       # renovate: datasource=npm depName=conventional-changelog-conventionalcommits
       CC_CONV_COMMITS_VERSION: 9.3.1
