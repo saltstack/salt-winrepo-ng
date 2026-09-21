@@ -12,7 +12,7 @@ jobs:
   gsv:
     name: Get Salt versions
     if: github.event_name == 'workflow_dispatch' || !github.event.repository.fork
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     outputs:
       salt-latest: ${{ steps.get-salt-versions.outputs.salt-latest }}
     steps:
