@@ -1,7 +1,7 @@
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # This software definition will only work in versions of Salt newer than
 # 2015.8.2. In version 2015.8.2 we added the `use_scheduler` option which
-# allowed us to launch the installer using the Windows task manager.
+# allowed us to launch the installer using the Windows Task Scheduler.
 # This option is not available in earlier versions of Salt. So, while this
 # software definition will allow you to install versions of Salt older than
 # 2015.8.2 you will not be able to use pkg.install to upgrade Salt again. You
@@ -11,11 +11,14 @@
 {% set install_dir = salt["reg.read_value"]("HKLM", "SOFTWARE\\Salt Project\\Salt", "install_dir").vdata -%}
 {% set install_dir = install_dir or "C:\\salt" -%}
 
-# Starting in Version 3006 salt standardized builds across all OSes on the
-# Relative Environment for Python project (relenv). The url changed as a result
+# Starting with version 3006 Salt standardized builds across all OSes on the
+# Relative Environment for Python project (relenv) (https://github.com/saltstack/relenv).
+#
 # Use Renovate to apply automatic version updates. Due to the way Renovate works
-# each major version must be updated separately (otherwise all versions would be
-# updated to the latest version). New major versions e.g. 3008.0 must be added manually.
+# each release branch must be updated separately (otherwise all versions would be
+# updated to the very latest version).
+# New major versions e.g. 3009.0 must be added manually along with the appropriate
+# Renovate comment line.
 {% load_yaml as x64_only_versions -%}
 # renovate: datasource=github-tags depName=salt-3008.x packageName=saltstack/salt
 - '3008.4'
@@ -72,14 +75,11 @@
 {% endload -%}
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# Versions of Salt that contain CVE's have been moved to an archive at:
-# archive.repo.saltstack.com/windows. The ability to install those versions
-# using winrepo has been removed.
+# As of 2024-10-30 packages are no longer hosted on AWS. As part
+# of the migration, only installers for versions v3006.6 and later are
+# available for download from Broadcom's Artifactory.
 # An uninstall only definition will remain here so the packages will show up
 # correctly in `pkg.list_pkgs` and to allow for removal using `pkg.remove`
-# Additionally, as of 2024-10-30 packages are no longer hosted on AWS. As part
-# of the migration, only the latest 2 major versions are available for
-# download.
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 {% load_yaml as remove_only_versions -%}
 - '3006.5'
