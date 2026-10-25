@@ -7,6 +7,7 @@
 # 2015.8.2 you will not be able to use pkg.install to upgrade Salt again. You
 # will have to upgrade Salt through another means.
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{% set arch = salt["grains.get"]("cpuarch") -%}
 {%- set install_dir = salt["reg.read_value"]("HKLM", "SOFTWARE\\Salt Project\\Salt", "install_dir").vdata %}
 {%- set install_dir = install_dir or "C:\\salt" %}
 
@@ -15,10 +16,13 @@
 # Use Renovate to apply automatic version updates. Due to the way Renovate works
 # each major version must be updated separately (otherwise all versions would be
 # updated to the latest version). New major versions e.g. 3008.0 must be added manually.
-{%- load_yaml as relenv_versions %}
+{% load_yaml as x64_only_versions -%}
 # renovate: datasource=github-tags depName=salt-3008.x packageName=saltstack/salt
 - '3008.4'
 - '3008.3'
+{% endload -%}
+
+{%- load_yaml as relenv_versions %}
 - '3008.2'
 - '3008.1'
 - '3008.0'
@@ -157,16 +161,14 @@
 - 2017.7.0
 {%- endload %}
 
+{% set arch_specific_versions = {"AMD64": x64_only_versions + relenv_versions, "x86": relenv_versions} -%}
+
 salt-minion-py3:
   # RELENV VERSIONS
-  {%- for version in relenv_versions %}
+  {%- for version in arch_specific_versions[arch] %}
   '{{ version }}':
     full_name: 'Salt Minion {{ version }} (Python 3)'
-    {% if grains['cpuarch'] == 'AMD64' -%}
-    installer: 'https://packages.broadcom.com/artifactory/saltproject-generic/windows/{{ version }}/Salt-Minion-{{ version }}-Py3-AMD64-Setup.exe'
-    {% else -%}
-    installer: 'https://packages.broadcom.com/artifactory/saltproject-generic/windows/{{ version }}/Salt-Minion-{{ version }}-Py3-x86-Setup.exe'
-    {% endif -%}
+    installer: 'https://packages.broadcom.com/artifactory/saltproject-generic/windows/{{ version }}/Salt-Minion-{{ version }}-Py3-{{ arch }}-Setup.exe'
     {% raw -%}
     # install_flags: "/S /master={{ salt['pillar.get']('salt:master', 'salt.domain.tld') }} /minion-id={{ salt['pillar.get']('salt:minion:ids:' ~ grains['host'] }}"
     {% endraw -%}
