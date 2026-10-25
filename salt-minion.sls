@@ -8,8 +8,8 @@
 # will have to upgrade Salt through another means.
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 {% set arch = salt["grains.get"]("cpuarch") -%}
-{%- set install_dir = salt["reg.read_value"]("HKLM", "SOFTWARE\\Salt Project\\Salt", "install_dir").vdata %}
-{%- set install_dir = install_dir or "C:\\salt" %}
+{% set install_dir = salt["reg.read_value"]("HKLM", "SOFTWARE\\Salt Project\\Salt", "install_dir").vdata -%}
+{% set install_dir = install_dir or "C:\\salt" -%}
 
 # Starting in Version 3006 salt standardized builds across all OSes on the
 # Relative Environment for Python project (relenv). The url changed as a result
@@ -22,7 +22,7 @@
 - '3008.3'
 {% endload -%}
 
-{%- load_yaml as relenv_versions %}
+{% load_yaml as relenv_versions -%}
 - '3008.2'
 - '3008.1'
 - '3008.0'
@@ -43,7 +43,7 @@
 - '3007.3'
 - '3007.2'
 - '3007.1'
-- 3007.0
+- '3007.0'
 # renovate: datasource=github-tags depName=salt-3006.x packageName=saltstack/salt
 - '3006.29'
 - '3006.28'
@@ -66,10 +66,10 @@
 - '3006.11'
 - '3006.10'
 - '3006.9'
-- 3006.8
-- 3006.7
-- 3006.6
-{%- endload %}
+- '3006.8'
+- '3006.7'
+- '3006.6'
+{% endload -%}
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Versions of Salt that contain CVE's have been moved to an archive at:
@@ -81,85 +81,85 @@
 # of the migration, only the latest 2 major versions are available for
 # download.
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-{%- load_yaml as remove_only_versions %}
-- 3006.5
-- 3006.4
-- 3006.3
-- 3006.2
-- 3006.1
-- 3006.0
-- 3005.5
-- 3005.4
-- 3005.3
-- 3005.2
-- 3005.1-5
-- 3005.1-4
-- 3005.1-3
-- 3005.1-2
-- 3005.1-1
-- 3005.1
-- 3004.2-1
-- 3003.5-1
-- 3002.9-1
-- 3004.1-1
-- 3004-3
-- 3004-2
-- 3004
-- 3003.4-1
-- 3003.3
-- 3003.2
-- 3003.1
-- 3003
-- 3002.8-1
-- 3002.7
-- 3002.6
-- 3002.5
-- 3002.4
-- 3002.3
-- 3002.2
-- 3002.1
-- 3002
-- 3001.8
-- 3001.7
-- 3001.6
-- 3001.5
-- 3001.4
-- 3001.2
-- 3001.1
-- 3001
-- 3000.9
-- 3000.8
-- 3000.7
-- 3000.6
-- 3000.4
-- 3000.3
-- 3000.2
-- 3000.1
-- 3000
-- 2019.2.8
-- 2019.2.6
-- 2019.2.5
-- 2019.2.4
-- 2019.2.3
-- 2019.2.2
-- 2019.2.1
-- 2019.2.0
-- 2018.3.5
-- 2018.3.4
-- 2018.3.3
-- 2018.3.2
-- 2018.3.1
-- 2018.3.0
-- 2017.7.8
-- 2017.7.7
-- 2017.7.6
-- 2017.7.5
-- 2017.7.4
-- 2017.7.3
-- 2017.7.2
-- 2017.7.1
-- 2017.7.0
-{%- endload %}
+{% load_yaml as remove_only_versions -%}
+- '3006.5'
+- '3006.4'
+- '3006.3'
+- '3006.2'
+- '3006.1'
+- '3006.0'
+- '3005.5'
+- '3005.4'
+- '3005.3'
+- '3005.2'
+- '3005.1-5'
+- '3005.1-4'
+- '3005.1-3'
+- '3005.1-2'
+- '3005.1-1'
+- '3005.1'
+- '3004.2-1'
+- '3003.5-1'
+- '3002.9-1'
+- '3004.1-1'
+- '3004-3'
+- '3004-2'
+- '3004'
+- '3003.4-1'
+- '3003.3'
+- '3003.2'
+- '3003.1'
+- '3003'
+- '3002.8-1'
+- '3002.7'
+- '3002.6'
+- '3002.5'
+- '3002.4'
+- '3002.3'
+- '3002.2'
+- '3002.1'
+- '3002'
+- '3001.8'
+- '3001.7'
+- '3001.6'
+- '3001.5'
+- '3001.4'
+- '3001.2'
+- '3001.1'
+- '3001'
+- '3000.9'
+- '3000.8'
+- '3000.7'
+- '3000.6'
+- '3000.4'
+- '3000.3'
+- '3000.2'
+- '3000.1'
+- '3000'
+- '2019.2.8'
+- '2019.2.6'
+- '2019.2.5'
+- '2019.2.4'
+- '2019.2.3'
+- '2019.2.2'
+- '2019.2.1'
+- '2019.2.0'
+- '2018.3.5'
+- '2018.3.4'
+- '2018.3.3'
+- '2018.3.2'
+- '2018.3.1'
+- '2018.3.0'
+- '2017.7.8'
+- '2017.7.7'
+- '2017.7.6'
+- '2017.7.5'
+- '2017.7.4'
+- '2017.7.3'
+- '2017.7.2'
+- '2017.7.1'
+- '2017.7.0'
+{% endload -%}
 
 {% set arch_specific_versions = {"AMD64": x64_only_versions + relenv_versions, "x86": relenv_versions} -%}
 
@@ -167,25 +167,20 @@ salt-minion-py3:
   # RELENV VERSIONS
   {%- for version in arch_specific_versions[arch] %}
   '{{ version }}':
-    full_name: 'Salt Minion {{ version }} (Python 3)'
-    installer: 'https://packages.broadcom.com/artifactory/saltproject-generic/windows/{{ version }}/Salt-Minion-{{ version }}-Py3-{{ arch }}-Setup.exe'
-    {% raw -%}
-    # install_flags: "/S /master={{ salt['pillar.get']('salt:master', 'salt.domain.tld') }} /minion-id={{ salt['pillar.get']('salt:minion:ids:' ~ grains['host'] }}"
-    {% endraw -%}
-    install_flags: '/S'
+    full_name: Salt Minion {{ version }} (Python 3)
+    installer: https://packages.broadcom.com/artifactory/saltproject-generic/windows/{{ version }}/Salt-Minion-{{ version }}-Py3-{{ arch }}-Setup.exe
+    install_flags: /S
     uninstaller: '{{ install_dir }}\uninst.exe'
-    uninstall_flags: '/S'
-    msiexec: False
-    use_scheduler: True
-    reboot: False
+    uninstall_flags: /S
+    use_scheduler: true
   {% endfor -%}
 
   # REMOVE ONLY VERSIONS (CVE, Unsupported, Missing Artifacts)
   {%- for version in remove_only_versions %}
   '{{ version }}':
-    skip_urltest: True
-    full_name: 'Salt Minion {{ version }} (Python 3)'
+    skip_urltest: true
+    full_name: Salt Minion {{ version }} (Python 3)
     uninstaller: '{{ install_dir }}\uninst.exe'
-    uninstall_flags: '/S'
-    use_scheduler: True
+    uninstall_flags: /S
+    use_scheduler: true
   {% endfor -%}
