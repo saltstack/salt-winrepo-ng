@@ -21,6 +21,7 @@
 # Renovate comment line.
 {% load_yaml as x64_only_versions -%}
 # renovate: datasource=github-tags depName=salt-3008.x packageName=saltstack/salt
+- '3008.5'
 - '3008.4'
 - '3008.3'
 {% endload -%}
