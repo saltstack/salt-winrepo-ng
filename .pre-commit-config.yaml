@@ -28,11 +28,11 @@ repos:
           # renovate: datasource=pypi
           - json5==0.17.3
         args: ["--verbose"]
-  - repo: https://github.com/biomejs/pre-commit
-    rev: v2.6.2
+  - repo: https://github.com/standard/standard
+    rev: v17.1.2
     hooks:
-      - id: biome-check
-        name: Check JavaScript with biome
+      - id: standard
+        name: Check JavaScript files using standardJS
   - repo: https://github.com/shellcheck-py/shellcheck-py
     rev: v0.10.0.1
     hooks:
