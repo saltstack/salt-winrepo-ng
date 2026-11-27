@@ -1,0 +1,11 @@
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"description": "Preset for configuring Renovate updates",
+	"packageRules": [
+		{
+			"matchPackageNames": ["renovatebot/pre-commit-hooks"],
+			"allowedVersions": "<=44.231.0",
+			"description": "Waiting for renovate#47760 to be merged"
+		}
+	]
+}

@@ -17,7 +17,7 @@ repos:
         args: [--assume-in-merge]
       - id: check-yaml
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.38.2
+    rev: 0.39.0
     hooks:
       - id: check-github-workflows
         name: Check GitHub workflows with check-jsonschema
@@ -26,20 +26,21 @@ repos:
         name: Check Renovate config with check-jsonschema
         additional_dependencies:
           # renovate: datasource=pypi
-          - json5==0.15.0
+          - json5==0.17.3
         args: ["--verbose"]
   - repo: https://github.com/biomejs/pre-commit
-    rev: v2.5.15
+    rev: v2.6.8
     hooks:
       - id: biome-check
         name: Check JavaScript with biome
+        files: \.(jsx?|tsx?|c(js|ts)|m(js|ts))$
   - repo: https://github.com/shellcheck-py/shellcheck-py
     rev: v0.10.0.1
     hooks:
       - id: shellcheck
         name: Check shell scripts with shellcheck
   - repo: https://github.com/renovatebot/pre-commit-hooks
-    rev: 44.132.5
+    rev: 44.231.0
     hooks:
       - id: renovate-config-validator
         name: Check Renovate config with renovate-config-validator
@@ -48,6 +49,7 @@ repos:
                (^|/).?renovate(?:rc)?(?:\.json5?)?$|
                automerge-for-winrepo.json|
                configure-get-salt-versions.json|
+               configure-renovate-updates.json|
                default.json|
                github-actions.json|
                groupByManager.json|
