@@ -131,7 +131,7 @@ jobs:
         run: |
           & "C:\Program Files\Salt Project\Salt\Scripts\python.exe" .\.cicd\tests.py ${{ join(fromJSON(steps.changed-files.outputs.sls_files), ' ') }}
   results:
-    name: Collect results
+    name: Collect${{ github.event_name == 'push' && ' push' || '' }} results
     permissions:
       contents: write
       issues: write
@@ -144,7 +144,9 @@ jobs:
     steps:
       - uses: poseidon/wait-for-status-checks@e7e24423722c5b8e97a6dd5848827d2a412f812d # v0.7.0
         with:
-          ignore: Collect results
+          ignore: >
+            Collect results,
+            Collect push results,
           token: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
